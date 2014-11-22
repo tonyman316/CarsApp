@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		D406166A1A1D4B8A0061F951 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40616691A1D4B8A0061F951 /* AppDelegate.swift */; };
 		D406166D1A1D4B8A0061F951 /* CarsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D406166B1A1D4B8A0061F951 /* CarsApp.xcdatamodeld */; };
-		D406166F1A1D4B8A0061F951 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406166E1A1D4B8A0061F951 /* ViewController.swift */; };
 		D40616721A1D4B8A0061F951 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40616701A1D4B8A0061F951 /* Main.storyboard */; };
 		D40616741A1D4B8A0061F951 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40616731A1D4B8A0061F951 /* Images.xcassets */; };
 		D40616771A1D4B8A0061F951 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D40616751A1D4B8A0061F951 /* LaunchScreen.xib */; };
 		D40616831A1D4B8A0061F951 /* CarsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40616821A1D4B8A0061F951 /* CarsAppTests.swift */; };
+		D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */; };
+		D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */; };
+		D4708FE91A2048EA000DB0BD /* CarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FE81A2048EA000DB0BD /* CarsCollectionViewCell.swift */; };
+		D4708FED1A204D88000DB0BD /* tesla.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FEC1A204D88000DB0BD /* tesla.jpg */; };
+		D4708FF01A206103000DB0BD /* hondaFit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FEF1A206103000DB0BD /* hondaFit.jpg */; };
+		D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */; };
+		D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF31A206DE5000DB0BD /* bmw.jpg */; };
+		D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF41A206DE5000DB0BD /* vwGolf.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +38,20 @@
 		D40616681A1D4B8A0061F951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40616691A1D4B8A0061F951 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D406166C1A1D4B8A0061F951 /* CarsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarsApp.xcdatamodel; sourceTree = "<group>"; };
-		D406166E1A1D4B8A0061F951 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D40616711A1D4B8A0061F951 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D40616731A1D4B8A0061F951 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D40616761A1D4B8A0061F951 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D406167C1A1D4B8A0061F951 /* CarsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40616811A1D4B8A0061F951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40616821A1D4B8A0061F951 /* CarsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsAppTests.swift; sourceTree = "<group>"; };
+		D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddCarsViewController.swift; path = ../AddCarsViewController.swift; sourceTree = "<group>"; };
+		D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCarsViewController.swift; path = ../MyCarsViewController.swift; sourceTree = "<group>"; };
+		D4708FE81A2048EA000DB0BD /* CarsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D4708FEC1A204D88000DB0BD /* tesla.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tesla.jpg; sourceTree = "<group>"; };
+		D4708FEF1A206103000DB0BD /* hondaFit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hondaFit.jpg; sourceTree = "<group>"; };
+		D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myCarsCollectionViewController.swift; sourceTree = "<group>"; };
+		D4708FF31A206DE5000DB0BD /* bmw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bmw.jpg; sourceTree = "<group>"; };
+		D4708FF41A206DE5000DB0BD /* vwGolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vwGolf.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +93,14 @@
 		D40616661A1D4B8A0061F951 /* CarsApp */ = {
 			isa = PBXGroup;
 			children = (
-				D40616691A1D4B8A0061F951 /* AppDelegate.swift */,
-				D406166E1A1D4B8A0061F951 /* ViewController.swift */,
 				D40616701A1D4B8A0061F951 /* Main.storyboard */,
+				D40616691A1D4B8A0061F951 /* AppDelegate.swift */,
+				D4538F901A2089BA0016A05A /* My Cars Tab */,
+				D4538F911A2089F00016A05A /* Profile Tab */,
 				D40616731A1D4B8A0061F951 /* Images.xcassets */,
 				D40616751A1D4B8A0061F951 /* LaunchScreen.xib */,
 				D406166B1A1D4B8A0061F951 /* CarsApp.xcdatamodeld */,
+				D4708FEE1A2060DA000DB0BD /* images */,
 				D40616671A1D4B8A0061F951 /* Supporting Files */,
 			);
 			path = CarsApp;
@@ -93,6 +109,7 @@
 		D40616671A1D4B8A0061F951 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */,
 				D40616681A1D4B8A0061F951 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -113,6 +130,34 @@
 				D40616811A1D4B8A0061F951 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4538F901A2089BA0016A05A /* My Cars Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */,
+				D4708FE81A2048EA000DB0BD /* CarsCollectionViewCell.swift */,
+				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
+			);
+			name = "My Cars Tab";
+			sourceTree = "<group>";
+		};
+		D4538F911A2089F00016A05A /* Profile Tab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Profile Tab";
+			sourceTree = "<group>";
+		};
+		D4708FEE1A2060DA000DB0BD /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D4708FF31A206DE5000DB0BD /* bmw.jpg */,
+				D4708FF41A206DE5000DB0BD /* vwGolf.jpg */,
+				D4708FEF1A206103000DB0BD /* hondaFit.jpg */,
+				D4708FEC1A204D88000DB0BD /* tesla.jpg */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +240,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */,
 				D40616721A1D4B8A0061F951 /* Main.storyboard in Resources */,
+				D4708FED1A204D88000DB0BD /* tesla.jpg in Resources */,
+				D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */,
 				D40616771A1D4B8A0061F951 /* LaunchScreen.xib in Resources */,
 				D40616741A1D4B8A0061F951 /* Images.xcassets in Resources */,
+				D4708FF01A206103000DB0BD /* hondaFit.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D406166F1A1D4B8A0061F951 /* ViewController.swift in Sources */,
 				D406166D1A1D4B8A0061F951 /* CarsApp.xcdatamodeld in Sources */,
 				D406166A1A1D4B8A0061F951 /* AppDelegate.swift in Sources */,
+				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,
+				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
+				D4708FE91A2048EA000DB0BD /* CarsCollectionViewCell.swift in Sources */,
+				D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +463,7 @@
 				D40616881A1D4B8A0061F951 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D40616891A1D4B8A0061F951 /* Build configuration list for PBXNativeTarget "CarsAppTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +472,7 @@
 				D406168B1A1D4B8A0061F951 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
