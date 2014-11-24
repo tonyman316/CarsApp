@@ -12,8 +12,10 @@ import CoreData
 
 class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    var carsImages = ["tesla.jpg", "hondaFit.jpg", "vwGolf.jpg", "bmw.jpg"]
-    var owners = ["ABC", "DEF", "XXX", "ZZZ"]
+    var carList = [NSManagedObject]()
+
+//    var carsImages = ["tesla.jpg", "hondaFit.jpg", "vwGolf.jpg", "bmw.jpg"]
+//    var owners = ["ABC", "DEF", "XXX", "ZZZ"]
 
     
     @IBOutlet var carsCollectionView: UICollectionView!
@@ -21,11 +23,32 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Offset collection cell
         carsCollectionView.contentInset = ({
             var contentInset = self.carsCollectionView.contentInset
             contentInset.top = 80
             return contentInset
         })()
+        
+        // Fetching from Core Data
+        //1
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"Cars")
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        
+        if let results = fetchedResults {
+            carList = results
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -59,16 +82,18 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return carsImages.count
+        return carList.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CarsCell", forIndexPath: indexPath) as CarsCollectionViewCell
         cell.backgroundColor = UIColor.whiteColor()
         
-        cell.myCarsImageView.image = UIImage(named: carsImages[indexPath.row])
-        cell.ownerLabel.text = owners[indexPath.row]
-        
+        let car = carList[indexPath.row]
+        cell.ownerLabel.text = car.valueForKey("make") as String?
+//        cell.myCarsImageView.image = UIImage(named: carsImages[indexPath.row])
+//        cell.ownerLabel.text = owners[indexPath.row]
+
         return cell
     }
     

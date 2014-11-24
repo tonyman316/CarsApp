@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 import Foundation
+import MobileCoreServices
 
-class AddCarsViewController: UIViewController {
+class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var addCarImageView: UIImageView!
     @IBOutlet var makeTextField: UITextField!
@@ -34,15 +35,7 @@ class AddCarsViewController: UIViewController {
     
     @IBAction func addCarImages(sender: AnyObject) {
         // Action Sheet
-        
-        
-        // Camera
-        
-        
-        // Camera Roll
-        
-        
-        // Cancel
+        showOptions()
     }
 
     
@@ -61,6 +54,55 @@ class AddCarsViewController: UIViewController {
         popToMainView()
     }
     
+    // Action Sheet
+    func showOptions() {
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let option1 = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCamera())})
+        let option2 = UIAlertAction(title: "Choose Existing Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCameraRoll())})
+        let option3 = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Destructive, handler: {(actionSheet: UIAlertAction!) in ()})
+        
+        actionSheet.addAction(option1)
+        actionSheet.addAction(option2)
+        actionSheet.addAction(option3)
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    // MARK: Image Picker
+    var cameraUI:UIImagePickerController = UIImagePickerController()
+    
+    func presentCamera()
+    {
+        cameraUI = UIImagePickerController()
+        cameraUI.delegate = self
+        cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
+        cameraUI.mediaTypes = NSArray(object: kUTTypeImage)
+        cameraUI.allowsEditing = true
+        
+        self.presentViewController(cameraUI, animated: true, completion: nil)
+    }
+    
+    func presentCameraRoll()
+    {
+        cameraUI = UIImagePickerController()
+        cameraUI.delegate = self
+        cameraUI.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        cameraUI.mediaTypes = NSArray(object: kUTTypeImage)
+        cameraUI.allowsEditing = true
+        
+        self.presentViewController(cameraUI, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary)
+    {
+        var imageToSave:UIImage
+        
+        imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        
+        UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func popToMainView() {
         navigationController?.popViewControllerAnimated(true)

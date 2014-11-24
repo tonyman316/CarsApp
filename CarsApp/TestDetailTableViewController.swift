@@ -71,7 +71,6 @@ class TestDetailTableViewController: UITableViewController {
 
         let car = carList[indexPath.row]
         cell.textLabel.text = car.valueForKey("make") as String?
-        cell.accessoryType = .DisclosureIndicator
         
         return cell
     }
