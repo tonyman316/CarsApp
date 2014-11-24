@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+import Foundation
 
 class CarsCollectionViewCell: UICollectionViewCell {
     
@@ -21,11 +23,12 @@ class CarsCollectionViewCell: UICollectionViewCell {
         override init(frame: CGRect) {
             super.init(frame: frame)
             
-        myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 16, width: frame.size.width, height: frame.size.height*2/3))
-        myCarsImageView.contentMode = UIViewContentMode.ScaleAspectFill
+//        myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 16, width: frame.size.width, height: frame.size.height*2/3))
+        myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 5, width: 210, height: 120))
+        myCarsImageView.contentMode = UIViewContentMode.ScaleAspectFit
         contentView.addSubview(myCarsImageView)
 
-        let textFrame = CGRect(x: 0, y: 90, width: frame.size.width, height: frame.size.height/2)
+        let textFrame = CGRect(x: 30, y: 70, width: frame.size.width, height: frame.size.height/2)
         ownerLabel = UILabel(frame: textFrame)
         ownerLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
         ownerLabel.textAlignment = .Center

@@ -33,7 +33,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGW-ZQ-tQe">
-                                                    <rect key="frame" x="19" y="9" width="212" height="119"/>
+                                                    <rect key="frame" x="19" y="9" width="210" height="120"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-K9-I9O">
                                                     <rect key="frame" x="65" y="131" width="120" height="21"/>
@@ -47,7 +47,6 @@
                                         <connections>
                                             <outlet property="myCarsImageView" destination="FGW-ZQ-tQe" id="chX-Mh-SD0"/>
                                             <outlet property="ownerLabel" destination="0kj-K9-I9O" id="WPd-7o-TWp"/>
-                                            <segue destination="94e-3e-cAc" kind="show" id="MOa-GX-X3V"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -56,9 +55,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Cars" id="pAo-rR-3Ls">
+                        <barButtonItem key="leftBarButtonItem" title="Test detail" id="0Wt-ag-IzM">
+                            <connections>
+                                <segue destination="94e-3e-cAc" kind="show" id="Wb6-p3-6RL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="H7c-l6-htm">
                             <connections>
-                                <segue destination="FV0-EL-xa9" kind="show" id="8ve-pQ-z37"/>
+                                <segue destination="FV0-EL-xa9" kind="show" id="fef-lu-Euz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -69,55 +73,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="458" y="383"/>
-        </scene>
-        <!--Collection View Controller-->
-        <scene sceneID="eLx-Y2-Cno">
-            <objects>
-                <collectionViewController id="yMu-id-6hR" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2bn-gu-ZFB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lkI-gS-h9L">
-                            <size key="itemSize" width="234" height="150"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CarsCell" id="bHM-pZ-Ihk">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="234" height="150"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkn-WH-dnj">
-                                            <rect key="frame" x="18" y="13" width="190" height="106"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbX-aA-XW7">
-                                            <rect key="frame" x="42" y="128" width="150" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.99607849120000003" green="0.99215692280000001" blue="0.99215692280000001" alpha="1" colorSpace="deviceRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="myCarsImageView" destination="jkn-WH-dnj" id="Xsa-qF-7MH"/>
-                                    <outlet property="ownerLabel" destination="AbX-aA-XW7" id="UlP-pn-ts9"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="yMu-id-6hR" id="Zc4-Gn-zbo"/>
-                            <outlet property="delegate" destination="yMu-id-6hR" id="Kxq-UZ-M5u"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jjD-me-5ee" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="458" y="-333"/>
         </scene>
         <!--Add New Car-->
         <scene sceneID="FL7-ME-SyN">
@@ -132,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vef-1I-Bm1">
-                                <rect key="frame" x="227" y="78" width="147" height="95"/>
+                                <rect key="frame" x="126" y="81" width="125" height="70"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="50"/>
                                 <state key="normal" title="🚘">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,58 +97,77 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Make:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtD-ww-VRr">
-                                <rect key="frame" x="190" y="184" width="220" height="30"/>
+                                <rect key="frame" x="73" y="166" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Model" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nih-Q8-edZ">
-                                <rect key="frame" x="190" y="222" width="220" height="30"/>
+                                <rect key="frame" x="73" y="204" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kXG-bh-Oz0">
-                                <rect key="frame" x="190" y="260" width="220" height="30"/>
+                                <rect key="frame" x="73" y="242" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-Te-0zn">
-                                <rect key="frame" x="190" y="298" width="220" height="30"/>
+                                <rect key="frame" x="73" y="280" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mileage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2IE-1M-TDs">
-                                <rect key="frame" x="190" y="336" width="220" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Mileage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81F-2V-Mqb">
+                                <rect key="frame" x="73" y="318" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMq-9J-ls0">
-                                <rect key="frame" x="277" y="484" width="46" height="30"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="done:" destination="FV0-EL-xa9" eventType="touchUpInside" id="9Px-xp-2ta"/>
-                                </connections>
-                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Oil Change (Mileage)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpo-cm-gRU">
+                                <rect key="frame" x="73" y="356" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Transmission Oil Change (Mileage)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-HR-IKT">
+                                <rect key="frame" x="73" y="394" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-mh-ZPx">
+                                <rect key="frame" x="126" y="81" width="125" height="70"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Car" id="2Cp-qL-cEP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="RkJ-oO-ybk">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yP0-Oi-5YT">
                             <connections>
-                                <action selector="cancel:" destination="FV0-EL-xa9" id="wjW-xa-P9O"/>
+                                <action selector="cancel:" destination="FV0-EL-xa9" id="IuC-FU-cfF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="RkJ-oO-ybk">
+                            <connections>
+                                <action selector="done:" destination="FV0-EL-xa9" id="dLw-ZJ-BkT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addCarImageView" destination="1xp-mh-ZPx" id="qGX-i4-SGw"/>
+                        <outlet property="currentMileageTextField" destination="81F-2V-Mqb" id="Mg4-t9-NzA"/>
+                        <outlet property="makeTextField" destination="OtD-ww-VRr" id="h1k-Nz-S1A"/>
+                        <outlet property="modelTextField" destination="Nih-Q8-edZ" id="PHr-Bw-pBb"/>
+                        <outlet property="oilChangeTextField" destination="wpo-cm-gRU" id="j1d-wy-5cR"/>
+                        <outlet property="priceTextField" destination="VcT-Te-0zn" id="Zxf-mD-fO4"/>
+                        <outlet property="transmissionOilTextField" destination="7hp-HR-IKT" id="bo0-V9-Pg4"/>
+                        <outlet property="yearTextField" destination="kXG-bh-Oz0" id="7Vr-yJ-Roc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0Y-tb-D5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1182" y="-385"/>
+            <point key="canvasLocation" x="1208" y="-397"/>
         </scene>
-        <!--View Controller-->
+        <!--Car Detail-->
         <scene sceneID="eub-2d-BFP">
             <objects>
-                <viewController id="94e-3e-cAc" sceneMemberID="viewController">
+                <viewController id="94e-3e-cAc" customClass="CarDetailViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pf3-5B-6bP"/>
                         <viewControllerLayoutGuide type="bottom" id="nIR-Oc-hrA"/>
@@ -214,7 +188,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bwJ-Zr-b7I"/>
+                    <navigationItem key="navigationItem" title="Car Detail" id="bwJ-Zr-b7I"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Op7-E0-GAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -317,16 +291,16 @@
             </objects>
             <point key="canvasLocation" x="-354" y="383"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Car Detail Table View Controller-->
         <scene sceneID="P6I-u8-t4d">
             <objects>
-                <tableViewController id="2lf-PI-vBr" sceneMemberID="viewController">
+                <tableViewController id="2lf-PI-vBr" customClass="CarDetailTableViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6uV-Ja-eat">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="318"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ars-NR-LMY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarDetailCell" id="Ars-NR-LMY">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ars-NR-LMY" id="exx-s4-szg">
                                     <autoresizingMask key="autoresizingMask"/>
