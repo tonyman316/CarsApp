@@ -21,8 +21,6 @@ class AddCarsViewController: UIViewController {
     @IBOutlet var oilChangeTextField: UITextField!
     @IBOutlet var transmissionOilTextField: UITextField!
     
-    var car = [NSManagedObject]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,27 +76,25 @@ class AddCarsViewController: UIViewController {
         //2
         let entity =  NSEntityDescription.entityForName("Cars", inManagedObjectContext: managedContext)
         
-        let newCar = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        var newCar = MyCars(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //3
-        newCar.setValue(makeTextField.text, forKey: "make")
-        
+        newCar.make = makeTextField.text
         //4
         var error: NSError?
         if !managedContext.save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
+            
+            println(newCar)
+
         }
-        //5
-        car.append(newCar)
-    }
+}
         
-        //newCar.make = makeTextField.text
 //        newCar.model = modelTextField.text
 //        newCar.year = yearTextField.text
 //        newCar.price = priceTextField.text
 //        newCar.currentMileage = currentMileageTextField.text
 //        newCar.oilChange = oilChangeTextField.text
 //        newCar.transOil = transmissionOilTextField.text
-        //managedObjectContext?.save(nil)
 
 }

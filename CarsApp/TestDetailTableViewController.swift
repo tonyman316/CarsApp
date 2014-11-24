@@ -1,20 +1,18 @@
 //
-//  CarDetailTableViewController.swift
+//  TestDetailTableViewController.swift
 //  CarsApp
 //
-//  Created by Tony's Mac on 11/22/14.
+//  Created by Tony's Mac on 11/23/14.
 //  Copyright (c) 2014 DeAnza. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class CarDetailTableViewController: UITableViewController {
-    
-    //var carList = [MyCars]() as [NSManagedObject]
+class TestDetailTableViewController: UITableViewController {
+
     var carList = [NSManagedObject]()
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,24 +54,29 @@ class CarDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
         return carList.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CarDetailCell", forIndexPath: indexPath) as UITableViewCell
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("TestDetailCell", forIndexPath: indexPath) as UITableViewCell
+
         let car = carList[indexPath.row]
         cell.textLabel.text = car.valueForKey("make") as String?
         cell.accessoryType = .DisclosureIndicator
+        
         return cell
     }
+    
+
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -84,25 +87,22 @@ class CarDetailTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context = appDelegate.managedObjectContext!
-        
-        // remove the deleted item from the model
-        context.deleteObject(carList[indexPath.row] as NSManagedObject)
-        carList.removeAtIndex(indexPath.row)
-        context.save(nil)
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
             
-        // remove the deleted item from the UITableView
-        tableView.deleteRowsAtIndexPaths(NSArray(object:indexPath), withRowAnimation: UITableViewRowAnimation.Fade)
-        
-//            var error: NSError? = nil
-//            if !context.save(&error){
-//                abort()
-//            }
-        //tableView.reload()
-
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let context = appDelegate.managedObjectContext!
+            
+            // remove the deleted item from the model
+            context.deleteObject(carList[indexPath.row] as NSManagedObject)
+            carList.removeAtIndex(indexPath.row)
+            context.save(nil)
+            
+            // remove the deleted item from the UITableView
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
     }
     
 
