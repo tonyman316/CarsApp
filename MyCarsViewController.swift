@@ -48,7 +48,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
-        
+        carsCollectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -64,6 +64,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         carsCollectionView!.delegate = self
         carsCollectionView!.registerClass(CarsCollectionViewCell.self, forCellWithReuseIdentifier: "CarsCell")
         carsCollectionView!.backgroundColor = UIColor.whiteColor()
+        
         self.view.addSubview(carsCollectionView!)
         
         //navigationController?.hidesBarsOnSwipe = true

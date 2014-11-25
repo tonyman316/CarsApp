@@ -60,7 +60,7 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let option1 = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCamera())})
         let option2 = UIAlertAction(title: "Choose Existing Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCameraRoll())})
-        let option3 = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Destructive, handler: {(actionSheet: UIAlertAction!) in ()})
+        let option3 = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in ()})
         
         actionSheet.addAction(option1)
         actionSheet.addAction(option2)
@@ -100,7 +100,8 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         
         imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
-        UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+        
+        //UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -128,6 +129,8 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
             println("Could not save \(error), \(error?.userInfo)")
             
             println(newCar)
+            
+            //let imageData = UIImagePNGRepresentation()
 
         }
 }

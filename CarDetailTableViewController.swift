@@ -86,17 +86,22 @@ class CarDetailTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
         
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context = appDelegate.managedObjectContext!
-        
-        // remove the deleted item from the model
-        context.deleteObject(carList[indexPath.row] as NSManagedObject)
-        carList.removeAtIndex(indexPath.row)
-        context.save(nil)
+        if editingStyle == .Delete {
             
-        // remove the deleted item from the UITableView
-        tableView.deleteRowsAtIndexPaths(NSArray(object:indexPath), withRowAnimation: UITableViewRowAnimation.Fade)
-        
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let context = appDelegate.managedObjectContext!
+            
+            // remove the deleted item from the model
+            context.deleteObject(carList[indexPath.row] as NSManagedObject)
+            carList.removeAtIndex(indexPath.row)
+            context.save(nil)
+            
+            // remove the deleted item from the UITableView
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+
 //            var error: NSError? = nil
 //            if !context.save(&error){
 //                abort()

@@ -12,5 +12,7 @@ import CoreData
 class MyCars: NSManagedObject {
 
     @NSManaged var make: String
+    @NSManaged var carImage: NSData
+    
 
 }

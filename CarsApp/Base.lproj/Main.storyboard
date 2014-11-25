@@ -57,7 +57,7 @@
                     <navigationItem key="navigationItem" title="My Cars" id="pAo-rR-3Ls">
                         <barButtonItem key="leftBarButtonItem" title="Test detail" id="0Wt-ag-IzM">
                             <connections>
-                                <segue destination="U0h-A7-qmP" kind="show" id="Ygz-C8-muC"/>
+                                <segue destination="94e-3e-cAc" kind="show" id="gBf-14-Dsz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="H7c-l6-htm">
