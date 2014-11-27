@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		1911C4AA1A26B3EA00334F23 /* MaptestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911C4A91A26B3EA00334F23 /* MaptestViewController.swift */; };
 		1911C4AC1A26C98300334F23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1911C4AB1A26C98300334F23 /* Main.storyboard */; };
-		1996BF001A25A8F200E7FA90 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BEFF1A25A8F200E7FA90 /* ProfileTableViewController.swift */; };
-		1996BF021A25BE3500E7FA90 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996BF011A25BE3500E7FA90 /* ProfileTableViewCell.swift */; };
+		1911C4BB1A27D92D00334F23 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911C4B91A27D92D00334F23 /* ProfileTableViewCell.swift */; };
+		1911C4BC1A27D92D00334F23 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911C4BA1A27D92D00334F23 /* ProfileTableViewController.swift */; };
 		1996BF041A25C4EA00E7FA90 /* slr_small_lens-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1996BF031A25C4EA00E7FA90 /* slr_small_lens-50.png */; };
 		1996BF061A25C69500E7FA90 /* gas_station-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1996BF051A25C69500E7FA90 /* gas_station-50.png */; };
 		1996BF081A25C6A200E7FA90 /* portrait_mode-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1996BF071A25C6A200E7FA90 /* portrait_mode-50.png */; };
@@ -46,8 +46,8 @@
 /* Begin PBXFileReference section */
 		1911C4A91A26B3EA00334F23 /* MaptestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaptestViewController.swift; path = ../MaptestViewController.swift; sourceTree = "<group>"; };
 		1911C4AB1A26C98300334F23 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		1996BEFF1A25A8F200E7FA90 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
-		1996BF011A25BE3500E7FA90 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		1911C4B91A27D92D00334F23 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		1911C4BA1A27D92D00334F23 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1996BF031A25C4EA00E7FA90 /* slr_small_lens-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slr_small_lens-50.png"; sourceTree = "<group>"; };
 		1996BF051A25C69500E7FA90 /* gas_station-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gas_station-50.png"; sourceTree = "<group>"; };
 		1996BF071A25C6A200E7FA90 /* portrait_mode-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portrait_mode-50.png"; sourceTree = "<group>"; };
@@ -172,9 +172,9 @@
 		D4538F911A2089F00016A05A /* Profile Tab */ = {
 			isa = PBXGroup;
 			children = (
-				1996BEFF1A25A8F200E7FA90 /* ProfileTableViewController.swift */,
 				1911C4A91A26B3EA00334F23 /* MaptestViewController.swift */,
-				1996BF011A25BE3500E7FA90 /* ProfileTableViewCell.swift */,
+				1911C4B91A27D92D00334F23 /* ProfileTableViewCell.swift */,
+				1911C4BA1A27D92D00334F23 /* ProfileTableViewController.swift */,
 			);
 			name = "Profile Tab";
 			sourceTree = "<group>";
@@ -305,10 +305,10 @@
 				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
 				D4708FE91A2048EA000DB0BD /* CarsCollectionViewCell.swift in Sources */,
+				1911C4BC1A27D92D00334F23 /* ProfileTableViewController.swift in Sources */,
 				D44FE9161A20AC5700969B53 /* CarDetailViewController.swift in Sources */,
+				1911C4BB1A27D92D00334F23 /* ProfileTableViewCell.swift in Sources */,
 				D4316BAF1A22D0B0003400A2 /* TestDetailTableViewController.swift in Sources */,
-				1996BF021A25BE3500E7FA90 /* ProfileTableViewCell.swift in Sources */,
-				1996BF001A25A8F200E7FA90 /* ProfileTableViewController.swift in Sources */,
 				D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
