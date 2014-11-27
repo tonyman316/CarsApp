@@ -100,8 +100,8 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         
         imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
+        addCarImageView.image = imageToSave
         
-        //UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -122,6 +122,9 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         var newCar = MyCars(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //3
+        let imageData = UIImagePNGRepresentation(addCarImageView.image) as NSData
+        newCar.carImage = imageData
+        
         newCar.make = makeTextField.text
         //4
         var error: NSError?
@@ -130,7 +133,6 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
             
             println(newCar)
             
-            //let imageData = UIImagePNGRepresentation()
 
         }
 }

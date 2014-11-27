@@ -92,6 +92,16 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         
         let car = carList[indexPath.row]
         cell.ownerLabel.text = car.valueForKey("make") as String?
+        
+//        let data: NSData = car.valueForKey("carImage") as NSData
+//        
+//        let image = UIImage(data: data)
+//        
+//        cell.myCarsImageView.image = image
+        
+        var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
+        cell.myCarsImageView.image = imageFromModel
+        
 //        cell.myCarsImageView.image = UIImage(named: carsImages[indexPath.row])
 //        cell.ownerLabel.text = owners[indexPath.row]
 

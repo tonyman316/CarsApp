@@ -25,10 +25,10 @@ class CarsCollectionViewCell: UICollectionViewCell {
             
 //        myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 16, width: frame.size.width, height: frame.size.height*2/3))
         myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 5, width: 210, height: 120))
-        myCarsImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        myCarsImageView.contentMode = UIViewContentMode.ScaleToFill
         contentView.addSubview(myCarsImageView)
 
-        let textFrame = CGRect(x: 30, y: 70, width: frame.size.width, height: frame.size.height/2)
+        let textFrame = CGRect(x: 30, y: 100, width: frame.size.width, height: frame.size.height/2)
         ownerLabel = UILabel(frame: textFrame)
         ownerLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
         ownerLabel.textAlignment = .Center

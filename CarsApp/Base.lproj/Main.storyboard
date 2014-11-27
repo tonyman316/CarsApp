@@ -113,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vef-1I-Bm1">
-                                <rect key="frame" x="126" y="81" width="125" height="70"/>
+                                <rect key="frame" x="126" y="117" width="125" height="70"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="50"/>
                                 <state key="normal" title="🚘">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,42 +123,42 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Make:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtD-ww-VRr">
-                                <rect key="frame" x="73" y="166" width="231" height="30"/>
+                                <rect key="frame" x="73" y="241" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Model" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nih-Q8-edZ">
-                                <rect key="frame" x="73" y="204" width="231" height="30"/>
+                                <rect key="frame" x="73" y="279" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kXG-bh-Oz0">
-                                <rect key="frame" x="73" y="242" width="231" height="30"/>
+                                <rect key="frame" x="73" y="317" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-Te-0zn">
-                                <rect key="frame" x="73" y="280" width="231" height="30"/>
+                                <rect key="frame" x="73" y="355" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Mileage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81F-2V-Mqb">
-                                <rect key="frame" x="73" y="318" width="231" height="30"/>
+                                <rect key="frame" x="73" y="393" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Oil Change (Mileage)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpo-cm-gRU">
-                                <rect key="frame" x="73" y="356" width="231" height="30"/>
+                                <rect key="frame" x="73" y="431" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Transmission Oil Change (Mileage)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-HR-IKT">
-                                <rect key="frame" x="73" y="394" width="231" height="30"/>
+                                <rect key="frame" x="73" y="469" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-mh-ZPx">
-                                <rect key="frame" x="126" y="81" width="125" height="70"/>
+                                <rect key="frame" x="88" y="77" width="200" height="150"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -202,15 +202,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz7-Sp-wZK">
+                                <rect key="frame" x="180" y="74" width="240" height="160"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXx-Ed-AHz">
-                                <rect key="frame" x="0.0" y="233" width="600" height="318"/>
+                                <rect key="frame" x="0.0" y="251" width="600" height="300"/>
                                 <connections>
                                     <segue destination="2lf-PI-vBr" kind="embed" id="goA-qD-fZ2"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz7-Sp-wZK">
-                                <rect key="frame" x="180" y="83" width="240" height="128"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -322,7 +322,7 @@
             <objects>
                 <tableViewController id="2lf-PI-vBr" customClass="CarDetailTableViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6uV-Ja-eat">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="318"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
