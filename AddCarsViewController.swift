@@ -100,6 +100,9 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         
         imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
+        // Resize image doesn't work!!
+        var newCGSize = CGSizeMake(100, 100)
+        var resizeImage = RBResizeImage(imageToSave, targetSize: newCGSize) as UIImage
         addCarImageView.image = imageToSave
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -122,26 +125,52 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         var newCar = MyCars(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //3
+        
         let imageData = UIImagePNGRepresentation(addCarImageView.image) as NSData
         newCar.carImage = imageData
         
         newCar.make = makeTextField.text
-        //4
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
-            
-            println(newCar)
-            
-
-        }
-}
-        
 //        newCar.model = modelTextField.text
 //        newCar.year = yearTextField.text
 //        newCar.price = priceTextField.text
 //        newCar.currentMileage = currentMileageTextField.text
 //        newCar.oilChange = oilChangeTextField.text
 //        newCar.transOil = transmissionOilTextField.text
+        
+        //4
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+            
+            println(newCar)
+        }
+    }
+    
+    // Resize image func
+    func RBResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+        } else {
+            newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.drawInRect(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 
 }

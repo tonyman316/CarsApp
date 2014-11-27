@@ -24,6 +24,7 @@
 		D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */; };
 		D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF31A206DE5000DB0BD /* bmw.jpg */; };
 		D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF41A206DE5000DB0BD /* vwGolf.jpg */; };
+		D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49304521A270B2C006B7921 /* UIImageExtension.swift */; };
 		D4A1BFD51A22B71F0077CB6C /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A1BFD41A22B71F0077CB6C /* MyCars.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myCarsCollectionViewController.swift; sourceTree = "<group>"; };
 		D4708FF31A206DE5000DB0BD /* bmw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bmw.jpg; sourceTree = "<group>"; };
 		D4708FF41A206DE5000DB0BD /* vwGolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vwGolf.jpg; sourceTree = "<group>"; };
+		D49304521A270B2C006B7921 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D4A1BFD41A22B71F0077CB6C /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
 				D44FE9151A20AC5700969B53 /* CarDetailViewController.swift */,
 				D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */,
+				D49304521A270B2C006B7921 /* UIImageExtension.swift */,
 			);
 			name = "My Cars Tab";
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				D44FE9181A20AC8C00969B53 /* CarDetailTableViewController.swift in Sources */,
 				D4A1BFD51A22B71F0077CB6C /* MyCars.swift in Sources */,
 				D406166A1A1D4B8A0061F951 /* AppDelegate.swift in Sources */,
+				D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */,
 				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
 				D4708FE91A2048EA000DB0BD /* CarsCollectionViewCell.swift in Sources */,

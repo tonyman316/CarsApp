@@ -55,10 +55,10 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         super.viewDidLoad()
 
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width/2, height: self.view.frame.width/2)
+        layout.itemSize = CGSize(width: self.view.frame.width/2-5, height: self.view.frame.width/2)
         //layout.itemSize = CGSize(width: 185, height: 200)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 15
         carsCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         carsCollectionView!.dataSource = self
         carsCollectionView!.delegate = self
@@ -89,18 +89,20 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CarsCell", forIndexPath: indexPath) as CarsCollectionViewCell
         cell.backgroundColor = UIColor.whiteColor()
+        cell.layer.borderWidth = 2.0
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.layer.cornerRadius = 20
+        cell.layer.shadowColor = UIColor.blueColor().CGColor;
+        cell.layer.shadowRadius = 3.0
+        cell.layer.shadowOffset = CGSizeMake(0.0, 5.0)
+        cell.layer.shadowOpacity = 0.3
         
         let car = carList[indexPath.row]
         cell.ownerLabel.text = car.valueForKey("make") as String?
         
-//        let data: NSData = car.valueForKey("carImage") as NSData
-//        
-//        let image = UIImage(data: data)
-//        
-//        cell.myCarsImageView.image = image
-        
         var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
         cell.myCarsImageView.image = imageFromModel
+        cell.myCarsImageView.clipsToBounds = true;
         
 //        cell.myCarsImageView.image = UIImage(named: carsImages[indexPath.row])
 //        cell.ownerLabel.text = owners[indexPath.row]
