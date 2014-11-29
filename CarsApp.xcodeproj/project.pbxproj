@@ -25,7 +25,9 @@
 		D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF31A206DE5000DB0BD /* bmw.jpg */; };
 		D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF41A206DE5000DB0BD /* vwGolf.jpg */; };
 		D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49304521A270B2C006B7921 /* UIImageExtension.swift */; };
-		D4A1BFD51A22B71F0077CB6C /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A1BFD41A22B71F0077CB6C /* MyCars.swift */; };
+		D4C7F5511A29720F000F0391 /* Owners.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7F5501A29720F000F0391 /* Owners.swift */; };
+		D4C7F5531A297210000F0391 /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7F5521A297210000F0391 /* MyCars.swift */; };
+		D4C7F5551A29834C000F0391 /* Unknown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C7F5541A29834C000F0391 /* Unknown.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +63,9 @@
 		D4708FF31A206DE5000DB0BD /* bmw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bmw.jpg; sourceTree = "<group>"; };
 		D4708FF41A206DE5000DB0BD /* vwGolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vwGolf.jpg; sourceTree = "<group>"; };
 		D49304521A270B2C006B7921 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		D4A1BFD41A22B71F0077CB6C /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
+		D4C7F5501A29720F000F0391 /* Owners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owners.swift; sourceTree = "<group>"; };
+		D4C7F5521A297210000F0391 /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
+		D4C7F5541A29834C000F0391 /* Unknown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Unknown.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +115,8 @@
 				D40616731A1D4B8A0061F951 /* Images.xcassets */,
 				D40616751A1D4B8A0061F951 /* LaunchScreen.xib */,
 				D406166B1A1D4B8A0061F951 /* CarsApp.xcdatamodeld */,
-				D4A1BFD41A22B71F0077CB6C /* MyCars.swift */,
+				D4C7F5521A297210000F0391 /* MyCars.swift */,
+				D4C7F5501A29720F000F0391 /* Owners.swift */,
 				D4708FEE1A2060DA000DB0BD /* images */,
 				D40616671A1D4B8A0061F951 /* Supporting Files */,
 			);
@@ -171,6 +176,7 @@
 				D4708FF41A206DE5000DB0BD /* vwGolf.jpg */,
 				D4708FEF1A206103000DB0BD /* hondaFit.jpg */,
 				D4708FEC1A204D88000DB0BD /* tesla.jpg */,
+				D4C7F5541A29834C000F0391 /* Unknown.jpg */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 			files = (
 				D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */,
 				D40616721A1D4B8A0061F951 /* Main.storyboard in Resources */,
+				D4C7F5551A29834C000F0391 /* Unknown.jpg in Resources */,
 				D4708FED1A204D88000DB0BD /* tesla.jpg in Resources */,
 				D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */,
 				D40616771A1D4B8A0061F951 /* LaunchScreen.xib in Resources */,
@@ -281,7 +288,8 @@
 			files = (
 				D406166D1A1D4B8A0061F951 /* CarsApp.xcdatamodeld in Sources */,
 				D44FE9181A20AC8C00969B53 /* CarDetailTableViewController.swift in Sources */,
-				D4A1BFD51A22B71F0077CB6C /* MyCars.swift in Sources */,
+				D4C7F5531A297210000F0391 /* MyCars.swift in Sources */,
+				D4C7F5511A29720F000F0391 /* Owners.swift in Sources */,
 				D406166A1A1D4B8A0061F951 /* AppDelegate.swift in Sources */,
 				D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */,
 				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,

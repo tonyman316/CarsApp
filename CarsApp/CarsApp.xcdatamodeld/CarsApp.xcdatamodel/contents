@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Cars" representedClassName="MyCars" syncable="YES">
+    <entity name="Cars" representedClassName="CarsApp.MyCars" syncable="YES">
         <attribute name="carImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="make" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owners" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Owners" inverseName="cars" inverseEntity="Owners" syncable="YES"/>
+    </entity>
+    <entity name="Owners" representedClassName="CarsApp.Owners" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cars" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cars" inverseName="owners" inverseEntity="Cars" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cars" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Cars" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Owners" positionX="-63" positionY="0" width="128" height="73"/>
     </elements>
 </model>

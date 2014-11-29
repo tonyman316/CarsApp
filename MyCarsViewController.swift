@@ -13,9 +13,8 @@ import CoreData
 class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     var carList = [NSManagedObject]()
-
-//    var carsImages = ["tesla.jpg", "hondaFit.jpg", "vwGolf.jpg", "bmw.jpg"]
-//    var owners = ["ABC", "DEF", "XXX", "ZZZ"]
+    
+    //var currentCars = [MyCars]()
 
     
     @IBOutlet var carsCollectionView: UICollectionView!
@@ -29,26 +28,9 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
             contentInset.top = 80
             return contentInset
         })()
-        
-        // Fetching from Core Data
-        //1
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //2
-        let fetchRequest = NSFetchRequest(entityName:"Cars")
-        
-        //3
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
-        
-        if let results = fetchedResults {
-            carList = results
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
-        }
-        carsCollectionView.reloadData()
+
+        loadData()
+
     }
     
     override func viewDidLoad() {
@@ -88,6 +70,8 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CarsCell", forIndexPath: indexPath) as CarsCollectionViewCell
+        
+        // cell design(can change)
         cell.backgroundColor = UIColor.whiteColor()
         cell.layer.borderWidth = 2.0
         cell.layer.borderColor = UIColor.whiteColor().CGColor
@@ -97,21 +81,80 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         cell.layer.shadowOffset = CGSizeMake(0.0, 5.0)
         cell.layer.shadowOpacity = 0.3
         
-        let car = carList[indexPath.row]
+        let car: AnyObject = carList[indexPath.row]
         cell.ownerLabel.text = car.valueForKey("make") as String?
-        
+
         var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
         cell.myCarsImageView.image = imageFromModel
-        cell.myCarsImageView.clipsToBounds = true;
         
-//        cell.myCarsImageView.image = UIImage(named: carsImages[indexPath.row])
-//        cell.ownerLabel.text = owners[indexPath.row]
+        var carImageFrame:CGRect = cell.myCarsImageView.frame
+        carImageFrame.size = CGSizeMake(180, 140)
+        cell.myCarsImageView.frame = carImageFrame
+        //cell.myCarsImageView.clipsToBounds = true;
 
         return cell
     }
     
-    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("ShowCarDetail", sender: carList[indexPath.row])
+    }
     
 
+     //Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "ShowCarDetail") {
+            var detailView = segue.destinationViewController as CarDetailViewController
 
+//            let cell = sender as CarsCollectionViewCell
+//            let indexPath = carsCollectionView.indexPathForCell(cell) as NSIndexPath?
+//
+//            var selectedItem = carList[indexPath!.row]
+            
+            //detailView.title = selectedItem.valueForKey("make") as String?
+            
+//            let car: AnyObject = carList[indexPath.row]
+//            detailView.title = car.valueForKey("make") as String?
+
+            
+
+            
+        }else if (segue.identifier == "AddCar"){
+            var addCarsView = segue.destinationViewController as AddCarsViewController
+        }
+        
+    }
+
+    func loadData(){
+        
+        // Fetching from Core Data
+        //1
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"Cars")
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        
+        if let results = fetchedResults {
+            carList = results
+            
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+        
+        carsCollectionView.reloadData()
+    }
+    
 }
+
+
+
+
+
+
+

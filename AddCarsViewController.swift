@@ -130,7 +130,7 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         newCar.carImage = imageData
         
         newCar.make = makeTextField.text
-//        newCar.model = modelTextField.text
+        newCar.model = modelTextField.text
 //        newCar.year = yearTextField.text
 //        newCar.price = priceTextField.text
 //        newCar.currentMileage = currentMileageTextField.text

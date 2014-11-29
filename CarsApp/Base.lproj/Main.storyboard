@@ -32,10 +32,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGW-ZQ-tQe">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGW-ZQ-tQe">
                                                     <rect key="frame" x="19" y="9" width="210" height="120"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-K9-I9O">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-K9-I9O">
                                                     <rect key="frame" x="50" y="133" width="150" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.99607849120000003" green="0.99215692280000001" blue="0.99215692280000001" alpha="1" colorSpace="deviceRGB"/>
@@ -47,6 +47,7 @@
                                         <connections>
                                             <outlet property="myCarsImageView" destination="FGW-ZQ-tQe" id="chX-Mh-SD0"/>
                                             <outlet property="ownerLabel" destination="0kj-K9-I9O" id="WPd-7o-TWp"/>
+                                            <segue destination="94e-3e-cAc" kind="show" identifier="ShowCarDetail" id="hk8-xH-YWw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -55,14 +56,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Cars" id="pAo-rR-3Ls">
-                        <barButtonItem key="leftBarButtonItem" title="Test detail" id="0Wt-ag-IzM">
-                            <connections>
-                                <segue destination="94e-3e-cAc" kind="show" id="gBf-14-Dsz"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="H7c-l6-htm">
                             <connections>
-                                <segue destination="FV0-EL-xa9" kind="show" id="fef-lu-Euz"/>
+                                <action selector="addCar:" destination="BYZ-38-t0r" id="bQd-x5-DVs"/>
+                                <segue destination="FV0-EL-xa9" kind="show" identifier="AddCar" id="fef-lu-Euz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -202,23 +199,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz7-Sp-wZK">
-                                <rect key="frame" x="180" y="74" width="240" height="160"/>
-                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXx-Ed-AHz">
                                 <rect key="frame" x="0.0" y="251" width="600" height="300"/>
                                 <connections>
-                                    <segue destination="2lf-PI-vBr" kind="embed" id="goA-qD-fZ2"/>
+                                    <segue destination="2lf-PI-vBr" kind="embed" identifier="ShowDetailTable" id="goA-qD-fZ2"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz7-Sp-wZK">
+                                <rect key="frame" x="92" y="90" width="180" height="140"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Car Detail" id="bwJ-Zr-b7I"/>
+                    <connections>
+                        <outlet property="carDetailImageView" destination="Iz7-Sp-wZK" id="Cbn-1O-LuD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Op7-E0-GAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1224" y="383"/>
+            <point key="canvasLocation" x="1208" y="383"/>
         </scene>
         <!--Map-->
         <scene sceneID="QAn-MM-ArX">
@@ -317,10 +317,10 @@
             </objects>
             <point key="canvasLocation" x="-354" y="383"/>
         </scene>
-        <!--Car Detail Table View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="P6I-u8-t4d">
             <objects>
-                <tableViewController id="2lf-PI-vBr" customClass="CarDetailTableViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="2lf-PI-vBr" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6uV-Ja-eat">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +341,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="266-OM-zzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928" y="278"/>
+            <point key="canvasLocation" x="1912" y="278"/>
         </scene>
     </scenes>
 </document>
