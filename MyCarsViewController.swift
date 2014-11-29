@@ -82,6 +82,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         cell.layer.shadowOpacity = 0.3
         
         let car: AnyObject = carList[indexPath.row]
+        
         cell.ownerLabel.text = car.valueForKey("make") as String?
 
         var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
@@ -118,10 +119,10 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
 
             
 
-            
-        }else if (segue.identifier == "AddCar"){
-            var addCarsView = segue.destinationViewController as AddCarsViewController
         }
+//        }else if (segue.identifier == "AddCar"){
+//            var addCarsView = segue.destinationViewController as AddCarsViewController
+//        }
         
     }
 

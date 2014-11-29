@@ -41,11 +41,25 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
     
     
     @IBAction func done(sender: UIBarButtonItem) {
-        // Save to core data
-        createCar()
-        
-        // Dismiss
-        popToMainView()
+        // check input validation
+        if !validInput() {
+            
+            let alert = UIAlertController(title: "Oops!", message: "Make sure input All the information!", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(okButton)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        }else{
+            
+            // Save to core data
+            createCar()
+            
+            // Dismiss
+            popToMainView()
+        }
+       
     }
     
     
@@ -146,6 +160,16 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         }
     }
     
+    // check input
+    func validInput() -> Bool {
+        if (addCarImageView.image == nil || makeTextField.text.isEmpty || modelTextField.text.isEmpty){
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    
     // Resize image func
     func RBResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
@@ -172,5 +196,7 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         
         return newImage
     }
+    
+
 
 }
