@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DP9-s4-lI9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--My Cars-->
@@ -220,10 +221,10 @@
             </objects>
             <point key="canvasLocation" x="1208" y="383"/>
         </scene>
-        <!--Map-->
+        <!--Find gas and service stations-->
         <scene sceneID="QAn-MM-ArX">
             <objects>
-                <viewController id="p89-K7-bW1" sceneMemberID="viewController">
+                <viewController id="p89-K7-bW1" customClass="CarMapViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L9t-pz-3ZG"/>
                         <viewControllerLayoutGuide type="bottom" id="9Bj-L6-98L"/>
@@ -231,13 +232,59 @@
                     <view key="view" contentMode="scaleToFill" id="JpZ-Zb-Ubi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XhJ-ru-IsG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-tn-bBG">
+                                <rect key="frame" x="217" y="513" width="166" height="30"/>
+                                <state key="normal" title="Redo search in this area">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="redoSearchButtonPressed:" destination="p89-K7-bW1" eventType="touchUpInside" id="3hK-JH-gLK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2z-sg-4wO">
+                                <rect key="frame" x="16" y="513" width="46" height="30"/>
+                                <state key="normal" title="Center">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="centerOnUserLocationButtonPressed:" destination="p89-K7-bW1" eventType="touchUpInside" id="eH6-6U-sUh"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zst-bk-zXX">
+                                <rect key="frame" x="217" y="477" width="181" height="29"/>
+                                <segments>
+                                    <segment title="Gas stations"/>
+                                    <segment title="Mechanics"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zst-bk-zXX" firstAttribute="leading" secondItem="EAV-tn-bBG" secondAttribute="leading" id="6aT-iq-odD"/>
+                            <constraint firstItem="9Bj-L6-98L" firstAttribute="top" secondItem="EAV-tn-bBG" secondAttribute="bottom" constant="8" symbolic="YES" id="7Nd-fz-cbR"/>
+                            <constraint firstItem="C2z-sg-4wO" firstAttribute="baseline" secondItem="EAV-tn-bBG" secondAttribute="baseline" id="AY7-lj-VEI"/>
+                            <constraint firstItem="C2z-sg-4wO" firstAttribute="leading" secondItem="JpZ-Zb-Ubi" secondAttribute="leadingMargin" id="GZG-HU-0Wy"/>
+                            <constraint firstItem="EAV-tn-bBG" firstAttribute="centerX" secondItem="XhJ-ru-IsG" secondAttribute="centerX" id="Ztv-MK-4qX"/>
+                            <constraint firstItem="EAV-tn-bBG" firstAttribute="top" secondItem="zst-bk-zXX" secondAttribute="bottom" constant="8" symbolic="YES" id="c2V-bu-I9z"/>
+                            <constraint firstItem="XhJ-ru-IsG" firstAttribute="leading" secondItem="JpZ-Zb-Ubi" secondAttribute="leading" id="gA5-FR-VfD"/>
+                            <constraint firstAttribute="bottom" secondItem="XhJ-ru-IsG" secondAttribute="bottom" id="k41-dd-VJR"/>
+                            <constraint firstItem="XhJ-ru-IsG" firstAttribute="top" secondItem="JpZ-Zb-Ubi" secondAttribute="top" id="tyV-AZ-T0c"/>
+                            <constraint firstAttribute="trailing" secondItem="XhJ-ru-IsG" secondAttribute="trailing" id="zkz-Bb-MEZ"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="mOD-le-0pq"/>
+                    <navigationItem key="navigationItem" title="Find gas and service stations" id="rrF-Zl-xe3"/>
+                    <connections>
+                        <outlet property="mapView" destination="XhJ-ru-IsG" id="QVv-cW-ZPx"/>
+                        <outlet property="segmentedControl" destination="zst-bk-zXX" id="Fcc-42-TJg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHo-99-r5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-354" y="1066"/>
+            <point key="canvasLocation" x="458" y="1066"/>
         </scene>
         <!--Profile-->
         <scene sceneID="wOs-0n-Bjm">
@@ -289,7 +336,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="bRY-xy-164" kind="relationship" relationship="viewControllers" id="KR5-X5-IYf"/>
-                        <segue destination="p89-K7-bW1" kind="relationship" relationship="viewControllers" id="uAY-NC-ohL"/>
+                        <segue destination="mxT-SA-qrO" kind="relationship" relationship="viewControllers" id="uAY-NC-ohL"/>
                         <segue destination="eAz-2M-1yA" kind="relationship" relationship="viewControllers" id="xzd-Hr-bk5"/>
                         <segue destination="uzu-Yn-Of0" kind="relationship" relationship="viewControllers" id="zhI-rk-dn2"/>
                     </connections>
@@ -342,6 +389,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="266-OM-zzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1912" y="278"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="nrP-ce-cbv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mxT-SA-qrO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="mOD-le-0pq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gb3-qW-Oc0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="p89-K7-bW1" kind="relationship" relationship="rootViewController" id="hef-yV-v9N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNo-vC-CfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-354" y="1066"/>
         </scene>
     </scenes>
 </document>

@@ -6,12 +6,28 @@
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="owners" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Owners" inverseName="cars" inverseEntity="Owners" syncable="YES"/>
     </entity>
+    <entity name="GasStations" representedClassName="CarsApp.GasStations" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Owners" representedClassName="CarsApp.Owners" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cars" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cars" inverseName="owners" inverseEntity="Cars" syncable="YES"/>
     </entity>
+    <entity name="ServiceStations" representedClassName="CarsApp.ServiceStations" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Cars" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Owners" positionX="-63" positionY="0" width="128" height="73"/>
+        <element name="Owners" positionX="-308" positionY="0" width="128" height="73"/>
+        <element name="GasStations" positionX="-65" positionY="140" width="128" height="118"/>
+        <element name="ServiceStations" positionX="-297" positionY="144" width="128" height="118"/>
     </elements>
 </model>

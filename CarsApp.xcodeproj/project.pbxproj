@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */; };
+		9CEB8EAB1A2A2D460009105C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEB8EAA1A2A2D460009105C /* MapKit.framework */; };
+		9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB8EB31A2A2FC50009105C /* Extensions Gas And Service Stations.swift */; };
+		9CEB8EB61A2A30E20009105C /* GasStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB8EB51A2A30E20009105C /* GasStations.swift */; };
+		9CEB8EB81A2A30E30009105C /* ServiceStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB8EB71A2A30E30009105C /* ServiceStations.swift */; };
 		D406166A1A1D4B8A0061F951 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40616691A1D4B8A0061F951 /* AppDelegate.swift */; };
 		D406166D1A1D4B8A0061F951 /* CarsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D406166B1A1D4B8A0061F951 /* CarsApp.xcdatamodeld */; };
 		D40616721A1D4B8A0061F951 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40616701A1D4B8A0061F951 /* Main.storyboard */; };
@@ -41,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarMapViewController.swift; sourceTree = "<group>"; };
+		9CEB8EAA1A2A2D460009105C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9CEB8EB31A2A2FC50009105C /* Extensions Gas And Service Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions Gas And Service Stations.swift"; sourceTree = "<group>"; };
+		9CEB8EB51A2A30E20009105C /* GasStations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GasStations.swift; sourceTree = "<group>"; };
+		9CEB8EB71A2A30E30009105C /* ServiceStations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceStations.swift; sourceTree = "<group>"; };
 		D40616641A1D4B8A0061F951 /* CarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40616681A1D4B8A0061F951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40616691A1D4B8A0061F951 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEB8EAB1A2A2D460009105C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,10 +97,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CEB8EAC1A2A2D640009105C /* Map Tab */ = {
+			isa = PBXGroup;
+			children = (
+				9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */,
+			);
+			name = "Map Tab";
+			sourceTree = "<group>";
+		};
 		D406165B1A1D4B8A0061F951 = {
 			isa = PBXGroup;
 			children = (
 				D40616661A1D4B8A0061F951 /* CarsApp */,
+				9CEB8EAA1A2A2D460009105C /* MapKit.framework */,
 				D406167F1A1D4B8A0061F951 /* CarsAppTests */,
 				D40616651A1D4B8A0061F951 /* Products */,
 			);
@@ -112,9 +132,13 @@
 				D40616691A1D4B8A0061F951 /* AppDelegate.swift */,
 				D4538F901A2089BA0016A05A /* My Cars Tab */,
 				D4538F911A2089F00016A05A /* Profile Tab */,
+				9CEB8EAC1A2A2D640009105C /* Map Tab */,
 				D40616731A1D4B8A0061F951 /* Images.xcassets */,
 				D40616751A1D4B8A0061F951 /* LaunchScreen.xib */,
 				D406166B1A1D4B8A0061F951 /* CarsApp.xcdatamodeld */,
+				9CEB8EB71A2A30E30009105C /* ServiceStations.swift */,
+				9CEB8EB51A2A30E20009105C /* GasStations.swift */,
+				9CEB8EB31A2A2FC50009105C /* Extensions Gas And Service Stations.swift */,
 				D4C7F5521A297210000F0391 /* MyCars.swift */,
 				D4C7F5501A29720F000F0391 /* Owners.swift */,
 				D4708FEE1A2060DA000DB0BD /* images */,
@@ -230,6 +254,11 @@
 				TargetAttributes = {
 					D40616631A1D4B8A0061F951 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D406167B1A1D4B8A0061F951 = {
 						CreatedOnToolsVersion = 6.1;
@@ -291,10 +320,14 @@
 				D4C7F5531A297210000F0391 /* MyCars.swift in Sources */,
 				D4C7F5511A29720F000F0391 /* Owners.swift in Sources */,
 				D406166A1A1D4B8A0061F951 /* AppDelegate.swift in Sources */,
+				9CEB8EB61A2A30E20009105C /* GasStations.swift in Sources */,
+				9CEB8EB81A2A30E30009105C /* ServiceStations.swift in Sources */,
 				D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */,
 				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,
+				9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */,
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
 				D4708FE91A2048EA000DB0BD /* CarsCollectionViewCell.swift in Sources */,
+				9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */,
 				D44FE9161A20AC5700969B53 /* CarDetailViewController.swift in Sources */,
 				D4316BAF1A22D0B0003400A2 /* TestDetailTableViewController.swift in Sources */,
 				D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */,
