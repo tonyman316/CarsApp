@@ -29,6 +29,7 @@
 		D4708FE91A2048EA000DB0BD /* CarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FE81A2048EA000DB0BD /* CarsCollectionViewCell.swift */; };
 		D4708FED1A204D88000DB0BD /* tesla.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FEC1A204D88000DB0BD /* tesla.jpg */; };
 		D4708FF01A206103000DB0BD /* hondaFit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FEF1A206103000DB0BD /* hondaFit.jpg */; };
+		D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */; };
 		D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF31A206DE5000DB0BD /* bmw.jpg */; };
 		D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF41A206DE5000DB0BD /* vwGolf.jpg */; };
 		D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49304521A270B2C006B7921 /* UIImageExtension.swift */; };
@@ -73,6 +74,7 @@
 		D4708FE81A2048EA000DB0BD /* CarsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsCollectionViewCell.swift; sourceTree = "<group>"; };
 		D4708FEC1A204D88000DB0BD /* tesla.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tesla.jpg; sourceTree = "<group>"; };
 		D4708FEF1A206103000DB0BD /* hondaFit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hondaFit.jpg; sourceTree = "<group>"; };
+		D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myCarsCollectionViewController.swift; sourceTree = "<group>"; };
 		D4708FF31A206DE5000DB0BD /* bmw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bmw.jpg; sourceTree = "<group>"; };
 		D4708FF41A206DE5000DB0BD /* vwGolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vwGolf.jpg; sourceTree = "<group>"; };
 		D49304521A270B2C006B7921 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		D40616671A1D4B8A0061F951 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */,
 				D40616681A1D4B8A0061F951 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -351,6 +354,7 @@
 				9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */,
 				D44FE9161A20AC5700969B53 /* CarDetailViewController.swift in Sources */,
 				D4316BAF1A22D0B0003400A2 /* TestDetailTableViewController.swift in Sources */,
+				D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
