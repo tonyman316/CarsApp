@@ -45,7 +45,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         carsCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         carsCollectionView!.dataSource = self
         carsCollectionView!.delegate = self
-        carsCollectionView!.registerClass(CarsCollectionViewCell.self, forCellWithReuseIdentifier: "CarsCell")
+        carsCollectionView!.registerClass(CarsCVCell.self, forCellWithReuseIdentifier: "CarsCell")
         carsCollectionView!.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(carsCollectionView!)
         
@@ -84,7 +84,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CarsCell", forIndexPath: indexPath) as CarsCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CarsCell", forIndexPath: indexPath) as CarsCVCell
 
         // cell design(can change)
         cell.backgroundColor = UIColor.whiteColor()
@@ -97,9 +97,9 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         cell.layer.shadowOpacity = 0.3
         
         // image frame design
-        var carImageFrame:CGRect = cell.myCarsImageView.frame
-        carImageFrame.size = CGSizeMake(180, 140)
-        cell.myCarsImageView.frame = carImageFrame
+//        var carImageFrame:CGRect = cell.myCarsImageView.frame
+//        carImageFrame.size = CGSizeMake(180, 140)
+//        cell.myCarsImageView.frame = carImageFrame
         //cell.myCarsImageView.clipsToBounds = true
         
         let car = fetchedResultController.objectAtIndexPath(indexPath) as MyCars
@@ -115,10 +115,8 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("ShowCarDetail", sender: indexPath)
-        //collectionView.cellForItemAtIndexPath(indexPath)
     }
     
-
      //Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     

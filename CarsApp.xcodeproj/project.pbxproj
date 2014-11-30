@@ -26,12 +26,12 @@
 		D44FE9181A20AC8C00969B53 /* CarDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */; };
 		D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */; };
 		D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */; };
-		D4708FE91A2048EA000DB0BD /* CarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FE81A2048EA000DB0BD /* CarsCollectionViewCell.swift */; };
 		D4708FED1A204D88000DB0BD /* tesla.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FEC1A204D88000DB0BD /* tesla.jpg */; };
 		D4708FF01A206103000DB0BD /* hondaFit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FEF1A206103000DB0BD /* hondaFit.jpg */; };
-		D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */; };
 		D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF31A206DE5000DB0BD /* bmw.jpg */; };
 		D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF41A206DE5000DB0BD /* vwGolf.jpg */; };
+		D474EDD61A2AD482006BC562 /* CarsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474EDD41A2AD482006BC562 /* CarsCVCell.swift */; };
+		D474EDD71A2AD482006BC562 /* CarsCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D474EDD51A2AD482006BC562 /* CarsCVCell.xib */; };
 		D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49304521A270B2C006B7921 /* UIImageExtension.swift */; };
 		D4C7F5531A297210000F0391 /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7F5521A297210000F0391 /* MyCars.swift */; };
 		D4C7F5551A29834C000F0391 /* Unknown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C7F5541A29834C000F0391 /* Unknown.jpg */; };
@@ -71,12 +71,12 @@
 		D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarDetailTableViewController.swift; path = ../CarDetailTableViewController.swift; sourceTree = "<group>"; };
 		D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddCarsViewController.swift; path = ../AddCarsViewController.swift; sourceTree = "<group>"; };
 		D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCarsViewController.swift; path = ../MyCarsViewController.swift; sourceTree = "<group>"; };
-		D4708FE81A2048EA000DB0BD /* CarsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsCollectionViewCell.swift; sourceTree = "<group>"; };
 		D4708FEC1A204D88000DB0BD /* tesla.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tesla.jpg; sourceTree = "<group>"; };
 		D4708FEF1A206103000DB0BD /* hondaFit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hondaFit.jpg; sourceTree = "<group>"; };
-		D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myCarsCollectionViewController.swift; sourceTree = "<group>"; };
 		D4708FF31A206DE5000DB0BD /* bmw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bmw.jpg; sourceTree = "<group>"; };
 		D4708FF41A206DE5000DB0BD /* vwGolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vwGolf.jpg; sourceTree = "<group>"; };
+		D474EDD41A2AD482006BC562 /* CarsCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsCVCell.swift; sourceTree = "<group>"; };
+		D474EDD51A2AD482006BC562 /* CarsCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarsCVCell.xib; sourceTree = "<group>"; };
 		D49304521A270B2C006B7921 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D4C7F5521A297210000F0391 /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
 		D4C7F5541A29834C000F0391 /* Unknown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Unknown.jpg; sourceTree = "<group>"; };
@@ -172,7 +172,6 @@
 		D40616671A1D4B8A0061F951 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D4708FF11A2062F5000DB0BD /* myCarsCollectionViewController.swift */,
 				D40616681A1D4B8A0061F951 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -199,7 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */,
-				D4708FE81A2048EA000DB0BD /* CarsCollectionViewCell.swift */,
+				D474EDD41A2AD482006BC562 /* CarsCVCell.swift */,
+				D474EDD51A2AD482006BC562 /* CarsCVCell.xib */,
 				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
 				D44FE9151A20AC5700969B53 /* CarDetailViewController.swift */,
 				D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */,
@@ -316,6 +316,7 @@
 				D40616721A1D4B8A0061F951 /* Main.storyboard in Resources */,
 				D4C7F5551A29834C000F0391 /* Unknown.jpg in Resources */,
 				D4708FED1A204D88000DB0BD /* tesla.jpg in Resources */,
+				D474EDD71A2AD482006BC562 /* CarsCVCell.xib in Resources */,
 				D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */,
 				D40616771A1D4B8A0061F951 /* LaunchScreen.xib in Resources */,
 				D40616741A1D4B8A0061F951 /* Images.xcassets in Resources */,
@@ -347,14 +348,13 @@
 				9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */,
 				D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */,
 				9C8F2D8B1A2A7CF0000C05AF /* Owners.swift in Sources */,
+				D474EDD61A2AD482006BC562 /* CarsCVCell.swift in Sources */,
 				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,
 				9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */,
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
-				D4708FE91A2048EA000DB0BD /* CarsCollectionViewCell.swift in Sources */,
 				9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */,
 				D44FE9161A20AC5700969B53 /* CarDetailViewController.swift in Sources */,
 				D4316BAF1A22D0B0003400A2 /* TestDetailTableViewController.swift in Sources */,
-				D4708FF21A2062F5000DB0BD /* myCarsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
