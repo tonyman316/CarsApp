@@ -12,6 +12,8 @@ import CoreData
 
 class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,NSFetchedResultsControllerDelegate {
     
+    let identifier = "CarsCell"
+    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
@@ -38,14 +40,15 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         super.viewDidLoad()
 
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width/2-5, height: self.view.frame.width/2)
-        //layout.itemSize = CGSize(width: 185, height: 200)
+        //layout.itemSize = CGSize(width: self.view.frame.width/2-5, height: self.view.frame.width/2)
+        layout.itemSize = CGSize(width: 180, height: 180)
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 15
+
         carsCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         carsCollectionView!.dataSource = self
         carsCollectionView!.delegate = self
-        carsCollectionView!.registerClass(CarsCVCell.self, forCellWithReuseIdentifier: "CarsCell")
+        carsCollectionView!.registerClass(CarsCVCell.self, forCellWithReuseIdentifier: identifier)
         carsCollectionView!.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(carsCollectionView!)
         
@@ -84,13 +87,15 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CarsCell", forIndexPath: indexPath) as CarsCVCell
+        collectionView.registerNib(UINib(nibName: "CarsCVCell", bundle: nil), forCellWithReuseIdentifier: identifier)
+
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as CarsCVCell
 
         // cell design(can change)
         cell.backgroundColor = UIColor.whiteColor()
         cell.layer.borderWidth = 2.0
         cell.layer.borderColor = UIColor.whiteColor().CGColor
-        cell.layer.cornerRadius = 20
+        cell.layer.cornerRadius = 5.0
         cell.layer.shadowColor = UIColor.blueColor().CGColor;
         cell.layer.shadowRadius = 3.0
         cell.layer.shadowOffset = CGSizeMake(0.0, 5.0)
@@ -100,7 +105,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
 //        var carImageFrame:CGRect = cell.myCarsImageView.frame
 //        carImageFrame.size = CGSizeMake(180, 140)
 //        cell.myCarsImageView.frame = carImageFrame
-        //cell.myCarsImageView.clipsToBounds = true
+//        cell.myCarsImageView.clipsToBounds = true
         
         let car = fetchedResultController.objectAtIndexPath(indexPath) as MyCars
         cell.ownerLabel.text = car.make
@@ -123,13 +128,14 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         if (segue.identifier == "ShowCarDetail") {
             let car = fetchedResultController.objectAtIndexPath(sender as NSIndexPath) as MyCars
             
-            let scd = segue.destinationViewController as CarDetailViewController
+            let carDetailView = segue.destinationViewController as CarDetailViewController
+            carDetailView.title = car.make
             
-            scd.carDetailMake = car.make
+            carDetailView.carDetailMake = car.model
             
             var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
             
-            scd.carDetailImage = imageFromModel
+            carDetailView.carDetailImage = imageFromModel
             
         }
 

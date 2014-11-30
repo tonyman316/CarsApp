@@ -27,18 +27,19 @@ class CarsCVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // Should use Auto layout and set constrainsts, Only good for iphone 6 right now.
-        //myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 16, width: frame.size.width, height: frame.size.height*2/3))
+//         Should use Auto layout and set constrainsts, Only good for iphone 6 right now.
+//        myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 16, width: frame.size.width, height: frame.size.height*2/3))
+//        
+//        myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 15, width: 180, height: 140))
+//        myCarsImageView.contentMode = UIViewContentMode.ScaleToFill
+//        contentView.addSubview(myCarsImageView)
+//        
+//        let textFrame = CGRect(x: 5, y: 125, width: frame.size.width, height: frame.size.height/2)
+//        ownerLabel = UILabel(frame: textFrame)
+//        ownerLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
+//        ownerLabel.textAlignment = .Center
+//        contentView.addSubview(ownerLabel)
         
-        myCarsImageView = UIImageView(frame: CGRect(x: 0, y: 15, width: 180, height: 140))
-        myCarsImageView.contentMode = UIViewContentMode.ScaleToFill
-        contentView.addSubview(myCarsImageView)
-        
-        let textFrame = CGRect(x: 5, y: 125, width: frame.size.width, height: frame.size.height/2)
-        ownerLabel = UILabel(frame: textFrame)
-        ownerLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
-        ownerLabel.textAlignment = .Center
-        contentView.addSubview(ownerLabel)
     }
 
 
