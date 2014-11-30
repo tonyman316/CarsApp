@@ -186,6 +186,7 @@
 		D40616671A1D4B8A0061F951 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D44FE9151A20AC5700969B53 /* CarDetailViewController.swift */,
 				D40616681A1D4B8A0061F951 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -215,7 +216,6 @@
 				D474EDD41A2AD482006BC562 /* CarsCVCell.swift */,
 				D474EDD51A2AD482006BC562 /* CarsCVCell.xib */,
 				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
-				D44FE9151A20AC5700969B53 /* CarDetailViewController.swift */,
 				D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */,
 				D49304521A270B2C006B7921 /* UIImageExtension.swift */,
 			);

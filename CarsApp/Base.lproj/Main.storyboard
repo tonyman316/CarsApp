@@ -35,7 +35,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="94e-3e-cAc" kind="show" identifier="ShowCarDetail" id="tFY-bH-BmN"/>
+                                            <segue destination="FV0-EL-xa9" kind="show" identifier="ShowCarDetail" id="zXg-cl-ge8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0Y-tb-D5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="-397"/>
+            <point key="canvasLocation" x="1187" y="383"/>
         </scene>
         <!--Car Detail-->
         <scene sceneID="eub-2d-BFP">
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Op7-E0-GAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="383"/>
+            <point key="canvasLocation" x="1877" y="-180"/>
         </scene>
         <!--Find gas and service stations-->
         <scene sceneID="QAn-MM-ArX">
@@ -390,7 +390,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSV-W0-1k1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1362" y="2354"/>
+            <point key="canvasLocation" x="1362" y="2390"/>
         </scene>
         <!--Setting-->
         <scene sceneID="0F4-yJ-wZo">
@@ -618,4 +618,7 @@
     <resources>
         <image name="tesla.jpg" width="1280" height="850"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zXg-cl-ge8"/>
+    </inferredMetricsTieBreakers>
 </document>

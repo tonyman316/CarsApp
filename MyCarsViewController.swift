@@ -126,16 +126,12 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
         if (segue.identifier == "ShowCarDetail") {
-            let car = fetchedResultController.objectAtIndexPath(sender as NSIndexPath) as MyCars
             
-            let carDetailView = segue.destinationViewController as CarDetailViewController
-            carDetailView.title = car.make
+            let car = fetchedResultController.objectAtIndexPath(sender as NSIndexPath!) as MyCars
             
-            carDetailView.carDetailMake = car.model
-            
-            var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
-            
-            carDetailView.carDetailImage = imageFromModel
+            let carDetailView = segue.destinationViewController as AddCarsViewController
+            carDetailView.title = car.valueForKey("make") as String?
+            carDetailView.car = car
             
         }
 

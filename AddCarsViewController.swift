@@ -12,7 +12,9 @@ import Foundation
 import MobileCoreServices
 
 class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
-
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    
     @IBOutlet var addCarImageView: UIImageView!
     @IBOutlet var makeTextField: UITextField!
     @IBOutlet var modelTextField: UITextField!
@@ -22,8 +24,17 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
     @IBOutlet var oilChangeTextField: UITextField!
     @IBOutlet var transmissionOilTextField: UITextField!
     
+    var car: MyCars? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if car != nil {
+            makeTextField.text = car?.make
+            modelTextField.text = car?.model
+            var imageFromModel: UIImage = UIImage(data: (car?.valueForKey("carImage") as NSData))!
+            addCarImageView.image = imageFromModel
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -51,11 +62,13 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
             
             self.presentViewController(alert, animated: true, completion: nil)
 
-        }else{
-            
+        }else if car != nil {
+            editCar()
+            // Dismiss
+            popToMainView()
+        } else {
             // Save to core data
             createCar()
-            
             // Dismiss
             popToMainView()
         }
@@ -128,36 +141,24 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
  
     // Save to Core Data
     func createCar() {
-        //1
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //2
-        let entity =  NSEntityDescription.entityForName("Cars", inManagedObjectContext: managedContext)
-        
-        var newCar = MyCars(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
-        //3
+        let entityDescripition = NSEntityDescription.entityForName("Cars", inManagedObjectContext: managedObjectContext!)
+        let newCar = MyCars(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
         
         let imageData = UIImagePNGRepresentation(addCarImageView.image) as NSData
         newCar.carImage = imageData
         
         newCar.make = makeTextField.text
         newCar.model = modelTextField.text
+        
 //        newCar.year = yearTextField.text
 //        newCar.price = priceTextField.text
 //        newCar.currentMileage = currentMileageTextField.text
 //        newCar.oilChange = oilChangeTextField.text
 //        newCar.transOil = transmissionOilTextField.text
         
-        //4
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
-            
-            println(newCar)
-        }
+        managedObjectContext?.save(nil)
+        
     }
     
     // check input
@@ -169,6 +170,13 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         }
     }
     
+    func editCar() {
+        let imageData = UIImagePNGRepresentation(addCarImageView.image) as NSData
+        car?.carImage = imageData
+        car?.make = makeTextField.text
+        car?.model = modelTextField.text
+        managedObjectContext?.save(nil)
+    }
     
     // Resize image func
     func RBResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
