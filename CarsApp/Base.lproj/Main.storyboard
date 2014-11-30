@@ -48,7 +48,7 @@
                                         <connections>
                                             <outlet property="myCarsImageView" destination="FGW-ZQ-tQe" id="chX-Mh-SD0"/>
                                             <outlet property="ownerLabel" destination="0kj-K9-I9O" id="WPd-7o-TWp"/>
-                                            <segue destination="94e-3e-cAc" kind="show" identifier="ShowCarDetail" id="hk8-xH-YWw"/>
+                                            <segue destination="94e-3e-cAc" kind="show" identifier="ShowCarDetail" id="tFY-bH-BmN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -200,21 +200,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXx-Ed-AHz">
-                                <rect key="frame" x="0.0" y="251" width="600" height="300"/>
-                                <connections>
-                                    <segue destination="2lf-PI-vBr" kind="embed" identifier="ShowDetailTable" id="goA-qD-fZ2"/>
-                                </connections>
-                            </containerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz7-Sp-wZK">
                                 <rect key="frame" x="92" y="90" width="180" height="140"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOj-US-FDG">
+                                <rect key="frame" x="132" y="257" width="100" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Car Detail" id="bwJ-Zr-b7I"/>
                     <connections>
-                        <outlet property="carDetailImageView" destination="Iz7-Sp-wZK" id="Cbn-1O-LuD"/>
+                        <outlet property="carDetailImageView" destination="Iz7-Sp-wZK" id="z7y-cX-wwE"/>
+                        <outlet property="makeLabel" destination="tOj-US-FDG" id="u2k-ia-v0C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Op7-E0-GAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -489,19 +490,33 @@
             </objects>
             <point key="canvasLocation" x="-354" y="383"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Car Detail Table View Controller-->
         <scene sceneID="P6I-u8-t4d">
             <objects>
-                <tableViewController id="2lf-PI-vBr" sceneMemberID="viewController">
+                <tableViewController id="2lf-PI-vBr" customClass="CarDetailTableViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6uV-Ja-eat">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CarDetailCell" id="Ars-NR-LMY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CarDetailCell" textLabel="ynl-j4-903" detailTextLabel="qJu-tt-xDm" style="IBUITableViewCellStyleSubtitle" id="Ars-NR-LMY">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ars-NR-LMY" id="exx-s4-szg">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ynl-j4-903">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qJu-tt-xDm">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -513,7 +528,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="266-OM-zzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="278"/>
+            <point key="canvasLocation" x="1992" y="-33"/>
         </scene>
         <!--Map-->
         <scene sceneID="nrP-ce-cbv">

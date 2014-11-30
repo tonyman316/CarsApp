@@ -54,7 +54,10 @@ class CarDetailTableViewController: UITableViewController {
         
         let car = carList[indexPath.row]
         cell.textLabel.text = car.valueForKey("make") as String?
-        cell.accessoryType = .DisclosureIndicator
+        cell.detailTextLabel?.text = car.valueForKey("model") as String?
+        var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
+        cell.imageView.image = imageFromModel
+        //cell.accessoryType = .DisclosureIndicator
         return cell
     }
     

@@ -11,13 +11,19 @@ import UIKit
 class CarDetailViewController: UIViewController {
 
     var carDetailImage: UIImage?
+    var carDetailMake: String?
     
     @IBOutlet var carDetailImageView: UIImageView!
+    @IBOutlet var makeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if (carDetailMake != nil){
+            makeLabel.text = carDetailMake
+        }
         
         if (carDetailImage != nil){
             carDetailImageView.image = carDetailImage
