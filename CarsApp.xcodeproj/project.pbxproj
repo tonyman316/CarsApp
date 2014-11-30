@@ -22,7 +22,6 @@
 		D40616771A1D4B8A0061F951 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D40616751A1D4B8A0061F951 /* LaunchScreen.xib */; };
 		D40616831A1D4B8A0061F951 /* CarsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40616821A1D4B8A0061F951 /* CarsAppTests.swift */; };
 		D4316BAF1A22D0B0003400A2 /* TestDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4316BAE1A22D0B0003400A2 /* TestDetailTableViewController.swift */; };
-		D44FE9161A20AC5700969B53 /* CarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44FE9151A20AC5700969B53 /* CarDetailViewController.swift */; };
 		D44FE9181A20AC8C00969B53 /* CarDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */; };
 		D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */; };
 		D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */; };
@@ -74,7 +73,6 @@
 		D40616811A1D4B8A0061F951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40616821A1D4B8A0061F951 /* CarsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsAppTests.swift; sourceTree = "<group>"; };
 		D4316BAE1A22D0B0003400A2 /* TestDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDetailTableViewController.swift; sourceTree = "<group>"; };
-		D44FE9151A20AC5700969B53 /* CarDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailViewController.swift; sourceTree = "<group>"; };
 		D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarDetailTableViewController.swift; path = ../CarDetailTableViewController.swift; sourceTree = "<group>"; };
 		D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddCarsViewController.swift; path = ../AddCarsViewController.swift; sourceTree = "<group>"; };
 		D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCarsViewController.swift; path = ../MyCarsViewController.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 		D40616671A1D4B8A0061F951 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D44FE9151A20AC5700969B53 /* CarDetailViewController.swift */,
 				D40616681A1D4B8A0061F951 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -381,7 +378,6 @@
 				D4B3E0051A2ADB6600B44089 /* MaptestViewController.swift in Sources */,
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
 				9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */,
-				D44FE9161A20AC5700969B53 /* CarDetailViewController.swift in Sources */,
 				D4316BAF1A22D0B0003400A2 /* TestDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -59,32 +59,6 @@
             </objects>
             <point key="canvasLocation" x="458" y="383"/>
         </scene>
-        <!--Test Detail Table View Controller-->
-        <scene sceneID="gqU-wP-hNi">
-            <objects>
-                <tableViewController id="U0h-A7-qmP" customClass="TestDetailTableViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tc2-fO-3Td">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TestDetailCell" id="mQe-eJ-1Ek">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQe-eJ-1Ek" id="PNX-Vt-959">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="U0h-A7-qmP" id="qov-Vi-TIk"/>
-                            <outlet property="delegate" destination="U0h-A7-qmP" id="U4e-eL-HU3"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xuh-ku-2XN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="458" y="-379"/>
-        </scene>
         <!--Add New Car-->
         <scene sceneID="FL7-ME-SyN">
             <objects>
@@ -174,40 +148,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0Y-tb-D5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1187" y="383"/>
-        </scene>
-        <!--Car Detail-->
-        <scene sceneID="eub-2d-BFP">
-            <objects>
-                <viewController id="94e-3e-cAc" customClass="CarDetailViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pf3-5B-6bP"/>
-                        <viewControllerLayoutGuide type="bottom" id="nIR-Oc-hrA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="s6Q-6y-ovX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz7-Sp-wZK">
-                                <rect key="frame" x="92" y="90" width="180" height="140"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOj-US-FDG">
-                                <rect key="frame" x="132" y="257" width="100" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Car Detail" id="bwJ-Zr-b7I"/>
-                    <connections>
-                        <outlet property="carDetailImageView" destination="Iz7-Sp-wZK" id="z7y-cX-wwE"/>
-                        <outlet property="makeLabel" destination="tOj-US-FDG" id="u2k-ia-v0C"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Op7-E0-GAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1877" y="-180"/>
         </scene>
         <!--Find gas and service stations-->
         <scene sceneID="QAn-MM-ArX">
