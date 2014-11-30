@@ -10,12 +10,10 @@ import UIKit
 import Foundation
 import CoreData
 
-class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,NSFetchedResultsControllerDelegate {
     
-    var carList = [NSManagedObject]()
-    
-    //var currentCars = [MyCars]()
-
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
     @IBOutlet var carsCollectionView: UICollectionView!
     
@@ -28,9 +26,12 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
             contentInset.top = 80
             return contentInset
         })()
-
-        loadData()
-
+        
+        fetchedResultController = getFetchedResultController()
+        fetchedResultController.delegate = self
+        fetchedResultController.performFetch(nil)
+        
+        carsCollectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -46,12 +47,24 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         carsCollectionView!.delegate = self
         carsCollectionView!.registerClass(CarsCollectionViewCell.self, forCellWithReuseIdentifier: "CarsCell")
         carsCollectionView!.backgroundColor = UIColor.whiteColor()
-        
         self.view.addSubview(carsCollectionView!)
         
         //navigationController?.hidesBarsOnSwipe = true
 
     }
+    
+    func getFetchedResultController() -> NSFetchedResultsController {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }
+    
+    func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "Cars")
+        let sortDescriptor = NSSortDescriptor(key: "make", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,16 +74,18 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
     // CollectionView
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        let numberOfSections = fetchedResultController.sections?.count
+        return numberOfSections!
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return carList.count
+        let numberOfRowsInSection = fetchedResultController.sections?[section].numberOfObjects
+        return numberOfRowsInSection!
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CarsCell", forIndexPath: indexPath) as CarsCollectionViewCell
-        
+
         // cell design(can change)
         cell.backgroundColor = UIColor.whiteColor()
         cell.layer.borderWidth = 2.0
@@ -81,75 +96,49 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         cell.layer.shadowOffset = CGSizeMake(0.0, 5.0)
         cell.layer.shadowOpacity = 0.3
         
-        let car: AnyObject = carList[indexPath.row]
-        
-        cell.ownerLabel.text = car.valueForKey("make") as String?
-
-        var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
-        cell.myCarsImageView.image = imageFromModel
-        
+        // image frame design
         var carImageFrame:CGRect = cell.myCarsImageView.frame
         carImageFrame.size = CGSizeMake(180, 140)
         cell.myCarsImageView.frame = carImageFrame
-        //cell.myCarsImageView.clipsToBounds = true;
+        //cell.myCarsImageView.clipsToBounds = true
+        
+        let car = fetchedResultController.objectAtIndexPath(indexPath) as MyCars
+        cell.ownerLabel.text = car.make
+        
+        //cell.ownerLabel.text = car.valueForKey("make") as String?
+
+        var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
+        cell.myCarsImageView.image = imageFromModel
 
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("ShowCarDetail", sender: carList[indexPath.row])
+        performSegueWithIdentifier("ShowCarDetail", sender: indexPath)
+        //collectionView.cellForItemAtIndexPath(indexPath)
     }
     
 
      //Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+    
         if (segue.identifier == "ShowCarDetail") {
-            var detailView = segue.destinationViewController as CarDetailViewController
-
-//            let cell = sender as CarsCollectionViewCell
-//            let indexPath = carsCollectionView.indexPathForCell(cell) as NSIndexPath?
-//
-//            var selectedItem = carList[indexPath!.row]
+            let car = fetchedResultController.objectAtIndexPath(sender as NSIndexPath) as MyCars
             
-            //detailView.title = selectedItem.valueForKey("make") as String?
+            let scd = segue.destinationViewController as CarDetailViewController
             
-//            let car: AnyObject = carList[indexPath.row]
-//            detailView.title = car.valueForKey("make") as String?
-
+            scd.carDetailMake = car.make
             
-
+            var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
+            
+            scd.carDetailImage = imageFromModel
+            
         }
-//        }else if (segue.identifier == "AddCar"){
-//            var addCarsView = segue.destinationViewController as AddCarsViewController
-//        }
+
         
     }
-
-    func loadData(){
-        
-        // Fetching from Core Data
-        //1
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //2
-        let fetchRequest = NSFetchRequest(entityName:"Cars")
-        
-        //3
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
-        
-        if let results = fetchedResults {
-            carList = results
-            
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
-        }
-        
-        carsCollectionView.reloadData()
-    }
+    
+    
     
 }
 
