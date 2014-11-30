@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C32E0EC1A2B7778000A9908 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */; };
 		9C8F2D8B1A2A7CF0000C05AF /* Owners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8A1A2A7CF0000C05AF /* Owners.swift */; };
 		9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */; };
 		9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9C8F2D8A1A2A7CF0000C05AF /* Owners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owners.swift; sourceTree = "<group>"; };
 		9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersExtension.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		D4538F911A2089F00016A05A /* Profile Tab */ = {
 			isa = PBXGroup;
 			children = (
+				9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */,
 				D4B3E0011A2ADB5A00B44089 /* ProfileTableViewController.swift */,
 				D4B3E0061A2ADE5D00B44089 /* ProfileTableViewCell.swift */,
 				D4B3E0071A2ADE5D00B44089 /* ProfileTableViewCell.xib */,
@@ -362,6 +365,7 @@
 			files = (
 				D406166D1A1D4B8A0061F951 /* CarsApp.xcdatamodeld in Sources */,
 				D44FE9181A20AC8C00969B53 /* CarDetailTableViewController.swift in Sources */,
+				9C32E0EC1A2B7778000A9908 /* ProfileViewController.swift in Sources */,
 				D4C7F5531A297210000F0391 /* MyCars.swift in Sources */,
 				9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */,
 				D406166A1A1D4B8A0061F951 /* AppDelegate.swift in Sources */,

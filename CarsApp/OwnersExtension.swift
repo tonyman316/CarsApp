@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import UIKit
 import CoreData
 
 extension Owners {
-    class func createMainUser(userInfo: [String : String], context: NSManagedObjectContext) {
+    class func createMainUser(#userInfo: [String : String], userPicture: UIImage?, context: NSManagedObjectContext) {
         let result = Owners.databaseContainsMainUser(context)
         
         if result.isContained == true {
@@ -25,9 +26,13 @@ extension Owners {
         mainUser.username = userInfo["username"]!
         mainUser.password = userInfo["password"]!
         mainUser.isMainUser = 1
+        
+        if let pic = userPicture {
+            mainUser.picture = UIImageJPEGRepresentation(pic, 1.0)
+        }
     }
     
-    class func authenticateUser(username: String, password: String, context: NSManagedObjectContext) -> Bool {
+    class func authenticateUser(#username: String, password: String, context: NSManagedObjectContext) -> Bool {
         var found = false
         
         let request = NSFetchRequest(entityName: "Owners")

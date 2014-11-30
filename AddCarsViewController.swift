@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 import MobileCoreServices
 
-class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
+class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
@@ -48,8 +48,6 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         // Action Sheet
         showOptions()
     }
-
-    
     
     @IBAction func done(sender: UIBarButtonItem) {
         // check input validation
@@ -72,9 +70,7 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
             // Dismiss
             popToMainView()
         }
-       
     }
-    
     
     @IBAction func cancel(sender: UIBarButtonItem) {
         // Dismiss
@@ -83,7 +79,6 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
     
     // Action Sheet
     func showOptions() {
-        
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let option1 = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCamera())})
         let option2 = UIAlertAction(title: "Choose Existing Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCameraRoll())})
@@ -99,8 +94,7 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
     // MARK: Image Picker
     var cameraUI:UIImagePickerController = UIImagePickerController()
     
-    func presentCamera()
-    {
+    func presentCamera() {
         cameraUI = UIImagePickerController()
         cameraUI.delegate = self
         cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
@@ -110,8 +104,7 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         self.presentViewController(cameraUI, animated: true, completion: nil)
     }
     
-    func presentCameraRoll()
-    {
+    func presentCameraRoll() {
         cameraUI = UIImagePickerController()
         cameraUI.delegate = self
         cameraUI.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
@@ -121,8 +114,7 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         self.presentViewController(cameraUI, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary)
-    {
+    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
         var imageToSave:UIImage
         
         imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
@@ -141,7 +133,6 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
  
     // Save to Core Data
     func createCar() {
-        
         let entityDescripition = NSEntityDescription.entityForName("Cars", inManagedObjectContext: managedObjectContext!)
         let newCar = MyCars(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
         
@@ -204,7 +195,4 @@ class AddCarsViewController: UIViewController,UINavigationControllerDelegate, UI
         
         return newImage
     }
-    
-
-
 }

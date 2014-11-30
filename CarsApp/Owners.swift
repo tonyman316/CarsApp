@@ -17,4 +17,5 @@ class Owners: NSManagedObject {
     @NSManaged var isMainUser: NSNumber
     @NSManaged var username: String
     @NSManaged var password: String
+    @NSManaged var picture: NSData
 }
