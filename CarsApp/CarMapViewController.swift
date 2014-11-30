@@ -14,7 +14,11 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
     var userLocation: CLLocation {
-        return locationManager.location
+        if let currentLoc = locationManager.location {
+            return currentLoc
+        }
+        
+        return CLLocation(latitude: 37.332185, longitude: -122.030757)
     }
     var annotations = [AnyObject]()
     var routeOverlays = [MKPolyline]()

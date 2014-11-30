@@ -53,8 +53,13 @@ extension GasStations {
     }
     
     class func distanceBetweenUserAndLocation(location: CLLocation) -> CLLocationDistance {
-        var userLocation = CLLocationManager().location
-        return userLocation.distanceFromLocation(location)/1000
+        var currentLocation: CLLocation
+        if CLLocationManager().location == nil {
+            currentLocation = CLLocation(latitude: 37.332185, longitude: -122.030757)
+        } else {
+            currentLocation = CLLocationManager().location
+        }
+        return location.distanceFromLocation(currentLocation)/1000
     }
     
     class func isGasStation() -> Bool {

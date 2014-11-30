@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C8F2D8B1A2A7CF0000C05AF /* Owners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8A1A2A7CF0000C05AF /* Owners.swift */; };
+		9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */; };
+		9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */; };
 		9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */; };
 		9CEB8EAB1A2A2D460009105C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEB8EAA1A2A2D460009105C /* MapKit.framework */; };
 		9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB8EB31A2A2FC50009105C /* Extensions Gas And Service Stations.swift */; };
@@ -30,7 +33,6 @@
 		D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF31A206DE5000DB0BD /* bmw.jpg */; };
 		D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF41A206DE5000DB0BD /* vwGolf.jpg */; };
 		D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49304521A270B2C006B7921 /* UIImageExtension.swift */; };
-		D4C7F5511A29720F000F0391 /* Owners.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7F5501A29720F000F0391 /* Owners.swift */; };
 		D4C7F5531A297210000F0391 /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7F5521A297210000F0391 /* MyCars.swift */; };
 		D4C7F5551A29834C000F0391 /* Unknown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C7F5541A29834C000F0391 /* Unknown.jpg */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C8F2D8A1A2A7CF0000C05AF /* Owners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owners.swift; sourceTree = "<group>"; };
+		9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersExtension.swift; sourceTree = "<group>"; };
 		9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarMapViewController.swift; sourceTree = "<group>"; };
 		9CEB8EAA1A2A2D460009105C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9CEB8EB31A2A2FC50009105C /* Extensions Gas And Service Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions Gas And Service Stations.swift"; sourceTree = "<group>"; };
@@ -73,7 +78,6 @@
 		D4708FF31A206DE5000DB0BD /* bmw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bmw.jpg; sourceTree = "<group>"; };
 		D4708FF41A206DE5000DB0BD /* vwGolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vwGolf.jpg; sourceTree = "<group>"; };
 		D49304521A270B2C006B7921 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		D4C7F5501A29720F000F0391 /* Owners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owners.swift; sourceTree = "<group>"; };
 		D4C7F5521A297210000F0391 /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
 		D4C7F5541A29834C000F0391 /* Unknown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Unknown.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,12 +101,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C8F2D921A2A8920000C05AF /* Login Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */,
+			);
+			name = "Login Screen";
+			sourceTree = "<group>";
+		};
 		9CEB8EAC1A2A2D640009105C /* Map Tab */ = {
 			isa = PBXGroup;
 			children = (
 				9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */,
 			);
 			name = "Map Tab";
+			sourceTree = "<group>";
+		};
+		9CEB8EB91A2A4CCB0009105C /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				D406166B1A1D4B8A0061F951 /* CarsApp.xcdatamodeld */,
+				9C8F2D8A1A2A7CF0000C05AF /* Owners.swift */,
+				9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */,
+				9CEB8EB71A2A30E30009105C /* ServiceStations.swift */,
+				9CEB8EB51A2A30E20009105C /* GasStations.swift */,
+				9CEB8EB31A2A2FC50009105C /* Extensions Gas And Service Stations.swift */,
+				D4C7F5521A297210000F0391 /* MyCars.swift */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 		D406165B1A1D4B8A0061F951 = {
@@ -128,19 +154,15 @@
 			isa = PBXGroup;
 			children = (
 				D40616701A1D4B8A0061F951 /* Main.storyboard */,
+				D40616731A1D4B8A0061F951 /* Images.xcassets */,
+				D40616751A1D4B8A0061F951 /* LaunchScreen.xib */,
 				D4316BAE1A22D0B0003400A2 /* TestDetailTableViewController.swift */,
 				D40616691A1D4B8A0061F951 /* AppDelegate.swift */,
+				9C8F2D921A2A8920000C05AF /* Login Screen */,
 				D4538F901A2089BA0016A05A /* My Cars Tab */,
 				D4538F911A2089F00016A05A /* Profile Tab */,
 				9CEB8EAC1A2A2D640009105C /* Map Tab */,
-				D40616731A1D4B8A0061F951 /* Images.xcassets */,
-				D40616751A1D4B8A0061F951 /* LaunchScreen.xib */,
-				D406166B1A1D4B8A0061F951 /* CarsApp.xcdatamodeld */,
-				9CEB8EB71A2A30E30009105C /* ServiceStations.swift */,
-				9CEB8EB51A2A30E20009105C /* GasStations.swift */,
-				9CEB8EB31A2A2FC50009105C /* Extensions Gas And Service Stations.swift */,
-				D4C7F5521A297210000F0391 /* MyCars.swift */,
-				D4C7F5501A29720F000F0391 /* Owners.swift */,
+				9CEB8EB91A2A4CCB0009105C /* Core Data */,
 				D4708FEE1A2060DA000DB0BD /* images */,
 				D40616671A1D4B8A0061F951 /* Supporting Files */,
 			);
@@ -318,11 +340,13 @@
 				D406166D1A1D4B8A0061F951 /* CarsApp.xcdatamodeld in Sources */,
 				D44FE9181A20AC8C00969B53 /* CarDetailTableViewController.swift in Sources */,
 				D4C7F5531A297210000F0391 /* MyCars.swift in Sources */,
-				D4C7F5511A29720F000F0391 /* Owners.swift in Sources */,
+				9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */,
 				D406166A1A1D4B8A0061F951 /* AppDelegate.swift in Sources */,
 				9CEB8EB61A2A30E20009105C /* GasStations.swift in Sources */,
 				9CEB8EB81A2A30E30009105C /* ServiceStations.swift in Sources */,
+				9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */,
 				D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */,
+				9C8F2D8B1A2A7CF0000C05AF /* Owners.swift in Sources */,
 				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,
 				9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */,
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
