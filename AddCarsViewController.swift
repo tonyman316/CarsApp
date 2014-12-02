@@ -49,7 +49,6 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     @IBAction func done(sender: UIBarButtonItem) {
         // check input validation
         if !validInput() {
-            
             let alert = UIAlertController(title: "Oops!", message: "Make sure input All the information!", preferredStyle: UIAlertControllerStyle.Alert)
             
             let okButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -120,9 +119,8 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         // Resize image doesn't work!!
         var newCGSize = CGSizeMake(100, 100)
         var resizeImage = RBResizeImage(imageToSave, targetSize: newCGSize) as UIImage
-        carImage = imageToSave
         
-        addCarImageView(image: carImage!)
+        addCarImageView(image: imageToSave)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -131,6 +129,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         var newView = UIImageView(frame: carButton.frame)
         newView.image = image
         view.addSubview(newView)
+        carImage = image
     }
     
     func popToMainView() {
@@ -168,7 +167,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func editCar() {
-        let imageData = UIImagePNGRepresentation(carButton.imageView?.image) as NSData
+        let imageData = UIImagePNGRepresentation(carImage!) as NSData
         car?.carImage = imageData
         car?.make = makeTextField.text
         car?.model = modelTextField.text
