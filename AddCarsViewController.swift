@@ -12,10 +12,9 @@ import Foundation
 import MobileCoreServices
 
 class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
-    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
-    @IBOutlet var addCarImageView: UIImageView!
+    @IBOutlet weak var carButton: UIButton!
     @IBOutlet var makeTextField: UITextField!
     @IBOutlet var modelTextField: UITextField!
     @IBOutlet var yearTextField: UITextField!
@@ -25,18 +24,16 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet var transmissionOilTextField: UITextField!
     
     var car: MyCars? = nil
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    var carImage: UIImage?
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         if car != nil {
             makeTextField.text = car?.make
             modelTextField.text = car?.model
             var imageFromModel: UIImage = UIImage(data: (car?.valueForKey("carImage") as NSData))!
-            addCarImageView.image = imageFromModel
+            addCarImageView(image: imageFromModel)
         }
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,8 +57,9 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
             
             self.presentViewController(alert, animated: true, completion: nil)
 
-        }else if car != nil {
+        } else if car != nil {
             editCar()
+            
             // Dismiss
             popToMainView()
         } else {
@@ -122,9 +120,17 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         // Resize image doesn't work!!
         var newCGSize = CGSizeMake(100, 100)
         var resizeImage = RBResizeImage(imageToSave, targetSize: newCGSize) as UIImage
-        addCarImageView.image = imageToSave
+        carImage = imageToSave
+        
+        addCarImageView(image: carImage!)
         
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func addCarImageView(#image: UIImage) {
+        var newView = UIImageView(frame: carButton.frame)
+        newView.image = image
+        view.addSubview(newView)
     }
     
     func popToMainView() {
@@ -136,7 +142,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         let entityDescripition = NSEntityDescription.entityForName("Cars", inManagedObjectContext: managedObjectContext!)
         let newCar = MyCars(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
         
-        let imageData = UIImagePNGRepresentation(addCarImageView.image) as NSData
+        let imageData = UIImagePNGRepresentation(carImage!) as NSData
         newCar.carImage = imageData
         
         newCar.make = makeTextField.text
@@ -154,15 +160,15 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     // check input
     func validInput() -> Bool {
-        if (addCarImageView.image == nil || makeTextField.text.isEmpty || modelTextField.text.isEmpty){
+        if (carImage == nil || makeTextField.text.isEmpty || modelTextField.text.isEmpty){
             return false
-        }else{
+        } else {
             return true
         }
     }
     
     func editCar() {
-        let imageData = UIImagePNGRepresentation(addCarImageView.image) as NSData
+        let imageData = UIImagePNGRepresentation(carButton.imageView?.image) as NSData
         car?.carImage = imageData
         car?.make = makeTextField.text
         car?.model = modelTextField.text

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ot-Sg-d2B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Frh-Qh-nDJ">
-                                <rect key="frame" x="0.0" y="72" width="600" height="479"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Frh-Qh-nDJ">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m0i-l7-Wxx">
                                     <size key="itemSize" width="158" height="107"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -43,6 +42,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="09H-6p-imX"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Gxp-A5-lfd"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XGw-LH-iZw"/>
+                            <constraint firstAttribute="trailing" secondItem="Frh-Qh-nDJ" secondAttribute="trailing" id="eYD-kk-unu"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Cars" id="pAo-rR-3Ls">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="H7c-l6-htm">
@@ -58,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="458" y="383"/>
+            <point key="canvasLocation" x="458" y="363"/>
         </scene>
         <!--Add New Car-->
         <scene sceneID="FL7-ME-SyN">
@@ -107,11 +112,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-mh-ZPx">
-                                <rect key="frame" x="185" y="72" width="231" height="169"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vef-1I-Bm1">
                                 <rect key="frame" x="185" y="72" width="231" height="169"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="231" id="4eI-Dg-K8h"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="50"/>
                                 <state key="normal" title="🚘">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,39 +132,28 @@
                             <constraint firstItem="wpo-cm-gRU" firstAttribute="leading" secondItem="81F-2V-Mqb" secondAttribute="leading" id="1jP-rA-jJU"/>
                             <constraint firstItem="81F-2V-Mqb" firstAttribute="trailing" secondItem="wpo-cm-gRU" secondAttribute="trailing" id="1mr-Nm-ICP"/>
                             <constraint firstItem="kXG-bh-Oz0" firstAttribute="top" secondItem="Nih-Q8-edZ" secondAttribute="bottom" constant="8" symbolic="YES" id="6Rx-qQ-qZf"/>
-                            <constraint firstItem="OtD-ww-VRr" firstAttribute="top" relation="lessThanOrEqual" secondItem="1xp-mh-ZPx" secondAttribute="bottom" priority="999" constant="44" id="6UO-cy-leS"/>
                             <constraint firstItem="OtD-ww-VRr" firstAttribute="centerY" secondItem="yTS-vt-Gp5" secondAttribute="centerY" id="6Uf-Iq-DX2"/>
                             <constraint firstItem="7hp-HR-IKT" firstAttribute="top" secondItem="wpo-cm-gRU" secondAttribute="bottom" constant="8" symbolic="YES" id="70q-Wa-qTY"/>
                             <constraint firstItem="wpo-cm-gRU" firstAttribute="top" secondItem="81F-2V-Mqb" secondAttribute="bottom" constant="8" symbolic="YES" id="Ahi-Wf-Dtz"/>
                             <constraint firstItem="81F-2V-Mqb" firstAttribute="top" secondItem="VcT-Te-0zn" secondAttribute="bottom" constant="8" symbolic="YES" id="Bsk-qu-HRv"/>
-                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="width" secondItem="vef-1I-Bm1" secondAttribute="height" multiplier="231:169" id="KSY-9p-geb"/>
-                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="height" secondItem="vef-1I-Bm1" secondAttribute="height" id="NQL-1H-nVp"/>
+                            <constraint firstItem="vef-1I-Bm1" firstAttribute="trailing" secondItem="OtD-ww-VRr" secondAttribute="trailing" id="EOv-PH-24w"/>
                             <constraint firstItem="VcT-Te-0zn" firstAttribute="top" secondItem="kXG-bh-Oz0" secondAttribute="bottom" constant="8" symbolic="YES" id="Nxs-EM-6y6"/>
                             <constraint firstItem="VcT-Te-0zn" firstAttribute="trailing" secondItem="kXG-bh-Oz0" secondAttribute="trailing" id="P0g-oQ-oii"/>
-                            <constraint firstItem="vef-1I-Bm1" firstAttribute="top" secondItem="YxS-Pd-ke1" secondAttribute="bottom" constant="8" symbolic="YES" id="P3z-Hl-c4f"/>
                             <constraint firstItem="VcT-Te-0zn" firstAttribute="leading" secondItem="kXG-bh-Oz0" secondAttribute="leading" id="RWF-DY-gdG"/>
-                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="trailing" secondItem="OtD-ww-VRr" secondAttribute="trailing" id="SIs-jB-O35"/>
                             <constraint firstItem="Nih-Q8-edZ" firstAttribute="top" secondItem="OtD-ww-VRr" secondAttribute="bottom" constant="8" symbolic="YES" id="T0u-ki-bpX"/>
-                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="centerY" secondItem="vef-1I-Bm1" secondAttribute="centerY" id="bQy-od-foa"/>
-                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="width" secondItem="vef-1I-Bm1" secondAttribute="width" id="bam-IO-6vi"/>
+                            <constraint firstItem="vef-1I-Bm1" firstAttribute="leading" secondItem="OtD-ww-VRr" secondAttribute="leading" id="Tin-8b-KfI"/>
                             <constraint firstItem="T2V-sP-YEw" firstAttribute="top" secondItem="7hp-HR-IKT" secondAttribute="bottom" constant="8" symbolic="YES" id="bkW-AG-tcu"/>
                             <constraint firstItem="Nih-Q8-edZ" firstAttribute="trailing" secondItem="kXG-bh-Oz0" secondAttribute="trailing" id="fmv-Db-6Wy"/>
                             <constraint firstItem="Nih-Q8-edZ" firstAttribute="leading" secondItem="OtD-ww-VRr" secondAttribute="leading" id="hZc-2Y-qLZ"/>
-                            <constraint firstItem="OtD-ww-VRr" firstAttribute="top" secondItem="1xp-mh-ZPx" secondAttribute="bottom" constant="44" id="hqu-Dd-rb1"/>
                             <constraint firstItem="wpo-cm-gRU" firstAttribute="trailing" secondItem="7hp-HR-IKT" secondAttribute="trailing" id="l8f-RE-Y3b"/>
                             <constraint firstItem="7hp-HR-IKT" firstAttribute="leading" secondItem="wpo-cm-gRU" secondAttribute="leading" id="qKC-s3-kM3"/>
-                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="centerX" secondItem="vef-1I-Bm1" secondAttribute="centerX" id="rgI-bQ-djV"/>
                             <constraint firstItem="VcT-Te-0zn" firstAttribute="leading" secondItem="81F-2V-Mqb" secondAttribute="leading" id="tK7-9q-lgY"/>
                             <constraint firstItem="kXG-bh-Oz0" firstAttribute="leading" secondItem="Nih-Q8-edZ" secondAttribute="leading" id="tj7-HS-9Fa"/>
                             <constraint firstItem="OtD-ww-VRr" firstAttribute="trailing" secondItem="Nih-Q8-edZ" secondAttribute="trailing" id="uBu-a9-9Df"/>
-                            <constraint firstItem="OtD-ww-VRr" firstAttribute="leading" secondItem="vef-1I-Bm1" secondAttribute="leading" id="vq3-kg-MOg"/>
+                            <constraint firstItem="vef-1I-Bm1" firstAttribute="top" secondItem="YxS-Pd-ke1" secondAttribute="bottom" constant="8" symbolic="YES" id="vWo-AJ-wp8"/>
+                            <constraint firstItem="OtD-ww-VRr" firstAttribute="top" secondItem="vef-1I-Bm1" secondAttribute="bottom" constant="44" id="wXJ-fY-vDv"/>
                             <constraint firstItem="81F-2V-Mqb" firstAttribute="trailing" secondItem="VcT-Te-0zn" secondAttribute="trailing" id="y6z-Y9-AYc"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="hqu-Dd-rb1"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Car" id="2Cp-qL-cEP">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yP0-Oi-5YT">
@@ -174,7 +168,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addCarImageView" destination="1xp-mh-ZPx" id="qGX-i4-SGw"/>
+                        <outlet property="carButton" destination="vef-1I-Bm1" id="U4e-Y1-r2B"/>
                         <outlet property="currentMileageTextField" destination="81F-2V-Mqb" id="Mg4-t9-NzA"/>
                         <outlet property="makeTextField" destination="OtD-ww-VRr" id="h1k-Nz-S1A"/>
                         <outlet property="modelTextField" destination="Nih-Q8-edZ" id="PHr-Bw-pBb"/>
@@ -186,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0Y-tb-D5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1187" y="383"/>
+            <point key="canvasLocation" x="1187" y="363"/>
         </scene>
         <!--Find gas and service stations-->
         <scene sceneID="QAn-MM-ArX">
@@ -618,7 +612,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="bRY-xy-164" kind="relationship" relationship="viewControllers" id="KR5-X5-IYf"/>
+                        <segue destination="amI-cP-yf4" kind="relationship" relationship="viewControllers" id="vQB-U5-ybs"/>
                         <segue destination="mxT-SA-qrO" kind="relationship" relationship="viewControllers" id="uAY-NC-ohL"/>
                         <segue destination="ygU-Zr-d8r" kind="relationship" relationship="viewControllers" id="xzd-Hr-bk5"/>
                         <segue destination="uzu-Yn-Of0" kind="relationship" relationship="viewControllers" id="zhI-rk-dn2"/>
@@ -627,25 +621,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLC-Ks-XiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1202" y="1425"/>
-        </scene>
-        <!--My Cars-->
-        <scene sceneID="sWK-aW-jh9">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bRY-xy-164" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Cars" id="fkf-No-djw"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e2m-mP-ddA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GRA-YO-Lsp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o7e-AG-pnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-354" y="383"/>
         </scene>
         <!--Map-->
         <scene sceneID="nrP-ce-cbv">
@@ -685,12 +660,32 @@
             </objects>
             <point key="canvasLocation" x="-354" y="1770"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="Xob-ag-YV1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="amI-cP-yf4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Yxs-bt-UqV"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="kjt-XL-Pii"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XDg-cY-zJQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZE5-y7-pw3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="En9-Jk-750" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-354" y="363"/>
+        </scene>
     </scenes>
     <resources>
         <image name="defaultUserImage" width="512" height="512"/>
         <image name="tesla.jpg" width="1280" height="850"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zXg-cl-ge8"/>
+        <segue reference="fef-lu-Euz"/>
     </inferredMetricsTieBreakers>
 </document>

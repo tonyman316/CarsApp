@@ -62,23 +62,13 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         
         var position = birthDateField.superview?.convertPoint(birthDateField.frame.origin, toView: nil)
         
-        println("Previous visible rect height: \(visibleRect.height)")
-        
         visibleRect.size.height -= keyboardSize.height
         
         if CGRectContainsPoint(visibleRect, buttonOrigin) == false {
-            println("Point NOT visible")
-            
             let scrollPoint = CGPointMake(0, buttonOrigin.y - visibleRect.size.height + buttonHeight)
-            //let scrollPoint = CGPointMake(0, activeField!.superview!.convertPoint(activeField!.frame.origin, toView: nil).y)
-            println("ScrollPoint is \(scrollPoint.x), \(scrollPoint.y)")
             
             scrollView.setContentOffset(scrollPoint, animated: true)
-        } else {
-            println("Point visible")
         }
-        
-        println("Current visible rect height: \(visibleRect.height)")
     }
     
     func keyboardWillBeHidden(notification: NSNotification) {

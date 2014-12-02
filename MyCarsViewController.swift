@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,NSFetchedResultsControllerDelegate {
+class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,NSFetchedResultsControllerDelegate {
     
     let identifier = "CarsCell"
     
@@ -54,6 +54,10 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegateFlowLayout
         
         //navigationController?.hidesBarsOnSwipe = true
 
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(collectionView.frame.width / 2.1, (collectionView.frame.height / 2) * 1/3)
     }
     
     func getFetchedResultController() -> NSFetchedResultsController {
