@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import MobileCoreServices
 
-class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
+class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
@@ -18,6 +18,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     @IBOutlet weak var birthDateField: UITextField!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var userImage: UIImage?
@@ -45,11 +46,11 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
+    }   
     
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWillBeHidden:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardWasShown(notification: NSNotification) {
@@ -58,16 +59,30 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         let buttonOrigin = activeField!.frame.origin
         let buttonHeight = activeField!.frame.size.height
         var visibleRect = view.frame
+        
+        var position = birthDateField.superview?.convertPoint(birthDateField.frame.origin, toView: nil)
+        
+        println("Previous visible rect height: \(visibleRect.height)")
+        
         visibleRect.size.height -= keyboardSize.height
         
-        if !CGRectContainsPoint(visibleRect, buttonOrigin) {
+        if CGRectContainsPoint(visibleRect, buttonOrigin) == false {
+            println("Point NOT visible")
+            
             let scrollPoint = CGPointMake(0, buttonOrigin.y - visibleRect.size.height + buttonHeight)
+            //let scrollPoint = CGPointMake(0, activeField!.superview!.convertPoint(activeField!.frame.origin, toView: nil).y)
+            println("ScrollPoint is \(scrollPoint.x), \(scrollPoint.y)")
+            
             scrollView.setContentOffset(scrollPoint, animated: true)
+        } else {
+            println("Point visible")
         }
+        
+        println("Current visible rect height: \(visibleRect.height)")
     }
     
     func keyboardWillBeHidden(notification: NSNotification) {
-        scrollView.setContentOffset(CGPointZero, animated: true)
+        scrollView.setContentOffset(CGPointZero, animated: false)
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -92,6 +107,15 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         } else {
             
         }
+        
+        scrollView.delegate = self
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.scrollEnabled = false
+        scrollView.contentSize = CGSizeMake(view.frame.width, view.frame.height + usernameField.frame.height * 6)
+        scrollView.bounds = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
     }
     
     @IBAction func choosePictureButtonPressed(sender: AnyObject) {

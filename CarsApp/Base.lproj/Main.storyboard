@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ot-Sg-d2B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -71,8 +72,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vef-1I-Bm1">
-                                <rect key="frame" x="126" y="117" width="125" height="70"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Make:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtD-ww-VRr">
+                                <rect key="frame" x="185" y="285" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Model" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nih-Q8-edZ">
+                                <rect key="frame" x="185" y="323" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kXG-bh-Oz0">
+                                <rect key="frame" x="185" y="361" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-Te-0zn">
+                                <rect key="frame" x="185" y="399" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Mileage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81F-2V-Mqb">
+                                <rect key="frame" x="185" y="437" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Oil Change (Mileage)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpo-cm-gRU">
+                                <rect key="frame" x="185" y="475" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Transmission Oil Change (Mileage)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-HR-IKT">
+                                <rect key="frame" x="185" y="513" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-mh-ZPx">
+                                <rect key="frame" x="185" y="72" width="231" height="169"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vef-1I-Bm1">
+                                <rect key="frame" x="185" y="72" width="231" height="169"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="50"/>
                                 <state key="normal" title="🚘">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,46 +120,46 @@
                                     <action selector="addCarImages:" destination="FV0-EL-xa9" eventType="touchUpInside" id="wnv-ju-25R"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Make:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtD-ww-VRr">
-                                <rect key="frame" x="73" y="241" width="231" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Model" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nih-Q8-edZ">
-                                <rect key="frame" x="73" y="279" width="231" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kXG-bh-Oz0">
-                                <rect key="frame" x="73" y="317" width="231" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-Te-0zn">
-                                <rect key="frame" x="73" y="355" width="231" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Mileage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81F-2V-Mqb">
-                                <rect key="frame" x="73" y="393" width="231" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Oil Change (Mileage)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpo-cm-gRU">
-                                <rect key="frame" x="73" y="431" width="231" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Transmission Oil Change (Mileage)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-HR-IKT">
-                                <rect key="frame" x="73" y="469" width="231" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-mh-ZPx">
-                                <rect key="frame" x="88" y="77" width="200" height="150"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VcT-Te-0zn" firstAttribute="centerX" secondItem="yTS-vt-Gp5" secondAttribute="centerX" id="1Rj-dj-eKf"/>
+                            <constraint firstItem="wpo-cm-gRU" firstAttribute="leading" secondItem="81F-2V-Mqb" secondAttribute="leading" id="1jP-rA-jJU"/>
+                            <constraint firstItem="81F-2V-Mqb" firstAttribute="trailing" secondItem="wpo-cm-gRU" secondAttribute="trailing" id="1mr-Nm-ICP"/>
+                            <constraint firstItem="kXG-bh-Oz0" firstAttribute="top" secondItem="Nih-Q8-edZ" secondAttribute="bottom" constant="8" symbolic="YES" id="6Rx-qQ-qZf"/>
+                            <constraint firstItem="OtD-ww-VRr" firstAttribute="top" relation="lessThanOrEqual" secondItem="1xp-mh-ZPx" secondAttribute="bottom" priority="999" constant="44" id="6UO-cy-leS"/>
+                            <constraint firstItem="OtD-ww-VRr" firstAttribute="centerY" secondItem="yTS-vt-Gp5" secondAttribute="centerY" id="6Uf-Iq-DX2"/>
+                            <constraint firstItem="7hp-HR-IKT" firstAttribute="top" secondItem="wpo-cm-gRU" secondAttribute="bottom" constant="8" symbolic="YES" id="70q-Wa-qTY"/>
+                            <constraint firstItem="wpo-cm-gRU" firstAttribute="top" secondItem="81F-2V-Mqb" secondAttribute="bottom" constant="8" symbolic="YES" id="Ahi-Wf-Dtz"/>
+                            <constraint firstItem="81F-2V-Mqb" firstAttribute="top" secondItem="VcT-Te-0zn" secondAttribute="bottom" constant="8" symbolic="YES" id="Bsk-qu-HRv"/>
+                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="width" secondItem="vef-1I-Bm1" secondAttribute="height" multiplier="231:169" id="KSY-9p-geb"/>
+                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="height" secondItem="vef-1I-Bm1" secondAttribute="height" id="NQL-1H-nVp"/>
+                            <constraint firstItem="VcT-Te-0zn" firstAttribute="top" secondItem="kXG-bh-Oz0" secondAttribute="bottom" constant="8" symbolic="YES" id="Nxs-EM-6y6"/>
+                            <constraint firstItem="VcT-Te-0zn" firstAttribute="trailing" secondItem="kXG-bh-Oz0" secondAttribute="trailing" id="P0g-oQ-oii"/>
+                            <constraint firstItem="vef-1I-Bm1" firstAttribute="top" secondItem="YxS-Pd-ke1" secondAttribute="bottom" constant="8" symbolic="YES" id="P3z-Hl-c4f"/>
+                            <constraint firstItem="VcT-Te-0zn" firstAttribute="leading" secondItem="kXG-bh-Oz0" secondAttribute="leading" id="RWF-DY-gdG"/>
+                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="trailing" secondItem="OtD-ww-VRr" secondAttribute="trailing" id="SIs-jB-O35"/>
+                            <constraint firstItem="Nih-Q8-edZ" firstAttribute="top" secondItem="OtD-ww-VRr" secondAttribute="bottom" constant="8" symbolic="YES" id="T0u-ki-bpX"/>
+                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="centerY" secondItem="vef-1I-Bm1" secondAttribute="centerY" id="bQy-od-foa"/>
+                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="width" secondItem="vef-1I-Bm1" secondAttribute="width" id="bam-IO-6vi"/>
+                            <constraint firstItem="T2V-sP-YEw" firstAttribute="top" secondItem="7hp-HR-IKT" secondAttribute="bottom" constant="8" symbolic="YES" id="bkW-AG-tcu"/>
+                            <constraint firstItem="Nih-Q8-edZ" firstAttribute="trailing" secondItem="kXG-bh-Oz0" secondAttribute="trailing" id="fmv-Db-6Wy"/>
+                            <constraint firstItem="Nih-Q8-edZ" firstAttribute="leading" secondItem="OtD-ww-VRr" secondAttribute="leading" id="hZc-2Y-qLZ"/>
+                            <constraint firstItem="OtD-ww-VRr" firstAttribute="top" secondItem="1xp-mh-ZPx" secondAttribute="bottom" constant="44" id="hqu-Dd-rb1"/>
+                            <constraint firstItem="wpo-cm-gRU" firstAttribute="trailing" secondItem="7hp-HR-IKT" secondAttribute="trailing" id="l8f-RE-Y3b"/>
+                            <constraint firstItem="7hp-HR-IKT" firstAttribute="leading" secondItem="wpo-cm-gRU" secondAttribute="leading" id="qKC-s3-kM3"/>
+                            <constraint firstItem="1xp-mh-ZPx" firstAttribute="centerX" secondItem="vef-1I-Bm1" secondAttribute="centerX" id="rgI-bQ-djV"/>
+                            <constraint firstItem="VcT-Te-0zn" firstAttribute="leading" secondItem="81F-2V-Mqb" secondAttribute="leading" id="tK7-9q-lgY"/>
+                            <constraint firstItem="kXG-bh-Oz0" firstAttribute="leading" secondItem="Nih-Q8-edZ" secondAttribute="leading" id="tj7-HS-9Fa"/>
+                            <constraint firstItem="OtD-ww-VRr" firstAttribute="trailing" secondItem="Nih-Q8-edZ" secondAttribute="trailing" id="uBu-a9-9Df"/>
+                            <constraint firstItem="OtD-ww-VRr" firstAttribute="leading" secondItem="vef-1I-Bm1" secondAttribute="leading" id="vq3-kg-MOg"/>
+                            <constraint firstItem="81F-2V-Mqb" firstAttribute="trailing" secondItem="VcT-Te-0zn" secondAttribute="trailing" id="y6z-Y9-AYc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="hqu-Dd-rb1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Car" id="2Cp-qL-cEP">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yP0-Oi-5YT">
@@ -524,15 +563,27 @@
                                 <constraints>
                                     <constraint firstItem="hb9-K7-8Xk" firstAttribute="leading" secondItem="LU4-QO-Esf" secondAttribute="leading" id="RX5-2B-l18"/>
                                     <constraint firstItem="hb9-K7-8Xk" firstAttribute="centerY" secondItem="LU4-QO-Esf" secondAttribute="centerY" id="SUc-XN-Wlv"/>
+                                    <constraint firstItem="hb9-K7-8Xk" firstAttribute="height" secondItem="LU4-QO-Esf" secondAttribute="height" id="WIo-wP-fL2"/>
+                                    <constraint firstItem="hb9-K7-8Xk" firstAttribute="width" secondItem="LU4-QO-Esf" secondAttribute="width" id="c7U-L8-IRI"/>
                                     <constraint firstItem="hb9-K7-8Xk" firstAttribute="centerX" secondItem="LU4-QO-Esf" secondAttribute="centerX" id="rAw-qr-qDo"/>
                                     <constraint firstItem="hb9-K7-8Xk" firstAttribute="top" secondItem="LU4-QO-Esf" secondAttribute="top" id="tPr-FH-ggu"/>
                                     <constraint firstAttribute="trailing" secondItem="hb9-K7-8Xk" secondAttribute="trailing" id="uxv-eZ-mmV"/>
                                     <constraint firstAttribute="bottom" secondItem="hb9-K7-8Xk" secondAttribute="bottom" id="y01-sh-4TO"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SUc-XN-Wlv"/>
+                                        <exclude reference="WIo-wP-fL2"/>
+                                        <exclude reference="c7U-L8-IRI"/>
+                                        <exclude reference="rAw-qr-qDo"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="width" secondItem="hb9-K7-8Xk" secondAttribute="width" id="3yN-A7-03R"/>
+                            <constraint firstAttribute="height" secondItem="hb9-K7-8Xk" secondAttribute="height" id="4Mc-49-Ymv"/>
                             <constraint firstItem="LU4-QO-Esf" firstAttribute="bottom" secondItem="f51-d0-1Rp" secondAttribute="top" id="AZc-En-oBP"/>
                             <constraint firstItem="LU4-QO-Esf" firstAttribute="top" secondItem="oK8-NM-K45" secondAttribute="top" id="UIZ-ew-t1J"/>
                             <constraint firstAttribute="trailing" secondItem="LU4-QO-Esf" secondAttribute="trailing" id="bPa-TP-FRX"/>
@@ -541,6 +592,7 @@
                     </view>
                     <connections>
                         <outlet property="birthDateField" destination="8Pb-LT-eD4" id="nn5-Fj-Ti1"/>
+                        <outlet property="bottomConstraint" destination="AZc-En-oBP" id="YaZ-3e-crG"/>
                         <outlet property="firstNameField" destination="ZLO-KX-q2z" id="uDF-2x-Epd"/>
                         <outlet property="lastNameField" destination="0GU-lB-mzO" id="07S-MU-t7i"/>
                         <outlet property="passwordField" destination="29C-5T-2yg" id="aWu-e6-41H"/>
