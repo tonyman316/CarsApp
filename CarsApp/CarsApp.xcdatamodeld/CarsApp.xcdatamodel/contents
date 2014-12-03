@@ -33,7 +33,7 @@
     <elements>
         <element name="Cars" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="GasStations" positionX="-65" positionY="140" width="128" height="118"/>
-        <element name="Owners" positionX="-308" positionY="0" width="128" height="165"/>
+        <element name="Owners" positionX="-290" positionY="-72" width="128" height="163"/>
         <element name="ServiceStations" positionX="-297" positionY="144" width="128" height="118"/>
     </elements>
 </model>

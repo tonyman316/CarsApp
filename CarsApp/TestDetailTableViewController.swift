@@ -70,7 +70,7 @@ class TestDetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("TestDetailCell", forIndexPath: indexPath) as UITableViewCell
 
         let car = carList[indexPath.row]
-        cell.textLabel.text = car.valueForKey("make") as String?
+        cell.textLabel!.text = car.valueForKey("make") as String?
         
         return cell
     }

@@ -27,8 +27,8 @@ extension Owners {
         mainUser.password = userInfo["password"]!
         mainUser.isMainUser = 1
         
-        if let pic = userPicture {
-            mainUser.picture = UIImageJPEGRepresentation(pic, 1.0)
+        if userPicture != nil {
+            mainUser.picture = UIImageJPEGRepresentation(userPicture!, 1.0)
         }
     }
     

@@ -9,10 +9,7 @@
 import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
-
-
     @IBOutlet var profileImageView: UIImageView!
-    
     @IBOutlet var profileLabel: UILabel!
     
     override func awakeFromNib() {
@@ -25,5 +22,4 @@ class ProfileTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

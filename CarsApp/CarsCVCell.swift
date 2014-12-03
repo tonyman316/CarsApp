@@ -41,6 +41,4 @@ class CarsCVCell: UICollectionViewCell {
 //        contentView.addSubview(ownerLabel)
         
     }
-
-
 }

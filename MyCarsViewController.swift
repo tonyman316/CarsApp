@@ -10,8 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,NSFetchedResultsControllerDelegate {
-    
+class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
     let identifier = "CarsCell"
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
@@ -38,13 +37,13 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         //layout.itemSize = CGSize(width: self.view.frame.width/2-5, height: self.view.frame.width/2)
         layout.itemSize = CGSize(width: 180, height: 180)
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 15
-
+        
         carsCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         carsCollectionView!.dataSource = self
         carsCollectionView!.delegate = self
@@ -53,7 +52,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.view.addSubview(carsCollectionView!)
         
         //navigationController?.hidesBarsOnSwipe = true
-
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -71,8 +69,8 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -92,9 +90,9 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         collectionView.registerNib(UINib(nibName: "CarsCVCell", bundle: nil), forCellWithReuseIdentifier: identifier)
-
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as CarsCVCell
-
+        
         // cell design(can change)
         cell.backgroundColor = UIColor.whiteColor()
         cell.layer.borderWidth = 2.0
@@ -106,19 +104,19 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.layer.shadowOpacity = 0.3
         
         // image frame design
-//        var carImageFrame:CGRect = cell.myCarsImageView.frame
-//        carImageFrame.size = CGSizeMake(180, 140)
-//        cell.myCarsImageView.frame = carImageFrame
-//        cell.myCarsImageView.clipsToBounds = true
+        //        var carImageFrame:CGRect = cell.myCarsImageView.frame
+        //        carImageFrame.size = CGSizeMake(180, 140)
+        //        cell.myCarsImageView.frame = carImageFrame
+        //        cell.myCarsImageView.clipsToBounds = true
         
         let car = fetchedResultController.objectAtIndexPath(indexPath) as MyCars
         cell.ownerLabel.text = car.make
         
         //cell.ownerLabel.text = car.valueForKey("make") as String?
-
+        
         var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
         cell.myCarsImageView.image = imageFromModel
-
+        
         return cell
     }
     
@@ -126,29 +124,14 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         performSegueWithIdentifier("ShowCarDetail", sender: indexPath)
     }
     
-     //Segue
+    //Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
         if (segue.identifier == "ShowCarDetail") {
-            
             let car = fetchedResultController.objectAtIndexPath(sender as NSIndexPath!) as MyCars
             
             let carDetailView = segue.destinationViewController as AddCarsViewController
             carDetailView.title = car.valueForKey("make") as String?
             carDetailView.car = car
-            
         }
-
-        
     }
-    
-    
-    
 }
-
-
-
-
-
-
-

@@ -53,10 +53,10 @@ class CarDetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("CarDetailCell", forIndexPath: indexPath) as UITableViewCell
         
         let car = carList[indexPath.row]
-        cell.textLabel.text = car.valueForKey("make") as String?
+        cell.textLabel!.text = car.valueForKey("make") as String?
         cell.detailTextLabel?.text = car.valueForKey("model") as String?
         var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
-        cell.imageView.image = imageFromModel
+        cell.imageView!.image = imageFromModel
         //cell.accessoryType = .DisclosureIndicator
         return cell
     }

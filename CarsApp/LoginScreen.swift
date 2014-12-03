@@ -46,7 +46,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
-    }   
+    }
     
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
@@ -114,15 +114,20 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     
     func showOptions() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let option1 = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCamera())})
-        let option2 = UIAlertAction(title: "Choose Existing Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCameraRoll())})
-        let option3 = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in ()})
         
-        actionSheet.addAction(option1)
-        actionSheet.addAction(option2)
-        actionSheet.addAction(option3)
-        
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            let option1 = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCamera())})
+            let option2 = UIAlertAction(title: "Choose Existing Photo", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.presentCameraRoll())})
+            let option3 = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in ()})
+            
+            actionSheet.addAction(option1)
+            actionSheet.addAction(option2)
+            actionSheet.addAction(option3)
+            
+            self.presentViewController(actionSheet, animated: true, completion: nil)
+        } else {
+            presentCameraRoll()
+        }
     }
     
     // MARK: Image Picker

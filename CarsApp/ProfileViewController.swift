@@ -15,5 +15,4 @@ class ProfileViewController: UIViewController {
     @IBAction func logoutButtonPressed(sender: AnyObject) {
         navigationController?.popToRootViewControllerAnimated(true)
     }
-    
 }
