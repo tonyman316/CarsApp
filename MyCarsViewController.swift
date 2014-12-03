@@ -21,13 +21,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Offset collection cell
-        carsCollectionView.contentInset = ({
-            var contentInset = self.carsCollectionView.contentInset
-            contentInset.top = 80
-            return contentInset
-        })()
-        
         fetchedResultController = getFetchedResultController()
         fetchedResultController.delegate = self
         fetchedResultController.performFetch(nil)
@@ -38,25 +31,17 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        //layout.itemSize = CGSize(width: self.view.frame.width/2-5, height: self.view.frame.width/2)
-        layout.itemSize = CGSize(width: 180, height: 180)
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = 15
-        
-        carsCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         carsCollectionView!.dataSource = self
         carsCollectionView!.delegate = self
         carsCollectionView!.registerClass(CarsCVCell.self, forCellWithReuseIdentifier: identifier)
         carsCollectionView!.backgroundColor = UIColor.whiteColor()
-        self.view.addSubview(carsCollectionView!)
         
         //navigationController?.hidesBarsOnSwipe = true
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(collectionView.frame.width / 2.1, (collectionView.frame.height / 2) * 1/3)
-    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        return CGSizeMake(collectionView.frame.width / 2.1, (collectionView.frame.height / 2))
+//    }
     
     func getFetchedResultController() -> NSFetchedResultsController {
         fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
@@ -69,7 +54,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,7 +97,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.ownerLabel.text = car.make
         
         //cell.ownerLabel.text = car.valueForKey("make") as String?
-        
         var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
         cell.myCarsImageView.image = imageFromModel
         

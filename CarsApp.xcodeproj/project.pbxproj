@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C0654AB1A2EA134009D79AE /* UsersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0654AA1A2EA134009D79AE /* UsersCollectionViewController.swift */; };
+		9C0654AF1A2EA178009D79AE /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0654AE1A2EA178009D79AE /* UserCollectionViewCell.swift */; };
 		9C32E0EC1A2B7778000A9908 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */; };
+		9C6062AF1A2EA6630087E3E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C6062AE1A2EA6630087E3E0 /* Foundation.framework */; };
 		9C8F2D8B1A2A7CF0000C05AF /* Owners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8A1A2A7CF0000C05AF /* Owners.swift */; };
 		9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */; };
 		9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */; };
@@ -55,7 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C0654AA1A2EA134009D79AE /* UsersCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersCollectionViewController.swift; sourceTree = "<group>"; };
+		9C0654AE1A2EA178009D79AE /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9C6062AE1A2EA6630087E3E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9C8F2D8A1A2A7CF0000C05AF /* Owners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owners.swift; sourceTree = "<group>"; };
 		9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersExtension.swift; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C6062AF1A2EA6630087E3E0 /* Foundation.framework in Frameworks */,
 				9CEB8EAB1A2A2D460009105C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +122,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C0654AC1A2EA13D009D79AE /* Main View */ = {
+			isa = PBXGroup;
+			children = (
+				D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */,
+				D474EDD41A2AD482006BC562 /* CarsCVCell.swift */,
+				D474EDD51A2AD482006BC562 /* CarsCVCell.xib */,
+				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
+				D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */,
+				D49304521A270B2C006B7921 /* UIImageExtension.swift */,
+			);
+			name = "Main View";
+			sourceTree = "<group>";
+		};
+		9C0654AD1A2EA144009D79AE /* Users Collection View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C0654AA1A2EA134009D79AE /* UsersCollectionViewController.swift */,
+				9C0654AE1A2EA178009D79AE /* UserCollectionViewCell.swift */,
+			);
+			name = "Users Collection View Controller";
+			sourceTree = "<group>";
+		};
 		9C8F2D921A2A8920000C05AF /* Login Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				D40616661A1D4B8A0061F951 /* CarsApp */,
+				9C6062AE1A2EA6630087E3E0 /* Foundation.framework */,
 				9CEB8EAA1A2A2D460009105C /* MapKit.framework */,
 				D406167F1A1D4B8A0061F951 /* CarsAppTests */,
 				D40616651A1D4B8A0061F951 /* Products */,
@@ -211,12 +241,8 @@
 		D4538F901A2089BA0016A05A /* My Cars Tab */ = {
 			isa = PBXGroup;
 			children = (
-				D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */,
-				D474EDD41A2AD482006BC562 /* CarsCVCell.swift */,
-				D474EDD51A2AD482006BC562 /* CarsCVCell.xib */,
-				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
-				D44FE9171A20AC8C00969B53 /* CarDetailTableViewController.swift */,
-				D49304521A270B2C006B7921 /* UIImageExtension.swift */,
+				9C0654AD1A2EA144009D79AE /* Users Collection View Controller */,
+				9C0654AC1A2EA13D009D79AE /* Main View */,
 			);
 			name = "My Cars Tab";
 			sourceTree = "<group>";
@@ -372,6 +398,7 @@
 				9CEB8EB61A2A30E20009105C /* GasStations.swift in Sources */,
 				9CEB8EB81A2A30E30009105C /* ServiceStations.swift in Sources */,
 				9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */,
+				9C0654AF1A2EA178009D79AE /* UserCollectionViewCell.swift in Sources */,
 				D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */,
 				D4B3E0031A2ADB5A00B44089 /* ProfileTableViewController.swift in Sources */,
 				9C8F2D8B1A2A7CF0000C05AF /* Owners.swift in Sources */,
@@ -383,6 +410,7 @@
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
 				9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */,
 				D4316BAF1A22D0B0003400A2 /* TestDetailTableViewController.swift in Sources */,
+				9C0654AB1A2EA134009D79AE /* UsersCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +536,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CarsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -518,6 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CarsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

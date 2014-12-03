@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ot-Sg-d2B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DP9-s4-lI9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Users Collection View Controller-->
+        <scene sceneID="3Wv-Uj-u88">
+            <objects>
+                <collectionViewController id="KfB-Qi-IEd" customClass="UsersCollectionViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="K48-pI-gCX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bWS-yC-blU">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customCell" id="mBj-ze-xrh" customClass="UserCollectionViewCell" customModule="CarsApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8GU-G4-706">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="8GU-G4-706" secondAttribute="height" multiplier="1:1" id="4gi-n8-VDE"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="8GU-G4-706" firstAttribute="leading" secondItem="mBj-ze-xrh" secondAttribute="leading" id="H02-fr-Pan"/>
+                                    <constraint firstAttribute="bottom" secondItem="8GU-G4-706" secondAttribute="bottom" id="JQ5-Ah-pOa"/>
+                                    <constraint firstItem="8GU-G4-706" firstAttribute="top" secondItem="mBj-ze-xrh" secondAttribute="top" id="Wzn-7T-agE"/>
+                                    <constraint firstAttribute="trailing" secondItem="8GU-G4-706" secondAttribute="trailing" id="hnY-H5-5QC"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="userImageView" destination="8GU-G4-706" id="Dyi-ui-V5F"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="KfB-Qi-IEd" id="Uib-uy-7HB"/>
+                            <outlet property="delegate" destination="KfB-Qi-IEd" id="PT5-MG-Kqg"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ctn-bV-kHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="-148"/>
+        </scene>
         <!--My Cars-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,13 +70,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAA-ca-N0N">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="0Qx-f3-smI"/>
+                                    <constraint firstAttribute="height" constant="100" id="6kL-CW-F9h"/>
+                                    <constraint firstAttribute="width" secondItem="CAA-ca-N0N" secondAttribute="height" multiplier="6:1" id="G5H-uG-hOz"/>
+                                    <constraint firstAttribute="height" constant="100" id="ch6-rM-FXe"/>
+                                    <constraint firstAttribute="height" constant="100" id="ecZ-O9-S2B"/>
+                                    <constraint firstAttribute="height" constant="100" id="eq5-RX-Yl9"/>
+                                    <constraint firstAttribute="height" priority="999" constant="100" id="mVo-jW-s8q"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0Qx-f3-smI"/>
+                                        <exclude reference="G5H-uG-hOz"/>
+                                        <exclude reference="ch6-rM-FXe"/>
+                                        <exclude reference="ecZ-O9-S2B"/>
+                                        <exclude reference="eq5-RX-Yl9"/>
+                                        <exclude reference="mVo-jW-s8q"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="KfB-Qi-IEd" kind="embed" id="vfQ-hY-Uzd"/>
+                                </connections>
+                            </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Frh-Qh-nDJ">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="16" y="169" width="568" height="431"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="430" id="JFh-ag-mT6"/>
+                                    <constraint firstAttribute="height" constant="431" id="JiH-kM-T4h"/>
+                                    <constraint firstAttribute="height" constant="430" id="M5V-T5-NMA"/>
+                                    <constraint firstAttribute="height" constant="431" id="Qzf-9l-00M"/>
+                                    <constraint firstAttribute="height" constant="431" id="ytd-vb-ifi"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m0i-l7-Wxx">
                                     <size key="itemSize" width="158" height="107"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="50" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="vt5-Ez-ux7">
@@ -39,15 +124,41 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JFh-ag-mT6"/>
+                                        <exclude reference="JiH-kM-T4h"/>
+                                        <exclude reference="M5V-T5-NMA"/>
+                                        <exclude reference="Qzf-9l-00M"/>
+                                        <exclude reference="ytd-vb-ifi"/>
+                                    </mask>
+                                </variation>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="09H-6p-imX"/>
-                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Gxp-A5-lfd"/>
-                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XGw-LH-iZw"/>
-                            <constraint firstAttribute="trailing" secondItem="Frh-Qh-nDJ" secondAttribute="trailing" id="eYD-kk-unu"/>
+                            <constraint firstAttribute="bottom" secondItem="Frh-Qh-nDJ" secondAttribute="bottom" id="1zo-gl-yeU"/>
+                            <constraint firstItem="CAA-ca-N0N" firstAttribute="trailing" secondItem="Frh-Qh-nDJ" secondAttribute="trailing" id="5Vb-Ou-yJc"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="105" id="IYI-RE-V9G"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="leading" secondItem="CAA-ca-N0N" secondAttribute="leading" id="Z9D-ZF-f4i"/>
+                            <constraint firstItem="CAA-ca-N0N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b4E-CJ-sKX"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="top" secondItem="CAA-ca-N0N" secondAttribute="bottom" constant="5" id="bvm-u5-6tG"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gws-UC-wtz"/>
+                            <constraint firstItem="CAA-ca-N0N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="h6S-Du-9ON"/>
+                            <constraint firstItem="CAA-ca-N0N" firstAttribute="trailing" secondItem="Frh-Qh-nDJ" secondAttribute="trailing" id="hD5-L2-FPx"/>
+                            <constraint firstItem="CAA-ca-N0N" firstAttribute="leading" secondItem="Frh-Qh-nDJ" secondAttribute="leading" id="m57-Gp-FoW"/>
+                            <constraint firstAttribute="trailing" secondItem="CAA-ca-N0N" secondAttribute="trailing" id="xXD-S9-T9v"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="centerX" secondItem="CAA-ca-N0N" secondAttribute="centerX" id="zYT-sI-DhC"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5Vb-Ou-yJc"/>
+                                <exclude reference="hD5-L2-FPx"/>
+                                <exclude reference="m57-Gp-FoW"/>
+                                <exclude reference="Z9D-ZF-f4i"/>
+                                <exclude reference="bvm-u5-6tG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="My Cars" id="pAo-rR-3Ls">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="H7c-l6-htm">
@@ -686,6 +797,6 @@
         <image name="tesla.jpg" width="1280" height="850"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fef-lu-Euz"/>
+        <segue reference="zXg-cl-ge8"/>
     </inferredMetricsTieBreakers>
 </document>
