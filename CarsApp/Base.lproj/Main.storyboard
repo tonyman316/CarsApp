@@ -11,7 +11,7 @@
             <objects>
                 <collectionViewController id="KfB-Qi-IEd" customClass="UsersCollectionViewController" customModule="CarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="K48-pI-gCX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bWS-yC-blU">
@@ -71,10 +71,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAA-ca-N0N">
-                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="0Qx-f3-smI"/>
-                                    <constraint firstAttribute="height" constant="100" id="6kL-CW-F9h"/>
                                     <constraint firstAttribute="width" secondItem="CAA-ca-N0N" secondAttribute="height" multiplier="6:1" id="G5H-uG-hOz"/>
                                     <constraint firstAttribute="height" constant="100" id="ch6-rM-FXe"/>
                                     <constraint firstAttribute="height" constant="100" id="ecZ-O9-S2B"/>
@@ -96,12 +95,13 @@
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Frh-Qh-nDJ">
-                                <rect key="frame" x="16" y="169" width="568" height="431"/>
+                                <rect key="frame" x="16" y="194" width="568" height="406"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="430" id="JFh-ag-mT6"/>
                                     <constraint firstAttribute="height" constant="431" id="JiH-kM-T4h"/>
                                     <constraint firstAttribute="height" constant="430" id="M5V-T5-NMA"/>
                                     <constraint firstAttribute="height" constant="431" id="Qzf-9l-00M"/>
+                                    <constraint firstAttribute="height" constant="431" id="RzY-gt-209"/>
                                     <constraint firstAttribute="height" constant="431" id="ytd-vb-ifi"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m0i-l7-Wxx">
@@ -130,6 +130,7 @@
                                         <exclude reference="JiH-kM-T4h"/>
                                         <exclude reference="M5V-T5-NMA"/>
                                         <exclude reference="Qzf-9l-00M"/>
+                                        <exclude reference="RzY-gt-209"/>
                                         <exclude reference="ytd-vb-ifi"/>
                                     </mask>
                                 </variation>
@@ -137,17 +138,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Frh-Qh-nDJ" secondAttribute="bottom" id="1zo-gl-yeU"/>
+                            <constraint firstAttribute="bottom" secondItem="Frh-Qh-nDJ" secondAttribute="bottom" id="0mc-9r-Hf7"/>
+                            <constraint firstItem="CAA-ca-N0N" firstAttribute="centerX" secondItem="Frh-Qh-nDJ" secondAttribute="centerX" id="5Ua-PK-jHV"/>
                             <constraint firstItem="CAA-ca-N0N" firstAttribute="trailing" secondItem="Frh-Qh-nDJ" secondAttribute="trailing" id="5Vb-Ou-yJc"/>
-                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="105" id="IYI-RE-V9G"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="130" id="MAH-gr-fqb"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="top" secondItem="CAA-ca-N0N" secondAttribute="bottom" constant="5" id="TLG-15-iRY"/>
+                            <constraint firstItem="CAA-ca-N0N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="V5K-g9-PaU"/>
+                            <constraint firstItem="CAA-ca-N0N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VFm-H4-2pQ"/>
                             <constraint firstItem="Frh-Qh-nDJ" firstAttribute="leading" secondItem="CAA-ca-N0N" secondAttribute="leading" id="Z9D-ZF-f4i"/>
-                            <constraint firstItem="CAA-ca-N0N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b4E-CJ-sKX"/>
+                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bGh-hY-mGs"/>
                             <constraint firstItem="Frh-Qh-nDJ" firstAttribute="top" secondItem="CAA-ca-N0N" secondAttribute="bottom" constant="5" id="bvm-u5-6tG"/>
-                            <constraint firstItem="Frh-Qh-nDJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gws-UC-wtz"/>
-                            <constraint firstItem="CAA-ca-N0N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="h6S-Du-9ON"/>
                             <constraint firstItem="CAA-ca-N0N" firstAttribute="trailing" secondItem="Frh-Qh-nDJ" secondAttribute="trailing" id="hD5-L2-FPx"/>
                             <constraint firstItem="CAA-ca-N0N" firstAttribute="leading" secondItem="Frh-Qh-nDJ" secondAttribute="leading" id="m57-Gp-FoW"/>
-                            <constraint firstAttribute="trailing" secondItem="CAA-ca-N0N" secondAttribute="trailing" id="xXD-S9-T9v"/>
+                            <constraint firstAttribute="trailing" secondItem="CAA-ca-N0N" secondAttribute="trailing" id="vfe-UP-FcD"/>
                             <constraint firstItem="Frh-Qh-nDJ" firstAttribute="centerX" secondItem="CAA-ca-N0N" secondAttribute="centerX" id="zYT-sI-DhC"/>
                         </constraints>
                         <variation key="default">
@@ -157,6 +160,7 @@
                                 <exclude reference="m57-Gp-FoW"/>
                                 <exclude reference="Z9D-ZF-f4i"/>
                                 <exclude reference="bvm-u5-6tG"/>
+                                <exclude reference="zYT-sI-DhC"/>
                             </mask>
                         </variation>
                     </view>
