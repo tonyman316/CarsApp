@@ -110,16 +110,10 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     
     // Save to Core Data
     func createProfile() {
-        let entityDescripition = NSEntityDescription.entityForName("Owners", inManagedObjectContext: managedObjectContext!)
-        let newProfile = Owners(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
-        
         let imageData = UIImagePNGRepresentation(profileImage!) as NSData
-        newProfile.picture = imageData
+        let userInfo: Dictionary = ["firstName" : firstNameTextField.text!, "lastName" : lastNameTextField.text!]
         
-        newProfile.firstName = firstNameTextField.text
-        newProfile.lastName = lastNameTextField.text
-        
-        managedObjectContext?.save(nil)
+        Owners.createUser(userInfo: userInfo, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
     }
     
     // check input
