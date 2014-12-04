@@ -82,7 +82,7 @@ extension Owners {
     class func getUsersInDatabase(inManagedObjectContext context: NSManagedObjectContext) -> [Owners]? {
         let request = NSFetchRequest(entityName: "Owners")
         var error = NSErrorPointer()
-        request.predicate = NSPredicate(format: "isMainUser = %d", 0)
+        //request.predicate = NSPredicate(format: "isMainUser = %d", 0)
         let matches = context.executeFetchRequest(request, error: error)
         
         if matches?.isEmpty == false {

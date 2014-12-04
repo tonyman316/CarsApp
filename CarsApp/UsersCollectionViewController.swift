@@ -13,6 +13,17 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var users: [Owners]?
     
+    func animateCollectionViewAppearance() {
+        UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
+            self.collectionView!.contentOffset = CGPointMake(self.collectionView!.frame.size.width, 0)
+        }, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        animateCollectionViewAppearance()
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         users = Owners.getUsersInDatabase(inManagedObjectContext: managedObjectContext!)

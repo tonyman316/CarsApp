@@ -35,6 +35,9 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         carsCollectionView!.delegate = self
         carsCollectionView!.registerClass(CarsCVCell.self, forCellWithReuseIdentifier: identifier)
         carsCollectionView!.backgroundColor = UIColor.whiteColor()
+        carsCollectionView.clipsToBounds = false
+        
+        animateCollectionViewAppearance()
         
         //navigationController?.hidesBarsOnSwipe = true
     }
@@ -42,6 +45,12 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 //        return CGSizeMake(collectionView.frame.width / 2.1, (collectionView.frame.height / 2))
 //    }
+    
+    func animateCollectionViewAppearance() {
+        UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
+            self.carsCollectionView.contentOffset = CGPointMake(0, self.carsCollectionView.frame.size.height)
+            }, completion: nil)
+    }
     
     func getFetchedResultController() -> NSFetchedResultsController {
         fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
