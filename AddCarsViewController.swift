@@ -11,11 +11,7 @@ import CoreData
 import Foundation
 import MobileCoreServices
 
-protocol OwnersSelectedDelegate {
-    func didSelectOwner(viewController: UsersCollectionViewController, owners: [Owners]);
-}
-
-class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, SelectUsersDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
     @IBOutlet weak var carButton: UIButton!
@@ -29,6 +25,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     var car: MyCars? = nil
     var carImage: UIImage?
+    var users: [Owners]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -232,14 +229,20 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "embedSegue" {
+            var userCollectionView = segue.destinationViewController as UsersCollectionViewController
+            
             if car != nil && car?.owners != nil {
-                var userCollectionView = segue.destinationViewController as UsersCollectionViewController
-                userCollectionView.users = [car!.owners]
-            } else {
-                var userCollectionView = segue.destinationViewController as UsersCollectionViewController
-                let usersInDatabase = Owners.getUsersInDatabase(inManagedObjectContext: managedObjectContext!)!
-                userCollectionView.users = usersInDatabase
+                userCollectionView.selectedUsers = [car!.owners]
             }
+            
+            let usersInDatabase = Owners.getUsersInDatabase(inManagedObjectContext: managedObjectContext!)!
+            userCollectionView.users = usersInDatabase
+            
+            userCollectionView.del = self
         }
+    }
+    
+    func didSelectUsers(viewController: UsersCollectionViewController, selectedUsers users: [Owners]?) {
+        self.users = users
     }
 }
