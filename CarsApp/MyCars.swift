@@ -2,7 +2,7 @@
 //  MyCars.swift
 //  CarsApp
 //
-//  Created by Tony's Mac on 11/28/14.
+//  Created by Andrea Borghi on 12/3/14.
 //  Copyright (c) 2014 DeAnza. All rights reserved.
 //
 

@@ -12,9 +12,11 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
     let reuseIdentifier = "customCell"
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var users: [Owners]?
+    var selectedUsers: [Owners]?
     
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        return CGSizeMake(collectionView.frame.height/2, collectionView.frame.height/2)
+//        var value = collectionView.frame.height - collectionView.layoutMargins.top * 3
+//        return CGSizeMake(value, value)
 //    }
     
     func animateCollectionViewAppearance() {
@@ -25,15 +27,11 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
         animateCollectionViewAppearance()
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        users = Owners.getUsersInDatabase(inManagedObjectContext: managedObjectContext!)
-    }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
@@ -57,5 +55,11 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         cell.nameLabel.text = users![indexPath.row].firstName
         
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if parentViewController is AddCarsViewController {
+            collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.blueColor()
+        }
     }
 }

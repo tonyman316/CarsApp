@@ -11,6 +11,10 @@ import CoreData
 import Foundation
 import MobileCoreServices
 
+protocol OwnersSelectedDelegate {
+    func didSelectOwner(viewController: UsersCollectionViewController, owners: [Owners]);
+}
+
 class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
@@ -36,10 +40,11 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        var imageFromModel: UIImage = UIImage(data: (car?.valueForKey("carImage") as NSData))!
-        addCarImageView(image: imageFromModel)
-            }
-
+        if let imageData = car?.valueForKey("carImage") as? NSData {
+            addCarImageView(image: UIImage(data: imageData)!)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,7 +64,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
             alert.addAction(okButton)
             
             self.presentViewController(alert, animated: true, completion: nil)
-
+            
         } else if car != nil {
             editCar()
             
@@ -139,7 +144,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     func popToMainView() {
         navigationController?.popViewControllerAnimated(true)
     }
- 
+    
     // Save to Core Data
     func createCar() {
         let entityDescripition = NSEntityDescription.entityForName("Cars", inManagedObjectContext: managedObjectContext!)
@@ -151,11 +156,11 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         newCar.make = makeTextField.text
         newCar.model = modelTextField.text
         
-//        newCar.year = yearTextField.text
-//        newCar.price = priceTextField.text
-//        newCar.currentMileage = currentMileageTextField.text
-//        newCar.oilChange = oilChangeTextField.text
-//        newCar.transOil = transmissionOilTextField.text
+        //        newCar.year = yearTextField.text
+        //        newCar.price = priceTextField.text
+        //        newCar.currentMileage = currentMileageTextField.text
+        //        newCar.oilChange = oilChangeTextField.text
+        //        newCar.transOil = transmissionOilTextField.text
         
         managedObjectContext?.save(nil)
         
@@ -203,5 +208,18 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         UIGraphicsEndImageContext()
         
         return newImage
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "embedSegue" {
+            if car != nil && car?.owners != nil {
+                var userCollectionView = segue.destinationViewController as UsersCollectionViewController
+                userCollectionView.users = [car!.owners]
+            } else {
+                var userCollectionView = segue.destinationViewController as UsersCollectionViewController
+                let usersInDatabase = Owners.getUsersInDatabase(inManagedObjectContext: managedObjectContext!)!
+                userCollectionView.users = usersInDatabase
+            }
+        }
     }
 }

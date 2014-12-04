@@ -36,6 +36,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         carsCollectionView!.registerClass(CarsCVCell.self, forCellWithReuseIdentifier: identifier)
         carsCollectionView.clipsToBounds = false
         carsCollectionView!.backgroundColor = nil
+        carsCollectionView!.alwaysBounceVertical = true
         
         animateCollectionViewAppearance()
         
@@ -118,12 +119,16 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "ShowCarDetail") {
+        if segue.identifier == "ShowCarDetail" {
             let car = fetchedResultController.objectAtIndexPath(sender as NSIndexPath!) as MyCars
             
             let carDetailView = segue.destinationViewController as AddCarsViewController
             carDetailView.title = car.valueForKey("make") as String?
             carDetailView.car = car
+        } else if segue.identifier == "embedSegue" {
+            var userCollectionView = segue.destinationViewController as UsersCollectionViewController
+            let usersInDatabase = Owners.getUsersInDatabase(inManagedObjectContext: managedObjectContext!)!
+            userCollectionView.users = usersInDatabase
         }
     }
 }
