@@ -26,15 +26,19 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     var car: MyCars? = nil
     var carImage: UIImage?
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         if car != nil {
             makeTextField.text = car?.make
             modelTextField.text = car?.model
-            var imageFromModel: UIImage = UIImage(data: (car?.valueForKey("carImage") as NSData))!
-            addCarImageView(image: imageFromModel)
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var imageFromModel: UIImage = UIImage(data: (car?.valueForKey("carImage") as NSData))!
+        addCarImageView(image: imageFromModel)
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
