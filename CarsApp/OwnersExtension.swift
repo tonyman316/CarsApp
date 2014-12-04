@@ -11,24 +11,32 @@ import UIKit
 import CoreData
 
 extension Owners {
-    class func createMainUser(#userInfo: [String : String], userPicture: UIImage?, context: NSManagedObjectContext) {
-        let result = Owners.databaseContainsMainUser(context)
-        
-        if result.isContained == true {
-            println("Deleting existing user \"\((result.user as Owners).firstName)\"")
-            context.deleteObject(result.user!)
+    class func createUser(#userInfo: [String : String], userPicture: UIImage?, isMainUser: Bool, context: NSManagedObjectContext) {
+        if isMainUser == true {
+            let result = Owners.databaseContainsMainUser(context)
+            
+            if result.isContained == true {
+                println("Deleting existing user \"\((result.user as Owners).firstName)\"")
+                context.deleteObject(result.user!)
+            }
         }
         
+        let newUser = (NSEntityDescription .insertNewObjectForEntityForName("Owners", inManagedObjectContext: context)) as Owners
+        
         // Create a new Main User
-        let mainUser = (NSEntityDescription .insertNewObjectForEntityForName("Owners", inManagedObjectContext: context)) as Owners
-        mainUser.firstName = userInfo["firstName"]!
-        mainUser.lastName = userInfo["lastName"]!
-        mainUser.username = userInfo["username"]!
-        mainUser.password = userInfo["password"]!
-        mainUser.isMainUser = 1
+        newUser.firstName = userInfo["firstName"]!
+        newUser.lastName = userInfo["lastName"]!
+        
+        if isMainUser == true {
+            newUser.username = userInfo["username"]!
+            newUser.password = userInfo["password"]!
+            newUser.isMainUser = 1
+        } else {
+            newUser.isMainUser = false
+        }
         
         if userPicture != nil {
-            mainUser.picture = UIImageJPEGRepresentation(userPicture!, 1.0)
+            newUser.picture = UIImageJPEGRepresentation(userPicture!, 1.0)
         }
     }
     
@@ -60,15 +68,8 @@ extension Owners {
         let matches = context.executeFetchRequest(request, error: error)
         
         if matches!.isEmpty == false {
-            for user in matches! {
-                println((user as Owners).firstName)
-            }
-            
-            println("There is already a main user")
             user = matches!.first as? NSManagedObject
             result = true
-        } else {
-            println("A main user was not found")
         }
         
         return (result, user)

@@ -206,7 +206,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
             
             println("A new user was created")
             
-            Owners.createMainUser(userInfo: userDictionary, userPicture: userImage, context: context)
+            Owners.createUser(userInfo: userDictionary, userPicture: userImage, isMainUser: true, context: context)
             
             (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
         }
