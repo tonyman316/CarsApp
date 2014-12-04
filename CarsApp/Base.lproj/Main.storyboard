@@ -13,7 +13,6 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="K48-pI-gCX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bWS-yC-blU">
                             <size key="itemSize" width="80" height="80"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -29,21 +28,31 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8GU-G4-706">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="8GU-G4-706" secondAttribute="height" multiplier="1:1" id="4gi-n8-VDE"/>
-                                            </constraints>
+                                            <rect key="frame" x="7" y="0.0" width="65" height="65"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcp-dW-f47">
+                                            <rect key="frame" x="8" y="68" width="64" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="12" id="xLZ-Bs-xSZ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="8GU-G4-706" firstAttribute="leading" secondItem="mBj-ze-xrh" secondAttribute="leading" id="H02-fr-Pan"/>
-                                    <constraint firstAttribute="bottom" secondItem="8GU-G4-706" secondAttribute="bottom" id="JQ5-Ah-pOa"/>
-                                    <constraint firstItem="8GU-G4-706" firstAttribute="top" secondItem="mBj-ze-xrh" secondAttribute="top" id="Wzn-7T-agE"/>
-                                    <constraint firstAttribute="trailing" secondItem="8GU-G4-706" secondAttribute="trailing" id="hnY-H5-5QC"/>
+                                    <constraint firstAttribute="bottom" secondItem="hcp-dW-f47" secondAttribute="bottom" id="Wys-TN-oIY"/>
+                                    <constraint firstItem="8GU-G4-706" firstAttribute="leading" secondItem="mBj-ze-xrh" secondAttribute="leadingMargin" constant="-1" id="ZbI-QI-5gA"/>
+                                    <constraint firstItem="8GU-G4-706" firstAttribute="top" secondItem="mBj-ze-xrh" secondAttribute="top" id="hJh-nu-Ywt"/>
+                                    <constraint firstItem="hcp-dW-f47" firstAttribute="leading" secondItem="mBj-ze-xrh" secondAttribute="leadingMargin" id="iyX-9j-TB5"/>
+                                    <constraint firstItem="hcp-dW-f47" firstAttribute="top" secondItem="8GU-G4-706" secondAttribute="bottom" constant="3" id="jWT-xe-8fY"/>
+                                    <constraint firstItem="hcp-dW-f47" firstAttribute="trailing" secondItem="mBj-ze-xrh" secondAttribute="trailingMargin" id="vqn-GM-zwY"/>
+                                    <constraint firstItem="hcp-dW-f47" firstAttribute="trailing" secondItem="8GU-G4-706" secondAttribute="trailing" id="vxS-z6-fb5"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="nameLabel" destination="hcp-dW-f47" id="598-9a-Xnd"/>
                                     <outlet property="userImageView" destination="8GU-G4-706" id="Dyi-ui-V5F"/>
                                 </connections>
                             </collectionViewCell>
@@ -56,7 +65,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ctn-bV-kHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1187" y="-148"/>
+            <point key="canvasLocation" x="1187" y="-148.5"/>
         </scene>
         <!--My Cars-->
         <scene sceneID="tne-QT-ifu">
@@ -136,7 +145,7 @@
                                 </variation>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Frh-Qh-nDJ" secondAttribute="bottom" id="0mc-9r-Hf7"/>
                             <constraint firstItem="CAA-ca-N0N" firstAttribute="centerX" secondItem="Frh-Qh-nDJ" secondAttribute="centerX" id="5Ua-PK-jHV"/>

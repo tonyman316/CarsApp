@@ -34,8 +34,8 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         carsCollectionView!.dataSource = self
         carsCollectionView!.delegate = self
         carsCollectionView!.registerClass(CarsCVCell.self, forCellWithReuseIdentifier: identifier)
-        carsCollectionView!.backgroundColor = UIColor.whiteColor()
         carsCollectionView.clipsToBounds = false
+        carsCollectionView!.backgroundColor = nil
         
         animateCollectionViewAppearance()
         
