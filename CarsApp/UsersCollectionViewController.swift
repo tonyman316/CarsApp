@@ -30,6 +30,7 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
         animateCollectionViewAppearance()
+        
     }
 
     override func viewWillAppear(animated: Bool) {

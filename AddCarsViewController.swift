@@ -15,7 +15,7 @@ protocol OwnersSelectedDelegate {
     func didSelectOwner(viewController: UsersCollectionViewController, owners: [Owners]);
 }
 
-class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
+class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
     @IBOutlet weak var carButton: UIButton!
@@ -36,8 +36,17 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
             makeTextField.text = car?.make
             modelTextField.text = car?.model
         }
+        
+        makeTextField.delegate = self
+        modelTextField.delegate = self
+        yearTextField.delegate = self
+        priceTextField.delegate = self
+        currentMileageTextField.delegate = self
+        oilChangeTextField.delegate = self
+        transmissionOilTextField.delegate = self
     }
     
+    // Cannot update image
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let imageData = car?.valueForKey("carImage") as? NSData {
@@ -48,6 +57,17 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Dismiss keyboard when tap on blank
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    
+    // Dismiss keyboard when tap on return
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func addCarImages(sender: AnyObject) {

@@ -97,12 +97,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.layer.shadowOffset = CGSizeMake(0.0, 5.0)
         cell.layer.shadowOpacity = 0.3
         
-        // image frame design
-        //        var carImageFrame:CGRect = cell.myCarsImageView.frame
-        //        carImageFrame.size = CGSizeMake(180, 140)
-        //        cell.myCarsImageView.frame = carImageFrame
-        //        cell.myCarsImageView.clipsToBounds = true
-        
         let car = fetchedResultController.objectAtIndexPath(indexPath) as MyCars
         cell.ownerLabel.text = car.make
         
