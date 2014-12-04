@@ -31,13 +31,13 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         if car != nil {
             makeTextField.text = car?.make
             modelTextField.text = car?.model
-            var imageFromModel: UIImage = UIImage(data: (car?.valueForKey("carImage") as NSData))!
-            addCarImageView(image: imageFromModel)
         }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        var imageFromModel: UIImage = UIImage(data: (car?.valueForKey("carImage") as NSData))!
+        addCarImageView(image: imageFromModel)
             }
 
     override func didReceiveMemoryWarning() {
