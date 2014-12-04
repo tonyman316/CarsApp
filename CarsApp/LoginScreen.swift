@@ -66,7 +66,6 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         
         if CGRectContainsPoint(visibleRect, buttonOrigin) == false {
             let scrollPoint = CGPointMake(0, buttonOrigin.y - visibleRect.size.height + buttonHeight)
-            
             scrollView.setContentOffset(scrollPoint, animated: true)
         }
     }
@@ -94,8 +93,6 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         
         if hasUser == true {
             performSegueWithIdentifier("showMainScreen", sender: self)
-        } else {
-            
         }
         
         scrollView.delegate = self
@@ -203,8 +200,6 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
             userDictionary["username"] = usernameField.text
             userDictionary["password"] = passwordField.text
             userDictionary["birthday"] = birthDateField.text
-            
-            println("A new user was created")
             
             Owners.createUser(userInfo: userDictionary, userPicture: userImage, isMainUser: true, context: context)
             

@@ -32,12 +32,16 @@ extension Owners {
             newUser.password = userInfo["password"]!
             newUser.isMainUser = 1
         } else {
-            newUser.isMainUser = false
+            newUser.isMainUser = 0
         }
         
         if userPicture != nil {
             newUser.picture = UIImageJPEGRepresentation(userPicture!, 1.0)
         }
+        
+        var error = NSErrorPointer()
+        println("New user created with name \(newUser.firstName)")
+        context.save(error)
     }
     
     class func authenticateUser(#username: String, password: String, context: NSManagedObjectContext) -> Bool {
@@ -73,5 +77,18 @@ extension Owners {
         }
         
         return (result, user)
+    }
+    
+    class func getUsersInDatabase(inManagedObjectContext context: NSManagedObjectContext) -> [Owners]? {
+        let request = NSFetchRequest(entityName: "Owners")
+        var error = NSErrorPointer()
+        request.predicate = NSPredicate(format: "isMainUser = %d", 0)
+        let matches = context.executeFetchRequest(request, error: error)
+        
+        if matches?.isEmpty == false {
+            return matches! as? [Owners]
+        }
+        
+        return nil
     }
 }

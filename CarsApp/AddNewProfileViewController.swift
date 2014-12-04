@@ -111,9 +111,13 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     // Save to Core Data
     func createProfile() {
         let imageData = UIImagePNGRepresentation(profileImage!) as NSData
-        let userInfo: Dictionary = ["firstName" : firstNameTextField.text!, "lastName" : lastNameTextField.text!]
+        var userDictionary = [String : String]()
+        userDictionary["firstName"] = firstNameTextField.text
+        userDictionary["lastName"] = lastNameTextField.text
         
-        Owners.createUser(userInfo: userInfo, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
+        println(userDictionary)
+        
+        Owners.createUser(userInfo: userDictionary, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
     }
     
     // check input
@@ -124,5 +128,4 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
             return true
         }
     }
-
 }
