@@ -11,6 +11,7 @@ import Foundation
 
 class UserCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         setupItemPictureLayer()
@@ -19,7 +20,7 @@ class UserCollectionViewCell: UICollectionViewCell {
     func setupItemPictureLayer() {
         var layer = userImageView.layer
         layer.masksToBounds = true
-        layer.cornerRadius = self.frame.width / 2
+        layer.cornerRadius = self.userImageView.frame.width / 2
         layer.borderWidth = 4
         layer.borderColor = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
     }
