@@ -41,6 +41,7 @@
 		D4B3E0051A2ADB6600B44089 /* MaptestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B3E0041A2ADB6600B44089 /* MaptestViewController.swift */; };
 		D4B3E0081A2ADE5D00B44089 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B3E0061A2ADE5D00B44089 /* ProfileTableViewCell.swift */; };
 		D4B3E0091A2ADE5D00B44089 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B3E0071A2ADE5D00B44089 /* ProfileTableViewCell.xib */; };
+		D4C529391A2FEAB40081B9AB /* AddNewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */; };
 		D4C7F5531A297210000F0391 /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C7F5521A297210000F0391 /* MyCars.swift */; };
 		D4C7F5551A29834C000F0391 /* Unknown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C7F5541A29834C000F0391 /* Unknown.jpg */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,7 @@
 		D4B3E0041A2ADB6600B44089 /* MaptestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaptestViewController.swift; sourceTree = "<group>"; };
 		D4B3E0061A2ADE5D00B44089 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = ../ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		D4B3E0071A2ADE5D00B44089 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileTableViewCell.xib; path = ../ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewProfileViewController.swift; sourceTree = "<group>"; };
 		D4C7F5521A297210000F0391 /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
 		D4C7F5541A29834C000F0391 /* Unknown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Unknown.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,6 +251,7 @@
 				D4B3E0061A2ADE5D00B44089 /* ProfileTableViewCell.swift */,
 				D4B3E0071A2ADE5D00B44089 /* ProfileTableViewCell.xib */,
 				D4B3E0041A2ADB6600B44089 /* MaptestViewController.swift */,
+				D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */,
 			);
 			name = "Profile Tab";
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				9C8F2D8B1A2A7CF0000C05AF /* Owners.swift in Sources */,
 				D474EDD61A2AD482006BC562 /* CarsCVCell.swift in Sources */,
 				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,
+				D4C529391A2FEAB40081B9AB /* AddNewProfileViewController.swift in Sources */,
 				D4B3E0081A2ADE5D00B44089 /* ProfileTableViewCell.swift in Sources */,
 				9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */,
 				D4B3E0051A2ADB6600B44089 /* MaptestViewController.swift in Sources */,
