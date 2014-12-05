@@ -12,6 +12,7 @@
 		9C2557881A3026900082E2F9 /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2557871A3026900082E2F9 /* MyCars.swift */; };
 		9C25578A1A3026910082E2F9 /* Owners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2557891A3026910082E2F9 /* Owners.swift */; };
 		9C32E0EC1A2B7778000A9908 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */; };
+		9C4B87F11A30CBC700292FCD /* FixedHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B87F01A30CBC700292FCD /* FixedHeaderLayout.swift */; };
 		9C6062AF1A2EA6630087E3E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C6062AE1A2EA6630087E3E0 /* Foundation.framework */; };
 		9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */; };
 		9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */; };
@@ -63,6 +64,7 @@
 		9C2557871A3026900082E2F9 /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
 		9C2557891A3026910082E2F9 /* Owners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owners.swift; sourceTree = "<group>"; };
 		9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9C4B87F01A30CBC700292FCD /* FixedHeaderLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedHeaderLayout.swift; sourceTree = "<group>"; };
 		9C6062AE1A2EA6630087E3E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersExtension.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				9C0654AA1A2EA134009D79AE /* UsersCollectionViewController.swift */,
+				9C4B87F01A30CBC700292FCD /* FixedHeaderLayout.swift */,
 				9C0654AE1A2EA178009D79AE /* UserCollectionViewCell.swift */,
 				9CD0C9B01A30A45500DA7030 /* SelectUserProtocol.swift */,
 			);
@@ -410,6 +413,7 @@
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
 				9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */,
 				9C2557881A3026900082E2F9 /* MyCars.swift in Sources */,
+				9C4B87F11A30CBC700292FCD /* FixedHeaderLayout.swift in Sources */,
 				9C0654AB1A2EA134009D79AE /* UsersCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
