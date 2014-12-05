@@ -10,11 +10,12 @@ import UIKit
 import Foundation
 import CoreData
 
-class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
+class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NSFetchedResultsControllerDelegate,UIGestureRecognizerDelegate {
     let identifier = "CarsCell"
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    var longPressTarget: (cell: CarsCVCell, indexPath: NSIndexPath)?
     
     @IBOutlet var carsCollectionView: UICollectionView!
     
@@ -52,6 +53,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         fetchedResultController.performFetch(nil)
         
         carsCollectionView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -67,6 +69,35 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         animateCollectionViewAppearance()
         
         //navigationController?.hidesBarsOnSwipe = true
+        
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressHandler:");
+        carsCollectionView.addGestureRecognizer(longPressGestureRecognizer)
+        
+        longPressGestureRecognizer.delegate = self
+
+    }
+    
+    // Long press gesture handler
+    func longPressHandler(sender:UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.Began {
+            
+            var tapLocation: CGPoint = sender.locationInView(carsCollectionView)
+            let indexPath = carsCollectionView.indexPathForItemAtPoint(tapLocation)
+            println("Long Pressed at: \(indexPath)")
+            
+            if (indexPath != nil) {
+            
+            let alert = UIAlertController(title: nil, message: "Do you want to delete this car?", preferredStyle: UIAlertControllerStyle.Alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+    
+            presentViewController(alert, animated: true, completion: nil)
+                
+            }
+
+        }
     }
     
     //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

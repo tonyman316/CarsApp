@@ -15,7 +15,7 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
     var selectedUsers: [Owners]?
     var del: SelectUsersDelegate?
     let colorForBorder = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
-    
+        
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 //        var value = collectionView.frame.height - collectionView.layoutMargins.top * 3
 //        return CGSizeMake(20, 20)
@@ -32,6 +32,7 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
         animateCollectionViewAppearance()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
