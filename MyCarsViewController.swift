@@ -12,6 +12,7 @@ import CoreData
 
 class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NSFetchedResultsControllerDelegate,UIGestureRecognizerDelegate {
     let identifier = "CarsCell"
+    var cars: [MyCars]?
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
@@ -73,16 +74,31 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
             if (indexPath != nil) {
             
             let alert = UIAlertController(title: nil, message: "Do you want to delete this car?", preferredStyle: UIAlertControllerStyle.Alert)
-            let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: nil)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+            let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: {(actionSheet: UIAlertAction!) in (self.deleteItemInCell())})
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in ()})
             alert.addAction(deleteAction)
             alert.addAction(cancelAction)
     
             presentViewController(alert, animated: true, completion: nil)
                 
             }
-
         }
+    }
+    
+    // Delete item in cell
+    func deleteItemInCell() {
+        
+    }
+    
+    // Highlight the cell
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        //var selected = cars![indexPath.item]
+        collectionView.registerNib(UINib(nibName: "CarsCVCell", bundle: nil), forCellWithReuseIdentifier: identifier)
+        
+        var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
+        
+        cell.layer.borderColor = UIColor.redColor().CGColor
+        cell.layer.borderWidth = 3.0
     }
     
     func animateCollectionViewAppearance() {
@@ -131,7 +147,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         // cell design(can change)
         cell.backgroundColor = UIColor.whiteColor()
-        cell.layer.borderWidth = 2.0
+        cell.layer.borderWidth = 2.5
         cell.layer.borderColor = UIColor.whiteColor().CGColor
         cell.layer.cornerRadius = 5.0
         cell.layer.shadowColor = UIColor.blueColor().CGColor;
