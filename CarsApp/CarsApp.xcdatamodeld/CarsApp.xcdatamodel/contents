@@ -2,8 +2,13 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Cars" representedClassName="CarsApp.MyCars" syncable="YES">
         <attribute name="carImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="currentMileage" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="make" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oilChange" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="transmissionOil" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="owners" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Owners" inverseName="cars" inverseEntity="Owners" syncable="YES"/>
     </entity>
     <entity name="GasStations" representedClassName="CarsApp.GasStations" syncable="YES">
@@ -30,10 +35,16 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Setting" representedClassName="CarsApp.Setting" syncable="YES">
+        <attribute name="oilChangeFrequency" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="transmissionOilFrequency" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Cars" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Cars" positionX="-63" positionY="-18" width="128" height="178"/>
         <element name="GasStations" positionX="-65" positionY="140" width="128" height="118"/>
         <element name="Owners" positionX="-290" positionY="-72" width="128" height="163"/>
         <element name="ServiceStations" positionX="-297" positionY="144" width="128" height="118"/>
+        <element name="Setting" positionX="-171" positionY="81" width="128" height="88"/>
     </elements>
 </model>

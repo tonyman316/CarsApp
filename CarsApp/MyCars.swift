@@ -15,5 +15,10 @@ class MyCars: NSManagedObject {
     @NSManaged var make: String
     @NSManaged var model: String
     @NSManaged var owners: Owners
+    @NSManaged var year: NSNumber
+    @NSManaged var price: NSNumber
+    @NSManaged var oilChange: NSNumber
+    @NSManaged var transmissionOil: NSNumber
+    @NSManaged var currentMileage: NSNumber
 
 }

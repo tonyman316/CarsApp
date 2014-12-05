@@ -36,6 +36,8 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         if car != nil {
             makeTextField.text = car?.make
             modelTextField.text = car?.model
+            yearTextField.text = "\(car?.year)"
+            
         }
         
         scrollView.delegate = self
@@ -229,23 +231,39 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         newCar.make = makeTextField.text
         newCar.model = modelTextField.text
         
+        if let carYear = yearTextField.text.toInt(){
+            newCar.year = carYear
+        }
+        
+        //newCar.year = numberFromString(yearTextField.text)!
+//        newCar.price = priceTextField.text.toInt()!
+//        newCar.currentMileage = currentMileageTextField.text.toInt()!
+//        newCar.oilChange = oilChangeTextField.text.toInt()!
+//        newCar.transmissionOil = transmissionOilTextField.text.toInt()!
+
+        
         if users != nil {
             newCar.owners = users![0]
         }
         
-        //        newCar.year = yearTextField.text
-        //        newCar.price = priceTextField.text
-        //        newCar.currentMileage = currentMileageTextField.text
-        //        newCar.oilChange = oilChangeTextField.text
-        //        newCar.transOil = transmissionOilTextField.text
         
         managedObjectContext?.save(nil)
         
     }
     
+    func numberFromString(inputString: String) -> NSNumber? {
+        let toNumber = inputString.toInt()
+        return toNumber
+    }
+    
+    func stringFromNumber(number: NSNumber) -> String? {
+        let toString = "\(number)"
+        return toString
+    }
+    
     // check input
     func validInput() -> Bool {
-        if (carImage == nil || makeTextField.text.isEmpty || modelTextField.text.isEmpty){
+        if (carImage == nil || makeTextField.text.isEmpty || modelTextField.text.isEmpty || yearTextField.text.isEmpty /* || priceTextField.text.isEmpty || currentMileageTextField.text.isEmpty || oilChangeTextField.text.isEmpty || transmissionOilTextField.text.isEmpty */ ){
             return false
         } else {
             return true
@@ -257,6 +275,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         car?.carImage = imageData
         car?.make = makeTextField.text
         car?.model = modelTextField.text
+        car?.year = yearTextField.text.toInt()!
         
         if users != nil {
             println("The car will now have the folling users:")
