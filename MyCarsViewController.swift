@@ -75,7 +75,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             let alert = UIAlertController(title: nil, message: "Do you want to delete this car?", preferredStyle: UIAlertControllerStyle.Alert)
             let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: {(actionSheet: UIAlertAction!) in (self.deleteItemInCell())})
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in ()})
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in (self.cancelDelete())})
             alert.addAction(deleteAction)
             alert.addAction(cancelAction)
     
@@ -88,6 +88,20 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     // Delete item in cell
     func deleteItemInCell() {
         
+//        let indexPath = 
+//        var cell = carsCollectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
+        
+        // do stuff with the cell
+    }
+    
+    // Cancel delete
+    func cancelDelete() {
+        // Get rid of highlight
+        
+//        var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
+//        
+//        cell.layer.borderColor = UIColor.whiteColor().CGColor
+//        cell.layer.borderWidth = 2.5
     }
     
     // Highlight the cell
