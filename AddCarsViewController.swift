@@ -276,6 +276,10 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         car?.make = makeTextField.text
         car?.model = modelTextField.text
         car?.year = yearTextField.text.toInt()!
+        car?.price = priceTextField.text.toInt()!
+        car?.currentMileage = currentMileageTextField.text.toInt()!
+        car?.oilChange = oilChangeTextField.text.toInt()!
+        car?.transmissionOil = transmissionOilTextField.text.toInt()!
         
         if users != nil {
             println("The car will now have the folling users:")
