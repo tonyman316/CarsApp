@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 import MobileCoreServices
 
-class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, SelectUsersDelegate {
+class AddCarsViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, SelectUsersDelegate, UIScrollViewDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
     @IBOutlet weak var carButton: UIButton!
@@ -26,6 +26,10 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     var car: MyCars? = nil
     var carImage: UIImage?
     var users: [Owners]?
+    var activeField: UITextField?
+    var carPictureAlreadyAdded = false
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
             modelTextField.text = car?.model
         }
         
+        scrollView.delegate = self
         makeTextField.delegate = self
         modelTextField.delegate = self
         yearTextField.delegate = self
@@ -43,12 +48,63 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         transmissionOilTextField.delegate = self
     }
     
-    // Cannot update image
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        scrollView.scrollEnabled = false
+        scrollView.contentSize = CGSizeMake(view.frame.width, view.frame.height + makeTextField.frame.height * 6)
+        scrollView.bounds = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
+        
         if let imageData = car?.valueForKey("carImage") as? NSData {
-            addCarImageView(image: UIImage(data: imageData)!)
+            if carPictureAlreadyAdded == false {
+                addCarImageView(image: UIImage(data: imageData)!)
+                carPictureAlreadyAdded = true
+            }
         }
+    }
+    
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        let info: NSDictionary = notification.userInfo!
+        let keyboardSize = info.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue().size
+        let buttonOrigin = activeField!.frame.origin
+        let buttonHeight = activeField!.frame.size.height
+        var visibleRect = view.frame
+        
+        var position = transmissionOilTextField.superview?.convertPoint(transmissionOilTextField.frame.origin, toView: nil)
+        
+        visibleRect.size.height -= keyboardSize.height
+        
+        if CGRectContainsPoint(visibleRect, buttonOrigin) == false {
+            let scrollPoint = CGPointMake(0, buttonOrigin.y - visibleRect.size.height + buttonHeight)
+            scrollView.setContentOffset(scrollPoint, animated: true)
+        }
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        scrollView.setContentOffset(CGPointZero, animated: false)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        activeField = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -154,7 +210,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     func addCarImageView(#image: UIImage) {
         var newView = UIImageView(frame: carButton.frame)
         newView.image = image
-        view.addSubview(newView)
+        scrollView.addSubview(newView)
         carImage = image
     }
     
