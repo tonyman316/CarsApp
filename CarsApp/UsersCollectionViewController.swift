@@ -14,6 +14,7 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
     var users: [Owners]?
     var selectedUsers: [Owners]?
     var del: SelectUsersDelegate?
+    let colorForBorder = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
     
     //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     //        var value = collectionView.frame.height - collectionView.layoutMargins.top * 3
@@ -59,9 +60,9 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         
         if selectedUsers != nil {
             if contains(selectedUsers!, selected) == true {
-                cell.backgroundColor = UIColor.clearColor()
+                cell.userImageView.layer.borderColor = UIColor.blueColor().CGColor
             } else {
-                cell.backgroundColor = UIColor.blueColor()
+                cell.userImageView.layer.borderColor = colorForBorder
             }
         }
         
@@ -77,15 +78,17 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         if parentViewController is AddCarsViewController {
             let selected = users![indexPath.row]
             
+            var cell = collectionView.cellForItemAtIndexPath(indexPath) as UserCollectionViewCell
+            
             if selectedUsers != nil && contains(selectedUsers!, selected) == true {
-                collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.clearColor()
+                cell.userImageView.layer.borderColor = colorForBorder
                 selectedUsers!.removeAtIndex(find(selectedUsers!, selected)!)
             } else {
                 if selectedUsers == nil {
                     selectedUsers = [Owners]()
                 }
                 
-                collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.blueColor()
+                cell.userImageView.layer.borderColor = UIColor.blueColor().CGColor
                 selectedUsers!.append(selected)
             }
             

@@ -173,6 +173,10 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         newCar.make = makeTextField.text
         newCar.model = modelTextField.text
         
+        if users != nil {
+            newCar.owners = users![0]
+        }
+        
         //        newCar.year = yearTextField.text
         //        newCar.price = priceTextField.text
         //        newCar.currentMileage = currentMileageTextField.text
@@ -197,6 +201,16 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         car?.carImage = imageData
         car?.make = makeTextField.text
         car?.model = modelTextField.text
+        
+        if users != nil {
+            println("The car will now have the folling users:")
+            for user in users! {
+                println("\(user.firstName)")
+            }
+            
+            car?.owners = users![0]
+        }
+        
         managedObjectContext?.save(nil)
     }
     
@@ -244,5 +258,15 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     func didSelectUsers(viewController: UsersCollectionViewController, selectedUsers users: [Owners]?) {
         self.users = users
+        
+        println("The selected users are:")
+        
+        if users != nil {
+            for user in users! {
+                println("\(user.firstName)")
+            }
+        }  else {
+            println("None")
+        }
     }
 }

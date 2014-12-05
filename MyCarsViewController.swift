@@ -18,6 +18,11 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet var carsCollectionView: UICollectionView!
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        var value = collectionView.frame.size.width - 10
+        return CGSizeMake(value, value * 2 / 3)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -43,14 +48,18 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         //navigationController?.hidesBarsOnSwipe = true
     }
     
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        return CGSizeMake(collectionView.frame.width / 2.1, (collectionView.frame.height / 2))
-//    }
+    //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    //        return CGSizeMake(collectionView.frame.width / 2.1, (collectionView.frame.height / 2))
+    //    }
     
     func animateCollectionViewAppearance() {
         UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
             self.carsCollectionView.contentOffset = CGPointMake(0, self.carsCollectionView.frame.size.height)
-            }, completion: nil)
+            }) { (finished: Bool) -> Void in
+                if finished == true {
+                    self.carsCollectionView.clipsToBounds = true
+                }
+        }
     }
     
     func getFetchedResultController() -> NSFetchedResultsController {
@@ -98,7 +107,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.layer.shadowOpacity = 0.3
         
         let car = fetchedResultController.objectAtIndexPath(indexPath) as MyCars
-        cell.ownerLabel.text = car.make
+        cell.ownerLabel.text = car.make + " " + car.model
         
         //cell.ownerLabel.text = car.valueForKey("make") as String?
         var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!
