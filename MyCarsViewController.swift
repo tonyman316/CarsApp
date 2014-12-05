@@ -23,16 +23,24 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         return CGSizeMake(value, value * 2 / 3)
     }
     
+//    func createUserLabel() {
+//        println(navigationController!.view.frame.height)
+//        
+//        var label = UILabel(frame: CGRect(origin: CGPointMake(carsCollectionView.layoutMargins.left, navigationController!.navigationBar.frame.size.height + 15), size: CGSizeMake(view.frame.width - (carsCollectionView.layoutMargins.left * 2), 30)))
+//        label.text = "Users"
+//        label.textAlignment = .Left
+//        label.backgroundColor = UIColor.whiteColor()
+//        //label.textColor = UIColor.
+//        label.alpha = 0.0
+//        view.addSubview(label)
+//        UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
+//            label.alpha = 1.0
+//        }, completion: nil)
+//    }
+    
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         var headerView = carsCollectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "customHeader", forIndexPath: indexPath) as CustomHeader
         headerView.titleLabel.text = "Cars"
-//        headerView.layer.borderWidth = 2.0
-//        headerView.layer.borderColor = UIColor.whiteColor().CGColor
-//        headerView.layer.cornerRadius = 5.0
-//        headerView.layer.shadowColor = UIColor.blueColor().CGColor;
-//        headerView.layer.shadowRadius = 3.0
-//        headerView.layer.shadowOffset = CGSizeMake(0.0, 5.0)
-//        headerView.layer.shadowOpacity = 0.3
         return headerView
     }
     
