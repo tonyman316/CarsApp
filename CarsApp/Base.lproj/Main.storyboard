@@ -158,7 +158,7 @@
                                         <outlet property="titleLabel" destination="NGH-nJ-v3t" id="ZFz-0S-3Lw"/>
                                     </connections>
                                 </collectionReusableView>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Qhz-ol-leI">
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customFooter" id="Qhz-ol-leI">
                                     <rect key="frame" x="0.0" y="157" width="600" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
@@ -993,7 +993,7 @@
         <image name="tesla.jpg" width="1280" height="850"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="vfQ-hY-Uzd"/>
         <segue reference="zXg-cl-ge8"/>
-        <segue reference="3yW-OA-sCp"/>
     </inferredMetricsTieBreakers>
 </document>
