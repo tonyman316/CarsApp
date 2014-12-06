@@ -10,16 +10,14 @@ import UIKit
 import Foundation
 import CoreData
 
-class SettingTableViewController: UITableViewController {
+class SettingTableViewController: UITableViewController, UISearchBarDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
 
-    var sectionNames = [String]()
+    var sectionNames = ["Units","Oil Change Frequency", "Transmission Oil Change Frequency"]
     let identifier = "settingCell"
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        sectionNames.append("Units")
-        sectionNames.append("Oil Change Frequency")
 
         tableView.registerNib(UINib(nibName:"SettingTableViewCell", bundle: nil), forCellReuseIdentifier: identifier)
         tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "headerCell")
@@ -56,25 +54,64 @@ class SettingTableViewController: UITableViewController {
 //        return title
 //    }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier("headerCell") as UITableViewHeaderFooterView!
-
-        var headerLabel = UILabel()
-        headerLabel.tag = 999
-        
-        cell.contentView.addSubview(headerLabel)
-        
-        //headerLabel.text = "test"
-        
-//        lab.font = UIFont(name:"Georgia-Bold", size:22)
-//        lab.textColor = UIColor.greenColor()
-//        lab.backgroundColor = UIColor.clearColor()
-//        h.contentView.addSubview(lab)
-   
-        return cell
+    func newLabelWithTitle(title: String) -> UILabel{
+        let label = UILabel()
+        label.text = title
+        label.backgroundColor = UIColor.clearColor()
+        label.sizeToFit()
+        return label
     }
     
+    func newViewForHeaderOrFooterWithText(text: String) -> UIView{
+        let headerLabel = newLabelWithTitle(text)
+        
+        /* Move the label 10 points to the right */
+        headerLabel.frame.origin.x += 10
+        /* Go 5 points down in y axis */
+        headerLabel.frame.origin.y = 5
+        
+        /* Give the container view 10 points more in width than our label
+        because the label needs a 10 extra points left-margin */
+        let resultFrame = CGRect(x: 0,
+            y: 0,
+            width: headerLabel.frame.size.width + 10,
+            height: headerLabel.frame.size.height)
+        
+        let headerView = UIView(frame: resultFrame)
+        headerView.addSubview(headerLabel)
+        
+        return headerView
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        
+        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("headerCell") as UITableViewHeaderFooterView
+        if h.tintColor != UIColor.redColor() {
+            println("configuring a new header view") // only called about 7 times
+            h.backgroundView = UIView()
+            h.backgroundView!.backgroundColor = UIColor.grayColor()
+        }
+        
+        return newViewForHeaderOrFooterWithText("Section \(section) Header")
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String{
+        var name = ""
+        
+//        switch(section){
+//        case 0: sectionNames = "Units"
+//        case 1: return sectionNames[1]
+//        case 2: return sectionNames[2]
+//        default: return ""
+//        }
+        
+        for i in 0..< sectionNames.count {
+            name = sectionNames[i]
+        }
 
+        
+        return name
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as SettingTableViewCell
