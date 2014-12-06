@@ -26,7 +26,9 @@ class CarDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         automaticallyAdjustsScrollViewInsets = false
-        
+    }
+    
+    func refreshView() {
         if car != nil {
             coverImage.image = UIImage(data: car!.carImage)
             setupItemPictureLayer()
@@ -43,8 +45,6 @@ class CarDetailsViewController: UIViewController {
             mileageLabel.text = car!.currentMileage.stringValue + " miles"
             priceLabel.text = car!.price.stringValue + " dollars"
         }
-        
-        setupSteppers()
     }
     
     func setupSteppers() {
@@ -81,6 +81,12 @@ class CarDetailsViewController: UIViewController {
         car?.price = priceStepper.value
         let error = NSErrorPointer()
         managedObjectContext?.save(error)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshView()
+        setupSteppers()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
