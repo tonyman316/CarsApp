@@ -60,48 +60,49 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         carsCollectionView.addGestureRecognizer(longPressGestureRecognizer)
         
         longPressGestureRecognizer.delegate = self
-
+        
     }
     
     // Long press gesture handler
     func longPressHandler(sender:UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.Began {
-            
             var tapLocation: CGPoint = sender.locationInView(carsCollectionView)
             let indexPath = carsCollectionView.indexPathForItemAtPoint(tapLocation)
             println("Long Pressed at: \(indexPath)")
             
             if (indexPath != nil) {
-            
-            let alert = UIAlertController(title: nil, message: "Do you want to delete this car?", preferredStyle: UIAlertControllerStyle.Alert)
-            let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: {(actionSheet: UIAlertAction!) in (self.deleteItemInCell())})
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in (self.cancelDelete())})
-            alert.addAction(deleteAction)
-            alert.addAction(cancelAction)
-    
-            presentViewController(alert, animated: true, completion: nil)
+                
+                let car = fetchedResultController.objectAtIndexPath(indexPath!) as MyCars
+                
+                let alert = UIAlertController(title: nil, message: "Do you want to delete this car?", preferredStyle: UIAlertControllerStyle.Alert)
+                let deleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: { (actionSheet: UIAlertAction!) -> Void in
+                    self.deleteItem(car: car)
+                })
+                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in (self.cancelDeletingCell(indexPath!))})
+                alert.addAction(deleteAction)
+                alert.addAction(cancelAction)
+                
+                presentViewController(alert, animated: true, completion: nil)
                 
             }
         }
     }
     
     // Delete item in cell
-    func deleteItemInCell() {
-        
-//        let indexPath = 
-//        var cell = carsCollectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
-        
-        // do stuff with the cell
+    func deleteItem(#car: MyCars) {
+        let error = NSErrorPointer()
+        managedObjectContext?.deleteObject(car)
+        managedObjectContext?.save(error)
+        carsCollectionView.reloadItemsAtIndexPaths(carsCollectionView.indexPathsForVisibleItems())
     }
     
     // Cancel delete
-    func cancelDelete() {
-        // Get rid of highlight
+    func cancelDeletingCell(indexPath: NSIndexPath) {
+        //Get rid of highlight
+        var cell = carsCollectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
         
-//        var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
-//        
-//        cell.layer.borderColor = UIColor.whiteColor().CGColor
-//        cell.layer.borderWidth = 2.5
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.layer.borderWidth = 2.5
     }
     
     // Highlight the cell
