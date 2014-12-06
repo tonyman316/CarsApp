@@ -18,20 +18,29 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     @IBOutlet weak var birthDateField: UITextField!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var choosePictureButton: UIButton!
     
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var userImage: UIImage?
     var activeField: UITextField?
     var hasUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).isContained
+    var mainUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).user
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        userImageView.setupItemPictureLayer()
         
         if hasUser == true {
             firstNameField.hidden = true
             lastNameField.hidden = true
             birthDateField.hidden = true
+            choosePictureButton.hidden = true
+        }
+        
+        if let user = mainUser {
+            usernameField.text = user.username
+            userImageView.image = UIImage(data: user.picture)
         }
         
         usernameField.delegate = self
@@ -84,6 +93,10 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
+        if hasUser && textField == passwordField {
+            loginButtonPressed(self)
+        }
         
         return true
     }

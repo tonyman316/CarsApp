@@ -39,7 +39,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         fetchedResultController.performFetch(nil)
         
         carsCollectionView.reloadData()
-        
     }
     
     override func viewDidLoad() {
@@ -170,7 +169,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.layer.shadowOpacity = 0.3
         
         let car = fetchedResultController.objectAtIndexPath(indexPath) as MyCars
-        cell.ownerLabel.text = car.make + " " + car.model + " " + "(\(car.year))"
+        cell.ownerLabel.text = "\(car.make) \(car.model) (\(car.year))"
         
         //cell.ownerLabel.text = car.valueForKey("make") as String?
         var imageFromModel: UIImage = UIImage(data: (car.valueForKey("carImage") as NSData))!

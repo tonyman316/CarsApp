@@ -15,23 +15,24 @@ class CarDetailsViewController: UIViewController {
     @IBOutlet weak var coverLabel: UILabel!
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var oilChangeLabel: UILabel!
     
     @IBOutlet weak var mileageStepper: UIStepper!
     @IBOutlet weak var priceStepper: UIStepper!
+    @IBOutlet weak var resetOilButton: UIButton!
     
     var car: MyCars? = nil
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         automaticallyAdjustsScrollViewInsets = false
     }
     
     func refreshView() {
         if car != nil {
             coverImage.image = UIImage(data: car!.carImage)
-            setupItemPictureLayer()
+            userImage.setupItemPictureLayer()
             
             if let userPic = car?.owners.picture {
                 userImage.image = UIImage(data: userPic)
@@ -39,16 +40,22 @@ class CarDetailsViewController: UIViewController {
             
             scrollView.bringSubviewToFront(userImage)
             
-            coverLabel.text = "  " + car!.make + " " + car!.model
+            coverLabel.text = "  " + car!.make + " " + car!.model + " (\(car!.year))"
             coverLabel.backgroundColor = coverLabel.backgroundColor?.colorWithAlphaComponent(0.8)
             
             mileageLabel.text = car!.currentMileage.stringValue + " miles"
             priceLabel.text = car!.price.stringValue + " dollars"
+            
+            if let oilChange = car?.oilChange.intValue {
+                let milesSinceLastOilChange = car!.currentMileage.intValue - oilChange
+                oilChangeLabel.text = "\(milesSinceLastOilChange) miles ago"
+            }
         }
     }
     
     func setupSteppers() {
         mileageStepper.minimumValue = car!.currentMileage as Double
+        mileageStepper.value = car!.currentMileage as Double
         mileageStepper.maximumValue = 200000
         mileageStepper.stepValue = 5
         
@@ -57,15 +64,7 @@ class CarDetailsViewController: UIViewController {
         priceStepper.maximumValue = 500000
         priceStepper.stepValue = 50
     }
-    
-    func setupItemPictureLayer() {
-        var layer = userImage.layer
-        layer.masksToBounds = true
-        layer.cornerRadius = self.userImage.frame.width / 2
-        layer.borderWidth = 4
-        layer.borderColor = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
-    }
-    
+
     @IBAction func stepperClicked(sender: AnyObject) {
         if sender as UIStepper == mileageStepper {
             mileageLabel.text = "\((sender as UIStepper).value) miles"
@@ -79,6 +78,7 @@ class CarDetailsViewController: UIViewController {
         super.viewWillDisappear(animated)
         car?.currentMileage = mileageStepper.value
         car?.price = priceStepper.value
+        
         let error = NSErrorPointer()
         managedObjectContext?.save(error)
     }
@@ -92,8 +92,15 @@ class CarDetailsViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editCar" {
             let editCarView = segue.destinationViewController as AddCarsViewController
-            editCarView.title = car!.make + " " + car!.model
+            editCarView.title = "Edit \(car!.make) \(car!.model)"
             editCarView.car = car
+        }
+    }
+    
+    @IBAction func resetButtonPressed(sender: UIButton) {
+        if sender == resetOilButton {
+            oilChangeLabel.text = "Just changed!"
+            car?.oilChange = car!.currentMileage
         }
     }
 }

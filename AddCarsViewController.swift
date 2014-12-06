@@ -33,11 +33,34 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        carButton.contentMode = UIViewContentMode.ScaleAspectFill
+        carButton.clipsToBounds = true
+        
         if car != nil {
             makeTextField.text = car?.make
             modelTextField.text = car?.model
-            yearTextField.text = "\(car?.year)"
+            yearTextField.text = "\(car!.year)"
             
+            if car?.price != 0 {
+                priceTextField.text = car?.price.stringValue
+            }
+            
+            if car?.currentMileage != 0 {
+                currentMileageTextField.text = car?.currentMileage.stringValue
+            }
+            
+            if car?.oilChange != 0 {
+                oilChangeTextField.text = car?.oilChange.stringValue
+            }
+            
+            if car?.transmissionOil != 0 {
+                transmissionOilTextField.text = car?.transmissionOil.stringValue
+            }
+            
+            if car?.carImage != nil {
+                carImage = UIImage(data: car!.carImage)
+            }
         }
         
         scrollView.delegate = self
@@ -140,11 +163,6 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
             
             self.presentViewController(alert, animated: true, completion: nil)
             
-        } else if car != nil {
-            editCar()
-            
-            // Dismiss
-            popToMainView()
         } else {
             // Save to core data
             createCar()
@@ -210,9 +228,8 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func addCarImageView(#image: UIImage) {
-        var newView = UIImageView(frame: carButton.frame)
-        newView.image = image
-        scrollView.addSubview(newView)
+        carButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        carButton.setTitle("", forState: UIControlState.Normal)
         carImage = image
     }
     
@@ -222,33 +239,48 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     // Save to Core Data
     func createCar() {
-        let entityDescripition = NSEntityDescription.entityForName("Cars", inManagedObjectContext: managedObjectContext!)
-        let newCar = MyCars(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+        var newCar: MyCars
         
-        let imageData = UIImagePNGRepresentation(carImage!) as NSData
-        newCar.carImage = imageData
+        if car == nil {
+            let entityDescripition = NSEntityDescription.entityForName("Cars", inManagedObjectContext: managedObjectContext!)
+            newCar = MyCars(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+        } else {
+            newCar = car!
+        }
+        
+        if carImage != nil {
+            let imageData = UIImagePNGRepresentation(carImage!) as NSData
+            newCar.carImage = imageData
+        }
         
         newCar.make = makeTextField.text
         newCar.model = modelTextField.text
         
-        if let carYear = yearTextField.text.toInt(){
-            newCar.year = carYear
+        if let year = yearTextField.text.toInt() {
+            newCar.year = year
         }
         
-        //newCar.year = numberFromString(yearTextField.text)!
-//        newCar.price = priceTextField.text.toInt()!
-//        newCar.currentMileage = currentMileageTextField.text.toInt()!
-//        newCar.oilChange = oilChangeTextField.text.toInt()!
-//        newCar.transmissionOil = transmissionOilTextField.text.toInt()!
-
+        if !priceTextField.text.isEmpty && priceTextField.text != "" {
+            newCar.price = priceTextField.text.toInt()!
+        }
+        
+        if !currentMileageTextField.text.isEmpty && currentMileageTextField.text != "" {
+            newCar.currentMileage = currentMileageTextField.text.toInt()!
+        }
+        
+        if !oilChangeTextField.text.isEmpty && oilChangeTextField.text != "" {
+            newCar.oilChange = oilChangeTextField.text.toInt()!
+        }
+        
+        if !transmissionOilTextField.text.isEmpty && transmissionOilTextField.text != "" {
+            newCar.transmissionOil = transmissionOilTextField.text.toInt()!
+        }
         
         if users != nil {
             newCar.owners = users![0]
         }
         
-        
         managedObjectContext?.save(nil)
-        
     }
     
     func numberFromString(inputString: String) -> NSNumber? {
@@ -268,29 +300,6 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         } else {
             return true
         }
-    }
-    
-    func editCar() {
-        let imageData = UIImagePNGRepresentation(carImage!) as NSData
-        car?.carImage = imageData
-        car?.make = makeTextField.text
-        car?.model = modelTextField.text
-//        car?.year = yearTextField.text.toInt()!
-//        car?.price = priceTextField.text.toInt()!
-//        car?.currentMileage = currentMileageTextField.text.toInt()!
-//        car?.oilChange = oilChangeTextField.text.toInt()!
-//        car?.transmissionOil = transmissionOilTextField.text.toInt()!
-        
-        if users != nil {
-            println("The car will now have the folling users:")
-            for user in users! {
-                println("\(user.firstName)")
-            }
-            
-            car?.owners = users![0]
-        }
-        
-        managedObjectContext?.save(nil)
     }
     
     // Resize image func
@@ -337,15 +346,5 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     func didSelectUsers(viewController: UsersCollectionViewController, selectedUsers users: [Owners]?) {
         self.users = users
-        
-        println("The selected users are:")
-        
-        if users != nil {
-            for user in users! {
-                println("\(user.firstName)")
-            }
-        }  else {
-            println("None")
-        }
     }
 }

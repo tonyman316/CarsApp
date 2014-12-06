@@ -17,6 +17,7 @@
 		9C8BB9231A3292A0008DACDB /* CarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BB9221A3292A0008DACDB /* CarDetailsViewController.swift */; };
 		9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */; };
 		9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */; };
+		9CB9CCEA1A32D319007AF583 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9CCE91A32D319007AF583 /* UIImageViewExtension.swift */; };
 		9CD0C9B11A30A45500DA7030 /* SelectUserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD0C9B01A30A45500DA7030 /* SelectUserProtocol.swift */; };
 		9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */; };
 		9CEB8EAB1A2A2D460009105C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEB8EAA1A2A2D460009105C /* MapKit.framework */; };
@@ -74,6 +75,7 @@
 		9C8BB9221A3292A0008DACDB /* CarDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailsViewController.swift; sourceTree = "<group>"; };
 		9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersExtension.swift; sourceTree = "<group>"; };
+		9CB9CCE91A32D319007AF583 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		9CD0C9B01A30A45500DA7030 /* SelectUserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectUserProtocol.swift; sourceTree = "<group>"; };
 		9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarMapViewController.swift; sourceTree = "<group>"; };
 		9CEB8EAA1A2A2D460009105C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -223,6 +225,7 @@
 				D40616731A1D4B8A0061F951 /* Images.xcassets */,
 				D40616751A1D4B8A0061F951 /* LaunchScreen.xib */,
 				D40616691A1D4B8A0061F951 /* AppDelegate.swift */,
+				9CB9CCE91A32D319007AF583 /* UIImageViewExtension.swift */,
 				9C8F2D921A2A8920000C05AF /* Login Screen */,
 				D4538F901A2089BA0016A05A /* My Cars Tab */,
 				D4538F911A2089F00016A05A /* Profile Tab */,
@@ -447,6 +450,7 @@
 				9C25578A1A3026910082E2F9 /* Owners.swift in Sources */,
 				9CD0C9B11A30A45500DA7030 /* SelectUserProtocol.swift in Sources */,
 				9C4B87F31A3140CD00292FCD /* CustomHeader.swift in Sources */,
+				9CB9CCEA1A32D319007AF583 /* UIImageViewExtension.swift in Sources */,
 				D4B3E0051A2ADB6600B44089 /* MaptestViewController.swift in Sources */,
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
 				9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */,

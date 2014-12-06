@@ -16,7 +16,7 @@ extension Owners {
             let result = Owners.databaseContainsMainUser(context)
             
             if result.isContained == true {
-                println("Deleting existing user \"\((result.user as Owners).firstName)\"")
+                println("Deleting existing user \"\((result.user!).firstName)\"")
                 context.deleteObject(result.user!)
             }
         }
@@ -61,7 +61,7 @@ extension Owners {
         return found
     }
     
-    class func databaseContainsMainUser(context: NSManagedObjectContext) -> (isContained: Bool, user: NSManagedObject?) {
+    class func databaseContainsMainUser(context: NSManagedObjectContext) -> (isContained: Bool, user: Owners?) {
         var result = false
         var user: NSManagedObject?
         
@@ -76,7 +76,7 @@ extension Owners {
             result = true
         }
         
-        return (result, user)
+        return (result, user as? Owners)
     }
     
     class func getUsersInDatabase(inManagedObjectContext context: NSManagedObjectContext) -> [Owners]? {
