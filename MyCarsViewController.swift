@@ -107,8 +107,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     // Highlight the cell
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
         //var selected = cars![indexPath.item]
-        collectionView.registerNib(UINib(nibName: "CarsCVCell", bundle: nil), forCellWithReuseIdentifier: identifier)
-        
+        //collectionView.registerNib(UINib(nibName: "CarsCVCell", bundle: nil), forCellWithReuseIdentifier: identifier)
         var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
         
         cell.layer.borderColor = UIColor.redColor().CGColor
@@ -164,7 +163,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.layer.borderWidth = 2.5
         cell.layer.borderColor = UIColor.whiteColor().CGColor
         cell.layer.cornerRadius = 5.0
-        cell.layer.shadowColor = UIColor.blueColor().CGColor;
+        cell.layer.shadowColor = UIColor.blueColor().CGColor
         cell.layer.shadowRadius = 3.0
         cell.layer.shadowOffset = CGSizeMake(0.0, 5.0)
         cell.layer.shadowOpacity = 0.3
@@ -181,6 +180,10 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("ShowCarDetail", sender: indexPath)
+        
+        var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.layer.borderWidth = 2.5
     }
     
     //Segue
