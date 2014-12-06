@@ -24,8 +24,8 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     var car: MyCars? = nil
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     let tableHeaderHeight: CGFloat = 150
+    var userImageHeight: CGFloat = 100
     var scrollViewOriginalHeight: CGFloat = 0.0
-    var userImageOriginalCenter = CGPointZero
     var headerView: UIView!
     
     func updateHeaderView() {
@@ -41,10 +41,8 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func updateScrollView() {
-        if scrollView.contentOffset.y > 0 {
-            userImage.center = CGPointMake(userImageOriginalCenter.x, userImageOriginalCenter.y - scrollView.contentOffset.y)
-        } else {
-            userImage.center = userImageOriginalCenter
+        if scrollView.contentOffset.y < 0 && 1 + (scrollView.contentOffset.y / 100) > 0.4  {
+            userImage.transform = CGAffineTransformMakeScale(1 + (scrollView.contentOffset.y / 100), 1 + (scrollView.contentOffset.y / 100))
         }
     }
     
@@ -58,7 +56,7 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
         automaticallyAdjustsScrollViewInsets = false
         scrollView.delegate = self
         scrollViewOriginalHeight = scrollView.bounds.height
-        userImageOriginalCenter = userImage.center
+        userImageHeight = userImage.bounds.height
     }
     
     override func viewDidLayoutSubviews() {
@@ -104,7 +102,7 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
         priceStepper.maximumValue = 500000
         priceStepper.stepValue = 50
     }
-
+    
     @IBAction func stepperClicked(sender: AnyObject) {
         if sender as UIStepper == mileageStepper {
             mileageLabel.text = "\((sender as UIStepper).value) miles"
