@@ -276,11 +276,23 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
             newCar.transmissionOil = transmissionOilTextField.text.toInt()!
         }
         
-        if users != nil {
+        if users != nil && !(users!.isEmpty) {
             newCar.owners = users![0]
+        } else if car == nil {
+            newCar.owners = Owners.databaseContainsMainUser(managedObjectContext!).user!
+            
+            let userAlert = UIAlertController(title: "Owner not set", message: "Since you did not select a user, ownership of the car will be set to \(newCar.owners.firstName).", preferredStyle: UIAlertControllerStyle.Alert)
+            userAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                self.dismissController()
+            }))
+            presentViewController(userAlert, animated: true, completion: nil)
         }
         
         managedObjectContext?.save(nil)
+    }
+    
+    func dismissController() {
+        navigationController!.popViewControllerAnimated(true)
     }
     
     func numberFromString(inputString: String) -> NSNumber? {

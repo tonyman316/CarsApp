@@ -192,6 +192,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
             let car = fetchedResultController.objectAtIndexPath(sender as NSIndexPath!) as MyCars
             
             let carDetailView = segue.destinationViewController as CarDetailsViewController
+            
             carDetailView.title = "\(car.owners.firstName)'s \(car.make) \(car.model)"
             carDetailView.car = car
         } else if segue.identifier == "embedSegue" {
