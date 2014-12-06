@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CarDetailsViewController: UIViewController {
+class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
@@ -23,10 +23,50 @@ class CarDetailsViewController: UIViewController {
     
     var car: MyCars? = nil
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    let tableHeaderHeight: CGFloat = 150
+    var scrollViewOriginalHeight: CGFloat = 0.0
+    var userImageOriginalCenter = CGPointZero
+    var headerView: UIView!
+    
+    func updateHeaderView() {
+        let originPoint = CGPointMake(coverImage.frame.origin.x, coverImage.frame.origin.y)
+        
+        var headerRect = CGRect(x: originPoint.x, y: originPoint.y, width: view.bounds.width, height: tableHeaderHeight - scrollView.contentOffset.y * 2)
+        
+        if headerRect.height > tableHeaderHeight && scrollView.contentOffset.y < tableHeaderHeight {
+            coverImage.frame = headerRect
+        } else {
+            coverImage.frame = CGRect(origin: originPoint, size: CGSizeMake(view.bounds.width, tableHeaderHeight))
+        }
+    }
+    
+    func updateScrollView() {
+        if scrollView.contentOffset.y > 0 {
+            userImage.center = CGPointMake(userImageOriginalCenter.x, userImageOriginalCenter.y - scrollView.contentOffset.y)
+        } else {
+            userImage.center = userImageOriginalCenter
+        }
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        updateHeaderView()
+        updateScrollView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
+        scrollView.delegate = self
+        scrollViewOriginalHeight = scrollView.bounds.height
+        userImageOriginalCenter = userImage.center
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.contentSize = CGSizeMake(view.frame.width, scrollView.frame.height * 1.1)
+        var backgroundView = UIView(frame: CGRect(origin: CGPointMake(0, coverLabel.frame.height), size: scrollView.contentSize))
+        backgroundView.backgroundColor = UIColor.whiteColor()
+        scrollView.insertSubview(backgroundView, belowSubview: scrollView.subviews.first as UIView)
     }
     
     func refreshView() {
