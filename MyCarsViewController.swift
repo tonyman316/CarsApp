@@ -92,7 +92,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         let error = NSErrorPointer()
         managedObjectContext?.deleteObject(car)
         managedObjectContext?.save(error)
-        carsCollectionView.reloadItemsAtIndexPaths(carsCollectionView.indexPathsForVisibleItems())
+        //carsCollectionView.reloadItemsAtIndexPaths(carsCollectionView.indexPathsForVisibleItems())
     }
     
     // Cancel delete
