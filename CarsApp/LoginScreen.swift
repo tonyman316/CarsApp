@@ -52,6 +52,11 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         registerForKeyboardNotifications()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        animateEntranceWithRotation()
+    }
+    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -99,6 +104,35 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         }
         
         return true
+    }
+    
+    func animateEntranceWithPop() {
+        userImageView.transform = CGAffineTransformMakeScale(0, 0)
+        usernameField.transform = CGAffineTransformMakeScale(0, 0)
+        passwordField.transform = CGAffineTransformMakeScale(0, 0)
+        
+        UIView.animateWithDuration(1, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
+            self.userImageView.transform = CGAffineTransformMakeScale(1, 1)
+        }, completion: nil)
+        
+        UIView.animateWithDuration(1, delay: 0.4, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
+            self.userImageView.transform = CGAffineTransformMakeScale(1, 1)
+            self.usernameField.transform = CGAffineTransformMakeScale(1, 1)
+            self.passwordField.transform = CGAffineTransformMakeScale(1, 1)
+            }, completion: nil)
+    }
+    
+    func animateEntranceWithRotation() {
+        let fullRotation = CGFloat(M_PI * 2)
+        let originalCenter = userImageView.center
+        
+        userImageView.center = CGPointMake(userImageView.center.x + userImageView.frame.size.width + 20, userImageView.center.y)
+        userImageView.transform = CGAffineTransformMakeRotation(fullRotation / 5 * 2)
+        
+                UIView.animateWithDuration(1.5, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
+                    self.userImageView.transform = CGAffineTransformMakeRotation(fullRotation)
+                    self.userImageView.center = originalCenter
+                }, completion: nil)
     }
     
     override func viewDidLoad() {
