@@ -13,14 +13,15 @@ import CoreData
 class SettingTableViewController: UITableViewController, UISearchBarDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
 
-    var sectionNames = ["Units","Oil Change Frequency", "Transmission Oil Change Frequency"]
+    var sectionNames = ["Units (Miles/Km)","Oil Change Frequency", "Transmission Fluid Change Frequency"]
+    // oil: 5k/8k
+    // fluid: 30k/60k
     let identifier = "settingCell"
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.registerNib(UINib(nibName:"SettingTableViewCell", bundle: nil), forCellReuseIdentifier: identifier)
-        tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "headerCell")
 
     }
 
@@ -43,16 +44,6 @@ class SettingTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0
     }
-    
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch(section){
-//        case 0: title = "Units (Mile/Km)"
-//        case 1: title = "Oil Change Freqency"
-//        case 2: title = "Transmission Oil Change Frequency"
-//        default: title = ""
-//        }
-//        return title
-//    }
     
     func newLabelWithTitle(title: String) -> UILabel{
         let label = UILabel()
@@ -83,34 +74,17 @@ class SettingTableViewController: UITableViewController, UISearchBarDelegate {
         return headerView
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("headerCell") as UITableViewHeaderFooterView
-        if h.tintColor != UIColor.redColor() {
-            println("configuring a new header view") // only called about 7 times
-            h.backgroundView = UIView()
-            h.backgroundView!.backgroundColor = UIColor.grayColor()
-        }
-        
-        return newViewForHeaderOrFooterWithText("Section \(section) Header")
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String{
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
         var name = ""
         
-//        switch(section){
-//        case 0: sectionNames = "Units"
-//        case 1: return sectionNames[1]
-//        case 2: return sectionNames[2]
-//        default: return ""
-//        }
-        
-        for i in 0..< sectionNames.count {
-            name = sectionNames[i]
+        switch(section){
+            case 0: name = sectionNames[section]
+            case 1: name = sectionNames[section]
+            case 2: name = sectionNames[section]
+            default: name = ""
         }
-
         
-        return name
+            return "\(name)"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
