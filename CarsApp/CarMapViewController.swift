@@ -20,15 +20,22 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         return CLLocation(latitude: 37.332185, longitude: -122.030757)
     }
+    
     var annotations = [AnyObject]()
     var routeOverlays = [MKPolyline]()
     var currentRoute: MKRoute?
     let reuseID = "CarAnnotationView"
     var activityIndicator = UIActivityIndicatorView()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    var fetchedResultControllerForGas: NSFetchedResultsController = NSFetchedResultsController()
+    var fetchedResultControllerForMechanics: NSFetchedResultsController = NSFetchedResultsController()
     var formatter = NSNumberFormatter()
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var centerLocationButton: UIButton!
+    @IBOutlet weak var redoSearchButton: UIButton!
+    let interfaceTransparecnty: CGFloat = 0.8
+    var previousMapRect: MKMapRect?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,15 +49,28 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             }
         }
         
+        distanceLabel.alpha = 0.0
+        distanceLabel.backgroundColor = distanceLabel.backgroundColor?.colorWithAlphaComponent(interfaceTransparecnty)
+        centerLocationButton.backgroundColor = centerLocationButton.backgroundColor?.colorWithAlphaComponent(interfaceTransparecnty)
+        redoSearchButton.backgroundColor = redoSearchButton.backgroundColor?.colorWithAlphaComponent(interfaceTransparecnty)
+        
+        segmentedControl.addTarget(self, action: "redoSearchButtonPressed:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        centerLocationButton.backgroundColor = centerLocationButton.backgroundColor?.colorWithAlphaComponent(interfaceTransparecnty)
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
         formatter.numberStyle = .DecimalStyle
         formatter.maximumSignificantDigits = 2
         
-        fetchedResultController = getFetchedResultController()
-        fetchedResultController.delegate = self
-        fetchedResultController.performFetch(nil)
+        fetchedResultControllerForGas = getFetchedResultControllerForGas()
+        fetchedResultControllerForGas.delegate = self
+        fetchedResultControllerForGas.performFetch(nil)
+        
+        fetchedResultControllerForMechanics = getFetchedResultControllerForMechanics()
+        fetchedResultControllerForMechanics.delegate = self
+        fetchedResultControllerForMechanics.performFetch(nil)
         
         if (annotations.isEmpty == false) {
             mapView.addAnnotations(annotations)
@@ -74,7 +94,16 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func dropPinsOnMap() {
+        var fetchedResultController = fetchedResultControllerForGas
+        
+        if segmentedControl.selectedSegmentIndex != 0 {
+            fetchedResultController = fetchedResultControllerForMechanics
+        }
+        
         if let results = fetchedResultController.fetchedObjects {
+            mapView.removeAnnotations(mapView.annotations)
+            annotations.removeAll(keepCapacity: true)
+            
             for location in results {
                 if let loc = location as? GasStations  {
                     //println("It is a gas station")
@@ -82,19 +111,7 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                     annotation.title = location.name
                     annotation.subtitle = String(formatter.stringFromNumber(loc.distance)! + " km")
                     annotation.coordinate = loc.location.coordinate
-                    
-                    var toBeAdded = true
-                    
-                    for annot in annotations {
-                        if annot as MKPointAnnotation == annotation {
-                            toBeAdded = false
-                            break
-                        }
-                    }
-                    
-                    if toBeAdded == true {
-                        annotations.append(annotation)
-                    }
+                    annotations.append(annotation)
                     
                 } else if let loc = location as? ServiceStations {
                     //println("It is a service station")
@@ -102,18 +119,7 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                     annotation.title = location.name
                     annotation.subtitle = String(formatter.stringFromNumber(loc.distance)! + " km")
                     annotation.coordinate = loc.location.coordinate
-                    
-                    var toBeAdded = true
-                    for annot in annotations {
-                        if annot as MKPointAnnotation == annotation {
-                            toBeAdded = false
-                            break
-                        }
-                    }
-                    
-                    if toBeAdded == true {
-                        annotations.append(annotation)
-                    }
+                    annotations.append(annotation)
                 }
             }
             
@@ -123,23 +129,24 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     // Core data
     
-    func getFetchedResultController() -> NSFetchedResultsController {
-        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultController
+    func getFetchedResultControllerForGas() -> NSFetchedResultsController {
+        var fetchRequest: NSFetchRequest
+        fetchRequest = NSFetchRequest(entityName: "GasStations")
+        let sortDescriptor = NSSortDescriptor(key: "distance", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultControllerForGas = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultControllerForGas
     }
     
-    func taskFetchRequest() -> NSFetchRequest {
-        if segmentedControl.selectedSegmentIndex == 0 {
-            let fetchRequest = NSFetchRequest(entityName: "GasStations")
-            let sortDescriptor = NSSortDescriptor(key: "distance", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
-            return fetchRequest
-        } else {
-            let fetchRequest = NSFetchRequest(entityName: "ServiceStations")
-            let sortDescriptor = NSSortDescriptor(key: "distance", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
-            return fetchRequest
-        }
+    func getFetchedResultControllerForMechanics() -> NSFetchedResultsController {
+        var fetchRequest: NSFetchRequest
+        fetchRequest = NSFetchRequest(entityName: "ServiceStations")
+        let sortDescriptor = NSSortDescriptor(key: "distance", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultControllerForMechanics = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultControllerForMechanics
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
@@ -186,8 +193,7 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             ServiceStations.populateDatabaseWithServiceStations(CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude), context: (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!)
         }
         
-        //fetchedResultController = getFetchedResultController()
-        //fetchedResultController.performFetch(nil)
+        dropPinsOnMap()
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
@@ -264,19 +270,30 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             }
         }
         
+        previousMapRect = mapView.visibleMapRect
         var mapRect = longest!.polyline.boundingMapRect
         var expandedRect = MKMapRectInset(mapRect, -1500, -1500)
-        self.mapView.setVisibleMapRect(expandedRect, animated: true)
+        mapView.setVisibleMapRect(expandedRect, animated: true)
+        distanceLabel.text = String(format: "%.1f minutes away", longest!.expectedTravelTime / 60)
         
-        UIView.animateKeyframesWithDuration(1, delay: 0, options: nil, animations: { () -> Void in
-            self.title = String(format: "%.1f minutes away", longest!.expectedTravelTime / 60)
-            }, completion: nil)
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.distanceLabel.alpha = 1.0
+        })
     }
     
     func cancelButtonPressed() {
         resetRouteOnMap()
         navigationItem.leftBarButtonItem = nil
-        centerOnUserLocationButtonPressed(self)
+        
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.distanceLabel.alpha = 0.0
+        })
+        
+        if previousMapRect != nil {
+            mapView.setVisibleMapRect(previousMapRect!, animated: true)
+        } else {
+            centerOnUserLocationButtonPressed(self)
+        }
     }
     
     func resetRouteOnMap() {

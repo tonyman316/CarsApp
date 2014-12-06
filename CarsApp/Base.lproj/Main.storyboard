@@ -251,7 +251,7 @@
                                     <constraint firstAttribute="height" constant="150" id="KOE-Qb-VNL"/>
                                 </constraints>
                             </imageView>
-                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8g0-Cg-Qsj">
+                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8g0-Cg-Qsj">
                                 <rect key="frame" x="0.0" y="214" width="600" height="342"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mileage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8om-iH-jVD">
@@ -583,8 +583,41 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XhJ-ru-IsG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2z-sg-4wO">
+                                <rect key="frame" x="16" y="513" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="IzV-gx-uxF"/>
+                                    <constraint firstAttribute="height" constant="30" id="tCc-ci-6T4"/>
+                                </constraints>
+                                <state key="normal" title="Center" image="centerMap">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="centerOnUserLocationButtonPressed:" destination="p89-K7-bW1" eventType="touchUpInside" id="eH6-6U-sUh"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zst-bk-zXX">
+                                <rect key="frame" x="210" y="477" width="181" height="29"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="Gas stations"/>
+                                    <segment title="Mechanics"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 minutes away" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOq-5v-e8Z">
+                                <rect key="frame" x="16" y="72" width="568" height="21"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="VQT-xr-Flp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-tn-bBG">
-                                <rect key="frame" x="217" y="513" width="166" height="30"/>
+                                <rect key="frame" x="210" y="513" width="181" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Redo search in this area">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -592,40 +625,31 @@
                                     <action selector="redoSearchButtonPressed:" destination="p89-K7-bW1" eventType="touchUpInside" id="3hK-JH-gLK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2z-sg-4wO">
-                                <rect key="frame" x="16" y="513" width="46" height="30"/>
-                                <state key="normal" title="Center">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="centerOnUserLocationButtonPressed:" destination="p89-K7-bW1" eventType="touchUpInside" id="eH6-6U-sUh"/>
-                                </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zst-bk-zXX">
-                                <rect key="frame" x="217" y="477" width="181" height="29"/>
-                                <segments>
-                                    <segment title="Gas stations"/>
-                                    <segment title="Mechanics"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zst-bk-zXX" firstAttribute="leading" secondItem="EAV-tn-bBG" secondAttribute="leading" id="6aT-iq-odD"/>
-                            <constraint firstItem="9Bj-L6-98L" firstAttribute="top" secondItem="EAV-tn-bBG" secondAttribute="bottom" constant="8" symbolic="YES" id="7Nd-fz-cbR"/>
-                            <constraint firstItem="C2z-sg-4wO" firstAttribute="baseline" secondItem="EAV-tn-bBG" secondAttribute="baseline" id="AY7-lj-VEI"/>
-                            <constraint firstItem="C2z-sg-4wO" firstAttribute="leading" secondItem="JpZ-Zb-Ubi" secondAttribute="leadingMargin" id="GZG-HU-0Wy"/>
-                            <constraint firstItem="EAV-tn-bBG" firstAttribute="centerX" secondItem="XhJ-ru-IsG" secondAttribute="centerX" id="Ztv-MK-4qX"/>
-                            <constraint firstItem="EAV-tn-bBG" firstAttribute="top" secondItem="zst-bk-zXX" secondAttribute="bottom" constant="8" symbolic="YES" id="c2V-bu-I9z"/>
-                            <constraint firstItem="XhJ-ru-IsG" firstAttribute="leading" secondItem="JpZ-Zb-Ubi" secondAttribute="leading" id="gA5-FR-VfD"/>
-                            <constraint firstAttribute="bottom" secondItem="XhJ-ru-IsG" secondAttribute="bottom" id="k41-dd-VJR"/>
-                            <constraint firstItem="XhJ-ru-IsG" firstAttribute="top" secondItem="JpZ-Zb-Ubi" secondAttribute="top" id="tyV-AZ-T0c"/>
-                            <constraint firstAttribute="trailing" secondItem="XhJ-ru-IsG" secondAttribute="trailing" id="zkz-Bb-MEZ"/>
+                            <constraint firstItem="XhJ-ru-IsG" firstAttribute="leading" secondItem="JpZ-Zb-Ubi" secondAttribute="leading" id="304-Q4-0ES"/>
+                            <constraint firstItem="zst-bk-zXX" firstAttribute="centerX" secondItem="XhJ-ru-IsG" secondAttribute="centerX" id="9kx-if-1Io"/>
+                            <constraint firstAttribute="bottom" secondItem="XhJ-ru-IsG" secondAttribute="bottom" id="CwW-oq-C0j"/>
+                            <constraint firstItem="GOq-5v-e8Z" firstAttribute="centerX" secondItem="zst-bk-zXX" secondAttribute="centerX" id="Ith-Iq-gLZ"/>
+                            <constraint firstItem="EAV-tn-bBG" firstAttribute="top" secondItem="zst-bk-zXX" secondAttribute="bottom" constant="8" symbolic="YES" id="KTh-Th-IqX"/>
+                            <constraint firstItem="9Bj-L6-98L" firstAttribute="top" secondItem="C2z-sg-4wO" secondAttribute="bottom" constant="8" symbolic="YES" id="ODv-ow-dsD"/>
+                            <constraint firstItem="zst-bk-zXX" firstAttribute="leading" secondItem="EAV-tn-bBG" secondAttribute="leading" id="Wh9-fx-m0n"/>
+                            <constraint firstItem="GOq-5v-e8Z" firstAttribute="top" secondItem="L9t-pz-3ZG" secondAttribute="bottom" constant="8" symbolic="YES" id="f6r-HL-7oB"/>
+                            <constraint firstItem="C2z-sg-4wO" firstAttribute="top" secondItem="EAV-tn-bBG" secondAttribute="top" id="hJU-Ox-ZzJ"/>
+                            <constraint firstItem="GOq-5v-e8Z" firstAttribute="leading" secondItem="C2z-sg-4wO" secondAttribute="leading" id="hhS-s2-y0o"/>
+                            <constraint firstAttribute="trailing" secondItem="XhJ-ru-IsG" secondAttribute="trailing" id="jB9-YU-XNg"/>
+                            <constraint firstItem="GOq-5v-e8Z" firstAttribute="leading" secondItem="JpZ-Zb-Ubi" secondAttribute="leadingMargin" id="lwu-nl-nd8"/>
+                            <constraint firstItem="XhJ-ru-IsG" firstAttribute="top" secondItem="JpZ-Zb-Ubi" secondAttribute="top" id="oEw-JW-Fia"/>
+                            <constraint firstItem="zst-bk-zXX" firstAttribute="trailing" secondItem="EAV-tn-bBG" secondAttribute="trailing" id="vUW-bb-VX0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find gas and service stations" id="rrF-Zl-xe3"/>
                     <connections>
+                        <outlet property="centerLocationButton" destination="C2z-sg-4wO" id="95o-h2-2D7"/>
+                        <outlet property="distanceLabel" destination="GOq-5v-e8Z" id="mAL-G2-FQJ"/>
                         <outlet property="mapView" destination="XhJ-ru-IsG" id="QVv-cW-ZPx"/>
+                        <outlet property="redoSearchButton" destination="EAV-tn-bBG" id="EyU-WB-oza"/>
                         <outlet property="segmentedControl" destination="zst-bk-zXX" id="Fcc-42-TJg"/>
                     </connections>
                 </viewController>
@@ -1184,6 +1208,7 @@
     </scenes>
     <resources>
         <image name="car-oil" width="256" height="256"/>
+        <image name="centerMap" width="128" height="128"/>
         <image name="defaultUserImage" width="512" height="512"/>
         <image name="mileage" width="252" height="252"/>
         <image name="price" width="512" height="512"/>

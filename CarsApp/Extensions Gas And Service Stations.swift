@@ -71,7 +71,7 @@ extension ServiceStations {
     class func populateDatabaseWithServiceStations(userLocation: CLLocation, context: NSManagedObjectContext) {
         //println("Populate database called")
         let request = MKLocalSearchRequest()
-        request.naturalLanguageQuery = "mechanic"
+        request.naturalLanguageQuery = "mechanics"
         let span = MKCoordinateSpanMake(0.1, 0.1)
         request.region = MKCoordinateRegionMake(userLocation.coordinate, span)
         let search = MKLocalSearch(request: request)
