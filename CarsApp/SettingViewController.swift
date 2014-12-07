@@ -32,7 +32,7 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
 //        fetchedResultController.delegate = self
 //        fetchedResultController.performFetch(nil)
 
-        if settingItem.isEmpty == true {
+        if settingToSave == nil {
             createDefaultSetting()
         }else{
             fetchSetting()
