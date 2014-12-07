@@ -17,9 +17,9 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     @IBOutlet var oilChangeSegmentControl: UISegmentedControl!
     @IBOutlet var transmissionSegmentControl: UISegmentedControl!
     
-    var userUnit = ""
-    var userOilChange = 0
-    var userTransmission = 0
+//    var userUnit = ""
+//    var userOilChange = 0
+//    var userTransmission = 0
     
     var setting: Setting? = nil
     var settingFromDatabase = Setting.databaseContainsSettings((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).settings
@@ -64,9 +64,9 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         super.viewWillDisappear(animated)
         
         // Save settings
-        
-        setting?.unit = userUnit
-        println("viewWillApper:\(userUnit)")
+        //settingFromDatabase?.unit = setting?.unit
+        //setting?.unit = userUnit
+        println("viewWillApper:\(settingFromDatabase?.unit)")
         //println("setting.unit at view will disapper \(setting?.unit)")
         
         managedObjectContext?.save(nil)
@@ -76,21 +76,19 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     @IBAction func unitSegment(sender: AnyObject) {
                 
         switch (unitSegmentControl.selectedSegmentIndex) {
-        case 0: //setting?.unit = "miles"
+        case 0: setting?.unit = "miles"
                 oilChangeSegmentControl.setTitle("5000 miles", forSegmentAtIndex: 0)
                 oilChangeSegmentControl.setTitle("8000 miles", forSegmentAtIndex: 1)
                 transmissionSegmentControl.setTitle("30000 miles", forSegmentAtIndex: 0)
                 transmissionSegmentControl.setTitle("60000 miles", forSegmentAtIndex: 1)
-                userUnit = "miles"
-                println("UnitSegment 0, userUnit: \(userUnit)")
+                println("UnitSegment 0, userUnit: \(setting?.unit)")
     
-        case 1: //setting?.unit = "km"
+        case 1: setting?.unit = "km"
                 oilChangeSegmentControl.setTitle("\(UnitConverter.milesToKilometers(5000)) km", forSegmentAtIndex: 0)
                 oilChangeSegmentControl.setTitle("\(UnitConverter.milesToKilometers(8000)) km", forSegmentAtIndex: 1)
                 transmissionSegmentControl.setTitle("\(UnitConverter.milesToKilometers(30000)) km", forSegmentAtIndex: 0)
                 transmissionSegmentControl.setTitle("\(UnitConverter.milesToKilometers(60000)) km", forSegmentAtIndex: 1)
-                userUnit = "km"
-                println("UnitSegment 1, userUnit: \(userUnit)")
+                println("UnitSegment 1, userUnit: \(setting?.unit)")
 
         default:
             break;
@@ -100,8 +98,8 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     @IBAction func oilChangeSegment(sender: AnyObject) {
         
         switch (unitSegmentControl.selectedSegmentIndex) {
-        case 0: setting?.oilChangeFrequency = 5000
-        case 1: setting?.oilChangeFrequency = 8000
+//        case 0: setting?.oilChangeFrequency = 5000
+//        case 1: setting?.oilChangeFrequency = 8000
             
         default:
             break;
@@ -111,8 +109,8 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     @IBAction func transmissionSegment(sender: AnyObject) {
         
         switch (unitSegmentControl.selectedSegmentIndex) {
-        case 0: setting?.transmissionFluidFrequency = 30000
-        case 1: setting?.transmissionFluidFrequency = 60000
+//        case 0: setting?.transmissionFluidFrequency = 30000
+//        case 1: setting?.transmissionFluidFrequency = 60000
 
         default:
             break;
@@ -151,7 +149,8 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         let entityDescripition = NSEntityDescription.entityForName("Setting", inManagedObjectContext: managedObjectContext!)
         userSetting = Setting(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
         
-//        userSetting.unit = setting?.unit
+        //userSetting.unit = setting?.unit
+        
 //        userSetting.oilChangeFrequency = setting?.oilChangeFrequency
 //        userSetting.transmissionFluidFrequency = setting?.transmissionFluidFrequency
         
