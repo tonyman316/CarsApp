@@ -7,18 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
-class UsersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class UsersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     let reuseIdentifier = "customCell"
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-    var users: [Owners]? {
-        didSet {
-            collectionView!.reloadData()
-        }
-    }
     var selectedUsers: [Owners]?
     var del: SelectUsersDelegate?
     let colorForBorder = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
     func animateCollectionViewAppearance() {
         UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
@@ -30,7 +27,16 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         super.viewDidLoad()
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
+        
+        fetchedResultController = getFetchedResultController()
+        fetchedResultController.delegate = self
+        fetchedResultController.performFetch(nil)
+        
         animateCollectionViewAppearance()
+    }
+    
+    func usersDidChangeNotificationReceived() {
+        collectionView?.reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,22 +49,18 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let array = users {
-            return array.count
-        }
-        
-        return 0
+        return fetchedResultController.fetchedObjects!.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UserCollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UserCollectionViewCell
-        cell.userImageView.image = UIImage(data: users![indexPath.row].picture)
-        cell.nameLabel.text = users![indexPath.row].firstName
+        let user = fetchedResultController.fetchedObjects![indexPath.row] as Owners
         
-        let selected = users![indexPath.row]
+        cell.userImageView.image = UIImage(data: user.picture)
+        cell.nameLabel.text = user.firstName
         
         if selectedUsers != nil {
-            if contains(selectedUsers!, selected) == true {
+            if contains(selectedUsers!, user) == true {
                 cell.userImageView.layer.borderColor = UIColor.blueColor().CGColor
             } else {
                 cell.userImageView.layer.borderColor = colorForBorder
@@ -75,7 +77,7 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if parentViewController is AddCarsViewController {
-            let selected = users![indexPath.row]
+            let selected = fetchedResultController.fetchedObjects![indexPath.row] as Owners
             
             var cell = collectionView.cellForItemAtIndexPath(indexPath) as UserCollectionViewCell
             
@@ -93,5 +95,21 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
             
             del?.didSelectUsers(self, selectedUsers: selectedUsers)
         }
+    }
+    
+    func getFetchedResultController() -> NSFetchedResultsController {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }
+    
+    func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "Owners")
+        let sortDescriptor = NSSortDescriptor(key: "isMainUser", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        collectionView!.reloadData()
     }
 }

@@ -11,7 +11,7 @@ import CoreData
 
 class Owners: NSManagedObject {
 
-    @NSManaged var age: NSNumber
+    @NSManaged var age: Int
     @NSManaged var firstName: String
     @NSManaged var isMainUser: NSNumber
     @NSManaged var lastName: String
