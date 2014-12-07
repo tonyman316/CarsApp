@@ -145,12 +145,9 @@
 		9C0654AC1A2EA13D009D79AE /* Main View */ = {
 			isa = PBXGroup;
 			children = (
-				D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */,
-				9C4B87F21A3140CD00292FCD /* CustomHeader.swift */,
-				D474EDD41A2AD482006BC562 /* CarsCVCell.swift */,
-				D474EDD51A2AD482006BC562 /* CarsCVCell.xib */,
-				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
-				D49304521A270B2C006B7921 /* UIImageExtension.swift */,
+				9C8AE6DB1A34DECE000D672E /* My Cars View Controller */,
+				9C8BB9241A3292AD008DACDB /* Car Details View Controller */,
+				9C8AE6DA1A34DEB6000D672E /* Add Cars View Controller */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -165,12 +162,31 @@
 			name = "Users Collection View Controller";
 			sourceTree = "<group>";
 		};
-		9C8BB9241A3292AD008DACDB /* Car Details View */ = {
+		9C8AE6DA1A34DEB6000D672E /* Add Cars View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
+			);
+			name = "Add Cars View Controller";
+			sourceTree = "<group>";
+		};
+		9C8AE6DB1A34DECE000D672E /* My Cars View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */,
+				9C4B87F21A3140CD00292FCD /* CustomHeader.swift */,
+				D474EDD41A2AD482006BC562 /* CarsCVCell.swift */,
+				D474EDD51A2AD482006BC562 /* CarsCVCell.xib */,
+			);
+			name = "My Cars View Controller";
+			sourceTree = "<group>";
+		};
+		9C8BB9241A3292AD008DACDB /* Car Details View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				9C8BB9221A3292A0008DACDB /* CarDetailsViewController.swift */,
 			);
-			name = "Car Details View";
+			name = "Car Details View Controller";
 			sourceTree = "<group>";
 		};
 		9C8F2D921A2A8920000C05AF /* Login Screen */ = {
@@ -186,6 +202,7 @@
 			children = (
 				9CB9CCE91A32D319007AF583 /* UIImageViewExtension.swift */,
 				9CAFEC1B1A34C2E700167043 /* UnitConverter.swift */,
+				D49304521A270B2C006B7921 /* UIImageExtension.swift */,
 			);
 			name = "Supporting Classes";
 			sourceTree = "<group>";
@@ -285,7 +302,6 @@
 			children = (
 				9C0654AD1A2EA144009D79AE /* Users Collection View Controller */,
 				9C0654AC1A2EA13D009D79AE /* Main View */,
-				9C8BB9241A3292AD008DACDB /* Car Details View */,
 			);
 			name = "My Cars Tab";
 			sourceTree = "<group>";
