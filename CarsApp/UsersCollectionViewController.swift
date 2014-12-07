@@ -11,15 +11,14 @@ import UIKit
 class UsersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let reuseIdentifier = "customCell"
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-    var users: [Owners]?
+    var users: [Owners]? {
+        didSet {
+            collectionView!.reloadData()
+        }
+    }
     var selectedUsers: [Owners]?
     var del: SelectUsersDelegate?
     let colorForBorder = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
-        
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        var value = collectionView.frame.height - collectionView.layoutMargins.top * 3
-//        return CGSizeMake(20, 20)
-//    }
     
     func animateCollectionViewAppearance() {
         UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
@@ -32,12 +31,11 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
         animateCollectionViewAppearance()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView?.reloadData()
+        collectionView!.reloadData()
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

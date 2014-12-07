@@ -16,7 +16,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-    //var longPressTarget: (cell: CarsCVCell, indexPath: NSIndexPath)?
+    var usersInDatabase = Owners.getUsersInDatabase(inManagedObjectContext: (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!)!
     
     @IBOutlet var carsCollectionView: UICollectionView!
     
@@ -52,8 +52,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         carsCollectionView!.alwaysBounceVertical = true
         
         animateCollectionViewAppearance()
-        
-        //navigationController?.hidesBarsOnSwipe = true
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressHandler:");
         carsCollectionView.addGestureRecognizer(longPressGestureRecognizer)
@@ -202,7 +200,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
             carDetailView.car = car
         } else if segue.identifier == "embedSegue" {
             var userCollectionView = segue.destinationViewController as UsersCollectionViewController
-            let usersInDatabase = Owners.getUsersInDatabase(inManagedObjectContext: managedObjectContext!)!
             userCollectionView.users = usersInDatabase
         }
     }
