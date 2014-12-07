@@ -13,6 +13,7 @@ import CoreData
 class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
+    
     var userLocation: CLLocation {
         if let currentLoc = locationManager.location {
             return currentLoc
@@ -27,8 +28,7 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     let reuseID = "CarAnnotationView"
     var activityIndicator = UIActivityIndicatorView()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-    var fetchedResultControllerForGas: NSFetchedResultsController = NSFetchedResultsController()
-    var fetchedResultControllerForMechanics: NSFetchedResultsController = NSFetchedResultsController()
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     var formatter = NSNumberFormatter()
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -47,8 +47,8 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         return forecastURL!
     }
     
-    func getCurrentGasData() -> Void {
-        var addressURL = getURL(userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude, distance: 5)
+    func getCurrentGasData(location: CLLocation) -> Void {
+        var addressURL = getURL(location.coordinate.latitude, longitude: location.coordinate.longitude, distance: 3)
         
         let sharedSession = NSURLSession.sharedSession()
         let downloadTask: NSURLSessionDownloadTask = sharedSession.downloadTaskWithURL(addressURL, completionHandler: { (location: NSURL!, response: NSURLResponse!, error: NSError!) -> Void in
@@ -59,17 +59,18 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 
                 let stationsArray = gasDictionary["stations"] as NSArray
                 
+                self.gasStationsAnnotation.removeAll(keepCapacity: true)
+                
                 for locationDictionary in stationsArray {
                     let newGasStationWithPrice = GasStationWithPrice(responseDictionary: locationDictionary as NSDictionary)
                     self.gasStationsAnnotation.append(newGasStationWithPrice)
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.mapView.addAnnotation(newGasStationWithPrice)
-                    })
                 }
                 
-            } else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.mapView.showAnnotations(self.gasStationsAnnotation, animated: true)
+                })
                 
+            } else {
                 let networkIssueController = UIAlertController(title: "Error", message: "Unable to load data. Connectivity error!", preferredStyle: .Alert)
                 
                 let okButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -79,13 +80,7 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 networkIssueController.addAction(cancelButton)
                 
                 self.presentViewController(networkIssueController, animated: true, completion: nil)
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    //Stop refresh animation
-                })
-                
             }
-            
         })
         
         downloadTask.resume()
@@ -118,13 +113,9 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         formatter.numberStyle = .DecimalStyle
         formatter.maximumSignificantDigits = 2
         
-        fetchedResultControllerForGas = getFetchedResultControllerForGas()
-        fetchedResultControllerForGas.delegate = self
-        fetchedResultControllerForGas.performFetch(nil)
-        
-        fetchedResultControllerForMechanics = getFetchedResultControllerForMechanics()
-        fetchedResultControllerForMechanics.delegate = self
-        fetchedResultControllerForMechanics.performFetch(nil)
+        fetchedResultController = getfetchedResultController()
+        fetchedResultController.delegate = self
+        //fetchedResultController.performFetch(nil)
         
         if (annotations.isEmpty == false) {
             mapView.addAnnotations(annotations)
@@ -140,8 +131,6 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             centerOnUserLocationButtonPressed(self)
             redoSearchButtonPressed(self)
         }
-        
-        getCurrentGasData()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -150,63 +139,38 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     }
     
     func dropPinsOnMap() {
-        var fetchedResultController = fetchedResultControllerForGas
-        
-        if segmentedControl.selectedSegmentIndex != 0 {
-            fetchedResultController = fetchedResultControllerForMechanics
-        }
-        
-        if let results = fetchedResultController.fetchedObjects {
-            mapView.removeAnnotations(mapView.annotations)
-            annotations.removeAll(keepCapacity: true)
-            
-            for location in results {
-                if let loc = location as? GasStations  {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            mapView.showAnnotations(gasStationsAnnotation, animated: true)
+        } else {
+            if let results = fetchedResultController.fetchedObjects {
+                mapView.removeAnnotations(mapView.annotations)
+                annotations.removeAll(keepCapacity: true)
+                
+                for location in results {
+                    let loc = location as ServiceStations
                     //println("It is a gas station")
                     var annotation = MKPointAnnotation()
                     annotation.title = location.name
                     annotation.subtitle = String(formatter.stringFromNumber(loc.distance)! + " km")
                     annotation.coordinate = loc.location.coordinate
                     annotations.append(annotation)
-                    
-                } else if let loc = location as? ServiceStations {
-                    //println("It is a service station")
-                    var annotation = MKPointAnnotation()
-                    annotation.title = location.name
-                    annotation.subtitle = String(formatter.stringFromNumber(loc.distance)! + " km")
-                    annotation.coordinate = loc.location.coordinate
-                    annotations.append(annotation)
                 }
+                
+                mapView.showAnnotations(annotations, animated: true)
             }
-            
-            mapView.showAnnotations(annotations, animated: true)
         }
     }
     
     // Core data
     
-    func getFetchedResultControllerForGas() -> NSFetchedResultsController {
-        var fetchRequest: NSFetchRequest
-        fetchRequest = NSFetchRequest(entityName: "GasStations")
-        let sortDescriptor = NSSortDescriptor(key: "distance", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        fetchedResultControllerForGas = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultControllerForGas
-    }
-    
-    func getFetchedResultControllerForMechanics() -> NSFetchedResultsController {
+    func getfetchedResultController() -> NSFetchedResultsController {
         var fetchRequest: NSFetchRequest
         fetchRequest = NSFetchRequest(entityName: "ServiceStations")
         let sortDescriptor = NSSortDescriptor(key: "distance", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        fetchedResultControllerForMechanics = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultControllerForMechanics
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController!) {
-        dropPinsOnMap()
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
     }
     
     // Actions
@@ -243,10 +207,15 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         var newCoordinatesForSearch:CLLocation = CLLocation(latitude: mapView.visibleMapRect.origin.x, longitude: mapView.visibleMapRect.origin.y)
         
+        if mapView.annotations != nil {
+            mapView.removeAnnotations(mapView.annotations)
+        }
+        
         if segmentedControl.selectedSegmentIndex == 0 {
-            GasStations.populateDatabaseWithGasStations(CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude), context: (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!)
+            getCurrentGasData(CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude))
         } else {
             ServiceStations.populateDatabaseWithServiceStations(CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude), context: (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!)
+            fetchedResultController.performFetch(nil)
         }
         
         dropPinsOnMap()

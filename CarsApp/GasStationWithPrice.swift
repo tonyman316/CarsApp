@@ -49,7 +49,25 @@ class GasStationWithPrice: NSObject, MKAnnotation {
         }
         
         title = name
-        subtitle = "$\(regularGasPrice) - $\(midGasPrice) - $\(premiumGasPrice)"
+        
+        var regular = "N/A"
+        var mid = "N/A"
+        var premium = "N/A"
+        
+        if regularGasPrice != 0 {
+            regular = "$\(regularGasPrice)"
+        }
+        
+        if midGasPrice != 0 {
+            mid = "$\(midGasPrice)"
+        }
+        
+        if premiumGasPrice != 0 {
+            premium = "$\(premiumGasPrice)"
+        }
+        
+        subtitle = "R: \(regular) - M: \(mid) - P: \(premium)"
+        
         coordinate = location.coordinate
     }
 }
