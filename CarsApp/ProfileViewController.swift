@@ -126,6 +126,3 @@ func PictureLayer(picture:UIImageView) {
     }
 
 }
-
-
-    
