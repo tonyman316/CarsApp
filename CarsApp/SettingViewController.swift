@@ -12,7 +12,7 @@ import CoreData
 
 class SettingViewController: UIViewController, NSFetchedResultsControllerDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    //var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
     @IBOutlet var unitsLabel: UILabel!
     @IBOutlet var oilChangeLabel: UILabel!
@@ -22,11 +22,39 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     @IBOutlet var oilChangeSwitchLabel: UISwitch!
     @IBOutlet var transmissionSwitchLabel: UISwitch!
     
-    var setting: Setting? = nil
+    var settingToSave: Setting? = nil
+    var settingFromDatabase: [Setting]?
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        fetchedResultController = getFetchedResultController()
+//        fetchedResultController.delegate = self
+//        fetchedResultController.performFetch(nil)
+
+        if settingItem.isEmpty == true {
+            createDefaultSetting()
+        }else{
+            fetchSetting()
+        }
+        
+        println("settingToSave: \(settingToSave?.unit)")
+        println("settingFromDatabase: \(settingFromDatabase)")
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createDefaultSetting()
+
+        
+//        if setting != nil {
+//            unitsLabel.text = setting?.unit
+//            if setting?.unit == "Miles" {
+//                unitsSwitchLabel.setOn(true, animated: true)
+//            }else{
+//                unitsSwitchLabel.setOn(false, animated: true)
+//            }
+//        }
 
         // Do any additional setup after loading the view.
     }
@@ -36,17 +64,28 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
+//    func getFetchedResultController() -> NSFetchedResultsController {
+//        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+//        return fetchedResultController
+//    }
+//    
+//    func taskFetchRequest() -> NSFetchRequest {
+//        let fetchRequest = NSFetchRequest(entityName: "Setting")
+//        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDescriptor]
+//        return fetchRequest
+//    }
+
+    
     @IBAction func unitsSwitch(sender: AnyObject) {
         if unitsSwitchLabel.on {
-            
             println("units Switch is on")
             
-            unitsLabel.text = "Miles"
+            //unitsLabel.text =
             
         }else{
             
             println("units Switch is off")
-            unitsLabel.text = "Km"
 
         }
 
@@ -56,12 +95,12 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         if oilChangeSwitchLabel.on {
             
             println("oil Switch is on")
-            oilChangeLabel.text = "5000"
+            //oilChangeLabel.text = "5000"
             
         }else{
             
             println("oil Switch is off")
-            oilChangeLabel.text = "8000"
+            //oilChangeLabel.text = "8000"
             
         }
     }
@@ -70,46 +109,56 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         if transmissionSwitchLabel.on {
             
             println("tran Switch is on")
-            transmissionLabel.text = "30000"
+            //transmissionLabel.text = "30000"
             
         }else{
             
             println("tran Switch is off")
-            transmissionLabel.text = "60000"
+            //transmissionLabel.text = "60000"
             
         }
     }
     
     // Save to Core Data
     func createDefaultSetting() {
-        var newDefaultSetting: Setting
+        var newSetting: Setting
         
-        if setting == nil {
+        if settingToSave == nil {
             let entityDescripition = NSEntityDescription.entityForName("Setting", inManagedObjectContext: managedObjectContext!)
-            newDefaultSetting = Setting(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
-            
-            newDefaultSetting.unit = unitsLabel.text!
-            println(newDefaultSetting.unit)
-        
-            if let oilChangeMiles = oilChangeLabel.text?.toInt() {
-                newDefaultSetting.oilChangeFrequency = oilChangeMiles
-                println("oilChangeMiles\(oilChangeMiles)")
-            }
-
-        
-            
-//            var tranMiles = transmissionLabel.text?.toInt()
-//            println(tranMiles)
-//            newDefaultSetting.transmissionFluidFrequency = tranMiles!
-            
-            
-        } else {
-            newDefaultSetting = setting!
+            newSetting = Setting(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+        }else{
+            newSetting = settingToSave!
         }
-        managedObjectContext?.save(nil)
         
-    }
+        newSetting.unit = "Miles"
+        println(newSetting.unit)
+        println(settingToSave)
+        
+//            if var oilChangeMiles = oilChangeLabel.text?.toInt() {
+//                newDefaultSetting.oilChangeFrequency = oilChangeMiles
+//                //println("oilChangeMiles: \(newDefaultSetting.oilChangeFrequency)")
+//            }
+//            
+//            if var tranMiles = transmissionLabel.text?.toInt() {
+//                newDefaultSetting.transmissionFluidFrequency = tranMiles
+//                //println("tranMiles: \(newDefaultSetting.transmissionFluidFrequency)")
+//            }
 
+        managedObjectContext?.save(nil)
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    }
+    
+    func fetchSetting() {
+        let fetchRequest = NSFetchRequest(entityName: "Setting")
+        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as [Setting]? {
+            settingFromDatabase = fetchResults
+        }
+    }
     
     
 }

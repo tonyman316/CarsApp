@@ -71,6 +71,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         currentMileageTextField.delegate = self
         oilChangeTextField.delegate = self
         transmissionOilTextField.delegate = self
+        
     }
     
     override func viewWillAppear(animated: Bool) {

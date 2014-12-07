@@ -94,6 +94,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         //carsCollectionView.reloadItemsAtIndexPaths(carsCollectionView.indexPathsForVisibleItems())
         let context = fetchedResultController.managedObjectContext
         context.deleteObject(fetchedResultController.objectAtIndexPath(indexOfCar) as NSManagedObject)
+        context.save(nil)
     }
     
      func controllerDidChangeContent(controller: NSFetchedResultsController) {
