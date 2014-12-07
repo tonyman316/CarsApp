@@ -10,15 +10,15 @@ import UIKit
 import Foundation
 import CoreData
 
-class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NSFetchedResultsControllerDelegate,UIGestureRecognizerDelegate {
+class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
     let identifier = "CarsCell"
     var cars: [MyCars]?
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-    var usersInDatabase = Owners.getUsersInDatabase(inManagedObjectContext: (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!)!
     
     @IBOutlet var carsCollectionView: UICollectionView!
+    @IBOutlet weak var containerView: UIView!
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         var value = collectionView.frame.size.width - 10
@@ -37,8 +37,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         fetchedResultController = getFetchedResultController()
         fetchedResultController.delegate = self
         fetchedResultController.performFetch(nil)
-        
-        carsCollectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -85,10 +83,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     // Delete item in cell
     func deleteItem(indexOfCar: NSIndexPath) {
-        //let error = NSErrorPointer()
-        //managedObjectContext?.deleteObject(car)
-        //managedObjectContext?.save(error)
-        //carsCollectionView.reloadItemsAtIndexPaths(carsCollectionView.indexPathsForVisibleItems())
         let context = fetchedResultController.managedObjectContext
         context.deleteObject(fetchedResultController.objectAtIndexPath(indexOfCar) as NSManagedObject)
         context.save(nil)
@@ -102,17 +96,13 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     func cancelDeletingCell(indexPath: NSIndexPath) {
         //Get rid of highlight
         var cell = carsCollectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
-        
         cell.layer.borderColor = UIColor.whiteColor().CGColor
         cell.layer.borderWidth = 2.5
     }
     
     // Highlight the cell
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        //var selected = cars![indexPath.item]
-        //collectionView.registerNib(UINib(nibName: "CarsCVCell", bundle: nil), forCellWithReuseIdentifier: identifier)
         var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
-        
         cell.layer.borderColor = UIColor.redColor().CGColor
         cell.layer.borderWidth = 3.0
     }
@@ -137,11 +127,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         let sortDescriptor = NSSortDescriptor(key: "make", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // CollectionView
@@ -198,9 +183,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             carDetailView.title = "\(car.owners.firstName)'s \(car.make) \(car.model)"
             carDetailView.car = car
-        } else if segue.identifier == "embedSegue" {
-            var userCollectionView = segue.destinationViewController as UsersCollectionViewController
-            userCollectionView.users = usersInDatabase
         }
     }
 }

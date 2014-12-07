@@ -350,9 +350,6 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
                 userCollectionView.selectedUsers = [car!.owners]
             }
             
-            let usersInDatabase = Owners.getUsersInDatabase(inManagedObjectContext: managedObjectContext!)!
-            userCollectionView.users = usersInDatabase
-            
             userCollectionView.del = self
         }
     }
