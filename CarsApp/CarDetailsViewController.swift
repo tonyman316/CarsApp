@@ -16,10 +16,12 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var oilChangeLabel: UILabel!
+    @IBOutlet weak var fluidChangeLabel: UILabel!
     
     @IBOutlet weak var mileageStepper: UIStepper!
     @IBOutlet weak var priceStepper: UIStepper!
     @IBOutlet weak var resetOilButton: UIButton!
+    @IBOutlet weak var resetTransmissionButton: UIButton!
     
     var car: MyCars? = nil
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
@@ -87,6 +89,15 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
             if let oilChange = car?.oilChange.intValue {
                 let milesSinceLastOilChange = car!.currentMileage.intValue - oilChange
                 oilChangeLabel.text = "\(milesSinceLastOilChange) miles ago"
+            } else {
+                oilChangeLabel.text = "Unavailable"
+            }
+            
+            if let transmissionChange = car?.transmissionOil.intValue {
+                let milesSinceLastTransmissionChange = car!.currentMileage.intValue - transmissionChange
+                fluidChangeLabel.text = "\(milesSinceLastTransmissionChange) miles ago"
+            } else {
+                fluidChangeLabel.text = "Unavailable"
             }
         }
     }
@@ -139,6 +150,9 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
         if sender == resetOilButton {
             oilChangeLabel.text = "Just changed!"
             car?.oilChange = car!.currentMileage
+        } else if sender == resetTransmissionButton {
+            fluidChangeLabel.text = "Just changed!"
+            car?.transmissionOil = car!.currentMileage
         }
     }
 }

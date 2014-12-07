@@ -19,6 +19,8 @@
 		9C8BB9231A3292A0008DACDB /* CarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BB9221A3292A0008DACDB /* CarDetailsViewController.swift */; };
 		9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */; };
 		9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */; };
+		9CAFEC1C1A34C2E700167043 /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFEC1B1A34C2E700167043 /* UnitConverter.swift */; };
+		9CAFEC1F1A34CD3600167043 /* SettingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFEC1E1A34CD3600167043 /* SettingExtension.swift */; };
 		9CB9CCEA1A32D319007AF583 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9CCE91A32D319007AF583 /* UIImageViewExtension.swift */; };
 		9CD0C9B11A30A45500DA7030 /* SelectUserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD0C9B01A30A45500DA7030 /* SelectUserProtocol.swift */; };
 		9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */; };
@@ -40,7 +42,6 @@
 		D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF41A206DE5000DB0BD /* vwGolf.jpg */; };
 		D474EDD61A2AD482006BC562 /* CarsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474EDD41A2AD482006BC562 /* CarsCVCell.swift */; };
 		D474EDD71A2AD482006BC562 /* CarsCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D474EDD51A2AD482006BC562 /* CarsCVCell.xib */; };
-		D4856A6F1A323701009C9356 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4856A6E1A323701009C9356 /* SettingTableViewController.swift */; };
 		D4856A721A3237CF009C9356 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4856A701A3237CF009C9356 /* SettingTableViewCell.swift */; };
 		D4856A731A3237CF009C9356 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4856A711A3237CF009C9356 /* SettingTableViewCell.xib */; };
 		D4856A751A3241B0009C9356 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4856A741A3241B0009C9356 /* Setting.swift */; };
@@ -80,6 +81,8 @@
 		9C8BB9221A3292A0008DACDB /* CarDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailsViewController.swift; sourceTree = "<group>"; };
 		9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersExtension.swift; sourceTree = "<group>"; };
+		9CAFEC1B1A34C2E700167043 /* UnitConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
+		9CAFEC1E1A34CD3600167043 /* SettingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingExtension.swift; sourceTree = "<group>"; };
 		9CB9CCE91A32D319007AF583 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		9CD0C9B01A30A45500DA7030 /* SelectUserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectUserProtocol.swift; sourceTree = "<group>"; };
 		9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarMapViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +108,6 @@
 		D4708FF41A206DE5000DB0BD /* vwGolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vwGolf.jpg; sourceTree = "<group>"; };
 		D474EDD41A2AD482006BC562 /* CarsCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsCVCell.swift; sourceTree = "<group>"; };
 		D474EDD51A2AD482006BC562 /* CarsCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarsCVCell.xib; sourceTree = "<group>"; };
-		D4856A6E1A323701009C9356 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		D4856A701A3237CF009C9356 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		D4856A711A3237CF009C9356 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		D4856A741A3241B0009C9356 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -145,12 +147,10 @@
 		9C0654AC1A2EA13D009D79AE /* Main View */ = {
 			isa = PBXGroup;
 			children = (
-				D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */,
-				9C4B87F21A3140CD00292FCD /* CustomHeader.swift */,
-				D474EDD41A2AD482006BC562 /* CarsCVCell.swift */,
-				D474EDD51A2AD482006BC562 /* CarsCVCell.xib */,
-				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
-				D49304521A270B2C006B7921 /* UIImageExtension.swift */,
+				9C8AE6DB1A34DECE000D672E /* My Cars View Controller */,
+				9C8BB9241A3292AD008DACDB /* Car Details View Controller */,
+				9C8AE6DA1A34DEB6000D672E /* Add Cars View Controller */,
+				9C0654AD1A2EA144009D79AE /* Users Collection View Controller */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -165,12 +165,31 @@
 			name = "Users Collection View Controller";
 			sourceTree = "<group>";
 		};
-		9C8BB9241A3292AD008DACDB /* Car Details View */ = {
+		9C8AE6DA1A34DEB6000D672E /* Add Cars View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D4538F8E1A20899B0016A05A /* AddCarsViewController.swift */,
+			);
+			name = "Add Cars View Controller";
+			sourceTree = "<group>";
+		};
+		9C8AE6DB1A34DECE000D672E /* My Cars View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D4708FE61A2046D7000DB0BD /* MyCarsViewController.swift */,
+				9C4B87F21A3140CD00292FCD /* CustomHeader.swift */,
+				D474EDD41A2AD482006BC562 /* CarsCVCell.swift */,
+				D474EDD51A2AD482006BC562 /* CarsCVCell.xib */,
+			);
+			name = "My Cars View Controller";
+			sourceTree = "<group>";
+		};
+		9C8BB9241A3292AD008DACDB /* Car Details View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				9C8BB9221A3292A0008DACDB /* CarDetailsViewController.swift */,
 			);
-			name = "Car Details View";
+			name = "Car Details View Controller";
 			sourceTree = "<group>";
 		};
 		9C8F2D921A2A8920000C05AF /* Login Screen */ = {
@@ -179,6 +198,16 @@
 				9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */,
 			);
 			name = "Login Screen";
+			sourceTree = "<group>";
+		};
+		9CAFEC1D1A34C4F800167043 /* Supporting Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9CB9CCE91A32D319007AF583 /* UIImageViewExtension.swift */,
+				9CAFEC1B1A34C2E700167043 /* UnitConverter.swift */,
+				D49304521A270B2C006B7921 /* UIImageExtension.swift */,
+			);
+			name = "Supporting Classes";
 			sourceTree = "<group>";
 		};
 		9CEB8EAC1A2A2D640009105C /* Map Tab */ = {
@@ -201,6 +230,7 @@
 				9CEB8EB51A2A30E20009105C /* GasStations.swift */,
 				9CEB8EB31A2A2FC50009105C /* Extensions Gas And Service Stations.swift */,
 				D4856A741A3241B0009C9356 /* Setting.swift */,
+				9CAFEC1E1A34CD3600167043 /* SettingExtension.swift */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -232,13 +262,13 @@
 				D40616731A1D4B8A0061F951 /* Images.xcassets */,
 				D40616751A1D4B8A0061F951 /* LaunchScreen.xib */,
 				D40616691A1D4B8A0061F951 /* AppDelegate.swift */,
-				9CB9CCE91A32D319007AF583 /* UIImageViewExtension.swift */,
 				9C8F2D921A2A8920000C05AF /* Login Screen */,
 				D4538F901A2089BA0016A05A /* My Cars Tab */,
-				D4538F911A2089F00016A05A /* Profile Tab */,
 				9CEB8EAC1A2A2D640009105C /* Map Tab */,
-				D4856A6D1A323683009C9356 /* Setting */,
+				D4538F911A2089F00016A05A /* Profile Tab */,
+				D4856A6D1A323683009C9356 /* Settings Tab */,
 				9CEB8EB91A2A4CCB0009105C /* Core Data */,
+				9CAFEC1D1A34C4F800167043 /* Supporting Classes */,
 				D4708FEE1A2060DA000DB0BD /* images */,
 				D40616671A1D4B8A0061F951 /* Supporting Files */,
 			);
@@ -273,9 +303,7 @@
 		D4538F901A2089BA0016A05A /* My Cars Tab */ = {
 			isa = PBXGroup;
 			children = (
-				9C0654AD1A2EA144009D79AE /* Users Collection View Controller */,
 				9C0654AC1A2EA13D009D79AE /* Main View */,
-				9C8BB9241A3292AD008DACDB /* Car Details View */,
 			);
 			name = "My Cars Tab";
 			sourceTree = "<group>";
@@ -309,15 +337,14 @@
 			name = images;
 			sourceTree = "<group>";
 		};
-		D4856A6D1A323683009C9356 /* Setting */ = {
+		D4856A6D1A323683009C9356 /* Settings Tab */ = {
 			isa = PBXGroup;
 			children = (
-				D4856A6E1A323701009C9356 /* SettingTableViewController.swift */,
 				D4D816001A33E94E001D801C /* SettingViewController.swift */,
 				D4856A701A3237CF009C9356 /* SettingTableViewCell.swift */,
 				D4856A711A3237CF009C9356 /* SettingTableViewCell.xib */,
 			);
-			name = Setting;
+			name = "Settings Tab";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,9 +464,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4856A6F1A323701009C9356 /* SettingTableViewController.swift in Sources */,
 				D4856A721A3237CF009C9356 /* SettingTableViewCell.swift in Sources */,
 				D406166D1A1D4B8A0061F951 /* CarsApp.xcdatamodeld in Sources */,
+				9CAFEC1F1A34CD3600167043 /* SettingExtension.swift in Sources */,
 				9C32E0EC1A2B7778000A9908 /* ProfileViewController.swift in Sources */,
 				D4856A751A3241B0009C9356 /* Setting.swift in Sources */,
 				D4D816011A33E94E001D801C /* SettingViewController.swift in Sources */,
@@ -460,6 +487,7 @@
 				9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */,
 				9C8692D81A33CF6C00F48801 /* GasStationWithPrice.swift in Sources */,
 				9C25578A1A3026910082E2F9 /* Owners.swift in Sources */,
+				9CAFEC1C1A34C2E700167043 /* UnitConverter.swift in Sources */,
 				9CD0C9B11A30A45500DA7030 /* SelectUserProtocol.swift in Sources */,
 				9C4B87F31A3140CD00292FCD /* CustomHeader.swift in Sources */,
 				9CB9CCEA1A32D319007AF583 /* UIImageViewExtension.swift in Sources */,
