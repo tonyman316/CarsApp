@@ -13,6 +13,6 @@ class Setting: NSManagedObject {
 
     @NSManaged var unit: String
     @NSManaged var oilChangeFrequency: NSNumber
-    @NSManaged var transmissionOilFrequency: NSNumber
+    @NSManaged var transmissionFluidFrequency: NSNumber
 
 }

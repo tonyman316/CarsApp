@@ -16,7 +16,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-    var longPressTarget: (cell: CarsCVCell, indexPath: NSIndexPath)?
+    //var longPressTarget: (cell: CarsCVCell, indexPath: NSIndexPath)?
     
     @IBOutlet var carsCollectionView: UICollectionView!
     
@@ -67,7 +67,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         if sender.state == UIGestureRecognizerState.Began {
             var tapLocation: CGPoint = sender.locationInView(carsCollectionView)
             let indexPath = carsCollectionView.indexPathForItemAtPoint(tapLocation)
-            println("Long Pressed at: \(indexPath)")
+            println("Long Pressed at: \(indexPath?.row)")
             
             if (indexPath != nil) {
                 
@@ -75,24 +75,29 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 let alert = UIAlertController(title: nil, message: "Do you want to delete this car?", preferredStyle: UIAlertControllerStyle.Alert)
                 let deleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: { (actionSheet: UIAlertAction!) -> Void in
-                    self.deleteItem(car: car)
+                    self.deleteItem(indexPath!)
                 })
                 let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(actionSheet: UIAlertAction!) in (self.cancelDeletingCell(indexPath!))})
                 alert.addAction(deleteAction)
                 alert.addAction(cancelAction)
                 
                 presentViewController(alert, animated: true, completion: nil)
-                
             }
         }
     }
     
     // Delete item in cell
-    func deleteItem(#car: MyCars) {
-        let error = NSErrorPointer()
-        managedObjectContext?.deleteObject(car)
-        managedObjectContext?.save(error)
+    func deleteItem(indexOfCar: NSIndexPath) {
+        //let error = NSErrorPointer()
+        //managedObjectContext?.deleteObject(car)
+        //managedObjectContext?.save(error)
         //carsCollectionView.reloadItemsAtIndexPaths(carsCollectionView.indexPathsForVisibleItems())
+        let context = fetchedResultController.managedObjectContext
+        context.deleteObject(fetchedResultController.objectAtIndexPath(indexOfCar) as NSManagedObject)
+    }
+    
+     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        carsCollectionView.reloadData()
     }
     
     // Cancel delete
