@@ -1199,6 +1199,32 @@
             </objects>
             <point key="canvasLocation" x="1392" y="2113"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="ALQ-I5-2Ro">
+            <objects>
+                <tableViewController id="0vy-Mw-hfO" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fft-o3-7LJ">
+                        <rect key="frame" x="0.0" y="0.0" width="574" height="250"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" id="pNH-an-XN4">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pNH-an-XN4" id="9o9-Zu-g5Z">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0vy-Mw-hfO" id="UO1-R2-iZ9"/>
+                            <outlet property="delegate" destination="0vy-Mw-hfO" id="wsp-Hn-OM9"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSV-W0-1k1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1275" y="2685"/>
+        </scene>
         <!--Login Screen-->
         <scene sceneID="RHD-7l-s3M">
             <objects>
@@ -1489,6 +1515,8 @@
         <image name="mileage" width="252" height="252"/>
         <image name="price" width="512" height="512"/>
         <image name="settingsTab" width="25" height="25"/>
+        <image name="tesla.jpg" width="1280" height="850"/>
+        <image name="transmissionIcon" width="340" height="340"/>
         <image name="userTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
