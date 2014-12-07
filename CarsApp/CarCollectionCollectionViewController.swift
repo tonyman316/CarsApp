@@ -6,111 +6,17 @@
 //  Copyright (c) 2014 DeAnza. All rights reserved.
 //
 
-//import UIKit
-
-//let reuseIdentifier = "Cell"
-
-//class CarCollectionCollectionViewController: UICollectionViewController {
-//    
-//    var cars: [MyCars]?
-//
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Uncomment the following line to preserve selection between presentations
-//        // self.clearsSelectionOnViewWillAppear = false
-//
-//        // Register cell classes
-//        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-//
-//        // Do any additional setup after loading the view.
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-//
-//    /*
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using [segue destinationViewController].
-//        // Pass the selected object to the new view controller.
-//    }
-//    */
-//
-//    // MARK: UICollectionViewDataSource
-//
-//    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        //#warning Incomplete method implementation -- Return the number of sections
-//        return 1
-//    }
-//
-//
-//    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if let array = cars {
-//        return array.count
-//        }
-//        return 0
-//    }
-//
-//    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
-//    
-//        // Configure the cell
-//    
-//        return cell
-//    }
-//
-//    // MARK: UICollectionViewDelegate
-//
-//    /*
-//    // Uncomment this method to specify if the specified item should be highlighted during tracking
-//    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return true
-//    }
-//    */
-//
-//    /*
-//    // Uncomment this method to specify if the specified item should be selected
-//    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return true
-//    }
-//    */
-//
-//    /*
-//    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-//    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return false
-//    }
-//
-//    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-//        return false
-//    }
-//
-//    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-//    
-//    }
-//    */
-//
-//}
 
 import UIKit
+import CoreData
 
-class CarCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CarCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout , NSFetchedResultsControllerDelegate {
     let reuseIdentifier = "customCell"
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-    var cars: [MyCars]? {
-        didSet {
-            collectionView!.reloadData()
-        }
-    }
     var selectedCars: [MyCars]?
     var del: SelectCarsDelegate?
     let colorForBorder = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
     func animateCollectionViewAppearance() {
         UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
@@ -122,6 +28,7 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
         super.viewDidLoad()
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
+        fetchedResultController = getFetchedResultController()
         animateCollectionViewAppearance()
     }
     
@@ -135,22 +42,20 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let array = cars {
-            return array.count
-        }
-        
-        return 0
+        return fetchedResultController.fetchedObjects!.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> CarsCollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as CarsCollectionViewCell
-        cell.carImageView.image = UIImage(data: cars![indexPath.row].carImage)
-        cell.nameLabel.text = cars![indexPath.row].model
+        let car = fetchedResultController.fetchedObjects![indexPath.row] as MyCars
         
-        let selected = cars![indexPath.row]
+        println("Car found: \(car)")
+        
+        //cell.carImageView = UIImage(data: car.carImage)
+        cell.nameLabel.text = car.make
         
         if selectedCars != nil {
-            if contains(selectedCars!, selected) == true {
+            if contains(selectedCars!, car) == true {
                 cell.carImageView.layer.borderColor = UIColor.blueColor().CGColor
             } else {
                 cell.carImageView.layer.borderColor = colorForBorder
@@ -167,7 +72,7 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if parentViewController is AddCarsViewController {
-            let selected = cars![indexPath.row]
+            let selected = fetchedResultController.fetchedObjects![indexPath.row] as MyCars
             
             var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCollectionViewCell
             
@@ -185,5 +90,21 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
             
             del?.didSelectCars(self, selectedCars: selectedCars)
         }
+    }
+    
+    func getFetchedResultController() -> NSFetchedResultsController {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }
+    
+    func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "MyCars")
+        let sortDescriptor = NSSortDescriptor(key: "make", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        collectionView!.reloadData()
     }
 }

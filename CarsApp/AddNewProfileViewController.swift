@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 import MobileCoreServices
 
-class AddNewProfileViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
+class AddNewProfileViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate , UITextFieldDelegate ,/* SelectCarsDelegate */ UIScrollViewDelegate {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
@@ -25,6 +25,8 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     
     var user: Owners? = nil
     var profileImage: UIImage?
+    var activeField: UITextField?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +42,72 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
             //Age.text = user?.Age
             //yearTextField.text = "\(car!.year)"
             
-            
-//            if user?.picture != nil {
-//            profileImage = UIImage(data: user!.picture)
-//            }
-            
+           }
+            //scrollView.delegate = self
+            userName.delegate = self
+            firstNameTextField.delegate = self
 
         }
+    
+    
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
     }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        let info: NSDictionary = notification.userInfo!
+        let keyboardSize = info.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue().size
+       // let buttonOrigin = activeField!.frame.origin
+       // let buttonHeight = activeField!.frame.size.height
+        var visibleRect = view.frame
+        
+        //var position = transmissionOilTextField.superview?.convertPoint(transmissionOilTextField.frame.origin, toView: nil)
+        
+        visibleRect.size.height -= keyboardSize.height
+        
+//        if CGRectContainsPoint(visibleRect, buttonOrigin) == false {
+//            let scrollPoint = CGPointMake(0, buttonOrigin.y - visibleRect.size.height + buttonHeight)
+//            scrollView.setContentOffset(scrollPoint, animated: true)
+//        }
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        //scrollView.setContentOffset(CGPointZero, animated: false)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        activeField = nil
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // Dismiss keyboard when tap on blank
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    
+    // Dismiss keyboard when tap on return
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    
     
     @IBAction func addProfilePicture(sender: AnyObject) {
         // Action Sheet
         showOptions()
+//        addProfilePictureButton.setBackgroundImage(image, forState: UIControlState.Normal)
+//        addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
+//        profileImage = image
     }
     
     @IBAction func done(sender: AnyObject) {
