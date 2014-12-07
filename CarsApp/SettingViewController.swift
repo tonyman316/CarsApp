@@ -12,7 +12,7 @@ import CoreData
 
 class SettingViewController: UIViewController, NSFetchedResultsControllerDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-    //var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
     @IBOutlet var unitsLabel: UILabel!
     @IBOutlet var oilChangeLabel: UILabel!
@@ -23,19 +23,21 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     @IBOutlet var transmissionSwitchLabel: UISwitch!
     
     var settingToSave: Setting? = nil
-    var settingFromDatabase: [Setting]?
+    //var settingFromDatabase: [Setting]?
+    var settingFromDatabase: [AnyObject]?
+
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        fetchedResultController = getFetchedResultController()
-//        fetchedResultController.delegate = self
-//        fetchedResultController.performFetch(nil)
+        fetchedResultController = getFetchedResultController()
+        fetchedResultController.delegate = self
+        fetchedResultController.performFetch(nil)
 
         if settingToSave == nil {
             createDefaultSetting()
         }else{
-            fetchSetting()
+            fetchFromDatabase()
         }
         
         println("settingToSave: \(settingToSave?.unit)")
@@ -64,18 +66,17 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-//    func getFetchedResultController() -> NSFetchedResultsController {
-//        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
-//        return fetchedResultController
-//    }
-//    
-//    func taskFetchRequest() -> NSFetchRequest {
-//        let fetchRequest = NSFetchRequest(entityName: "Setting")
-//        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: true)
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-//        return fetchRequest
-//    }
-
+    func getFetchedResultController() -> NSFetchedResultsController {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }
+    
+    func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "Setting")
+        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
     
     @IBAction func unitsSwitch(sender: AnyObject) {
         if unitsSwitchLabel.on {
@@ -131,7 +132,7 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         }
         
         newSetting.unit = "Miles"
-        println(newSetting.unit)
+        //println(newSetting.unit)
         println(settingToSave)
         
 //            if var oilChangeMiles = oilChangeLabel.text?.toInt() {
@@ -147,17 +148,22 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         managedObjectContext?.save(nil)
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-    }
+//    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+//    }
     
-    func fetchSetting() {
-        let fetchRequest = NSFetchRequest(entityName: "Setting")
-        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as [Setting]? {
-            settingFromDatabase = fetchResults
-        }
+//    func fetchSetting() {
+//        let fetchRequest = NSFetchRequest(entityName: "Setting")
+//        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDescriptor]
+//        
+//        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as [Setting]? {
+//            settingFromDatabase = fetchResults
+//        }
+//    }
+    
+    func fetchFromDatabase() {
+        settingFromDatabase = fetchedResultController.fetchedObjects
+        println(settingFromDatabase)
     }
     
     
