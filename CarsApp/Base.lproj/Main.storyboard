@@ -222,6 +222,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="carsCollectionView" destination="Frh-Qh-nDJ" id="SP1-hL-Nha"/>
+                        <outlet property="containerView" destination="CAA-ca-N0N" id="0ui-a5-a7V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
