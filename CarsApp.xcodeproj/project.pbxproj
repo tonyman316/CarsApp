@@ -14,6 +14,7 @@
 		9C32E0EC1A2B7778000A9908 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */; };
 		9C4B87F31A3140CD00292FCD /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B87F21A3140CD00292FCD /* CustomHeader.swift */; };
 		9C6062AF1A2EA6630087E3E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C6062AE1A2EA6630087E3E0 /* Foundation.framework */; };
+		9C8692D81A33CF6C00F48801 /* GasStationWithPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8692D71A33CF6C00F48801 /* GasStationWithPrice.swift */; };
 		9C8BB9231A3292A0008DACDB /* CarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BB9221A3292A0008DACDB /* CarDetailsViewController.swift */; };
 		9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */; };
 		9C8F2D8F1A2A8126000C05AF /* OwnersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */; };
@@ -72,6 +73,7 @@
 		9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9C4B87F21A3140CD00292FCD /* CustomHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		9C6062AE1A2EA6630087E3E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9C8692D71A33CF6C00F48801 /* GasStationWithPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GasStationWithPrice.swift; sourceTree = "<group>"; };
 		9C8BB9221A3292A0008DACDB /* CarDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailsViewController.swift; sourceTree = "<group>"; };
 		9C8F2D8C1A2A7FD5000C05AF /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		9C8F2D8E1A2A8126000C05AF /* OwnersExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersExtension.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				9CEB8EA81A2A2D370009105C /* CarMapViewController.swift */,
+				9C8692D71A33CF6C00F48801 /* GasStationWithPrice.swift */,
 			);
 			name = "Map Tab";
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				D4C529391A2FEAB40081B9AB /* AddNewProfileViewController.swift in Sources */,
 				D4B3E0081A2ADE5D00B44089 /* ProfileTableViewCell.swift in Sources */,
 				9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */,
+				9C8692D81A33CF6C00F48801 /* GasStationWithPrice.swift in Sources */,
 				9C25578A1A3026910082E2F9 /* Owners.swift in Sources */,
 				9CD0C9B11A30A45500DA7030 /* SelectUserProtocol.swift in Sources */,
 				9C4B87F31A3140CD00292FCD /* CustomHeader.swift in Sources */,
