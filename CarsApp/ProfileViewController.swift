@@ -11,7 +11,7 @@ import Foundation
 import MobileCoreServices
 import CoreData
 
-class ProfileViewController: UIViewController , UINavigationControllerDelegate , UIImagePickerControllerDelegate{
+class ProfileViewController: UIViewController , UINavigationControllerDelegate , UIImagePickerControllerDelegate , UIActionSheetDelegate{
     @IBOutlet weak var userPicture: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet var editButton: UIButton!
@@ -24,6 +24,9 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var userImage: UIImage?
     var mainUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).user
+    
+  //  var user: Owners? = nil
+
     
     
     override func viewDidAppear(animated: Bool) {
@@ -98,6 +101,30 @@ func PictureLayer(picture:UIImageView) {
     layer.borderWidth = 4
     layer.borderColor = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
 }
+    
+    
+//    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
+//        var imageToSave = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
+//        profileImage = imageToSave
+//        
+//        addProfilePictureButton.setBackgroundImage(imageToSave, forState: UIControlState.Normal)
+//        addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
+//        
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
+    
+    func popToMainView() {
+        navigationController?.popViewControllerAnimated(true)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditUser" {
+            let editUserView = segue.destinationViewController as AddNewProfileViewController
+            editUserView.title = "Edit \(mainUser!.firstName)"
+            editUserView.user = mainUser
+        }
+    }
+
 }
 
 
