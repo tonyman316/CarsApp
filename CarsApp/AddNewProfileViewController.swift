@@ -49,6 +49,16 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         popToMainView()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var layer = addProfilePictureButton.layer
+        layer.masksToBounds = true
+        layer.cornerRadius = addProfilePictureButton.frame.width / 2
+        layer.borderWidth = 4
+        layer.borderColor = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
+    }
+    
     // Action Sheet
     func showOptions() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -92,6 +102,7 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         
         addProfilePictureButton.setBackgroundImage(imageToSave, forState: UIControlState.Normal)
         addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
+        addProfilePictureButton.imageView!.setupItemPictureLayer()
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

@@ -144,6 +144,7 @@
 				9C8AE6DB1A34DECE000D672E /* My Cars View Controller */,
 				9C8BB9241A3292AD008DACDB /* Car Details View Controller */,
 				9C8AE6DA1A34DEB6000D672E /* Add Cars View Controller */,
+				9C0654AD1A2EA144009D79AE /* Users Collection View Controller */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -255,13 +256,13 @@
 				D40616731A1D4B8A0061F951 /* Images.xcassets */,
 				D40616751A1D4B8A0061F951 /* LaunchScreen.xib */,
 				D40616691A1D4B8A0061F951 /* AppDelegate.swift */,
-				9CAFEC1D1A34C4F800167043 /* Supporting Classes */,
 				9C8F2D921A2A8920000C05AF /* Login Screen */,
 				D4538F901A2089BA0016A05A /* My Cars Tab */,
-				D4538F911A2089F00016A05A /* Profile Tab */,
 				9CEB8EAC1A2A2D640009105C /* Map Tab */,
+				D4538F911A2089F00016A05A /* Profile Tab */,
 				D4856A6D1A323683009C9356 /* Settings Tab */,
 				9CEB8EB91A2A4CCB0009105C /* Core Data */,
+				9CAFEC1D1A34C4F800167043 /* Supporting Classes */,
 				D4708FEE1A2060DA000DB0BD /* images */,
 				D40616671A1D4B8A0061F951 /* Supporting Files */,
 			);
@@ -296,7 +297,6 @@
 		D4538F901A2089BA0016A05A /* My Cars Tab */ = {
 			isa = PBXGroup;
 			children = (
-				9C0654AD1A2EA144009D79AE /* Users Collection View Controller */,
 				9C0654AC1A2EA13D009D79AE /* Main View */,
 			);
 			name = "My Cars Tab";
