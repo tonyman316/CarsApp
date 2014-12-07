@@ -17,38 +17,45 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     @IBOutlet var oilChangeSegmentControl: UISegmentedControl!
     @IBOutlet var transmissionSegmentControl: UISegmentedControl!
     
+    var userUnit = ""
+    var userOilChange = 0
+    var userTransmission = 0
+    
     var setting: Setting? = nil
     var settingFromDatabase = Setting.databaseContainsSettings((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).settings
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        if settingFromDatabase == nil {
+        if setting == nil {
             createDefaultSetting()
         } else {
             setting = settingFromDatabase!
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        // Show correct Segment
-        if setting?.unit == "miles" {
+        // Show correct Segments
+        if settingFromDatabase?.unit == "miles" {
             unitSegmentControl.selectedSegmentIndex = 0
         }else{
             unitSegmentControl.selectedSegmentIndex = 1
         }
         
-        if setting?.oilChangeFrequency == 5000 {
+        if settingFromDatabase?.oilChangeFrequency == 5000 {
             oilChangeSegmentControl.selectedSegmentIndex = 0
         }else{
             oilChangeSegmentControl.selectedSegmentIndex = 1
         }
         
-        if setting?.transmissionFluidFrequency == 30000 {
+        if settingFromDatabase?.transmissionFluidFrequency == 30000 {
             transmissionSegmentControl.selectedSegmentIndex = 0
         }else{
             transmissionSegmentControl.selectedSegmentIndex = 1
         }
         
-       // println("settingToSave: \(settingToSave?.unit)")
         println("settingFromDatabase: \(settingFromDatabase?.unit) \(settingFromDatabase?.oilChangeFrequency) \(settingFromDatabase?.transmissionFluidFrequency)")
         
     }
@@ -58,24 +65,32 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         
         // Save settings
         
-        //updateSettingFromUser()
+        setting?.unit = userUnit
+        println("viewWillApper:\(userUnit)")
+        //println("setting.unit at view will disapper \(setting?.unit)")
+        
+        managedObjectContext?.save(nil)
 
     }
     
     @IBAction func unitSegment(sender: AnyObject) {
                 
         switch (unitSegmentControl.selectedSegmentIndex) {
-        case 0: setting?.unit = "miles"
+        case 0: //setting?.unit = "miles"
                 oilChangeSegmentControl.setTitle("5000 miles", forSegmentAtIndex: 0)
                 oilChangeSegmentControl.setTitle("8000 miles", forSegmentAtIndex: 1)
                 transmissionSegmentControl.setTitle("30000 miles", forSegmentAtIndex: 0)
                 transmissionSegmentControl.setTitle("60000 miles", forSegmentAtIndex: 1)
+                userUnit = "miles"
+                println("UnitSegment 0, userUnit: \(userUnit)")
     
-        case 1: setting?.unit = "km"
+        case 1: //setting?.unit = "km"
                 oilChangeSegmentControl.setTitle("\(UnitConverter.milesToKilometers(5000)) km", forSegmentAtIndex: 0)
                 oilChangeSegmentControl.setTitle("\(UnitConverter.milesToKilometers(8000)) km", forSegmentAtIndex: 1)
                 transmissionSegmentControl.setTitle("\(UnitConverter.milesToKilometers(30000)) km", forSegmentAtIndex: 0)
                 transmissionSegmentControl.setTitle("\(UnitConverter.milesToKilometers(60000)) km", forSegmentAtIndex: 1)
+                userUnit = "km"
+                println("UnitSegment 1, userUnit: \(userUnit)")
 
         default:
             break;
@@ -112,9 +127,9 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         let entityDescripition = NSEntityDescription.entityForName("Setting", inManagedObjectContext: managedObjectContext!)
         newSetting = Setting(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
         
-        newSetting.unit = "miles"
-        newSetting.oilChangeFrequency = 5000
-        newSetting.transmissionFluidFrequency = 30000
+            newSetting.unit = "miles"
+            newSetting.oilChangeFrequency = 5000
+            newSetting.transmissionFluidFrequency = 30000
         
 //        if var oilChangeMiles = (oilChangeLabel.text? as NSString).doubleValue {
 //            newDefaultSetting.oilChangeFrequency = oilChangeMiles
