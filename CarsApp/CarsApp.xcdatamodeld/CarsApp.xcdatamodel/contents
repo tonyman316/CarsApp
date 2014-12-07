@@ -41,10 +41,10 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cars" positionX="-63" positionY="-18" width="128" height="178"/>
-        <element name="GasStations" positionX="-65" positionY="140" width="128" height="118"/>
+        <element name="Cars" positionX="-63" positionY="-72" width="128" height="178"/>
+        <element name="GasStations" positionX="-65" positionY="143" width="128" height="118"/>
         <element name="Owners" positionX="-290" positionY="-72" width="128" height="163"/>
         <element name="ServiceStations" positionX="-297" positionY="144" width="128" height="118"/>
-        <element name="Setting" positionX="-171" positionY="81" width="128" height="90"/>
+        <element name="Setting" positionX="117" positionY="63" width="128" height="90"/>
     </elements>
 </model>

@@ -67,7 +67,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ctn-bV-kHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="816"/>
+            <point key="canvasLocation" x="1262" y="866"/>
         </scene>
         <!--My Cars-->
         <scene sceneID="tne-QT-ifu">
@@ -415,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKh-Y6-Bgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392" y="-361"/>
+            <point key="canvasLocation" x="1255" y="-389"/>
         </scene>
         <!--Add New Car-->
         <scene sceneID="FL7-ME-SyN">
@@ -557,7 +557,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0Y-tb-D5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392" y="363"/>
+            <point key="canvasLocation" x="1262" y="363"/>
         </scene>
         <!--Find gas and service stations-->
         <scene sceneID="QAn-MM-ArX">
@@ -883,7 +883,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lwE-gb-fIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397" y="2836"/>
+            <point key="canvasLocation" x="458" y="2860"/>
         </scene>
         <!--Add New User-->
         <scene sceneID="Gpn-3h-nSa">
@@ -960,7 +960,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUr-zJ-R9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="1477"/>
+            <point key="canvasLocation" x="1268" y="1770"/>
         </scene>
         <!--Maptest View Controller-->
         <scene sceneID="kUP-qK-jPa">
@@ -978,7 +978,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydQ-aa-Npn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="2078"/>
+            <point key="canvasLocation" x="1275" y="2311"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="ALQ-I5-2Ro">
@@ -1004,7 +1004,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSV-W0-1k1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080" y="2412"/>
+            <point key="canvasLocation" x="1275" y="2685"/>
         </scene>
         <!--Login Screen-->
         <scene sceneID="RHD-7l-s3M">
@@ -1186,7 +1186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FnQ-oF-SdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1880" y="1425"/>
+            <point key="canvasLocation" x="-1936" y="1425"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5HC-8S-rG4">
@@ -1284,7 +1284,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBf-2k-4hB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-336" y="2836"/>
+            <point key="canvasLocation" x="-336" y="2860"/>
         </scene>
     </scenes>
     <resources>
@@ -1300,7 +1300,7 @@
         <image name="userTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fef-lu-Euz"/>
+        <segue reference="vaD-fg-qY7"/>
         <segue reference="3yW-OA-sCp"/>
     </inferredMetricsTieBreakers>
 </document>
