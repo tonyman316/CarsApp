@@ -123,6 +123,7 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         
         addProfilePictureButton.setBackgroundImage(imageToSave, forState: UIControlState.Normal)
         addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
+        addProfilePictureButton.imageView!.setupItemPictureLayer()
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
