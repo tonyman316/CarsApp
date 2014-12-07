@@ -37,7 +37,7 @@
     </entity>
     <entity name="Setting" representedClassName="CarsApp.Setting" syncable="YES">
         <attribute name="oilChangeFrequency" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="transmissionOilFrequency" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="transmissionFluidFrequency" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
@@ -45,6 +45,6 @@
         <element name="GasStations" positionX="-65" positionY="140" width="128" height="118"/>
         <element name="Owners" positionX="-290" positionY="-72" width="128" height="163"/>
         <element name="ServiceStations" positionX="-297" positionY="144" width="128" height="118"/>
-        <element name="Setting" positionX="-171" positionY="81" width="128" height="88"/>
+        <element name="Setting" positionX="-171" positionY="81" width="128" height="90"/>
     </elements>
 </model>

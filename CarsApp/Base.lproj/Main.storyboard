@@ -1154,27 +1154,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="rnf-g2-YKb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rnf-g2-YKb" id="VYZ-wK-UZZ">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eB-5p-OJW">
-                                            <rect key="frame" x="8" y="11" width="579" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="4eB-5p-OJW" firstAttribute="centerY" secondItem="VYZ-wK-UZZ" secondAttribute="centerY" id="ZEC-0e-sAr"/>
-                                        <constraint firstItem="4eB-5p-OJW" firstAttribute="top" secondItem="VYZ-wK-UZZ" secondAttribute="topMargin" constant="3" id="ajc-G8-oGp"/>
-                                        <constraint firstItem="4eB-5p-OJW" firstAttribute="leading" secondItem="VYZ-wK-UZZ" secondAttribute="leadingMargin" id="jmg-pr-mk4"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="4eB-5p-OJW" secondAttribute="trailing" constant="5" id="khb-cU-nU7"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="MCO-V5-ZAy" id="bDb-87-6KZ"/>
@@ -1185,7 +1164,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5r-6g-uPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="476" y="2836"/>
+            <point key="canvasLocation" x="471" y="2836"/>
         </scene>
         <!--MyCars-->
         <scene sceneID="Xob-ag-YV1">
@@ -1236,7 +1215,7 @@
         <image name="tesla.jpg" width="1280" height="850"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fef-lu-Euz"/>
+        <segue reference="vaD-fg-qY7"/>
         <segue reference="3yW-OA-sCp"/>
     </inferredMetricsTieBreakers>
 </document>
