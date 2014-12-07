@@ -16,7 +16,7 @@ class SettingTableViewController: UITableViewController, UISearchBarDelegate, NS
 
 
     var sectionNames = ["Units (Miles/Km)","Oil Change Frequency", "Transmission Fluid Change Frequency"]
-    var defaultSetting = ["Miles", "5000 miles", "30,000 miles"]
+    var defaultSetting = [AnyObject]()
     // oil: 5k/8k
     // fluid: 30k/60k
     let identifier = "settingCell"
@@ -28,34 +28,32 @@ class SettingTableViewController: UITableViewController, UISearchBarDelegate, NS
         tableView.registerNib(UINib(nibName:"SettingTableViewCell", bundle: nil), forCellReuseIdentifier: identifier)
         createDefaultSetting()
         
-        
-        if setting != nil {
-            
-        }
+        defaultSetting = getDefaultSettingFromDatabase(inManagedObjectContext: managedObjectContext!)!
+        println(defaultSetting)
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchedResultController = getFetchedResultController()
-        fetchedResultController.delegate = self
-        fetchedResultController.performFetch(nil)
+//        fetchedResultController = getFetchedResultController()
+//        fetchedResultController.delegate = self
+//        fetchedResultController.performFetch(nil)
         
         tableView.reloadData()
     }
     
-    func getFetchedResultController() -> NSFetchedResultsController {
-        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultController
-    }
-    
-    func taskFetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "Setting")
-        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        return fetchRequest
-    }
+//    func getFetchedResultController() -> NSFetchedResultsController {
+//        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+//        return fetchedResultController
+//    }
+//    
+//    func taskFetchRequest() -> NSFetchRequest {
+//        let fetchRequest = NSFetchRequest(entityName: "Setting")
+//        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDescriptor]
+//        return fetchRequest
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -122,9 +120,10 @@ class SettingTableViewController: UITableViewController, UISearchBarDelegate, NS
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as SettingTableViewCell
         
-        let setting = fetchedResultController.objectAtIndexPath(indexPath) as Setting
-        cell.settingLabel.text = setting.unit
-  
+        var setting = [defaultSetting]
+        var stringSetting = ""
+        
+        
         return cell
     }
 
@@ -142,16 +141,23 @@ class SettingTableViewController: UITableViewController, UISearchBarDelegate, NS
             
         } else {
             newDefaultSetting = setting!
+            println(newDefaultSetting)
         }
         managedObjectContext?.save(nil)
         
     }
     
-    func getDefaultSetting() {
+    
+    func getDefaultSettingFromDatabase(inManagedObjectContext context: NSManagedObjectContext) -> [Setting]? {
+        let request = NSFetchRequest(entityName: "Setting")
+        var error = NSErrorPointer()
+        let matches = context.executeFetchRequest(request, error: error)
         
-            
+        if matches?.isEmpty == false {
+            return matches! as? [Setting]
+        }
         
-
+        return nil
     }
     
 }
