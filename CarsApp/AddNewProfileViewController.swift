@@ -18,8 +18,36 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     @IBOutlet var addProfilePictureButton: UIButton!
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
+    @IBOutlet var userName: UITextField!
+    @IBOutlet var Password: UITextField!
+    @IBOutlet var Age: UITextField!
+    //@IBOutlet var profilePic: UIImageView!
     
+    var user: Owners? = nil
     var profileImage: UIImage?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        addProfilePictureButton.contentMode = UIViewContentMode.ScaleAspectFill
+        addProfilePictureButton.clipsToBounds = true
+        
+        if user != nil {
+            userName.text = user?.username
+            firstNameTextField.text = user?.firstName
+            lastNameTextField.text = user?.lastName
+            //profilePic = UIImage(data: user!.picture)
+            //Age.text = user?.Age
+            //yearTextField.text = "\(car!.year)"
+            
+            
+//            if user?.picture != nil {
+//            profileImage = UIImage(data: user!.picture)
+//            }
+            
+
+        }
+    }
     
     @IBAction func addProfilePicture(sender: AnyObject) {
         // Action Sheet
@@ -49,15 +77,8 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         popToMainView()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        var layer = addProfilePictureButton.layer
-        layer.masksToBounds = true
-        layer.cornerRadius = addProfilePictureButton.frame.width / 2
-        layer.borderWidth = 4
-        layer.borderColor = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
-    }
+    
+    
     
     // Action Sheet
     func showOptions() {
@@ -117,6 +138,8 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         var userDictionary = [String : String]()
         userDictionary["firstName"] = firstNameTextField.text
         userDictionary["lastName"] = lastNameTextField.text
+        userDictionary["Age"] = Age.text
+        userDictionary["userName"] = userName.text
         
         Owners.createUser(userInfo: userDictionary, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
         managedObjectContext?.save(nil)
@@ -130,4 +153,20 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
             return true
         }
     }
+    
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "AddUser" {
+//            
+//        }
+//        else if segue.identifier == 
+//    }
+//    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "editUser" {
+//            let editCarView = segue.destinationViewController as AddCarsViewController
+//            editCarView.title = "Edit \(car!.make) \(car!.model)"
+//            editCarView.car = car
+//        }
+//    }
 }
