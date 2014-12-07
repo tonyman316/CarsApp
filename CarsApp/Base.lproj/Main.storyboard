@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ot-Sg-d2B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ot-Sg-d2B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -669,7 +669,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tesla.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="a3R-UX-jLT">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultUserImage" translatesAutoresizingMaskIntoConstraints="NO" id="a3R-UX-jLT">
                                 <rect key="frame" x="195" y="72" width="211" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="211" id="IAi-Gh-rCl"/>
@@ -703,6 +703,24 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hD6-9k-sYi">
+                                <rect key="frame" x="34" y="201" width="30" height="30"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0k2-nX-bYj" kind="show" id="CWT-VX-j3h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaB-ke-FxW">
+                                <rect key="frame" x="195" y="72" width="211" height="150"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePicture:" destination="eAz-2M-1yA" eventType="touchUpInside" id="6le-7d-0xI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -731,6 +749,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="changePicture" destination="ZaB-ke-FxW" id="Oo8-WM-J2U"/>
+                        <outlet property="editButton" destination="hD6-9k-sYi" id="lbr-9l-dPv"/>
                         <outlet property="userPicture" destination="a3R-UX-jLT" id="M3t-et-kKg"/>
                         <outlet property="usernameLabel" destination="OuP-Mr-vo8" id="cs2-HL-b36"/>
                     </connections>
@@ -810,6 +830,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YYU-HU-3ua"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3d0-MZ-MM4">
+                                <rect key="frame" x="203" y="313" width="195" height="30"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1236,11 +1262,11 @@
         <image name="mileage" width="252" height="252"/>
         <image name="price" width="512" height="512"/>
         <image name="settingsTab" width="25" height="25"/>
-        <image name="tesla.jpg" width="1280" height="850"/>
         <image name="userTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fef-lu-Euz"/>
         <segue reference="vfQ-hY-Uzd"/>
+        <segue reference="fef-lu-Euz"/>
+        <segue reference="O69-oN-lu5"/>
     </inferredMetricsTieBreakers>
 </document>
