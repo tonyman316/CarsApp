@@ -148,7 +148,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.scrollEnabled = false
-        scrollView.contentSize = CGSizeMake(view.frame.width, view.frame.height + usernameField.frame.height * 6)
+        scrollView.contentSize = CGSizeMake(view.frame.width, view.frame.height + userImageView.frame.height)
         scrollView.bounds = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
     }
     

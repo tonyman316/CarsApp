@@ -1105,7 +1105,7 @@
         <scene sceneID="nrP-ce-cbv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mxT-SA-qrO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="mOD-le-0pq"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="mapTap" id="mOD-le-0pq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gb3-qW-Oc0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1124,7 +1124,7 @@
         <scene sceneID="5k6-Mf-dcG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ygU-Zr-d8r" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="Bd5-na-fIY"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="userTab" id="Bd5-na-fIY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WuE-jj-Clu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1191,7 +1191,7 @@
         <scene sceneID="Xob-ag-YV1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="amI-cP-yf4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="MyCars" id="Yxs-bt-UqV"/>
+                    <tabBarItem key="tabBarItem" title="MyCars" image="carsTab" id="Yxs-bt-UqV"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="kjt-XL-Pii"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XDg-cY-zJQ">
@@ -1207,11 +1207,11 @@
             </objects>
             <point key="canvasLocation" x="-354" y="363"/>
         </scene>
-        <!--Setting-->
+        <!--Settings-->
         <scene sceneID="h9a-4T-xPe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GhR-9w-z4e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Setting" id="o0J-Zm-QPV"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Settings" image="settingsTab" id="o0J-Zm-QPV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ohv-ci-pT2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1229,14 +1229,18 @@
     </scenes>
     <resources>
         <image name="car-oil" width="256" height="256"/>
+        <image name="carsTab" width="37" height="37"/>
         <image name="centerMap" width="128" height="128"/>
         <image name="defaultUserImage" width="512" height="512"/>
+        <image name="mapTap" width="25" height="25"/>
         <image name="mileage" width="252" height="252"/>
         <image name="price" width="512" height="512"/>
+        <image name="settingsTab" width="25" height="25"/>
         <image name="tesla.jpg" width="1280" height="850"/>
+        <image name="userTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fef-lu-Euz"/>
-        <segue reference="3yW-OA-sCp"/>
+        <segue reference="vfQ-hY-Uzd"/>
     </inferredMetricsTieBreakers>
 </document>
