@@ -71,6 +71,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         currentMileageTextField.delegate = self
         oilChangeTextField.delegate = self
         transmissionOilTextField.delegate = self
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -198,7 +199,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         cameraUI.delegate = self
         cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
         cameraUI.mediaTypes = NSArray(object: kUTTypeImage)
-        cameraUI.allowsEditing = true
+        cameraUI.allowsEditing = false
         
         self.presentViewController(cameraUI, animated: true, completion: nil)
     }
@@ -208,7 +209,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         cameraUI.delegate = self
         cameraUI.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
         cameraUI.mediaTypes = NSArray(object: kUTTypeImage)
-        cameraUI.allowsEditing = true
+        cameraUI.allowsEditing = false
         
         self.presentViewController(cameraUI, animated: true, completion: nil)
     }

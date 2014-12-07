@@ -13,10 +13,9 @@ import CoreData
 class SettingTableViewController: UITableViewController, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-
-
+    
     var sectionNames = ["Units (Miles/Km)","Oil Change Frequency", "Transmission Fluid Change Frequency"]
-    var defaultSetting = [AnyObject]()
+    var defaultSetting = [Setting]()
     // oil: 5k/8k
     // fluid: 30k/60k
     let identifier = "settingCell"
@@ -146,7 +145,6 @@ class SettingTableViewController: UITableViewController, UISearchBarDelegate, NS
         managedObjectContext?.save(nil)
         
     }
-    
     
     func getDefaultSettingFromDatabase(inManagedObjectContext context: NSManagedObjectContext) -> [Setting]? {
         let request = NSFetchRequest(entityName: "Setting")

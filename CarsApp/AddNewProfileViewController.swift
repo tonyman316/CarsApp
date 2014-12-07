@@ -14,15 +14,13 @@ import MobileCoreServices
 class AddNewProfileViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-
+    
     @IBOutlet var addProfilePictureButton: UIButton!
-    @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     
     var profileImage: UIImage?
-
-
+    
     @IBAction func addProfilePicture(sender: AnyObject) {
         // Action Sheet
         showOptions()
@@ -50,7 +48,7 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         // Dismiss
         popToMainView()
     }
-
+    
     // Action Sheet
     func showOptions() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -89,19 +87,13 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     }
     
     func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
-        var imageToSave:UIImage
+        var imageToSave = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
+        profileImage = imageToSave
         
-        imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
-        addCarImageView(image: imageToSave)
+        addProfilePictureButton.setBackgroundImage(imageToSave, forState: UIControlState.Normal)
+        addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
         
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func addCarImageView(#image: UIImage) {
-        var newView = UIImageView(frame: addProfilePictureButton.frame)
-        newView.image = image
-        view.addSubview(newView)
-        profileImage = image
     }
     
     func popToMainView() {
@@ -115,9 +107,8 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         userDictionary["firstName"] = firstNameTextField.text
         userDictionary["lastName"] = lastNameTextField.text
         
-        println(userDictionary)
-        
         Owners.createUser(userInfo: userDictionary, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
+        managedObjectContext?.save(nil)
     }
     
     // check input

@@ -59,18 +59,15 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         carsCollectionView.addGestureRecognizer(longPressGestureRecognizer)
         
         longPressGestureRecognizer.delegate = self
-        
     }
     
     // Long press gesture handler
     func longPressHandler(sender:UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.Began {
+        if sender.state == UIGestureRecognizerState.Ended {
             var tapLocation: CGPoint = sender.locationInView(carsCollectionView)
             let indexPath = carsCollectionView.indexPathForItemAtPoint(tapLocation)
-            println("Long Pressed at: \(indexPath?.row)")
             
             if (indexPath != nil) {
-                
                 let car = fetchedResultController.objectAtIndexPath(indexPath!) as MyCars
                 
                 let alert = UIAlertController(title: nil, message: "Do you want to delete this car?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -82,6 +79,8 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
                 alert.addAction(cancelAction)
                 
                 presentViewController(alert, animated: true, completion: nil)
+            } else {
+                cancelDeletingCell(indexPath!)
             }
         }
     }
@@ -94,6 +93,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         //carsCollectionView.reloadItemsAtIndexPaths(carsCollectionView.indexPathsForVisibleItems())
         let context = fetchedResultController.managedObjectContext
         context.deleteObject(fetchedResultController.objectAtIndexPath(indexOfCar) as NSManagedObject)
+        context.save(nil)
     }
     
      func controllerDidChangeContent(controller: NSFetchedResultsController) {
