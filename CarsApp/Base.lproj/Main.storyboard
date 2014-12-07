@@ -772,30 +772,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hBv-cv-EKu">
-                                <rect key="frame" x="500" y="203" width="51" height="31"/>
-                                <connections>
-                                    <action selector="oilChangeSwitch:" destination="9X6-ad-tPz" eventType="valueChanged" id="UWI-ru-pFm"/>
-                                </connections>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SvU-qQ-NDe">
-                                <rect key="frame" x="500" y="274" width="51" height="31"/>
-                                <connections>
-                                    <action selector="transmissionSwitch:" destination="9X6-ad-tPz" eventType="valueChanged" id="X78-bA-L3H"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g7-U1-2gN">
-                                <rect key="frame" x="16" y="279" width="340" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ0-FJ-ZbS">
-                                <rect key="frame" x="16" y="208" width="340" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units (Miles/Km)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEh-EW-0BN">
                                 <rect key="frame" x="16" y="104" width="584" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -807,7 +783,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oil Change Frequency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrQ-lX-c2h">
-                                <rect key="frame" x="16" y="174" width="584" height="21"/>
+                                <rect key="frame" x="16" y="179" width="584" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0CV-FL-auP"/>
@@ -817,68 +793,78 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transmission Fluid Change Frequency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ld5-4l-xMp">
-                                <rect key="frame" x="16" y="245" width="584" height="21"/>
+                                <rect key="frame" x="16" y="250" width="584" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjP-Ah-WAf">
-                                <rect key="frame" x="500" y="133" width="51" height="31"/>
-                                <connections>
-                                    <action selector="unitsSwitch:" destination="9X6-ad-tPz" eventType="valueChanged" id="drO-xY-qPz"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmA-G0-kEf">
-                                <rect key="frame" x="16" y="138" width="340" height="21"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QYb-Wn-vQ9">
+                                <rect key="frame" x="16" y="138" width="568" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="340" id="PzS-aN-Rky"/>
+                                    <constraint firstAttribute="height" constant="28" id="CPf-kc-KyU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <segments>
+                                    <segment title="Miles"/>
+                                    <segment title="km"/>
+                                </segments>
+                                <connections>
+                                    <action selector="unitSegment:" destination="9X6-ad-tPz" eventType="valueChanged" id="3ij-vy-oJ0"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="21C-lL-xP7">
+                                <rect key="frame" x="16" y="208" width="568" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="m8O-9p-JpG"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="5,000 miles"/>
+                                    <segment title="8,000 miles"/>
+                                </segments>
+                                <connections>
+                                    <action selector="oilChangeSegment:" destination="9X6-ad-tPz" eventType="valueChanged" id="4xe-9j-d0D"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nZF-AH-Kcz">
+                                <rect key="frame" x="16" y="286" width="568" height="29"/>
+                                <segments>
+                                    <segment title="30,000 miles"/>
+                                    <segment title="60,000 miles"/>
+                                </segments>
+                                <connections>
+                                    <action selector="transmissionSegment:" destination="9X6-ad-tPz" eventType="valueChanged" id="1cH-al-aBO"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6g7-U1-2gN" firstAttribute="trailing" secondItem="aQ0-FJ-ZbS" secondAttribute="trailing" id="0Jr-b4-hS3"/>
-                            <constraint firstItem="aQ0-FJ-ZbS" firstAttribute="trailing" secondItem="LmA-G0-kEf" secondAttribute="trailing" id="10h-Kb-zSd"/>
-                            <constraint firstItem="6g7-U1-2gN" firstAttribute="top" secondItem="ld5-4l-xMp" secondAttribute="bottom" constant="13" id="1Fa-Z3-pa4"/>
+                            <constraint firstItem="QYb-Wn-vQ9" firstAttribute="leading" secondItem="SrQ-lX-c2h" secondAttribute="leading" id="2hS-F6-vGU"/>
                             <constraint firstAttribute="trailing" secondItem="SrQ-lX-c2h" secondAttribute="trailing" id="2oG-PM-oFr"/>
-                            <constraint firstItem="aQ0-FJ-ZbS" firstAttribute="centerY" secondItem="hBv-cv-EKu" secondAttribute="centerY" id="5hL-Hp-TnS"/>
-                            <constraint firstItem="6g7-U1-2gN" firstAttribute="centerY" secondItem="SvU-qQ-NDe" secondAttribute="centerY" id="8ye-RW-nS3"/>
-                            <constraint firstItem="aQ0-FJ-ZbS" firstAttribute="top" secondItem="SrQ-lX-c2h" secondAttribute="bottom" constant="13" id="AI7-1q-G5t"/>
-                            <constraint firstItem="hBv-cv-EKu" firstAttribute="leading" secondItem="QjP-Ah-WAf" secondAttribute="leading" id="BLC-4s-K0q"/>
-                            <constraint firstItem="LmA-G0-kEf" firstAttribute="top" secondItem="NEh-EW-0BN" secondAttribute="bottom" constant="13" id="Fso-Yr-KYV"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="trailing" secondItem="NRU-JZ-Uhl" secondAttribute="trailingMargin" id="4Wi-8G-h6T"/>
+                            <constraint firstItem="QYb-Wn-vQ9" firstAttribute="leading" secondItem="NEh-EW-0BN" secondAttribute="leading" id="4g7-yl-5Cb"/>
+                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="centerY" secondItem="NRU-JZ-Uhl" secondAttribute="centerY" id="4w6-tG-KiE"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="top" secondItem="SrQ-lX-c2h" secondAttribute="bottom" constant="8" symbolic="YES" id="9Ak-dx-BCs"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="trailing" secondItem="QYb-Wn-vQ9" secondAttribute="trailing" id="CP1-Rp-wrf"/>
+                            <constraint firstItem="ld5-4l-xMp" firstAttribute="top" secondItem="21C-lL-xP7" secondAttribute="bottom" constant="14" id="GHm-dZ-LFK"/>
                             <constraint firstItem="SrQ-lX-c2h" firstAttribute="trailing" secondItem="NEh-EW-0BN" secondAttribute="trailing" id="HHB-0i-xmm"/>
                             <constraint firstItem="ld5-4l-xMp" firstAttribute="trailing" secondItem="SrQ-lX-c2h" secondAttribute="trailing" id="MGH-mA-Ayo"/>
-                            <constraint firstItem="aQ0-FJ-ZbS" firstAttribute="leading" secondItem="ld5-4l-xMp" secondAttribute="leading" id="ONz-qq-5CE"/>
-                            <constraint firstItem="LmA-G0-kEf" firstAttribute="centerY" secondItem="QjP-Ah-WAf" secondAttribute="centerY" id="Rhi-8h-cf4"/>
-                            <constraint firstItem="NEh-EW-0BN" firstAttribute="leading" secondItem="LmA-G0-kEf" secondAttribute="leading" id="SiU-8D-aO1"/>
-                            <constraint firstItem="oVN-Ye-hfr" firstAttribute="top" secondItem="6g7-U1-2gN" secondAttribute="bottom" constant="251" id="USx-vC-Jfz"/>
-                            <constraint firstItem="oVN-Ye-hfr" firstAttribute="top" secondItem="SvU-qQ-NDe" secondAttribute="bottom" constant="246" id="UhB-BX-bOe"/>
+                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="top" secondItem="QYb-Wn-vQ9" secondAttribute="bottom" constant="13" id="NEW-Xl-iYN"/>
+                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="top" secondItem="ld5-4l-xMp" secondAttribute="bottom" constant="15" id="PHY-HB-Nbm"/>
+                            <constraint firstItem="oVN-Ye-hfr" firstAttribute="top" secondItem="nZF-AH-Kcz" secondAttribute="bottom" constant="237" id="SGk-R0-Xft"/>
                             <constraint firstItem="NEh-EW-0BN" firstAttribute="top" secondItem="o63-xa-yqO" secondAttribute="bottom" constant="40" id="W4U-eO-QnT"/>
-                            <constraint firstItem="SvU-qQ-NDe" firstAttribute="leading" secondItem="hBv-cv-EKu" secondAttribute="leading" id="bGy-6d-VOV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QjP-Ah-WAf" secondAttribute="trailing" constant="35" id="bkH-OL-XxD"/>
-                            <constraint firstItem="ld5-4l-xMp" firstAttribute="leading" secondItem="6g7-U1-2gN" secondAttribute="leading" id="blY-Po-5px"/>
-                            <constraint firstItem="SvU-qQ-NDe" firstAttribute="top" secondItem="ld5-4l-xMp" secondAttribute="bottom" constant="8" symbolic="YES" id="g2M-4j-vwS"/>
-                            <constraint firstItem="QjP-Ah-WAf" firstAttribute="top" secondItem="NEh-EW-0BN" secondAttribute="bottom" constant="8" symbolic="YES" id="jbs-sY-Spp"/>
-                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="leading" secondItem="LmA-G0-kEf" secondAttribute="leading" id="mPY-Tb-Ezt"/>
-                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="top" secondItem="QjP-Ah-WAf" secondAttribute="bottom" constant="10" id="mqM-3s-tpW"/>
-                            <constraint firstItem="aQ0-FJ-ZbS" firstAttribute="leading" secondItem="SrQ-lX-c2h" secondAttribute="leading" id="p1b-uy-afM"/>
-                            <constraint firstItem="ld5-4l-xMp" firstAttribute="top" secondItem="hBv-cv-EKu" secondAttribute="bottom" constant="11" id="wqs-LV-z8g"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="leading" secondItem="ld5-4l-xMp" secondAttribute="leading" id="Xr5-3O-Lmd"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="leading" secondItem="SrQ-lX-c2h" secondAttribute="leading" id="aTF-nk-rwA"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="trailing" secondItem="nZF-AH-Kcz" secondAttribute="trailing" id="bXh-ga-G6T"/>
+                            <constraint firstItem="QYb-Wn-vQ9" firstAttribute="top" secondItem="NEh-EW-0BN" secondAttribute="bottom" constant="13" id="fAC-xw-5hz"/>
+                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="leading" secondItem="ld5-4l-xMp" secondAttribute="leading" id="mFQ-mn-pVN"/>
                             <constraint firstItem="NEh-EW-0BN" firstAttribute="leading" secondItem="NRU-JZ-Uhl" secondAttribute="leadingMargin" id="xP8-C7-FfN"/>
-                            <constraint firstItem="hBv-cv-EKu" firstAttribute="top" secondItem="SrQ-lX-c2h" secondAttribute="bottom" constant="8" symbolic="YES" id="xfA-EA-qAP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="PV2-Os-mSQ"/>
                     <connections>
-                        <outlet property="oilChangeLabel" destination="aQ0-FJ-ZbS" id="yeq-pi-gAh"/>
-                        <outlet property="oilChangeSwitchLabel" destination="hBv-cv-EKu" id="LLE-C7-a2X"/>
-                        <outlet property="transmissionLabel" destination="6g7-U1-2gN" id="xLP-C0-OVV"/>
-                        <outlet property="transmissionSwitchLabel" destination="SvU-qQ-NDe" id="THV-zv-yOJ"/>
-                        <outlet property="unitsLabel" destination="LmA-G0-kEf" id="3sf-hF-mBo"/>
-                        <outlet property="unitsSwitchLabel" destination="QjP-Ah-WAf" id="4y8-s9-bGY"/>
+                        <outlet property="oilChangeSegmentControl" destination="21C-lL-xP7" id="Nup-dK-eKw"/>
+                        <outlet property="transmissionSegmentControl" destination="nZF-AH-Kcz" id="5qa-8t-q3P"/>
+                        <outlet property="unitSegmentControl" destination="QYb-Wn-vQ9" id="pg3-Ry-qGX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lwE-gb-fIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
