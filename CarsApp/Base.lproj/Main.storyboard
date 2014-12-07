@@ -153,7 +153,7 @@
                                         <outlet property="titleLabel" destination="NGH-nJ-v3t" id="ZFz-0S-3Lw"/>
                                     </connections>
                                 </collectionReusableView>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xY2-52-61I">
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customFooter" id="xY2-52-61I">
                                     <rect key="frame" x="0.0" y="220" width="600" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
