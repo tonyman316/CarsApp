@@ -15,14 +15,8 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     @IBOutlet weak var userPicture: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet var editButton: UIBarButtonItem!
-    
-    // @IBOutlet var editButton: UIButton!
     @IBOutlet var changePicture: UIButton!
     
-    @IBAction func logoutButtonPressed(sender: AnyObject) {
-        navigationController!.popToRootViewControllerAnimated(true)
-    }
-
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var userImage: UIImage?
     var mainUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).user
@@ -118,6 +112,11 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
         } else if segue.identifier == "embedSegue" {
             var carCollectionView = segue.destinationViewController as CarCollectionViewController
             carCollectionView.del = self
+        } else if segue.identifier == "logout" {
+            // Empty navigation stack
+            for var i = 0; i < navigationController!.viewControllers.count - 1; ++i {
+                navigationController!.viewControllers.removeAtIndex(i)
+            }
         }
     }
 }

@@ -829,7 +829,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="logoutButtonPressed:" destination="eAz-2M-1yA" eventType="touchUpInside" id="MTQ-cZ-wPZ"/>
+                                    <segue destination="5ot-Sg-d2B" kind="presentation" identifier="logout" id="W51-0r-s32"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultUserImage" translatesAutoresizingMaskIntoConstraints="NO" id="a3R-UX-jLT">

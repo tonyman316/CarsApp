@@ -36,6 +36,11 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     
     override func viewWillAppear(animated: Bool) {
         userImageView.hidden = true
+        
+        // Remove presenting view controller if not nil
+        if presentingViewController != nil {
+            presentingViewController!.removeFromParentViewController()
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
