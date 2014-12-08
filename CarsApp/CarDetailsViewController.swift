@@ -106,9 +106,6 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
         mileageStepper.minimumValue = car!.currentMileage as Double
         mileageStepper.value = car!.currentMileage as Double
         priceStepper.value = car!.price as Double
-        
-        println("The car price is \(car?.price)")
-        println("The price stepper's value in SetupSteppers is \(priceStepper.value)")
     }
     
     @IBAction func stepperClicked(sender: AnyObject) {
@@ -120,16 +117,17 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
+    func saveToCoreData() {
         car?.currentMileage = mileageStepper.value
-        
-        println("The price stepper's value in View WIll Disappear is \(priceStepper.value)")
-        
         car?.price = priceStepper.value
         
         let error = NSErrorPointer()
         managedObjectContext?.save(error)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        saveToCoreData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -140,6 +138,7 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editCar" {
+            saveToCoreData()
             let editCarView = segue.destinationViewController as AddCarsViewController
             editCarView.title = "Edit \(car!.make) \(car!.model)"
             editCarView.car = car
