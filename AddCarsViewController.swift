@@ -72,6 +72,9 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         oilChangeTextField.delegate = self
         transmissionOilTextField.delegate = self
         
+        var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        scrollView.addGestureRecognizer(tap)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -140,8 +143,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     // Dismiss keyboard when tap on blank
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.view.endEditing(true)
+    func DismissKeyboard(){
         scrollView.endEditing(true)
     }
     
