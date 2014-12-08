@@ -59,7 +59,7 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     // Long press gesture handler
     func longPressHandler(sender:UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.Ended {
+        if sender.state == UIGestureRecognizerState.Began {
             var tapLocation: CGPoint = sender.locationInView(carsCollectionView)
             let indexPath = carsCollectionView.indexPathForItemAtPoint(tapLocation)
             
