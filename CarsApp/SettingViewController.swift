@@ -24,10 +24,8 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         super.viewDidLoad()
         
         if settingFromDatabase == nil {
-            println("No existing settings")
             createDefaultSetting()
         } else {
-            println("Found existing settings")
             setting = settingFromDatabase!
             updateSegmentInterface()
         }
@@ -35,9 +33,6 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         unitSegmentControl.addTarget(self, action: "segmentValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
         oilChangeSegmentControl.addTarget(self, action: "segmentValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
         transmissionSegmentControl.addTarget(self, action: "segmentValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        
-        println("settingFromDatabase: \(settingFromDatabase?.unit) \(settingFromDatabase?.oilChangeFrequency) \(settingFromDatabase?.transmissionFluidFrequency)")
-        println("setting: \(setting?.unit) \(setting?.oilChangeFrequency) \(setting?.transmissionFluidFrequency)")
 
     }
     
@@ -80,18 +75,12 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         oilChangeSegmentControl.setTitle("8000 miles", forSegmentAtIndex: 1)
         transmissionSegmentControl.setTitle("30000 miles", forSegmentAtIndex: 0)
         transmissionSegmentControl.setTitle("60000 miles", forSegmentAtIndex: 1)
-        println("UnitSegment 0, userUnit: \(setting?.unit)")
             
         case 1: setting?.unit = "km"
-        
-//        var doubleToInt: Int = Int(UnitConverter.milesToKilometers(5000))
-//        println("doubleToInt: \(doubleToInt)")
-        
         oilChangeSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(5000))) km", forSegmentAtIndex: 0)
         oilChangeSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(8000))) km", forSegmentAtIndex: 1)
         transmissionSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(30000))) km", forSegmentAtIndex: 0)
         transmissionSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(60000))) km", forSegmentAtIndex: 1)
-        println("UnitSegment 1, userUnit: \(setting?.unit)")
             
         default:
             break;
@@ -99,32 +88,21 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     @IBAction func oilChangeSegment(sender: AnyObject) {
-        
         switch (oilChangeSegmentControl.selectedSegmentIndex) {
         case 0: setting?.oilChangeFrequency = 5000
-                println("UnitSegment 0, userOilChange: \(setting?.oilChangeFrequency)")
-
         case 1: setting?.oilChangeFrequency = 8000
-                println("UnitSegment 1, userOilChange: \(setting?.oilChangeFrequency)")
-            
         default:
             break;
         }
     }
     
     @IBAction func transmissionSegment(sender: AnyObject) {
-        
         switch (transmissionSegmentControl.selectedSegmentIndex) {
         case 0: setting?.transmissionFluidFrequency = 30000
-                println("UnitSegment 0, userTran: \(setting?.transmissionFluidFrequency)")
-
         case 1: setting?.transmissionFluidFrequency = 60000
-                println("UnitSegment 1, userTran: \(setting?.transmissionFluidFrequency)")
-
         default:
             break;
         }
-        
     }
     
     // Save to Core Data
@@ -141,8 +119,6 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         managedObjectContext?.save(nil)
         
         setting = newSetting
-        
-        println("New settings created: \(newSetting)")
         
         updateSegmentInterface()
     }

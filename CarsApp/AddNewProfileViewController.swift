@@ -20,18 +20,20 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var userName: UITextField!
     @IBOutlet var Password: UITextField!
-    @IBOutlet var Age: UITextField!
-    //@IBOutlet var profilePic: UIImageView!
     
     var user: Owners? = nil
     var profileImage: UIImage?
     var activeField: UITextField?
     var userPictureAlreadyAdded = false
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var layer = addProfilePictureButton.layer
+        layer.masksToBounds = true
+        layer.cornerRadius = addProfilePictureButton.frame.width / 2
+        layer.borderWidth = 4
+        layer.borderColor = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
         
         addProfilePictureButton.contentMode = UIViewContentMode.ScaleAspectFill
         addProfilePictureButton.clipsToBounds = true
@@ -40,18 +42,15 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
             userName.text = user?.username
             firstNameTextField.text = user?.firstName
             lastNameTextField.text = user?.lastName
-            //profilePic = UIImage(data: user!.picture)
-            //Age.text = "\(user!.age)"
             
             if user?.picture != nil {
                 profileImage = UIImage(data: user!.picture)
             }
-           }
-            //scrollView.delegate = self
-            userName.delegate = self
-            firstNameTextField.delegate = self
         }
-    
+        
+        userName.delegate = self
+        firstNameTextField.delegate = self
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,10 +64,6 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        //scrollView.scrollEnabled = false
-       // scrollView.contentSize = CGSizeMake(view.frame.width, view.frame.height + makeTextField.frame.height * 6)
-       // scrollView.bounds = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         
         if let imageData = user?.valueForKey("picture") as? NSData {
             if userPictureAlreadyAdded == false {
@@ -86,18 +81,9 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     func keyboardWasShown(notification: NSNotification) {
         let info: NSDictionary = notification.userInfo!
         let keyboardSize = info.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue().size
-       // let buttonOrigin = activeField!.frame.origin
-       // let buttonHeight = activeField!.frame.size.height
         var visibleRect = view.frame
         
-        //var position = transmissionOilTextField.superview?.convertPoint(transmissionOilTextField.frame.origin, toView: nil)
-        
         visibleRect.size.height -= keyboardSize.height
-        
-//        if CGRectContainsPoint(visibleRect, buttonOrigin) == false {
-//            let scrollPoint = CGPointMake(0, buttonOrigin.y - visibleRect.size.height + buttonHeight)
-//            scrollView.setContentOffset(scrollPoint, animated: true)
-//        }
     }
     
     func keyboardWillBeHidden(notification: NSNotification) {
@@ -112,11 +98,6 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         activeField = nil
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // Dismiss keyboard when tap on blank
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
@@ -127,15 +108,9 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         textField.resignFirstResponder()
         return true
     }
-
-    
     
     @IBAction func addProfilePicture(sender: AnyObject) {
-        // Action Sheet
         showOptions()
-//        addProfilePictureButton.setBackgroundImage(image, forState: UIControlState.Normal)
-//        addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
-//        profileImage = image
     }
     
     @IBAction func done(sender: AnyObject) {
@@ -160,9 +135,6 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         // Dismiss
         popToMainView()
     }
-    
-    
-    
     
     // Action Sheet
     func showOptions() {
@@ -219,41 +191,10 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         profileImage = image
     }
     
-    
     func popToMainView() {
         navigationController?.popViewControllerAnimated(true)
     }
     
-    // Save to Core Data
-//    func createProfile() {
-//        var newUer: Owners
-//        
-//        if user == nil {
-//            let
-//        }
-//        
-//        
-//        let imageData = UIImagePNGRepresentation(profileImage!) as NSData
-//        var userDictionary = [String : String]()
-//        userDictionary["firstName"] = firstNameTextField.text
-//        userDictionary["lastName"] = lastNameTextField.text
-//        //userDictionary["Age"] = Age.text
-//        userDictionary["userName"] = userName.text
-//        
-//        Owners.createUser(userInfo: userDictionary, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
-//        managedObjectContext?.save(nil)
-//    }
-//    
-//    // check input
-//    func validInput() -> Bool {
-//        if (profileImage == nil || firstNameTextField.text.isEmpty || lastNameTextField.text.isEmpty){
-//            return false
-//        } else {
-//            return true
-//        }
-//    }
-//    
-//}
     func createProfile() {
         var newUser: Owners
         
@@ -274,22 +215,6 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         newUser.username = userName.text
         newUser.password = Password.text
         
-//        if let year = yearTextField.text.toInt() {
-//            newCar.year = year
-//        }
-//        
-//        if users != nil && !(users!.isEmpty) {
-//            newCar.owners = users![0]
-//        } else if car == nil {
-//            newCar.owners = Owners.databaseContainsMainUser(managedObjectContext!).user!
-//            
-//            let userAlert = UIAlertController(title: "Owner not set", message: "Since you did not select a user, ownership of the car will be set to \(newCar.owners.firstName).", preferredStyle: UIAlertControllerStyle.Alert)
-//            userAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-//                self.dismissController()
-//            }))
-//            presentViewController(userAlert, animated: true, completion: nil)
-//        }
-//        
         managedObjectContext?.save(nil)
     }
     
@@ -309,7 +234,7 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     
     // check input
     func validInput() -> Bool {
-        if (profileImage == nil){// || makeTextField.text.isEmpty || modelTextField.text.isEmpty || yearTextField.text.isEmpty /* || priceTextField.text.isEmpty || currentMileageTextField.text.isEmpty || oilChangeTextField.text.isEmpty || transmissionOilTextField.text.isEmpty */ ){
+        if (profileImage == nil){
             return false
         } else {
             return true
@@ -342,20 +267,4 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         
         return newImage
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "embedSegue" {
-            var userCollectionView = segue.destinationViewController as UsersCollectionViewController
-            
-//            if user != nil && user?.Cars != nil {
-//                userCollectionView.selectedUsers = [user!.Cars]
-//            }
-//            
-           // userCollectionView.del = self
-        }
-    }
-    
-//    func didSelectUsers(viewController: UsersCollectionViewController, selectedUsers users: [Owners]?) {
-//        self.users = users
-//    }
 }

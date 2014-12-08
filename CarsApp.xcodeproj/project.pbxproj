@@ -55,7 +55,6 @@
 		D4B3DFFE1A2ADB4400B44089 /* portrait_mode-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B3DFFB1A2ADB4400B44089 /* portrait_mode-50.png */; };
 		D4B3DFFF1A2ADB4400B44089 /* slr_small_lens-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B3DFFC1A2ADB4400B44089 /* slr_small_lens-50.png */; };
 		D4B3E0031A2ADB5A00B44089 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B3E0011A2ADB5A00B44089 /* ProfileTableViewController.swift */; };
-		D4B3E0051A2ADB6600B44089 /* MaptestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B3E0041A2ADB6600B44089 /* MaptestViewController.swift */; };
 		D4B3E0081A2ADE5D00B44089 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B3E0061A2ADE5D00B44089 /* ProfileTableViewCell.swift */; };
 		D4B3E0091A2ADE5D00B44089 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B3E0071A2ADE5D00B44089 /* ProfileTableViewCell.xib */; };
 		D4C529391A2FEAB40081B9AB /* AddNewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */; };
@@ -126,7 +125,6 @@
 		D4B3DFFB1A2ADB4400B44089 /* portrait_mode-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portrait_mode-50.png"; sourceTree = "<group>"; };
 		D4B3DFFC1A2ADB4400B44089 /* slr_small_lens-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slr_small_lens-50.png"; sourceTree = "<group>"; };
 		D4B3E0011A2ADB5A00B44089 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
-		D4B3E0041A2ADB6600B44089 /* MaptestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaptestViewController.swift; sourceTree = "<group>"; };
 		D4B3E0061A2ADE5D00B44089 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = ../ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		D4B3E0071A2ADE5D00B44089 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileTableViewCell.xib; path = ../ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewProfileViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +243,25 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		9CFFF6141A3575A8002D6F33 /* Cars Collection View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				196802681A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift */,
+				19A800231A34F24C00D93B19 /* CarsCollectionViewCell.swift */,
+			);
+			name = "Cars Collection View Controller";
+			sourceTree = "<group>";
+		};
+		9CFFF6151A3575BF002D6F33 /* Profile Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D4B3E0011A2ADB5A00B44089 /* ProfileTableViewController.swift */,
+				D4B3E0061A2ADE5D00B44089 /* ProfileTableViewCell.swift */,
+				D4B3E0071A2ADE5D00B44089 /* ProfileTableViewCell.xib */,
+			);
+			name = "Profile Table View Controller";
+			sourceTree = "<group>";
+		};
 		D406165B1A1D4B8A0061F951 = {
 			isa = PBXGroup;
 			children = (
@@ -322,14 +339,10 @@
 			isa = PBXGroup;
 			children = (
 				9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */,
-				D4B3E0011A2ADB5A00B44089 /* ProfileTableViewController.swift */,
-				D4B3E0061A2ADE5D00B44089 /* ProfileTableViewCell.swift */,
-				D4B3E0071A2ADE5D00B44089 /* ProfileTableViewCell.xib */,
-				D4B3E0041A2ADB6600B44089 /* MaptestViewController.swift */,
-				D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */,
-				196802681A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift */,
-				19A800231A34F24C00D93B19 /* CarsCollectionViewCell.swift */,
 				19A800251A34F5D500D93B19 /* SelectCarProtocol.swift */,
+				D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */,
+				9CFFF6151A3575BF002D6F33 /* Profile Table View Controller */,
+				9CFFF6141A3575A8002D6F33 /* Cars Collection View Controller */,
 			);
 			name = "Profile Tab";
 			sourceTree = "<group>";
@@ -511,7 +524,6 @@
 				9CD0C9B11A30A45500DA7030 /* SelectUserProtocol.swift in Sources */,
 				9C4B87F31A3140CD00292FCD /* CustomHeader.swift in Sources */,
 				9CB9CCEA1A32D319007AF583 /* UIImageViewExtension.swift in Sources */,
-				D4B3E0051A2ADB6600B44089 /* MaptestViewController.swift in Sources */,
 				D4538F8F1A20899B0016A05A /* AddCarsViewController.swift in Sources */,
 				9CEB8EA91A2A2D370009105C /* CarMapViewController.swift in Sources */,
 				9C2557881A3026900082E2F9 /* MyCars.swift in Sources */,

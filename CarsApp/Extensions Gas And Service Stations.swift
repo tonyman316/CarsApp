@@ -13,7 +13,6 @@ import AddressBookUI
 
 extension GasStations {
     class func populateDatabaseWithGasStations(userLocation: CLLocation, context: NSManagedObjectContext) {
-        //println("Populate database called")
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = "gas station"
         let span = MKCoordinateSpanMake(0.1, 0.1)
@@ -31,10 +30,8 @@ extension GasStations {
                     let matches = context.executeFetchRequest(request, error: error)
                     
                     if (matches == nil) { // Check for errors?
-                        //println("No matches")
                     } else if (matches?.count > 1) {
                     } else if (matches?.count == 1){
-                        //println("\"\(name)\" already in database")
                     } else {
                         let gasStation = (NSEntityDescription .insertNewObjectForEntityForName("GasStations", inManagedObjectContext: context)) as GasStations
                         gasStation.name = name
@@ -44,8 +41,6 @@ extension GasStations {
                         let addressDictionary = gasStationsPlacemark.addressDictionary
                         gasStation.address = ABCreateStringWithAddressDictionary(addressDictionary, false)
                         gasStation.distance = GasStations.distanceBetweenUserAndLocation(gasStation.location) as NSNumber
-                        
-                        //println("New gas station: \"\(name)\"")
                     }
                 }
             }
@@ -69,7 +64,6 @@ extension GasStations {
 
 extension ServiceStations {
     class func populateDatabaseWithServiceStations(userLocation: CLLocation, context: NSManagedObjectContext) {
-        //println("Populate database called")
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = "mechanics"
         let span = MKCoordinateSpanMake(0.1, 0.1)
@@ -87,10 +81,8 @@ extension ServiceStations {
                     let matches = context.executeFetchRequest(request, error: error)
                     
                     if (matches == nil) { // Check for errors?
-                        //println("No matches")
                     } else if (matches?.count > 1) {
                     } else if (matches?.count == 1){
-                        //println("\"\(name)\" already in database")
                     } else {
                         let serviceStation = (NSEntityDescription .insertNewObjectForEntityForName("ServiceStations", inManagedObjectContext: context)) as ServiceStations
                         serviceStation.name = name
@@ -100,8 +92,6 @@ extension ServiceStations {
                         let addressDictionary = serviceStationsPlacemark.addressDictionary
                         serviceStation.address = ABCreateStringWithAddressDictionary(addressDictionary, false)
                         serviceStation.distance = GasStations.distanceBetweenUserAndLocation(serviceStation.location) as NSNumber
-                        
-                        //println("New service station: \"\(name)\"")
                     }
                 }
             }

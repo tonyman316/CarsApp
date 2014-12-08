@@ -16,7 +16,6 @@ extension Owners {
             let result = Owners.databaseContainsMainUser(context)
             
             if result.isContained == true {
-                println("Deleting existing user \"\((result.user!).firstName)\"")
                 context.deleteObject(result.user!)
             }
         }
@@ -40,7 +39,6 @@ extension Owners {
         }
         
         var error = NSErrorPointer()
-        println("New user created with name \(newUser.firstName)")
         context.save(error)
     }
     

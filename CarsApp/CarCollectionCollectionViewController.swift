@@ -53,9 +53,6 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as CarsCollectionViewCell
         let car = fetchedResultController.fetchedObjects![indexPath.row] as MyCars
         
-        println("Car found: \(car)")
-        
-        //cell.carImageView = UIImage (data: car.carImage)
         cell.carImageView.image = UIImage(data: car.carImage)
 
         cell.nameLabel.text = car.make
@@ -78,20 +75,22 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
             var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCollectionViewCell
             
             if selectedCars != nil && contains(selectedCars!, selected) == true {
-                cell.carImageView.layer.borderColor = colorForBorder
                 selectedCars!.removeAtIndex(find(selectedCars!, selected)!)
             } else {
                 if selectedCars == nil {
                     selectedCars = [MyCars]()
                 }
                 
-                cell.carImageView.layer.borderColor = UIColor.blueColor().CGColor
                 selectedCars!.append(selected)
             }
             
             del?.didSelectCars(self, selectedCars: selectedCars)
             selectedCars = nil
         }
+    }
+    
+    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
     
     func getFetchedResultController() -> NSFetchedResultsController {

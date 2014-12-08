@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         appSettings = controller.fetchedObjects?.first as? Setting
-        println(appSettings)
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
