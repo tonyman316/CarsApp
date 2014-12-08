@@ -29,15 +29,19 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userPicture.setupItemPictureLayer()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
         if let user = mainUser {
             userPicture.image = UIImage(data: user.picture)
             usernameLabel.text = user.firstName
+        }
+        
+        userPicture.setupItemPictureLayer()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        if userImage != nil {
+            mainUser?.picture = UIImagePNGRepresentation(userImage!)
         }
     }
     
@@ -87,7 +91,13 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     
     func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
         var imageToSave: UIImage
+        
         imageToSave = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
+        
+        userImage = imageToSave
+        userPicture.image = imageToSave
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func popToMainView() {

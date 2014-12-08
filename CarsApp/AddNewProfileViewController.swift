@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 import MobileCoreServices
 
-class AddNewProfileViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate , UITextFieldDelegate ,/* SelectCarsDelegate */ UIScrollViewDelegate {
+class AddNewProfileViewController: UIViewController, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
@@ -182,16 +182,14 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         var imageToSave = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
         profileImage = imageToSave
         
-        addProfilePictureButton.setBackgroundImage(imageToSave, forState: UIControlState.Normal)
-        addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
-        addProfilePictureButton.imageView!.setupItemPictureLayer()
+        addUserImageView(image: imageToSave)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     func addUserImageView(#image: UIImage) {
-        addProfilePictureButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        addProfilePictureButton.setImage(image, forState: UIControlState.Normal)
         addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
         profileImage = image
     }

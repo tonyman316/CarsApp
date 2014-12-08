@@ -226,7 +226,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
         var imageToSave:UIImage
         
-        imageToSave = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
+        imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
         // Resize image doesn't work!!
         var newCGSize = CGSizeMake(100, 100)

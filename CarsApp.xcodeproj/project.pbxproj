@@ -243,6 +243,14 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		9CF5AF201A363418005F3893 /* Add New Profile View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */,
+			);
+			name = "Add New Profile View Controller";
+			sourceTree = "<group>";
+		};
 		9CFFF6141A3575A8002D6F33 /* Cars Collection View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,7 +348,7 @@
 			children = (
 				9C32E0EB1A2B7778000A9908 /* ProfileViewController.swift */,
 				19A800251A34F5D500D93B19 /* SelectCarProtocol.swift */,
-				D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */,
+				9CF5AF201A363418005F3893 /* Add New Profile View Controller */,
 				9CFFF6151A3575BF002D6F33 /* Profile Table View Controller */,
 				9CFFF6141A3575A8002D6F33 /* Cars Collection View Controller */,
 			);
