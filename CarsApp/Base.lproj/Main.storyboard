@@ -223,6 +223,7 @@
                     <connections>
                         <outlet property="carsCollectionView" destination="Frh-Qh-nDJ" id="SP1-hL-Nha"/>
                         <outlet property="containerView" destination="CAA-ca-N0N" id="0ui-a5-a7V"/>
+                        <segue destination="eAz-2M-1yA" kind="show" identifier="showProfile" id="wWg-uc-iTF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -806,7 +807,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRY-Ai-Adt">
                                 <rect key="frame" x="0.0" y="239" width="600" height="109"/>
                                 <connections>
-                                    <segue destination="NiF-uU-3AZ" kind="embed" id="ZWw-lH-Ks2"/>
+                                    <segue destination="NiF-uU-3AZ" kind="embed" identifier="embeddedTableViewSegue" id="ZWw-lH-Ks2"/>
                                 </connections>
                             </containerView>
                             <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carpool-50.png" translatesAutoresizingMaskIntoConstraints="NO" id="sI5-HR-6rO">
@@ -1568,9 +1569,10 @@
         <image name="userTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JaB-LZ-wDA"/>
-        <segue reference="iD0-Xm-AEe"/>
+        <segue reference="wWg-uc-iTF"/>
+        <segue reference="vfQ-hY-Uzd"/>
+        <segue reference="fhr-ih-1C1"/>
         <segue reference="fef-lu-Euz"/>
-        <segue reference="3yW-OA-sCp"/>
+        <segue reference="iD0-Xm-AEe"/>
     </inferredMetricsTieBreakers>
 </document>

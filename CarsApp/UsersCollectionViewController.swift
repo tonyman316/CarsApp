@@ -16,6 +16,7 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
     var del: SelectUsersDelegate?
     let colorForBorder = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    var clearsSelections = false
     
     func animateCollectionViewAppearance() {
         UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
@@ -33,6 +34,14 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         fetchedResultController.performFetch(nil)
         
         animateCollectionViewAppearance()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if clearsSelections == true && selectedUsers != nil {
+            selectedUsers!.removeAll(keepCapacity: true)
+        }
     }
     
     func usersDidChangeNotificationReceived() {
@@ -70,13 +79,8 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         return cell
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        del?.didSelectUsers(self, selectedUsers: selectedUsers)
-    }
-    
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if parentViewController is AddCarsViewController {
+        if parentViewController is AddCarsViewController || parentViewController is MyCarsViewController {
             let selected = fetchedResultController.fetchedObjects![indexPath.row] as Owners
             
             var cell = collectionView.cellForItemAtIndexPath(indexPath) as UserCollectionViewCell

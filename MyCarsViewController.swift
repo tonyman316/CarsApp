@@ -10,9 +10,10 @@ import UIKit
 import Foundation
 import CoreData
 
-class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
+class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate, SelectUsersDelegate {
     let identifier = "CarsCell"
     var cars: [MyCars]?
+    var users: [Owners]?
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
@@ -182,6 +183,24 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             carDetailView.title = "\(car.owners.firstName)'s \(car.make) \(car.model)"
             carDetailView.car = car
+            
+        } else if segue.identifier == "showProfile" {
+            let profileView = segue.destinationViewController as ProfileViewController
+            
+            if users != nil && users?.isEmpty == false {
+                profileView.userToDisplay = users?.first
+            }
+            
+        } else if segue.identifier == "embedSegue" {
+            var userCollectionView = segue.destinationViewController as UsersCollectionViewController
+            userCollectionView.clearsSelections = true
+            userCollectionView.del = self
         }
+    }
+    
+    func didSelectUsers(viewController: UsersCollectionViewController, selectedUsers users: [Owners]?) {
+        println(users)
+        self.users = users
+        performSegueWithIdentifier("showProfile", sender: self)
     }
 }

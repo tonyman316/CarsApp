@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     var userImage: UIImage?
     var mainUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).user
     var carToDisplay: MyCars?
+    var userToDisplay: Owners?
     
     func didSelectCars(viewController: CarCollectionViewController, selectedCars cars: [MyCars]?) {
         carToDisplay = cars![0]
@@ -30,10 +31,12 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let user = mainUser {
-            userPicture.image = UIImage(data: user.picture)
-            usernameLabel.text = user.firstName
+        if userToDisplay == nil {
+            userToDisplay = mainUser
         }
+        
+        userPicture.image = UIImage(data: userToDisplay!.picture)
+        usernameLabel.text = userToDisplay!.firstName
         
         userPicture.setupItemPictureLayer()
     }
@@ -41,7 +44,7 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         if userImage != nil {
-            mainUser?.picture = UIImagePNGRepresentation(userImage!)
+            userToDisplay?.picture = UIImagePNGRepresentation(userImage!)
         }
     }
     
@@ -107,19 +110,35 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EditUser" {
             let editUserView = segue.destinationViewController as AddNewProfileViewController
-            editUserView.title = "Edit \(mainUser!.firstName)"
-            editUserView.user = mainUser
+            editUserView.title = "Edit \(userToDisplay!.firstName)"
+            editUserView.user = userToDisplay
+            
         } else if segue.identifier == "carDetails" {
             let carView = segue.destinationViewController as CarDetailsViewController
             carView.title = "\(carToDisplay!.owners.firstName)'s \(carToDisplay!.make) \(carToDisplay!.model)"
             carView.car = carToDisplay
+            
         } else if segue.identifier == "embedSegue" {
             var carCollectionView = segue.destinationViewController as CarCollectionViewController
             carCollectionView.del = self
+            
         } else if segue.identifier == "logout" {
             // Empty navigation stack
             for var i = 0; i < navigationController!.viewControllers.count - 1; ++i {
                 navigationController!.viewControllers.removeAtIndex(i)
+            }
+            
+        } else if segue.identifier == "embeddedTableViewSegue" {
+            let userTable = segue.destinationViewController as ProfileTableViewController
+            
+            if userToDisplay != nil {
+                userTable.userToDisplay = userToDisplay!
+            } else {
+                if userToDisplay == nil {
+                    userTable.userToDisplay = mainUser
+                } else {
+                    userTable.userToDisplay = userToDisplay!
+                }
             }
         }
     }

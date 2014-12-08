@@ -157,7 +157,6 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editCar" {
-            
             if (mileageStepper.value != car!.currentMileage || priceStepper.value != car!.price) {
                 saveToCoreData()
             }
