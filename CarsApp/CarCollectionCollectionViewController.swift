@@ -90,6 +90,7 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
             }
             
             del?.didSelectCars(self, selectedCars: selectedCars)
+            selectedCars = nil
         }
     }
     
