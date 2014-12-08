@@ -27,6 +27,11 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
         performSegueWithIdentifier("carDetails", sender: carToDisplay)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userPicture.setupItemPictureLayer()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -34,8 +39,6 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
             userPicture.image = UIImage(data: user.picture)
             usernameLabel.text = user.firstName
         }
-        
-        PictureLayer(userPicture)
     }
     
     @IBAction func changePicturePressed(sender: AnyObject) {
@@ -85,15 +88,6 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
         var imageToSave: UIImage
         imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
-    }
-    
-    //change profile picture
-    func PictureLayer(picture:UIImageView) {
-        var layer = picture.layer
-        layer.masksToBounds = true
-        layer.cornerRadius = picture.frame.width / 2
-        layer.borderWidth = 4
-        layer.borderColor = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
     }
     
     func popToMainView() {

@@ -895,7 +895,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="User Profile" id="xg3-na-8v6">
-                        <barButtonItem key="leftBarButtonItem" image="edit_user-50.png" id="YLp-Hj-SKC">
+                        <barButtonItem key="leftBarButtonItem" image="editUser" id="YLp-Hj-SKC">
                             <connections>
                                 <segue destination="0k2-nX-bYj" kind="show" identifier="EditUser" id="iD0-Xm-AEe"/>
                             </connections>
@@ -1559,7 +1559,7 @@
         <image name="carsTab" width="37" height="37"/>
         <image name="centerMap" width="128" height="128"/>
         <image name="defaultUserImage" width="512" height="512"/>
-        <image name="edit_user-50.png" width="50" height="50"/>
+        <image name="editUser" width="25" height="25"/>
         <image name="mapTap" width="25" height="25"/>
         <image name="mileage" width="252" height="252"/>
         <image name="price" width="512" height="512"/>

@@ -12,15 +12,21 @@ class ProfileTableViewController: UITableViewController {
     var profile_text_list = [String]()
     var profile_image_list = [String]()
     var mainUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).user
+    let currentSettings = (UIApplication.sharedApplication().delegate as AppDelegate).appSettings
     let identifier = "ProfileCell"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         profile_image_list = ["portrait_mode-50" , "gas_station-50"]
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        profile_text_list = [mainUser!.firstName + " " + mainUser!.lastName]
+        
+        if currentSettings.unit == "miles" {
+            profile_text_list.append("\(floor(calculateUserTotalMileage())) total miles")
+        } else {
+            profile_text_list.append("\(floor(UnitConverter.milesToKilometers(calculateUserTotalMileage()))) total km")
+        }
+        
+        tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -40,11 +46,24 @@ class ProfileTableViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as ProfileTableViewCell
         
         if let user = mainUser {
-            profile_text_list = [user.firstName , user.lastName]
             cell.profileLabel.text = profile_text_list[indexPath.row]
             cell.profileImageView.image = UIImage(named: profile_image_list[indexPath.row])
         }
         
         return cell
+    }
+    
+    func calculateUserTotalMileage() -> Double {
+        var total = 0.0
+        
+        if let user = mainUser {
+            if user.cars.count > 0 {
+                for car in user.cars {
+                    total += (car as MyCars).currentMileage.doubleValue
+                }
+            }
+        }
+        
+        return total
     }
 }

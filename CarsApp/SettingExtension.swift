@@ -29,7 +29,6 @@ extension Setting {
     }
     
     class func createDefaultSetting(unit: String, oilChangeFrequency: Int, transmissionFluidFrequency: Int, context: NSManagedObjectContext) -> Setting {
-        
         let newSetting = (NSEntityDescription .insertNewObjectForEntityForName("Setting", inManagedObjectContext: context)) as Setting
         
         newSetting.unit = unit
