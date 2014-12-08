@@ -36,10 +36,8 @@ extension Setting {
         newSetting.transmissionFluidFrequency = transmissionFluidFrequency
         
         var error = NSErrorPointer()
-        println("New Setting created with unit: \(newSetting.unit), oilChangeFrequency: \(newSetting.oilChangeFrequency), transmissionFluidFrequency: \(newSetting.transmissionFluidFrequency)")
         context.save(error)
         
         return newSetting
     }
-
 }

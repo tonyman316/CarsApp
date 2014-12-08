@@ -109,9 +109,9 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
                 let milesSinceLastTransmissionChange = car!.currentMileage.intValue - transmissionChange
                 
                 if currentSettings.unit == "miles" {
-                    oilChangeLabel.text = "\(milesSinceLastTransmissionChange) miles ago"
+                    fluidChangeLabel.text = "\(milesSinceLastTransmissionChange) miles ago"
                 } else {
-                    oilChangeLabel.text = "\(floor(UnitConverter.milesToKilometers(Double(milesSinceLastTransmissionChange)))) km ago"
+                    fluidChangeLabel.text = "\(floor(UnitConverter.milesToKilometers(Double(milesSinceLastTransmissionChange)))) km ago"
                 }
                 
             } else {
@@ -146,6 +146,7 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         saveToCoreData()
+        setupNotifications()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -174,6 +175,50 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
         } else if sender == resetTransmissionButton {
             fluidChangeLabel.text = "Just changed!"
             car?.transmissionOil = car!.currentMileage
+        }
+    }
+    
+    func setupNotifications() {
+        var milesOrKm = currentSettings.unit
+        
+        var maxOilChangeFromUser = currentSettings.oilChangeFrequency.doubleValue
+        var oilChangeText = oilChangeLabel.text! as NSString
+        
+        var maxFluidChangeFromUser = currentSettings.transmissionFluidFrequency.doubleValue
+        var fluidChangeText = fluidChangeLabel.text! as NSString
+        
+        if oilChangeText.doubleValue >= maxOilChangeFromUser - 100 {
+            var localNotification:UILocalNotification = UILocalNotification()
+            localNotification.alertAction = "Oil change needed soon"
+            
+            if milesOrKm == "miles" {
+                localNotification.alertBody = "Your \(car!.make) \(car!.model) currently has gone \(car!.oilChange) miles without an oil change. You should take care of that soon!"
+            } else {
+                localNotification.alertBody = "Your \(car!.make) \(car!.model) currently has gone \(UnitConverter.kmToMiles(car!.oilChange.doubleValue)) km without an oil change. You should take care of that soon!"
+            }
+            
+            localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
+            
+            if find((UIApplication.sharedApplication().delegate as AppDelegate).userNotifications, localNotification) == nil {
+                (UIApplication.sharedApplication().delegate as AppDelegate).userNotifications.append(localNotification)
+            }
+        }
+        
+        if fluidChangeText.doubleValue >= maxFluidChangeFromUser - 100 {
+            var localNotification:UILocalNotification = UILocalNotification()
+            localNotification.alertAction = "Transmission fluid change needed soon"
+            
+            if milesOrKm == "miles" {
+                localNotification.alertBody = "Your \(car!.make) \(car!.model) currently has gone \(car!.transmissionOil) miles without a transmission oil change. You should take care of that soon!"
+            } else {
+                localNotification.alertBody = "Your \(car!.make) \(car!.model) currently has gone \(UnitConverter.kmToMiles(car!.transmissionOil.doubleValue)) km without an oil change. You should take care of that soon!"
+            }
+            
+            localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
+            
+            if find((UIApplication.sharedApplication().delegate as AppDelegate).userNotifications, localNotification) == nil {
+                (UIApplication.sharedApplication().delegate as AppDelegate).userNotifications.append(localNotification)
+            }
         }
     }
 }
