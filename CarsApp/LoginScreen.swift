@@ -34,6 +34,10 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         animateEntranceWithRotation()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        userImageView.hidden = true
+    }
+    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -104,6 +108,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         let originalCenter = userImageView.center
         
         userImageView.center = CGPointMake(userImageView.center.x + userImageView.frame.size.width + 20, userImageView.center.y)
+        userImageView.hidden = false
         userImageView.transform = CGAffineTransformMakeRotation(fullRotation / 5 * 2)
         
         UIView.animateWithDuration(1.5, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
@@ -237,6 +242,13 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     @IBAction func loginButtonPressed(sender: AnyObject) {
         let context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!
         
+        if dataValidation() == false {
+            let alert = UIAlertController(title: "Ooops!", message: "It seems like you are missing some details.", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        
         if hasUser == false || newUserMode == true {
             var userDictionary = [String : String]()
             userDictionary["firstName"] = firstNameField.text
@@ -290,5 +302,21 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
             self.userImageView.image = UIImage(named: "defaultUserImage")
             self.loginButton.setTitle("Sign up", forState: UIControlState.Normal)
         })
+    }
+    
+    func dataValidation() -> Bool {
+        var result = true
+        
+        if hasUser == false || newUserMode == true {
+            if usernameField.text.isEmpty || passwordField.text.isEmpty || firstNameField.text.isEmpty || lastNameField.text.isEmpty || userImage == nil {
+                result = false
+            }
+        } else {
+            if usernameField.text.isEmpty || passwordField.text.isEmpty {
+                result = false
+            }
+        }
+        
+        return result
     }
 }
