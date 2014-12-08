@@ -81,6 +81,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+        println("Car price is \(car?.price)")
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     

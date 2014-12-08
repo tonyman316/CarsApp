@@ -15,10 +15,12 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
-    @IBOutlet weak var birthDateField: UITextField!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var choosePictureButton: UIButton!
+    @IBOutlet weak var notYouLabel: UILabel!
+    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var userImage: UIImage?
@@ -34,8 +36,11 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         if hasUser == true {
             firstNameField.hidden = true
             lastNameField.hidden = true
-            birthDateField.hidden = true
             choosePictureButton.hidden = true
+        } else {
+            notYouLabel.text = "Enter your details below!"
+            signupButton.hidden = true
+            loginButton.setTitle("Sign up", forState: UIControlState.Normal)
         }
         
         if let user = mainUser {
@@ -47,7 +52,6 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         passwordField.delegate = self
         firstNameField.delegate = self
         lastNameField.delegate = self
-        birthDateField.delegate = self
         
         registerForKeyboardNotifications()
     }
@@ -74,7 +78,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         let buttonHeight = activeField!.frame.size.height
         var visibleRect = view.frame
         
-        var position = birthDateField.superview?.convertPoint(birthDateField.frame.origin, toView: nil)
+        var position = lastNameField.superview?.convertPoint(lastNameField.frame.origin, toView: nil)
         
         visibleRect.size.height -= keyboardSize.height
         
@@ -246,7 +250,6 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
             userDictionary["lastName"] = lastNameField.text
             userDictionary["username"] = usernameField.text
             userDictionary["password"] = passwordField.text
-            userDictionary["birthday"] = birthDateField.text
             
             Owners.createUser(userInfo: userDictionary, userPicture: userImage, isMainUser: true, context: context)
             
@@ -260,5 +263,34 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func signupButtonPressed(sender: AnyObject) {
+        animateSignUp()
+    }
+    
+    func animateSignUp() {
+        userImage = nil
+        notYouLabel.hidden = false
+        notYouLabel.text = "Enter your details below!"
+        notYouLabel.alpha = 0.0
+        
+        firstNameField.hidden = false
+        firstNameField.alpha = 0.0
+        
+        lastNameField.hidden = false
+        lastNameField.alpha = 0.0
+        
+        choosePictureButton.hidden = false
+        choosePictureButton.alpha = 0.0
+
+        UIView.animateWithDuration(1, animations: { () -> Void in
+            self.notYouLabel.alpha = 1
+            self.firstNameField.alpha = 1
+            self.lastNameField.alpha = 1
+            self.choosePictureButton.alpha = 1
+            self.userImageView.image = UIImage(named: "defaultUserImage")
+            self.loginButton.setTitle("Sign up", forState: UIControlState.Normal)
+        })
     }
 }

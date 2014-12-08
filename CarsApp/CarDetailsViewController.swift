@@ -105,13 +105,10 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     func setupSteppers() {
         mileageStepper.minimumValue = car!.currentMileage as Double
         mileageStepper.value = car!.currentMileage as Double
-        mileageStepper.maximumValue = 200000
-        mileageStepper.stepValue = 5
-        
-        priceStepper.minimumValue = 0
         priceStepper.value = car!.price as Double
-        priceStepper.maximumValue = 500000
-        priceStepper.stepValue = 50
+        
+        println("The car price is \(car?.price)")
+        println("The price stepper's value in SetupSteppers is \(priceStepper.value)")
     }
     
     @IBAction func stepperClicked(sender: AnyObject) {
@@ -126,6 +123,9 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         car?.currentMileage = mileageStepper.value
+        
+        println("The price stepper's value in View WIll Disappear is \(priceStepper.value)")
+        
         car?.price = priceStepper.value
         
         let error = NSErrorPointer()
