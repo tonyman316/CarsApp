@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,17 +14,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klq-Ec-lJH">
-                        <rect key="frame" x="165" y="21" width="150" height="21"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sfG-I8-EhI">
+                        <rect key="frame" x="8" y="8" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="xns-Qe-2Cf"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klq-Ec-lJH">
+                        <rect key="frame" x="60" y="8" width="304" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfG-I8-EhI">
-                        <rect key="frame" x="29" y="17" width="25" height="25"/>
-                    </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="sfG-I8-EhI" firstAttribute="bottom" secondItem="Klq-Ec-lJH" secondAttribute="bottom" id="8nw-he-SLp"/>
+                    <constraint firstItem="sfG-I8-EhI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Afc-qi-r3a"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sfG-I8-EhI" secondAttribute="bottom" constant="-0.5" id="Ej3-9D-7T1"/>
+                    <constraint firstItem="Klq-Ec-lJH" firstAttribute="leading" secondItem="sfG-I8-EhI" secondAttribute="trailing" constant="8" symbolic="YES" id="g6v-ae-8tY"/>
+                    <constraint firstItem="Klq-Ec-lJH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="hP6-cf-RUZ"/>
+                    <constraint firstItem="sfG-I8-EhI" firstAttribute="top" secondItem="Klq-Ec-lJH" secondAttribute="top" id="kIU-9f-sDs"/>
+                    <constraint firstItem="sfG-I8-EhI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ta2-9X-IGE"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="profileImageView" destination="sfG-I8-EhI" id="l7q-82-d7B"/>
                 <outlet property="profileLabel" destination="Klq-Ec-lJH" id="1Cn-R6-8Dq"/>

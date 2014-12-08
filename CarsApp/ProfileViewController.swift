@@ -20,22 +20,21 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     @IBOutlet var changePicture: UIButton!
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
-        navigationController?.popToRootViewControllerAnimated(true)
+        navigationController!.popToRootViewControllerAnimated(true)
     }
-    ;
+
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var userImage: UIImage?
     var mainUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).user
     var carToDisplay: MyCars?
-    
-    
     
     func didSelectCars(viewController: CarCollectionViewController, selectedCars cars: [MyCars]?) {
         carToDisplay = cars![0]
         performSegueWithIdentifier("carDetails", sender: carToDisplay)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         if let user = mainUser {
             userPicture.image = UIImage(data: user.picture)
@@ -91,13 +90,8 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     
     func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
         var imageToSave: UIImage
-        
         imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
-        
     }
-    
-    
-    
     
     //change profile picture
     func PictureLayer(picture:UIImageView) {
@@ -107,17 +101,6 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
         layer.borderWidth = 4
         layer.borderColor = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
     }
-    
-    
-    //    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
-    //        var imageToSave = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
-    //        profileImage = imageToSave
-    //
-    //        addProfilePictureButton.setBackgroundImage(imageToSave, forState: UIControlState.Normal)
-    //        addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
-    //
-    //        self.dismissViewControllerAnimated(true, completion: nil)
-    //    }
     
     func popToMainView() {
         navigationController?.popViewControllerAnimated(true)
@@ -132,8 +115,6 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
             let carView = segue.destinationViewController as CarDetailsViewController
             carView.title = "\(carToDisplay!.owners.firstName)'s \(carToDisplay!.make) \(carToDisplay!.model)"
             carView.car = carToDisplay
-            
-            println(carView.title)
         } else if segue.identifier == "embedSegue" {
             var carCollectionView = segue.destinationViewController as CarCollectionViewController
             carCollectionView.del = self

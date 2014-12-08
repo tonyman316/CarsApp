@@ -148,7 +148,6 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 
                 for location in results {
                     let loc = location as ServiceStations
-                    //println("It is a gas station")
                     var annotation = MKPointAnnotation()
                     annotation.title = location.name
                     annotation.subtitle = String(formatter.stringFromNumber(loc.distance)! + " km")
