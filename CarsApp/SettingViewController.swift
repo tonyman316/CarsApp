@@ -25,7 +25,6 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         
         if settingFromDatabase == nil {
             createDefaultSetting()
-            updateSegmentInterface()
         } else {
             setting = settingFromDatabase!
             updateSegmentInterface()
