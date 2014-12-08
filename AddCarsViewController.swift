@@ -22,6 +22,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet var currentMileageTextField: UITextField!
     @IBOutlet var oilChangeTextField: UITextField!
     @IBOutlet var transmissionOilTextField: UITextField!
+    @IBOutlet var containerView: UIView!
     
     var car: MyCars? = nil
     var carImage: UIImage?
@@ -72,6 +73,9 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         oilChangeTextField.delegate = self
         transmissionOilTextField.delegate = self
         
+        var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        scrollView.addGestureRecognizer(tap)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -88,8 +92,8 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        scrollView.scrollEnabled = false
-        scrollView.contentSize = CGSizeMake(view.frame.width, view.frame.height + makeTextField.frame.height * 6)
+        //scrollView.scrollEnabled = false
+        scrollView.contentSize = CGSizeMake(view.frame.width, scrollView.frame.height + makeTextField.frame.height + containerView.frame.height)
         scrollView.bounds = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         
         if let imageData = car?.valueForKey("carImage") as? NSData {
@@ -140,8 +144,8 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     // Dismiss keyboard when tap on blank
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.view.endEditing(true)
+    func DismissKeyboard(){
+        scrollView.endEditing(true)
     }
     
     // Dismiss keyboard when tap on return
