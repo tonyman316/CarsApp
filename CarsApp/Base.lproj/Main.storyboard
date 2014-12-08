@@ -678,6 +678,7 @@
                     <size key="freeformSize" width="600" height="680"/>
                     <connections>
                         <outlet property="carButton" destination="vef-1I-Bm1" id="U4e-Y1-r2B"/>
+                        <outlet property="containerView" destination="aFW-w4-jkU" id="k9y-JC-jnN"/>
                         <outlet property="currentMileageTextField" destination="81F-2V-Mqb" id="Mg4-t9-NzA"/>
                         <outlet property="makeTextField" destination="OtD-ww-VRr" id="h1k-Nz-S1A"/>
                         <outlet property="modelTextField" destination="Nih-Q8-edZ" id="PHr-Bw-pBb"/>
