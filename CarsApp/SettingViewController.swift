@@ -33,7 +33,7 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         unitSegmentControl.addTarget(self, action: "segmentValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
         oilChangeSegmentControl.addTarget(self, action: "segmentValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
         transmissionSegmentControl.addTarget(self, action: "segmentValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
-
+        
     }
     
     func segmentValueChanged(segment: UISegmentedControl) {
@@ -108,25 +108,11 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     // Save to Core Data
     func createDefaultSetting() {
         //var newSetting: Setting
-        Setting.creatDefaultSetting("miles", oilChangeFrequency: 5000, transmissionFluidFrequency: 30000, context: managedObjectContext!)
+        Setting.createDefaultSetting("miles", oilChangeFrequency: 5000, transmissionFluidFrequency: 30000, context: managedObjectContext!)
         (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
-
-        
-//        let entityDescripition = NSEntityDescription.entityForName("Setting", inManagedObjectContext: managedObjectContext!)
-//        newSetting = Setting(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
-//        
-//        newSetting.unit = "miles"
-//        newSetting.oilChangeFrequency = 5000
-//        newSetting.transmissionFluidFrequency = 30000
-//        
-//        managedObjectContext?.save(nil)
-//
-            setting?.unit = "miles"
-            setting?.oilChangeFrequency = 5000
-            setting?.transmissionFluidFrequency = 30000
-        
-//        
-        println("New settings created: \(setting?.unit), \(setting?.oilChangeFrequency), \(setting?.transmissionFluidFrequency),")
+        setting?.unit = "miles"
+        setting?.oilChangeFrequency = 5000
+        setting?.transmissionFluidFrequency = 30000
         
         updateSegmentInterface()
     }
@@ -155,7 +141,5 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         } else {
             transmissionSegmentControl.selectedSegmentIndex = 1
         }
-        
     }
-    
 }

@@ -36,7 +36,6 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBOutlet weak var redoSearchButton: UIButton!
     let interfaceTransparecnty: CGFloat = 0.8
     var previousMapRect: MKMapRect?
-    
     var gasStationsAnnotation = [GasStationWithPrice]()
     
     private let apiKey = "rfej9napna"
@@ -115,7 +114,6 @@ class CarMapViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         fetchedResultController = getfetchedResultController()
         fetchedResultController.delegate = self
-        //fetchedResultController.performFetch(nil)
         
         if (annotations.isEmpty == false) {
             mapView.addAnnotations(annotations)

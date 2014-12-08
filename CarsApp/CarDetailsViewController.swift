@@ -29,6 +29,7 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     var userImageHeight: CGFloat = 100
     var scrollViewOriginalHeight: CGFloat = 0.0
     var headerView: UIView!
+    let currentSettings = (UIApplication.sharedApplication().delegate as AppDelegate).appSettings
     
     func updateHeaderView() {
         let originPoint = CGPointMake(coverImage.frame.origin.x, coverImage.frame.origin.y)
@@ -83,19 +84,36 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
             coverLabel.text = "  " + car!.make + " " + car!.model + " (\(car!.year))"
             coverLabel.backgroundColor = coverLabel.backgroundColor?.colorWithAlphaComponent(0.8)
             
-            mileageLabel.text = car!.currentMileage.stringValue + " miles"
+            if currentSettings.unit == "miles" {
+                mileageLabel.text = car!.currentMileage.stringValue + " miles"
+            } else {
+                mileageLabel.text = "\(floor(UnitConverter.milesToKilometers(car!.currentMileage.doubleValue))) km"
+            }
+            
             priceLabel.text = car!.price.stringValue + " dollars"
             
             if let oilChange = car?.oilChange.intValue {
                 let milesSinceLastOilChange = car!.currentMileage.intValue - oilChange
-                oilChangeLabel.text = "\(milesSinceLastOilChange) miles ago"
+                
+                if currentSettings.unit == "miles" {
+                    oilChangeLabel.text = "\(milesSinceLastOilChange) miles ago"
+                } else {
+                    oilChangeLabel.text = "\(floor(UnitConverter.milesToKilometers(Double(milesSinceLastOilChange)))) km ago"
+                }
+                
             } else {
                 oilChangeLabel.text = "Unavailable"
             }
             
             if let transmissionChange = car?.transmissionOil.intValue {
                 let milesSinceLastTransmissionChange = car!.currentMileage.intValue - transmissionChange
-                fluidChangeLabel.text = "\(milesSinceLastTransmissionChange) miles ago"
+                
+                if currentSettings.unit == "miles" {
+                    oilChangeLabel.text = "\(milesSinceLastTransmissionChange) miles ago"
+                } else {
+                    oilChangeLabel.text = "\(floor(UnitConverter.milesToKilometers(Double(milesSinceLastTransmissionChange)))) km ago"
+                }
+                
             } else {
                 fluidChangeLabel.text = "Unavailable"
             }

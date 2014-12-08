@@ -13,30 +13,12 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControllerDelegate {
     var window: UIWindow?
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-    var appSettings: Setting?
-    
-    func getFetchedResultController() -> NSFetchedResultsController {
-        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultController
-    }
-    
-    func taskFetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "Setting")
-        let sortDescriptor = NSSortDescriptor(key: "unit", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        return fetchRequest
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        appSettings = controller.fetchedObjects?.first as? Setting
+    var appSettings: Setting {
+        return Setting.databaseContainsSettings(managedObjectContext!).settings!
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        fetchedResultController = getFetchedResultController()
-        fetchedResultController.delegate = self
-        fetchedResultController.performFetch(nil)
         
         return true
     }
