@@ -87,7 +87,7 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     
     func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary) {
         var imageToSave: UIImage
-        imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        imageToSave = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
     }
     
     func popToMainView() {

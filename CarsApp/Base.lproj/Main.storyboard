@@ -505,7 +505,7 @@
                                     </containerView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Transmission Fluid Change (Mileage)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-HR-IKT">
                                         <rect key="frame" x="126" y="398" width="466" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkW-hz-cEd">
@@ -1568,9 +1568,9 @@
         <image name="userTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fef-lu-Euz"/>
-        <segue reference="vfQ-hY-Uzd"/>
-        <segue reference="iD0-Xm-AEe"/>
         <segue reference="JaB-LZ-wDA"/>
+        <segue reference="iD0-Xm-AEe"/>
+        <segue reference="fef-lu-Euz"/>
+        <segue reference="3yW-OA-sCp"/>
     </inferredMetricsTieBreakers>
 </document>
