@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ot-Sg-d2B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ot-Sg-d2B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -921,37 +921,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units (Miles/Km)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEh-EW-0BN">
-                                <rect key="frame" x="16" y="104" width="584" height="21"/>
+                                <rect key="frame" x="8" y="72" width="584" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="9ej-iy-zhx"/>
+                                    <constraint firstAttribute="height" constant="21" id="Px8-2G-drd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oil Change Frequency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrQ-lX-c2h">
-                                <rect key="frame" x="16" y="179" width="584" height="21"/>
+                                <rect key="frame" x="8" y="137" width="584" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="0CV-FL-auP"/>
+                                    <constraint firstAttribute="height" constant="21" id="KRs-Cc-Rsu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transmission Fluid Change Frequency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ld5-4l-xMp">
-                                <rect key="frame" x="16" y="250" width="584" height="21"/>
+                                <rect key="frame" x="8" y="202" width="584" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Xj2-oc-kqo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QYb-Wn-vQ9">
-                                <rect key="frame" x="16" y="138" width="568" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="CPf-kc-KyU"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="101" width="568" height="29"/>
                                 <segments>
                                     <segment title="Miles"/>
                                     <segment title="km"/>
@@ -961,10 +961,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="21C-lL-xP7">
-                                <rect key="frame" x="16" y="208" width="568" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="m8O-9p-JpG"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="166" width="568" height="29"/>
                                 <segments>
                                     <segment title="5,000 miles"/>
                                     <segment title="8,000 miles"/>
@@ -974,7 +971,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nZF-AH-Kcz">
-                                <rect key="frame" x="16" y="286" width="568" height="29"/>
+                                <rect key="frame" x="16" y="231" width="568" height="29"/>
                                 <segments>
                                     <segment title="30,000 miles"/>
                                     <segment title="60,000 miles"/>
@@ -986,26 +983,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QYb-Wn-vQ9" firstAttribute="leading" secondItem="SrQ-lX-c2h" secondAttribute="leading" id="2hS-F6-vGU"/>
-                            <constraint firstAttribute="trailing" secondItem="SrQ-lX-c2h" secondAttribute="trailing" id="2oG-PM-oFr"/>
-                            <constraint firstItem="21C-lL-xP7" firstAttribute="trailing" secondItem="NRU-JZ-Uhl" secondAttribute="trailingMargin" id="4Wi-8G-h6T"/>
-                            <constraint firstItem="QYb-Wn-vQ9" firstAttribute="leading" secondItem="NEh-EW-0BN" secondAttribute="leading" id="4g7-yl-5Cb"/>
-                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="centerY" secondItem="NRU-JZ-Uhl" secondAttribute="centerY" id="4w6-tG-KiE"/>
-                            <constraint firstItem="21C-lL-xP7" firstAttribute="top" secondItem="SrQ-lX-c2h" secondAttribute="bottom" constant="8" symbolic="YES" id="9Ak-dx-BCs"/>
-                            <constraint firstItem="21C-lL-xP7" firstAttribute="trailing" secondItem="QYb-Wn-vQ9" secondAttribute="trailing" id="CP1-Rp-wrf"/>
-                            <constraint firstItem="ld5-4l-xMp" firstAttribute="top" secondItem="21C-lL-xP7" secondAttribute="bottom" constant="14" id="GHm-dZ-LFK"/>
-                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="trailing" secondItem="NEh-EW-0BN" secondAttribute="trailing" id="HHB-0i-xmm"/>
-                            <constraint firstItem="ld5-4l-xMp" firstAttribute="trailing" secondItem="SrQ-lX-c2h" secondAttribute="trailing" id="MGH-mA-Ayo"/>
-                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="top" secondItem="QYb-Wn-vQ9" secondAttribute="bottom" constant="13" id="NEW-Xl-iYN"/>
-                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="top" secondItem="ld5-4l-xMp" secondAttribute="bottom" constant="15" id="PHY-HB-Nbm"/>
-                            <constraint firstItem="oVN-Ye-hfr" firstAttribute="top" secondItem="nZF-AH-Kcz" secondAttribute="bottom" constant="237" id="SGk-R0-Xft"/>
-                            <constraint firstItem="NEh-EW-0BN" firstAttribute="top" secondItem="o63-xa-yqO" secondAttribute="bottom" constant="40" id="W4U-eO-QnT"/>
-                            <constraint firstItem="21C-lL-xP7" firstAttribute="leading" secondItem="ld5-4l-xMp" secondAttribute="leading" id="Xr5-3O-Lmd"/>
-                            <constraint firstItem="21C-lL-xP7" firstAttribute="leading" secondItem="SrQ-lX-c2h" secondAttribute="leading" id="aTF-nk-rwA"/>
-                            <constraint firstItem="21C-lL-xP7" firstAttribute="trailing" secondItem="nZF-AH-Kcz" secondAttribute="trailing" id="bXh-ga-G6T"/>
-                            <constraint firstItem="QYb-Wn-vQ9" firstAttribute="top" secondItem="NEh-EW-0BN" secondAttribute="bottom" constant="13" id="fAC-xw-5hz"/>
-                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="leading" secondItem="ld5-4l-xMp" secondAttribute="leading" id="mFQ-mn-pVN"/>
-                            <constraint firstItem="NEh-EW-0BN" firstAttribute="leading" secondItem="NRU-JZ-Uhl" secondAttribute="leadingMargin" id="xP8-C7-FfN"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="top" secondItem="SrQ-lX-c2h" secondAttribute="bottom" constant="8" symbolic="YES" id="1cM-Uj-KuM"/>
+                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="top" secondItem="ld5-4l-xMp" secondAttribute="bottom" constant="8" symbolic="YES" id="8G8-sV-gAz"/>
+                            <constraint firstItem="NEh-EW-0BN" firstAttribute="leading" secondItem="NRU-JZ-Uhl" secondAttribute="leadingMargin" constant="-8" id="9gZ-SO-ep9"/>
+                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="leading" secondItem="ld5-4l-xMp" secondAttribute="leading" id="Bk1-9o-r3D"/>
+                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="trailing" secondItem="NRU-JZ-Uhl" secondAttribute="trailingMargin" id="D59-cq-rvD"/>
+                            <constraint firstItem="NEh-EW-0BN" firstAttribute="centerX" secondItem="QYb-Wn-vQ9" secondAttribute="centerX" id="EtN-MK-zun"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="trailing" secondItem="nZF-AH-Kcz" secondAttribute="trailing" id="GRj-Xp-jNq"/>
+                            <constraint firstItem="QYb-Wn-vQ9" firstAttribute="top" secondItem="NEh-EW-0BN" secondAttribute="bottom" constant="8" symbolic="YES" id="U2b-JA-gek"/>
+                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="leading" secondItem="21C-lL-xP7" secondAttribute="leading" id="ZFQ-qJ-3eq"/>
+                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="top" secondItem="QYb-Wn-vQ9" secondAttribute="bottom" constant="8" symbolic="YES" id="cFZ-Io-kZ5"/>
+                            <constraint firstItem="ld5-4l-xMp" firstAttribute="top" secondItem="21C-lL-xP7" secondAttribute="bottom" constant="8" symbolic="YES" id="gg1-H3-gpA"/>
+                            <constraint firstItem="NEh-EW-0BN" firstAttribute="trailing" secondItem="SrQ-lX-c2h" secondAttribute="trailing" id="hVq-Wu-485"/>
+                            <constraint firstItem="21C-lL-xP7" firstAttribute="leading" secondItem="QYb-Wn-vQ9" secondAttribute="leading" id="iqx-1p-sNk"/>
+                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="leading" secondItem="NEh-EW-0BN" secondAttribute="leading" id="jiX-iG-hfR"/>
+                            <constraint firstItem="QYb-Wn-vQ9" firstAttribute="trailing" secondItem="21C-lL-xP7" secondAttribute="trailing" id="kwq-iw-Kda"/>
+                            <constraint firstItem="SrQ-lX-c2h" firstAttribute="trailing" secondItem="ld5-4l-xMp" secondAttribute="trailing" id="v8k-5V-eIg"/>
+                            <constraint firstItem="nZF-AH-Kcz" firstAttribute="leading" secondItem="NRU-JZ-Uhl" secondAttribute="leadingMargin" id="vgY-Ke-b9j"/>
+                            <constraint firstItem="NEh-EW-0BN" firstAttribute="top" secondItem="o63-xa-yqO" secondAttribute="bottom" constant="8" symbolic="YES" id="xhr-fL-cGn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="PV2-Os-mSQ"/>
