@@ -10,8 +10,6 @@ import UIKit
 
 class ProfileTableViewController: UITableViewController {
     
-    // @IBOutlet var profile_label: UILabel!
-    
     var profile_text_list = [String]()
     var profile_image_list = [String]()
     
@@ -24,16 +22,13 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        profile_text_list = [user.firstname , user.lastname, ]
         profile_image_list = ["portrait_mode-50" , "gas_station-50" , "slr_small_lens-50"]
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60.0
@@ -56,8 +51,9 @@ class ProfileTableViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as ProfileTableViewCell
         
         if let user = mainUser {
-            var age = String (user.age)
-            profile_text_list = [user.firstName , user.lastName , age]
+            //var age = String (user.age)
+            profile_text_list = [user.firstName , user.lastName , "\(user.age)"
+]
            // cell.profileLabel.text[2] = user.age
             
             cell.profileLabel.text = profile_text_list[indexPath.row]
@@ -66,39 +62,5 @@ class ProfileTableViewController: UITableViewController {
         
         return cell
     }
-    
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        switch (indexPath.row) {
-        case 0: performSegueWithIdentifier("ShowMap", sender: self)
-        break;
-        case 1: performSegueWithIdentifier("ShowFriends", sender: self)
-        break;
-        default:
-            break;
-        }
-        
-        //        //var cell = tableView.cellForRowAtIndexPath(indexPath)
-        //
-        //        var cell = tableView.dequeueReusableCellWithIdentifier("ProfileCell", forIndexPath: indexPath) as ProfileTableViewCell
-        //
-        //        if cell.profile_label.text == profile_text_list[1] {
-        //        performSegueWithIdentifier("ShowMap", sender: profile_text_list[1])
-        //        }
-        //       // tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        
-    }
-    
-    //
-    //     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        if segue.identifier == "ShowMap" {
-    //
-    //            var destViewController = segue.destinationViewController as MaptestViewController
-    //            
-    //        }
-    //    }
-    
     
 }

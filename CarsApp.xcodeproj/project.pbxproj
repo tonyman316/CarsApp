@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		196802691A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196802681A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift */; };
+		19A800241A34F24C00D93B19 /* CarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A800231A34F24C00D93B19 /* CarsCollectionViewCell.swift */; };
+		19A800261A34F5D500D93B19 /* SelectCarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A800251A34F5D500D93B19 /* SelectCarProtocol.swift */; };
 		9C0654AB1A2EA134009D79AE /* UsersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0654AA1A2EA134009D79AE /* UsersCollectionViewController.swift */; };
 		9C0654AF1A2EA178009D79AE /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0654AE1A2EA178009D79AE /* UserCollectionViewCell.swift */; };
 		9C2557881A3026900082E2F9 /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2557871A3026900082E2F9 /* MyCars.swift */; };
@@ -68,6 +70,8 @@
 
 /* Begin PBXFileReference section */
 		196802681A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCollectionCollectionViewController.swift; sourceTree = "<group>"; };
+		19A800231A34F24C00D93B19 /* CarsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsCollectionViewCell.swift; sourceTree = "<group>"; };
+		19A800251A34F5D500D93B19 /* SelectCarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCarProtocol.swift; sourceTree = "<group>"; };
 		9C0654AA1A2EA134009D79AE /* UsersCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersCollectionViewController.swift; sourceTree = "<group>"; };
 		9C0654AE1A2EA178009D79AE /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C2557871A3026900082E2F9 /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 				D4B3E0041A2ADB6600B44089 /* MaptestViewController.swift */,
 				D4C529381A2FEAB40081B9AB /* AddNewProfileViewController.swift */,
 				196802681A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift */,
+				19A800231A34F24C00D93B19 /* CarsCollectionViewCell.swift */,
+				19A800251A34F5D500D93B19 /* SelectCarProtocol.swift */,
 			);
 			name = "Profile Tab";
 			sourceTree = "<group>";
@@ -470,10 +476,12 @@
 				9C8F2D8D1A2A7FD5000C05AF /* LoginScreen.swift in Sources */,
 				9C0654AF1A2EA178009D79AE /* UserCollectionViewCell.swift in Sources */,
 				9C8BB9231A3292A0008DACDB /* CarDetailsViewController.swift in Sources */,
+				19A800241A34F24C00D93B19 /* CarsCollectionViewCell.swift in Sources */,
 				D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */,
 				D4B3E0031A2ADB5A00B44089 /* ProfileTableViewController.swift in Sources */,
 				D474EDD61A2AD482006BC562 /* CarsCVCell.swift in Sources */,
 				D4708FE71A2046D7000DB0BD /* MyCarsViewController.swift in Sources */,
+				19A800261A34F5D500D93B19 /* SelectCarProtocol.swift in Sources */,
 				D4C529391A2FEAB40081B9AB /* AddNewProfileViewController.swift in Sources */,
 				D4B3E0081A2ADE5D00B44089 /* ProfileTableViewCell.swift in Sources */,
 				9CEB8EB41A2A2FC50009105C /* Extensions Gas And Service Stations.swift in Sources */,
