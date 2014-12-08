@@ -44,8 +44,6 @@
 		D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4708FF41A206DE5000DB0BD /* vwGolf.jpg */; };
 		D474EDD61A2AD482006BC562 /* CarsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474EDD41A2AD482006BC562 /* CarsCVCell.swift */; };
 		D474EDD71A2AD482006BC562 /* CarsCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D474EDD51A2AD482006BC562 /* CarsCVCell.xib */; };
-		D4856A721A3237CF009C9356 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4856A701A3237CF009C9356 /* SettingTableViewCell.swift */; };
-		D4856A731A3237CF009C9356 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4856A711A3237CF009C9356 /* SettingTableViewCell.xib */; };
 		D4856A751A3241B0009C9356 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4856A741A3241B0009C9356 /* Setting.swift */; };
 		D49304531A270B2C006B7921 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49304521A270B2C006B7921 /* UIImageExtension.swift */; };
 		D4B3DFFD1A2ADB4400B44089 /* gas_station-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B3DFFA1A2ADB4400B44089 /* gas_station-50.png */; };
@@ -112,8 +110,6 @@
 		D4708FF41A206DE5000DB0BD /* vwGolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vwGolf.jpg; sourceTree = "<group>"; };
 		D474EDD41A2AD482006BC562 /* CarsCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsCVCell.swift; sourceTree = "<group>"; };
 		D474EDD51A2AD482006BC562 /* CarsCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarsCVCell.xib; sourceTree = "<group>"; };
-		D4856A701A3237CF009C9356 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		D4856A711A3237CF009C9356 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		D4856A741A3241B0009C9356 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		D49304521A270B2C006B7921 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D4B3DFFA1A2ADB4400B44089 /* gas_station-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gas_station-50.png"; sourceTree = "<group>"; };
@@ -347,8 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				D4D816001A33E94E001D801C /* SettingViewController.swift */,
-				D4856A701A3237CF009C9356 /* SettingTableViewCell.swift */,
-				D4856A711A3237CF009C9356 /* SettingTableViewCell.xib */,
 			);
 			name = "Settings Tab";
 			sourceTree = "<group>";
@@ -451,7 +445,6 @@
 				D4B3E0091A2ADE5D00B44089 /* ProfileTableViewCell.xib in Resources */,
 				D40616741A1D4B8A0061F951 /* Images.xcassets in Resources */,
 				D4708FF01A206103000DB0BD /* hondaFit.jpg in Resources */,
-				D4856A731A3237CF009C9356 /* SettingTableViewCell.xib in Resources */,
 				D4B3DFFE1A2ADB4400B44089 /* portrait_mode-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,7 +463,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4856A721A3237CF009C9356 /* SettingTableViewCell.swift in Sources */,
 				D406166D1A1D4B8A0061F951 /* CarsApp.xcdatamodeld in Sources */,
 				9CAFEC1F1A34CD3600167043 /* SettingExtension.swift in Sources */,
 				9C32E0EC1A2B7778000A9908 /* ProfileViewController.swift in Sources */,
