@@ -71,13 +71,8 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
         return cell
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        del?.didSelectCars(self, selectedCars: selectedCars)
-    }
-    
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if parentViewController is AddCarsViewController {
+        if parentViewController is ProfileViewController {
             let selected = fetchedResultController.fetchedObjects![indexPath.row] as MyCars
             
             var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCollectionViewCell

@@ -22,7 +22,7 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profile_image_list = ["portrait_mode-50" , "gas_station-50" , "slr_small_lens-50"]
+        profile_image_list = ["portrait_mode-50" , "gas_station-50"]// , "slr_small_lens-50"]
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,8 +52,7 @@ class ProfileTableViewController: UITableViewController {
         
         if let user = mainUser {
             //var age = String (user.age)
-            profile_text_list = [user.firstName , user.lastName , "\(user.age)"
-]
+            profile_text_list = [user.firstName , user.lastName]// , "\(user.age)"]
            // cell.profileLabel.text[2] = user.age
             
             cell.profileLabel.text = profile_text_list[indexPath.row]

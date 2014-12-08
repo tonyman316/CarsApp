@@ -11,7 +11,7 @@ import Foundation
 import MobileCoreServices
 import CoreData
 
-class ProfileViewController: UIViewController , UINavigationControllerDelegate , UIImagePickerControllerDelegate , UIActionSheetDelegate{
+class ProfileViewController: UIViewController , UINavigationControllerDelegate , UIImagePickerControllerDelegate , UIActionSheetDelegate , SelectCarsDelegate {
     @IBOutlet weak var userPicture: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet var editButton: UIBarButtonItem!
@@ -22,14 +22,18 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
     @IBAction func logoutButtonPressed(sender: AnyObject) {
         navigationController?.popToRootViewControllerAnimated(true)
     }
-    
+    ;
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var userImage: UIImage?
     var mainUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).user
+    var carToDisplay: MyCars?
     
-  //  var user: Owners? = nil
 
     
+    func didSelectCars(viewController: CarCollectionViewController, selectedCars cars: [MyCars]?) {
+        carToDisplay = cars![0]
+        performSegueWithIdentifier("carDetails", sender: carToDisplay)
+    }
     
     override func viewDidAppear(animated: Bool) {
         
@@ -124,6 +128,13 @@ func PictureLayer(picture:UIImageView) {
             let editUserView = segue.destinationViewController as AddNewProfileViewController
             editUserView.title = "Edit \(mainUser!.firstName)"
             editUserView.user = mainUser
+        }
+        else if  segue.identifier == "carDetails" {
+            let carView = segue.destinationViewController as CarDetailsViewController
+            carView.title = "Edit \(mainUser!.firstName)"
+            carView.car = carToDisplay
+            
+            println(carView.title)
         }
     }
 
