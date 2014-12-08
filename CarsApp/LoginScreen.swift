@@ -27,34 +27,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     var activeField: UITextField?
     var hasUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).isContained
     var mainUser = Owners.databaseContainsMainUser((UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!).user
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        userImageView.setupItemPictureLayer()
-        
-        if hasUser == true {
-            firstNameField.hidden = true
-            lastNameField.hidden = true
-            choosePictureButton.hidden = true
-        } else {
-            notYouLabel.text = "Enter your details below!"
-            signupButton.hidden = true
-            loginButton.setTitle("Sign up", forState: UIControlState.Normal)
-        }
-        
-        if let user = mainUser {
-            usernameField.text = user.username
-            userImageView.image = UIImage(data: user.picture)
-        }
-        
-        usernameField.delegate = self
-        passwordField.delegate = self
-        firstNameField.delegate = self
-        lastNameField.delegate = self
-        
-        registerForKeyboardNotifications()
-    }
+    var newUserMode = false
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -117,7 +90,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         
         UIView.animateWithDuration(1, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
             self.userImageView.transform = CGAffineTransformMakeScale(1, 1)
-        }, completion: nil)
+            }, completion: nil)
         
         UIView.animateWithDuration(1, delay: 0.4, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
             self.userImageView.transform = CGAffineTransformMakeScale(1, 1)
@@ -133,20 +106,40 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         userImageView.center = CGPointMake(userImageView.center.x + userImageView.frame.size.width + 20, userImageView.center.y)
         userImageView.transform = CGAffineTransformMakeRotation(fullRotation / 5 * 2)
         
-                UIView.animateWithDuration(1.5, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
-                    self.userImageView.transform = CGAffineTransformMakeRotation(fullRotation)
-                    self.userImageView.center = originalCenter
-                }, completion: nil)
+        UIView.animateWithDuration(1.5, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
+            self.userImageView.transform = CGAffineTransformMakeRotation(fullRotation)
+            self.userImageView.center = originalCenter
+            }, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userImageView.setupItemPictureLayer()
+        scrollView.delegate = self
+        
         if hasUser == true {
-            performSegueWithIdentifier("showMainScreen", sender: self)
+            firstNameField.hidden = true
+            lastNameField.hidden = true
+            choosePictureButton.hidden = true
+            userImage = UIImage(data: mainUser!.picture)
+        } else {
+            notYouLabel.text = "Enter your details below!"
+            signupButton.hidden = true
+            loginButton.setTitle("Sign up", forState: UIControlState.Normal)
         }
         
-        scrollView.delegate = self
+        if let user = mainUser {
+            usernameField.text = user.username
+            userImageView.image = UIImage(data: user.picture)
+        }
+        
+        usernameField.delegate = self
+        passwordField.delegate = self
+        firstNameField.delegate = self
+        lastNameField.delegate = self
+        
+        registerForKeyboardNotifications()
     }
     
     override func viewDidLayoutSubviews() {
@@ -244,7 +237,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     @IBAction func loginButtonPressed(sender: AnyObject) {
         let context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!
         
-        if hasUser == false {
+        if hasUser == false || newUserMode == true {
             var userDictionary = [String : String]()
             userDictionary["firstName"] = firstNameField.text
             userDictionary["lastName"] = lastNameField.text
@@ -252,11 +245,11 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
             userDictionary["password"] = passwordField.text
             
             Owners.createUser(userInfo: userDictionary, userPicture: userImage, isMainUser: true, context: context)
-            
             (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
         }
         
         if Owners.authenticateUser(username: usernameField.text, password: passwordField.text, context: context) == true {
+            newUserMode = false
             performSegueWithIdentifier("showMainScreen", sender: self)
         } else {
             let alert = UIAlertController(title: "Ooops!", message: "The user could not be authenticated. Plase try again.", preferredStyle: .Alert)
@@ -266,11 +259,16 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
     }
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
+        newUserMode = true
         animateSignUp()
     }
     
     func animateSignUp() {
-        userImage = nil
+        usernameField.text = ""
+        passwordField.text = ""
+        
+        signupButton.hidden = true
+        
         notYouLabel.hidden = false
         notYouLabel.text = "Enter your details below!"
         notYouLabel.alpha = 0.0
@@ -283,7 +281,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate, UINavigationController
         
         choosePictureButton.hidden = false
         choosePictureButton.alpha = 0.0
-
+        
         UIView.animateWithDuration(1, animations: { () -> Void in
             self.notYouLabel.alpha = 1
             self.firstNameField.alpha = 1
