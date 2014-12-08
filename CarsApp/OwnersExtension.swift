@@ -36,7 +36,7 @@ extension Owners {
         }
         
         if userPicture != nil {
-            newUser.picture = UIImageJPEGRepresentation(userPicture!, 1.0)
+            newUser.picture = UIImagePNGRepresentation(userPicture)
         }
         
         var error = NSErrorPointer()
