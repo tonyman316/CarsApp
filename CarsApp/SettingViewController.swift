@@ -83,10 +83,14 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         println("UnitSegment 0, userUnit: \(setting?.unit)")
             
         case 1: setting?.unit = "km"
-        oilChangeSegmentControl.setTitle("\(UnitConverter.milesToKilometers(5000)) km", forSegmentAtIndex: 0)
-        oilChangeSegmentControl.setTitle("\(UnitConverter.milesToKilometers(8000)) km", forSegmentAtIndex: 1)
-        transmissionSegmentControl.setTitle("\(UnitConverter.milesToKilometers(30000)) km", forSegmentAtIndex: 0)
-        transmissionSegmentControl.setTitle("\(UnitConverter.milesToKilometers(60000)) km", forSegmentAtIndex: 1)
+        
+//        var doubleToInt: Int = Int(UnitConverter.milesToKilometers(5000))
+//        println("doubleToInt: \(doubleToInt)")
+        
+        oilChangeSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(5000))) km", forSegmentAtIndex: 0)
+        oilChangeSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(8000))) km", forSegmentAtIndex: 1)
+        transmissionSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(30000))) km", forSegmentAtIndex: 0)
+        transmissionSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(60000))) km", forSegmentAtIndex: 1)
         println("UnitSegment 1, userUnit: \(setting?.unit)")
             
         default:
@@ -150,10 +154,10 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         } else {
             unitSegmentControl.selectedSegmentIndex = 1
             
-            oilChangeSegmentControl.setTitle("\(UnitConverter.milesToKilometers(5000)) km", forSegmentAtIndex: 0)
-            oilChangeSegmentControl.setTitle("\(UnitConverter.milesToKilometers(8000)) km", forSegmentAtIndex: 1)
-            transmissionSegmentControl.setTitle("\(UnitConverter.milesToKilometers(30000)) km", forSegmentAtIndex: 0)
-            transmissionSegmentControl.setTitle("\(UnitConverter.milesToKilometers(60000)) km", forSegmentAtIndex: 1)
+            oilChangeSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(5000))) km", forSegmentAtIndex: 0)
+            oilChangeSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(8000))) km", forSegmentAtIndex: 1)
+            transmissionSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(30000))) km", forSegmentAtIndex: 0)
+            transmissionSegmentControl.setTitle("\(Int(UnitConverter.milesToKilometers(60000))) km", forSegmentAtIndex: 1)
         }
         
         if setting?.oilChangeFrequency == 5000 {
