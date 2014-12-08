@@ -10,6 +10,11 @@
 		196802691A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196802681A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift */; };
 		19A800241A34F24C00D93B19 /* CarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A800231A34F24C00D93B19 /* CarsCollectionViewCell.swift */; };
 		19A800261A34F5D500D93B19 /* SelectCarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A800251A34F5D500D93B19 /* SelectCarProtocol.swift */; };
+		19A8002A1A3546C400D93B19 /* add_user-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A800291A3546C300D93B19 /* add_user-25.png */; };
+		19A8002C1A35481900D93B19 /* edit_user-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A8002B1A35481900D93B19 /* edit_user-50.png */; };
+		19A8002E1A35481F00D93B19 /* biohazard-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A8002D1A35481F00D93B19 /* biohazard-50.png */; };
+		19A800301A35482500D93B19 /* automatic-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A8002F1A35482500D93B19 /* automatic-50.png */; };
+		19A800321A354BEB00D93B19 /* carpool-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A800311A354BEB00D93B19 /* carpool-50.png */; };
 		9C0654AB1A2EA134009D79AE /* UsersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0654AA1A2EA134009D79AE /* UsersCollectionViewController.swift */; };
 		9C0654AF1A2EA178009D79AE /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0654AE1A2EA178009D79AE /* UserCollectionViewCell.swift */; };
 		9C2557881A3026900082E2F9 /* MyCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2557871A3026900082E2F9 /* MyCars.swift */; };
@@ -72,6 +77,11 @@
 		196802681A34D48D00C8A9A1 /* CarCollectionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		19A800231A34F24C00D93B19 /* CarsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsCollectionViewCell.swift; sourceTree = "<group>"; };
 		19A800251A34F5D500D93B19 /* SelectCarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCarProtocol.swift; sourceTree = "<group>"; };
+		19A800291A3546C300D93B19 /* add_user-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_user-25.png"; sourceTree = "<group>"; };
+		19A8002B1A35481900D93B19 /* edit_user-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_user-50.png"; sourceTree = "<group>"; };
+		19A8002D1A35481F00D93B19 /* biohazard-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "biohazard-50.png"; sourceTree = "<group>"; };
+		19A8002F1A35482500D93B19 /* automatic-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "automatic-50.png"; sourceTree = "<group>"; };
+		19A800311A354BEB00D93B19 /* carpool-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carpool-50.png"; sourceTree = "<group>"; };
 		9C0654AA1A2EA134009D79AE /* UsersCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersCollectionViewController.swift; sourceTree = "<group>"; };
 		9C0654AE1A2EA178009D79AE /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C2557871A3026900082E2F9 /* MyCars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCars.swift; sourceTree = "<group>"; };
@@ -329,8 +339,13 @@
 			children = (
 				D4B3DFFA1A2ADB4400B44089 /* gas_station-50.png */,
 				D4B3DFFB1A2ADB4400B44089 /* portrait_mode-50.png */,
+				19A8002D1A35481F00D93B19 /* biohazard-50.png */,
 				D4B3DFFC1A2ADB4400B44089 /* slr_small_lens-50.png */,
+				19A8002F1A35482500D93B19 /* automatic-50.png */,
+				19A8002B1A35481900D93B19 /* edit_user-50.png */,
+				19A800291A3546C300D93B19 /* add_user-25.png */,
 				D4708FF31A206DE5000DB0BD /* bmw.jpg */,
+				19A800311A354BEB00D93B19 /* carpool-50.png */,
 				D4708FF41A206DE5000DB0BD /* vwGolf.jpg */,
 				D4708FEF1A206103000DB0BD /* hondaFit.jpg */,
 				D4708FEC1A204D88000DB0BD /* tesla.jpg */,
@@ -436,14 +451,19 @@
 				D4708FF51A206DE5000DB0BD /* bmw.jpg in Resources */,
 				D40616721A1D4B8A0061F951 /* Main.storyboard in Resources */,
 				D4C7F5551A29834C000F0391 /* Unknown.jpg in Resources */,
+				19A8002A1A3546C400D93B19 /* add_user-25.png in Resources */,
 				D4708FED1A204D88000DB0BD /* tesla.jpg in Resources */,
+				19A8002C1A35481900D93B19 /* edit_user-50.png in Resources */,
 				D4B3DFFF1A2ADB4400B44089 /* slr_small_lens-50.png in Resources */,
+				19A800301A35482500D93B19 /* automatic-50.png in Resources */,
 				D474EDD71A2AD482006BC562 /* CarsCVCell.xib in Resources */,
 				D4B3DFFD1A2ADB4400B44089 /* gas_station-50.png in Resources */,
+				19A8002E1A35481F00D93B19 /* biohazard-50.png in Resources */,
 				D4708FF61A206DE5000DB0BD /* vwGolf.jpg in Resources */,
 				D40616771A1D4B8A0061F951 /* LaunchScreen.xib in Resources */,
 				D4B3E0091A2ADE5D00B44089 /* ProfileTableViewCell.xib in Resources */,
 				D40616741A1D4B8A0061F951 /* Images.xcassets in Resources */,
+				19A800321A354BEB00D93B19 /* carpool-50.png in Resources */,
 				D4708FF01A206103000DB0BD /* hondaFit.jpg in Resources */,
 				D4B3DFFE1A2ADB4400B44089 /* portrait_mode-50.png in Resources */,
 			);
