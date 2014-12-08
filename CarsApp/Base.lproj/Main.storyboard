@@ -289,13 +289,13 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transmissionIcon" translatesAutoresizingMaskIntoConstraints="NO" id="cRA-03-oos">
                                         <rect key="frame" x="8" y="234" width="80" height="40"/>
                                     </imageView>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="m2H-mc-4EH">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="200000" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="m2H-mc-4EH">
                                         <rect key="frame" x="495" y="95" width="94" height="29"/>
                                         <connections>
                                             <action selector="stepperClicked:" destination="s3Z-ku-sQE" eventType="valueChanged" id="rYY-yQ-aYB"/>
                                         </connections>
                                     </stepper>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="0Tf-rc-jcu">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="500000" stepValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="0Tf-rc-jcu">
                                         <rect key="frame" x="495" y="143" width="94" height="29"/>
                                         <connections>
                                             <action selector="stepperClicked:" destination="s3Z-ku-sQE" eventType="valueChanged" id="mZx-vF-TlB"/>
@@ -1429,7 +1429,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vfQ-hY-Uzd"/>
+        <segue reference="vaD-fg-qY7"/>
         <segue reference="g6a-s5-g9e"/>
-        <segue reference="fef-lu-Euz"/>
     </inferredMetricsTieBreakers>
 </document>
