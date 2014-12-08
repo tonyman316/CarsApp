@@ -29,6 +29,8 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     var users: [Owners]?
     var activeField: UITextField?
     var carPictureAlreadyAdded = false
+//    var oldCarInfo: MyCars? = nil
+//    var hasChanged: Bool?
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -73,9 +75,8 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         oilChangeTextField.delegate = self
         transmissionOilTextField.delegate = self
         
-        var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        scrollView.addGestureRecognizer(tap)
-        
+        //hasChanged = editCarHasChanged()
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -143,10 +144,10 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
-    // Dismiss keyboard when tap on blank
-    func DismissKeyboard(){
-        scrollView.endEditing(true)
-    }
+//    // Dismiss keyboard when tap on blank
+//    func DismissKeyboard(){
+//        scrollView.endEditing(true)
+//    }
     
     // Dismiss keyboard when tap on return
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -161,20 +162,26 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBAction func done(sender: UIBarButtonItem) {
         // check input validation
-        if !validInput() {
-            let alert = UIAlertController(title: "Oops!", message: "Make sure input All the information!", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        //if (hasChanged == true){
             
-            let okButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(okButton)
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-        } else {
-            // Save to core data
-            createCar()
-            // Dismiss
-            popToMainView()
-        }
+            if !validInput() {
+                let alert = UIAlertController(title: "Oops!", message: "Make sure input All the information!", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let okButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(okButton)
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            } else {
+                // Save to core data
+                createCar()
+                // Dismiss
+                popToMainView()
+            }
+//        } else {
+//            popToMainView()
+//        }
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
@@ -282,6 +289,8 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
             newCar.transmissionOil = transmissionOilTextField.text.toInt()!
         }
         
+        //oldCarInfo = newCar
+        
         if users != nil && !(users!.isEmpty) {
             newCar.owners = users![0]
         } else if car == nil {
@@ -362,4 +371,17 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     func didSelectUsers(viewController: UsersCollectionViewController, selectedUsers users: [Owners]?) {
         self.users = users
     }
+    
+//    func editCarHasChanged() -> Bool{
+//        // if some change
+//        if (car != oldCarInfo) {
+//            return true
+//        } else {
+//        // no change
+//            return false
+//        }
+//    }
+//    
+    //(car != oldCarInfo)
+    //(makeTextField.text != car?.make || modelTextField.text != car?.model || yearTextField.text != "\(car!.year)"||priceTextField.text != car?.price.stringValue || currentMileageTextField.text != car?.currentMileage.stringValue || oilChangeTextField.text != car?.oilChange.stringValue || transmissionOilTextField.text != car?.transmissionOil.stringValue || carImage != UIImage(data: car!.carImage))
 }
