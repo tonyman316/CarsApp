@@ -26,6 +26,7 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
         if settingFromDatabase == nil {
             println("No existing settings")
             createDefaultSetting()
+            updateSegmentInterface()
         } else {
             println("Found existing settings")
             setting = settingFromDatabase!
@@ -129,20 +130,26 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     // Save to Core Data
     func createDefaultSetting() {
-        var newSetting: Setting
+        //var newSetting: Setting
+        Setting.creatDefaultSetting("miles", oilChangeFrequency: 5000, transmissionFluidFrequency: 30000, context: managedObjectContext!)
+        (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
+
         
-        let entityDescripition = NSEntityDescription.entityForName("Setting", inManagedObjectContext: managedObjectContext!)
-        newSetting = Setting(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+//        let entityDescripition = NSEntityDescription.entityForName("Setting", inManagedObjectContext: managedObjectContext!)
+//        newSetting = Setting(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+//        
+//        newSetting.unit = "miles"
+//        newSetting.oilChangeFrequency = 5000
+//        newSetting.transmissionFluidFrequency = 30000
+//        
+//        managedObjectContext?.save(nil)
+//
+            setting?.unit = "miles"
+            setting?.oilChangeFrequency = 5000
+            setting?.transmissionFluidFrequency = 30000
         
-        newSetting.unit = "miles"
-        newSetting.oilChangeFrequency = 5000
-        newSetting.transmissionFluidFrequency = 30000
-        
-        managedObjectContext?.save(nil)
-        
-        setting = newSetting
-        
-        println("New settings created: \(newSetting)")
+//        
+        println("New settings created: \(setting?.unit), \(setting?.oilChangeFrequency), \(setting?.transmissionFluidFrequency),")
         
         updateSegmentInterface()
     }
