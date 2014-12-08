@@ -41,7 +41,7 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
             firstNameTextField.text = user?.firstName
             lastNameTextField.text = user?.lastName
             //profilePic = UIImage(data: user!.picture)
-            Age.text = "\(user!.age)"
+            //Age.text = "\(user!.age)"
             
             if user?.picture != nil {
                 profileImage = UIImage(data: user!.picture)
