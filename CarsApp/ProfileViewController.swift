@@ -14,7 +14,6 @@ import CoreData
 class ProfileViewController: UIViewController , UINavigationControllerDelegate , UIImagePickerControllerDelegate , UIActionSheetDelegate , SelectCarsDelegate {
     @IBOutlet weak var userPicture: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var changePicture: UIButton!
     
     var cameraUI:UIImagePickerController = UIImagePickerController()
