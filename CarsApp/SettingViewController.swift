@@ -58,9 +58,9 @@ class SettingViewController: UIViewController, NSFetchedResultsControllerDelegat
             
         } else if segment == transmissionSegmentControl {
             if (transmissionSegmentControl.selectedSegmentIndex == 0){
-                setting?.oilChangeFrequency = 30000
+                setting?.transmissionFluidFrequency = 30000
             } else if (transmissionSegmentControl.selectedSegmentIndex == 1){
-                setting?.oilChangeFrequency = 60000
+                setting?.transmissionFluidFrequency = 60000
             }
         }
     }
