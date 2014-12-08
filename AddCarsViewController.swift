@@ -142,6 +142,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
     // Dismiss keyboard when tap on blank
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
+        scrollView.endEditing(true)
     }
     
     // Dismiss keyboard when tap on return
