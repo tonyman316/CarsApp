@@ -138,7 +138,11 @@ class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editCar" {
-            saveToCoreData()
+            
+            if (mileageStepper.value != car!.currentMileage || priceStepper.value != car!.price) {
+                saveToCoreData()
+            }
+            
             let editCarView = segue.destinationViewController as AddCarsViewController
             editCarView.title = "Edit \(car!.make) \(car!.model)"
             editCarView.car = car
