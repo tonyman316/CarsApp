@@ -63,18 +63,4 @@ class ProfileTableViewController: UITableViewController {
         return cell
     }
     
-    
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        switch (indexPath.row) {
-//        case 0: performSegueWithIdentifier("ShowMap", sender: self)
-//        break;
-//        case 1: performSegueWithIdentifier("ShowFriends", sender: self)
-//        break;
-//        default:
-//            break;
-//        }
-//        
-//    }
-    
 }

@@ -28,12 +28,16 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
         super.viewDidLoad()
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
-        fetchedResultController = getFetchedResultController()
         animateCollectionViewAppearance()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        fetchedResultController = getFetchedResultController()
+        fetchedResultController.delegate = self
+        fetchedResultController.performFetch(nil)
+        
         collectionView!.reloadData()
     }
     
@@ -51,7 +55,9 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
         
         println("Car found: \(car)")
         
-        //cell.carImageView = UIImage(data: car.carImage)
+        //cell.carImageView = UIImage (data: car.carImage)
+        cell.carImageView.image = UIImage(data: car.carImage)
+
         cell.nameLabel.text = car.make
         
         if selectedCars != nil {
@@ -98,7 +104,7 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
     }
     
     func taskFetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "MyCars")
+        let fetchRequest = NSFetchRequest(entityName: "Cars")
         let sortDescriptor = NSSortDescriptor(key: "make", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
