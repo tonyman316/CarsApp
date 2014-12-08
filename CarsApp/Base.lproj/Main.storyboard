@@ -824,18 +824,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="211" id="0x9-wv-STR"/>
                                 </constraints>
-                                <state key="normal" title="Delete">
+                                <state key="normal" title="Log Out">
                                     <color key="titleColor" red="0.99607849120000003" green="0.99215692280000001" blue="0.99215692280000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPK-HM-xsK">
-                                <rect key="frame" x="36" y="88" width="30" height="30"/>
-                                <state key="normal" title="Edit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
-                                    <segue destination="0k2-nX-bYj" kind="show" identifier="EditUser" id="g6a-s5-g9e"/>
+                                    <action selector="logoutButtonPressed:" destination="eAz-2M-1yA" eventType="touchUpInside" id="XWw-Aq-VD1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="On1-Gb-EXX">
@@ -858,7 +852,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-VT-i4S">
-                                <rect key="frame" x="16" y="467" width="568" height="96"/>
+                                <rect key="frame" x="16" y="415" width="568" height="96"/>
                                 <connections>
                                     <segue destination="ZHs-bX-rZm" kind="embed" identifier="embedSegue" id="nhq-yb-CGv"/>
                                 </connections>
@@ -880,17 +874,16 @@
                             <constraint firstItem="SRY-Ai-Adt" firstAttribute="top" secondItem="OuP-Mr-vo8" secondAttribute="bottom" constant="2" id="Wz5-Wq-8FA"/>
                             <constraint firstItem="a3R-UX-jLT" firstAttribute="top" secondItem="Raq-AM-Fj4" secondAttribute="bottom" constant="8" symbolic="YES" id="a9n-sV-DGm"/>
                             <constraint firstItem="OuP-Mr-vo8" firstAttribute="centerX" secondItem="a3R-UX-jLT" secondAttribute="centerX" id="bcr-c6-IUF"/>
-                            <constraint firstItem="DPK-HM-xsK" firstAttribute="top" secondItem="Raq-AM-Fj4" secondAttribute="bottom" constant="24" id="cxr-eJ-mqz"/>
                             <constraint firstItem="OuP-Mr-vo8" firstAttribute="top" secondItem="On1-Gb-EXX" secondAttribute="bottom" constant="8" symbolic="YES" id="gLU-9N-AYO"/>
                             <constraint firstItem="2xj-VT-i4S" firstAttribute="trailing" secondItem="SRY-Ai-Adt" secondAttribute="trailing" id="l3a-v5-Obi"/>
                             <constraint firstItem="2xj-VT-i4S" firstAttribute="top" secondItem="SRY-Ai-Adt" secondAttribute="bottom" id="u0z-2N-v5O"/>
-                            <constraint firstItem="DPK-HM-xsK" firstAttribute="leading" secondItem="lIh-Xy-aly" secondAttribute="leadingMargin" constant="20" id="ygQ-G1-aC9"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="User Profile" id="xg3-na-8v6">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ie5-M6-G9M">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="YLp-Hj-SKC">
                             <connections>
-                                <action selector="logoutButtonPressed:" destination="eAz-2M-1yA" id="UFx-Rp-gR1"/>
+                                <segue destination="0k2-nX-bYj" kind="show" identifier="EditUser" id="iD0-Xm-AEe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y9e-ab-fhy">
@@ -899,9 +892,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="changePicture" destination="On1-Gb-EXX" id="GAa-Yy-fkw"/>
-                        <outlet property="editButton" destination="DPK-HM-xsK" id="cqU-tB-HdF"/>
+                        <outlet property="ditButton" destination="YLp-Hj-SKC" id="BYu-9k-CGc"/>
                         <outlet property="userPicture" destination="a3R-UX-jLT" id="M3t-et-kKg"/>
                         <outlet property="usernameLabel" destination="OuP-Mr-vo8" id="cs2-HL-b36"/>
                     </connections>
@@ -1547,8 +1541,8 @@
         <image name="userTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g6a-s5-g9e"/>
         <segue reference="fef-lu-Euz"/>
+        <segue reference="iD0-Xm-AEe"/>
         <segue reference="3yW-OA-sCp"/>
     </inferredMetricsTieBreakers>
 </document>

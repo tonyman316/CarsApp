@@ -14,7 +14,9 @@ import CoreData
 class ProfileViewController: UIViewController , UINavigationControllerDelegate , UIImagePickerControllerDelegate , UIActionSheetDelegate{
     @IBOutlet weak var userPicture: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet var editButton: UIButton!
+    @IBOutlet var editButton: UIBarButtonItem!
+    
+   // @IBOutlet var editButton: UIButton!
     @IBOutlet var changePicture: UIButton!
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
