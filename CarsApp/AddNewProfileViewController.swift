@@ -225,29 +225,137 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     }
     
     // Save to Core Data
+//    func createProfile() {
+//        var newUer: Owners
+//        
+//        if user == nil {
+//            let
+//        }
+//        
+//        
+//        let imageData = UIImagePNGRepresentation(profileImage!) as NSData
+//        var userDictionary = [String : String]()
+//        userDictionary["firstName"] = firstNameTextField.text
+//        userDictionary["lastName"] = lastNameTextField.text
+//        //userDictionary["Age"] = Age.text
+//        userDictionary["userName"] = userName.text
+//        
+//        Owners.createUser(userInfo: userDictionary, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
+//        managedObjectContext?.save(nil)
+//    }
+//    
+//    // check input
+//    func validInput() -> Bool {
+//        if (profileImage == nil || firstNameTextField.text.isEmpty || lastNameTextField.text.isEmpty){
+//            return false
+//        } else {
+//            return true
+//        }
+//    }
+//    
+//}
     func createProfile() {
+        var newUser: Owners
         
+        if user == nil {
+            let entityDescripition = NSEntityDescription.entityForName("Owners", inManagedObjectContext: managedObjectContext!)
+            newUser = Owners(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+        } else {
+            newUser = user!
+        }
         
+        if profileImage != nil {
+            let imageData = UIImagePNGRepresentation(profileImage!) as NSData
+            newUser.picture = imageData
+        }
         
-        let imageData = UIImagePNGRepresentation(profileImage!) as NSData
-        var userDictionary = [String : String]()
-        userDictionary["firstName"] = firstNameTextField.text
-        userDictionary["lastName"] = lastNameTextField.text
-        //userDictionary["Age"] = Age.text
-        userDictionary["userName"] = userName.text
+        newUser.firstName = firstNameTextField.text
+        newUser.lastName = lastNameTextField.text
+        newUser.username = userName.text
+        newUser.password = Password.text
         
-        Owners.createUser(userInfo: userDictionary, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
+//        if let year = yearTextField.text.toInt() {
+//            newCar.year = year
+//        }
+//        
+//        if users != nil && !(users!.isEmpty) {
+//            newCar.owners = users![0]
+//        } else if car == nil {
+//            newCar.owners = Owners.databaseContainsMainUser(managedObjectContext!).user!
+//            
+//            let userAlert = UIAlertController(title: "Owner not set", message: "Since you did not select a user, ownership of the car will be set to \(newCar.owners.firstName).", preferredStyle: UIAlertControllerStyle.Alert)
+//            userAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+//                self.dismissController()
+//            }))
+//            presentViewController(userAlert, animated: true, completion: nil)
+//        }
+//        
         managedObjectContext?.save(nil)
+    }
+    
+    func dismissController() {
+        navigationController!.popViewControllerAnimated(true)
+    }
+    
+    func numberFromString(inputString: String) -> NSNumber? {
+        let toNumber = inputString.toInt()
+        return toNumber
+    }
+    
+    func stringFromNumber(number: NSNumber) -> String? {
+        let toString = "\(number)"
+        return toString
     }
     
     // check input
     func validInput() -> Bool {
-        if (profileImage == nil || firstNameTextField.text.isEmpty || lastNameTextField.text.isEmpty){
+        if (profileImage == nil){// || makeTextField.text.isEmpty || modelTextField.text.isEmpty || yearTextField.text.isEmpty /* || priceTextField.text.isEmpty || currentMileageTextField.text.isEmpty || oilChangeTextField.text.isEmpty || transmissionOilTextField.text.isEmpty */ ){
             return false
         } else {
             return true
         }
     }
     
+    // Resize image func
+    func RBResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+        } else {
+            newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.drawInRect(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "embedSegue" {
+            var userCollectionView = segue.destinationViewController as UsersCollectionViewController
+            
+//            if user != nil && user?.Cars != nil {
+//                userCollectionView.selectedUsers = [user!.Cars]
+//            }
+//            
+           // userCollectionView.del = self
+        }
+    }
+    
+//    func didSelectUsers(viewController: UsersCollectionViewController, selectedUsers users: [Owners]?) {
+//        self.users = users
+//    }
 }
-
