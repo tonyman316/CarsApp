@@ -26,6 +26,8 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
     var user: Owners? = nil
     var profileImage: UIImage?
     var activeField: UITextField?
+    var userPictureAlreadyAdded = false
+
 
     
     override func viewDidLoad() {
@@ -39,16 +41,42 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
             firstNameTextField.text = user?.firstName
             lastNameTextField.text = user?.lastName
             //profilePic = UIImage(data: user!.picture)
-            //Age.text = user?.Age
-            //yearTextField.text = "\(car!.year)"
+            Age.text = "\(user!.age)"
             
+            if user?.picture != nil {
+                profileImage = UIImage(data: user!.picture)
+            }
            }
             //scrollView.delegate = self
             userName.delegate = self
             firstNameTextField.delegate = self
-
         }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        //scrollView.scrollEnabled = false
+       // scrollView.contentSize = CGSizeMake(view.frame.width, view.frame.height + makeTextField.frame.height * 6)
+       // scrollView.bounds = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
+        
+        if let imageData = user?.valueForKey("picture") as? NSData {
+            if userPictureAlreadyAdded == false {
+                addUserImageView(image: UIImage(data: imageData)!)
+                userPictureAlreadyAdded = true
+            }
+        }
+    }
     
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
@@ -184,17 +212,28 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    func addUserImageView(#image: UIImage) {
+        addProfilePictureButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        addProfilePictureButton.setTitle("", forState: UIControlState.Normal)
+        profileImage = image
+    }
+    
+    
     func popToMainView() {
         navigationController?.popViewControllerAnimated(true)
     }
     
     // Save to Core Data
     func createProfile() {
+        
+        
+        
         let imageData = UIImagePNGRepresentation(profileImage!) as NSData
         var userDictionary = [String : String]()
         userDictionary["firstName"] = firstNameTextField.text
         userDictionary["lastName"] = lastNameTextField.text
-        userDictionary["Age"] = Age.text
+        //userDictionary["Age"] = Age.text
         userDictionary["userName"] = userName.text
         
         Owners.createUser(userInfo: userDictionary, userPicture: profileImage, isMainUser: false, context: managedObjectContext!)
@@ -210,19 +249,5 @@ class AddNewProfileViewController: UIViewController, UINavigationControllerDeleg
         }
     }
     
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "AddUser" {
-//            
-//        }
-//        else if segue.identifier == 
-//    }
-//    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "editUser" {
-//            let editCarView = segue.destinationViewController as AddCarsViewController
-//            editCarView.title = "Edit \(car!.make) \(car!.model)"
-//            editCarView.car = car
-//        }
-//    }
 }
+
