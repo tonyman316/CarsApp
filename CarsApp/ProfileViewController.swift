@@ -38,6 +38,8 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
         usernameLabel.text = userToDisplay!.firstName
         
         userPicture.setupItemPictureLayer()
+        
+        println("User to display: \(userToDisplay!.firstName)")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -120,6 +122,7 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
         } else if segue.identifier == "embedSegue" {
             var carCollectionView = segue.destinationViewController as CarCollectionViewController
             carCollectionView.del = self
+            carCollectionView.specificUser = userToDisplay
             
         } else if segue.identifier == "logout" {
             // Empty navigation stack

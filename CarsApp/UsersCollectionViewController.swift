@@ -85,7 +85,7 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
             
             var cell = collectionView.cellForItemAtIndexPath(indexPath) as UserCollectionViewCell
             
-            if selectedUsers != nil && contains(selectedUsers!, selected) == true {
+            if selectedUsers != nil && selectedUsers?.isEmpty == false && contains(selectedUsers!, selected) == true {
                 cell.userImageView.layer.borderColor = colorForBorder
                 selectedUsers!.removeAtIndex(find(selectedUsers!, selected)!)
             } else {
@@ -93,9 +93,18 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
                     selectedUsers = [Owners]()
                 }
                 
-                cell.userImageView.layer.borderColor = UIColor.blueColor().CGColor
-                selectedUsers!.append(selected)
+                if clearsSelections == false {
+                    cell.userImageView.layer.borderColor = UIColor.blueColor().CGColor
+                    selectedUsers!.append(selected)
+                    
+                } else if clearsSelections == true {
+                    selectedUsers?.removeAll(keepCapacity: false)
+                    selectedUsers?.append(selected)
+                    collectionView.reloadData()
+                }
             }
+            
+            println("Selected user: \(selectedUsers)")
             
             del?.didSelectUsers(self, selectedUsers: selectedUsers)
         }
@@ -112,7 +121,7 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
-
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         collectionView!.reloadData()
     }

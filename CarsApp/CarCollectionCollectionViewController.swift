@@ -16,7 +16,9 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
     var selectedCars: [MyCars]?
     var del: SelectCarsDelegate?
     let colorForBorder = UIColor(red:(179.0/255.0), green:(179.0/255.0), blue:(179.0/255.0), alpha:(0.3)).CGColor
-    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    lazy var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    var specificUser: Owners?
+    var userCars: [MyCars]?
     
     func animateCollectionViewAppearance() {
         UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
@@ -28,17 +30,21 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
         super.viewDidLoad()
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
+        
+        if specificUser == nil {
+            fetchedResultController = getFetchedResultController()
+            fetchedResultController.delegate = self
+            fetchedResultController.performFetch(nil)
+        } else {
+            userCars = specificUser!.cars.allObjects as? [MyCars]
+        }
+        
         animateCollectionViewAppearance()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        fetchedResultController = getFetchedResultController()
-        fetchedResultController.delegate = self
-        fetchedResultController.performFetch(nil)
-        
-        collectionView!.reloadData()
+        collectionView?.reloadData()
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -46,15 +52,26 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if specificUser != nil {
+            return specificUser!.cars.count
+        }
+        
         return fetchedResultController.fetchedObjects!.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> CarsCollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as CarsCollectionViewCell
-        let car = fetchedResultController.fetchedObjects![indexPath.row] as MyCars
+        
+        var car: MyCars
+        
+        if specificUser == nil {
+            car = fetchedResultController.fetchedObjects![indexPath.row] as MyCars
+        } else {
+            car = userCars![indexPath.row]
+        }
         
         cell.carImageView.image = UIImage(data: car.carImage)
-
+        
         cell.nameLabel.text = car.make
         
         if selectedCars != nil {

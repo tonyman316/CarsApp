@@ -362,6 +362,7 @@ class AddCarsViewController: UIViewController, UINavigationControllerDelegate, U
             }
             
             userCollectionView.del = self
+            userCollectionView.clearsSelections = true
         }
     }
     
