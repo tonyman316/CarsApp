@@ -100,13 +100,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.layer.borderWidth = 2.5
     }
     
-    // Highlight the cell
-    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCVCell
-        cell.layer.borderColor = UIColor.redColor().CGColor
-        cell.layer.borderWidth = 3.0
-    }
-    
     func animateCollectionViewAppearance() {
         UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: { () -> Void in
             self.carsCollectionView.contentOffset = CGPointMake(0, self.carsCollectionView.frame.size.height)
