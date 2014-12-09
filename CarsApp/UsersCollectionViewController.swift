@@ -104,8 +104,6 @@ class UsersCollectionViewController: UICollectionViewController, UICollectionVie
                 }
             }
             
-            println("Selected user: \(selectedUsers)")
-            
             del?.didSelectUsers(self, selectedUsers: selectedUsers)
         }
     }

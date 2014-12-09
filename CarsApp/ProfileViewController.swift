@@ -34,12 +34,16 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
             userToDisplay = mainUser
         }
         
+        println("User cars:")
+        
+        for car in userToDisplay!.cars {
+            println("\((car as MyCars).make) \((car as MyCars).model)")
+        }
+        
         userPicture.image = UIImage(data: userToDisplay!.picture)
         usernameLabel.text = userToDisplay!.firstName
         
         userPicture.setupItemPictureLayer()
-        
-        println("User to display: \(userToDisplay!.firstName)")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -122,7 +126,12 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
         } else if segue.identifier == "embedSegue" {
             var carCollectionView = segue.destinationViewController as CarCollectionViewController
             carCollectionView.del = self
-            carCollectionView.specificUser = userToDisplay
+            
+            if userToDisplay == nil {
+                carCollectionView.specificUser = mainUser!
+            } else {
+                carCollectionView.specificUser = userToDisplay!
+            }
             
         } else if segue.identifier == "logout" {
             // Empty navigation stack
@@ -137,7 +146,7 @@ class ProfileViewController: UIViewController , UINavigationControllerDelegate ,
                 userTable.userToDisplay = userToDisplay!
             } else {
                 if userToDisplay == nil {
-                    userTable.userToDisplay = mainUser
+                    userTable.userToDisplay = mainUser!
                 } else {
                     userTable.userToDisplay = userToDisplay!
                 }

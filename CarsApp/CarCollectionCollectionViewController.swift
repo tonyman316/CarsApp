@@ -31,6 +31,12 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.backgroundColor = nil
         
+        animateCollectionViewAppearance()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if specificUser == nil {
             fetchedResultController = getFetchedResultController()
             fetchedResultController.delegate = self
@@ -39,11 +45,6 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
             userCars = specificUser!.cars.allObjects as? [MyCars]
         }
         
-        animateCollectionViewAppearance()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
     
@@ -87,7 +88,13 @@ class CarCollectionViewController: UICollectionViewController, UICollectionViewD
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if parentViewController is ProfileViewController {
-            let selected = fetchedResultController.fetchedObjects![indexPath.row] as MyCars
+            var selected: MyCars
+            
+            if specificUser == nil {
+                selected = fetchedResultController.fetchedObjects![indexPath.row] as MyCars
+            } else {
+                selected = userCars![indexPath.row]
+            }
             
             var cell = collectionView.cellForItemAtIndexPath(indexPath) as CarsCollectionViewCell
             

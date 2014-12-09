@@ -199,7 +199,6 @@ class MyCarsViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func didSelectUsers(viewController: UsersCollectionViewController, selectedUsers users: [Owners]?) {
-        println(users)
         self.users = users
         performSegueWithIdentifier("showProfile", sender: self)
     }
