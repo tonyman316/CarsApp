@@ -67,7 +67,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ctn-bV-kHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1255" y="860"/>
+            <point key="canvasLocation" x="1255" y="1654"/>
         </scene>
         <!--My Cars-->
         <scene sceneID="tne-QT-ifu">
@@ -448,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKh-Y6-Bgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1255" y="-389"/>
+            <point key="canvasLocation" x="1255" y="363"/>
         </scene>
         <!--Add New Car-->
         <scene sceneID="FL7-ME-SyN">
@@ -692,7 +692,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0Y-tb-D5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1255" y="363"/>
+            <point key="canvasLocation" x="1255" y="1106"/>
         </scene>
         <!--Find gas and service stations-->
         <scene sceneID="QAn-MM-ArX">
@@ -949,7 +949,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlE-if-4BD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="2324.5"/>
+            <point key="canvasLocation" x="563" y="2303.5"/>
         </scene>
         <!--Car Collection View Controller-->
         <scene sceneID="tEF-Lg-Sll">
@@ -1011,7 +1011,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fnf-bh-8mq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="2335"/>
+            <point key="canvasLocation" x="-88.5" y="2314"/>
         </scene>
         <!--Setting-->
         <scene sceneID="LnM-3I-s8a">
@@ -1248,7 +1248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUr-zJ-R9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1194" y="1770"/>
+            <point key="canvasLocation" x="1255" y="2058"/>
         </scene>
         <!--Login Screen-->
         <scene sceneID="RHD-7l-s3M">
@@ -1571,10 +1571,10 @@
         <image name="userTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wWg-uc-iTF"/>
-        <segue reference="vfQ-hY-Uzd"/>
-        <segue reference="fef-lu-Euz"/>
-        <segue reference="JaB-LZ-wDA"/>
         <segue reference="2AJ-Fo-VfV"/>
+        <segue reference="wWg-uc-iTF"/>
+        <segue reference="JaB-LZ-wDA"/>
+        <segue reference="vaD-fg-qY7"/>
+        <segue reference="3yW-OA-sCp"/>
     </inferredMetricsTieBreakers>
 </document>
